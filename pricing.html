@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing — Paktum</title>
+<link rel="stylesheet" href="https://use.typekit.net/apb2slf.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --color-primary: #970EFB;
+  --color-primary-soft: rgba(151, 14, 251, 0.1);
+  --color-primary-softer: rgba(151, 14, 251, 0.04);
+  --color-primary-medium: rgba(151, 14, 251, 0.18);
+  --color-primary-deep: #6B0AB8;
+  --color-bg-base: #F4F2EE;
+  --color-bg-surface: #FFFFFF;
+  --color-bg-tinted: #FAF7FE;
+  --color-ink: #0A0612;
+  --color-ink-soft: #1F0F3D;
+  --color-text-primary: #0A0612;
+  --color-text-secondary: #635A6F;
+  --color-text-muted: #908AA0;
+  --color-text-inverse: #F4F2EE;
+  --color-text-inverse-muted: #A89DB8;
+  --color-border: rgba(10, 6, 18, 0.1);
+  --color-border-purple: rgba(151, 14, 251, 0.2);
+  --color-border-dark: rgba(244, 242, 238, 0.12);
+  --font-display: 'forma-djr-display', 'forma-djr-text', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --container: 1320px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-display);
+  background: var(--color-bg-base);
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.4;
+  overflow-x: hidden;
+}
+
+.container { max-width: var(--container); margin: 0 auto; padding: 0 32px; }
+
+/* ============ NAVBAR ============ */
+.navbar {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  z-index: 100;
+  background: rgba(10, 6, 18, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 100px;
+  padding: 12px 16px 12px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  border: 1px solid var(--color-border-dark);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.nav-logo img { height: 28px; width: auto; display: block; }
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--color-text-inverse);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+.nav-links a:hover, .nav-links a.active { opacity: 1; }
+.nav-links a.active { color: var(--color-primary); }
+
+.btn {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  padding: 14px 24px;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+}
+
+.btn-primary { background: var(--color-primary); color: white; }
+.btn-primary:hover { background: #AD2FFC; }
+.btn-ghost-dark { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.2); }
+.btn-ghost-dark:hover { border-color: white; background: rgba(255,255,255,0.05); }
+.btn-arrow::after { content: '↗'; font-size: 16px; }
+.btn-lg { padding: 18px 32px; font-size: 16px; }
+
+/* ============ PRICING HERO ============ */
+.pricing-hero {
+  padding: 200px 16px 100px;
+  text-align: center;
+  position: relative;
+  background:
+    radial-gradient(ellipse at top, var(--color-primary-medium) 0%, transparent 50%),
+    var(--color-bg-base);
+}
+
+.pricing-hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.pricing-title {
+  font-size: clamp(48px, 8vw, 128px);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 0.92;
+  margin-bottom: 36px;
+}
+
+.pricing-title .accent {
+  color: var(--color-primary);
+  font-style: italic;
+}
+
+.pricing-subtitle {
+  font-size: 19px;
+  color: var(--color-text-secondary);
+  max-width: 720px;
+  margin: 0 auto 40px;
+  line-height: 1.6;
+  letter-spacing: -0.005em;
+}
+
+.pricing-subtitle strong {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+.pricing-subtitle .accent {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* Currency toggle */
+.currency-toggle {
+  display: inline-flex;
+  background: white;
+  border: 1px solid var(--color-border-purple);
+  border-radius: 100px;
+  padding: 4px;
+  box-shadow: 0 4px 20px rgba(151, 14, 251, 0.08);
+}
+
+.currency-btn {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 10px 22px;
+  border-radius: 100px;
+  border: none;
+  background: transparent;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.currency-btn.active {
+  background: var(--color-primary);
+  color: white;
+}
+
+.currency-note {
+  font-size: 12px;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  margin-top: 14px;
+}
+
+/* ============ PRICING TIERS ============ */
+.tiers-section {
+  padding: 80px 16px 120px;
+  background:
+    radial-gradient(ellipse at center top, var(--color-primary-softer) 0%, transparent 60%),
+    var(--color-bg-surface);
+  border-top: 1px solid var(--color-border-purple);
+  border-bottom: 1px solid var(--color-border-purple);
+}
+
+.tiers-header {
+  max-width: var(--container);
+  margin: 0 auto 64px;
+  text-align: center;
+}
+
+.tiers-section-title {
+  font-size: clamp(36px, 5vw, 72px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 16px;
+}
+
+.tiers-section-title .accent { color: var(--color-primary); font-style: italic; }
+
+.tiers-section-subtitle {
+  font-size: 17px;
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.55;
+}
+
+.tiers-grid {
+  max-width: var(--container);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  align-items: stretch;
+}
+
+.tier-card {
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: 24px;
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.tier-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 48px rgba(151, 14, 251, 0.12);
+  border-color: var(--color-border-purple);
+}
+
+.tier-card.featured {
+  background: linear-gradient(180deg, #1F0F3D 0%, #0A0612 100%);
+  border: none;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 24px 48px rgba(151, 14, 251, 0.25);
+}
+
+.tier-card.featured::before {
+  content: '';
+  position: absolute;
+  top: -100px; right: -100px;
+  width: 350px; height: 350px;
+  background: radial-gradient(circle, rgba(151, 14, 251, 0.4) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.tier-card.featured > * { position: relative; z-index: 1; }
+
+.tier-badge {
+  display: inline-block;
+  background: var(--color-ink);
+  color: white;
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 24px;
+  align-self: flex-start;
+}
+
+.tier-card.featured .tier-badge {
+  background: var(--color-primary);
+  color: white;
+}
+
+.tier-popular {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--color-primary);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 100px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.tier-price-block {
+  margin-bottom: 8px;
+}
+
+.tier-price {
+  font-size: 56px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--color-text-primary);
+}
+
+.tier-card.featured .tier-price { color: white; }
+.tier-card .tier-price .currency-symbol { color: var(--color-primary); }
+.tier-card.featured .tier-price .currency-symbol { color: var(--color-primary); }
+
+.tier-card.enterprise .tier-price {
+  font-size: 40px;
+  letter-spacing: -0.025em;
+}
+
+.tier-period {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  margin-top: 8px;
+  font-weight: 500;
+}
+
+.tier-card.featured .tier-period { color: var(--color-text-inverse-muted); }
+
+.tier-volume {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 16px;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.tier-card.featured .tier-volume {
+  color: var(--color-text-inverse-muted);
+  border-bottom-color: rgba(244, 242, 238, 0.15);
+}
+
+.tier-features {
+  list-style: none;
+  margin-bottom: 32px;
+  flex: 1;
+}
+
+.tier-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 0;
+  font-size: 14px;
+  color: var(--color-text-primary);
+  letter-spacing: -0.005em;
+  font-weight: 500;
+}
+
+.tier-card.featured .tier-features li { color: white; }
+
+.tier-features li::before {
+  content: '✓';
+  color: var(--color-primary);
+  font-weight: 700;
+  flex-shrink: 0;
+  font-size: 14px;
+}
+
+.tier-cta {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  padding: 14px 24px;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  letter-spacing: -0.005em;
+  text-decoration: none;
+  width: 100%;
+  transition: all 0.2s ease;
+}
+
+.tier-cta-ghost {
+  background: transparent;
+  color: var(--color-text-primary);
+  border: 1.5px solid var(--color-border-purple);
+}
+.tier-cta-ghost:hover {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: white;
+}
+
+.tier-cta-primary {
+  background: var(--color-primary);
+  color: white;
+}
+.tier-cta-primary:hover { background: #AD2FFC; }
+
+.tier-cta-light {
+  background: white;
+  color: var(--color-ink);
+}
+.tier-cta-light:hover { background: var(--color-primary); color: white; }
+
+/* ============ FINAL CTA ============ */
+.final-cta {
+  margin: 16px 16px;
+  background: var(--color-ink);
+  color: white;
+  border-radius: 48px;
+  padding: 120px 64px;
+  position: relative;
+  overflow: hidden;
+}
+
+.final-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at top, rgba(151, 14, 251, 0.3) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.final-cta-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 80px;
+  align-items: end;
+  max-width: var(--container);
+  margin: 0 auto;
+  position: relative;
+}
+
+.final-cta h2 {
+  font-size: clamp(48px, 8vw, 128px);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 0.88;
+}
+
+.final-cta h2 .accent { color: var(--color-primary); font-style: italic; }
+
+.final-cta .ctas {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.final-cta p {
+  font-size: 17px;
+  color: var(--color-text-inverse-muted);
+  line-height: 1.5;
+  margin-bottom: 16px;
+  max-width: 380px;
+}
+
+/* ============ FOOTER ============ */
+footer {
+  background: var(--color-bg-base);
+  padding: 64px 16px 32px;
+}
+
+.footer-container {
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+.footer-big {
+  margin-bottom: 48px;
+  display: flex;
+  justify-content: center;
+  padding: 32px 0;
+}
+
+.footer-big img {
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+}
+
+.footer-cols {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 64px;
+  padding-top: 48px;
+  border-top: 1px solid var(--color-border);
+  margin-bottom: 48px;
+}
+
+.footer-col h5 {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-bottom: 24px;
+}
+
+.footer-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-col a {
+  color: var(--color-text-primary);
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  transition: color 0.2s;
+}
+
+.footer-col a:hover { color: var(--color-primary); }
+
+.footer-brand img { height: 32px; width: auto; margin-bottom: 16px; }
+
+.footer-brand p {
+  font-size: 15px;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  max-width: 320px;
+}
+
+.footer-bottom {
+  padding-top: 32px;
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.footer-bottom .lang { display: flex; gap: 16px; }
+
+.footer-bottom .lang a {
+  color: var(--color-text-muted);
+  text-decoration: none;
+}
+
+.footer-bottom .lang a.active { color: var(--color-primary); font-weight: 600; }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 1100px) {
+  .tiers-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .final-cta-grid { grid-template-columns: 1fr; gap: 32px; }
+  .final-cta { padding: 80px 40px; }
+}
+
+@media (max-width: 640px) {
+  .container { padding: 0 20px; }
+  
+  .navbar {
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    padding: 8px 8px 8px 16px;
+  }
+  .navbar .btn-primary {
+    font-size: 12px;
+    padding: 9px 14px;
+  }
+  .nav-logo img { height: 24px; }
+  
+  /* Hero */
+  .pricing-hero { padding: 130px 16px 70px; }
+  .pricing-subtitle { font-size: 16px; padding: 0 4px; }
+  .currency-toggle { width: 100%; max-width: 280px; }
+  .currency-btn { flex: 1; padding: 10px 16px; }
+  
+  /* Tiers */
+  .tiers-section { padding: 60px 12px 80px; }
+  .tiers-header { margin-bottom: 40px; }
+  .tiers-grid { grid-template-columns: 1fr; gap: 16px; }
+  .tier-card { padding: 32px 28px; }
+  .tier-price { font-size: 48px; }
+  .tier-card.enterprise .tier-price { font-size: 32px; }
+  
+  /* Final CTA */
+  .final-cta {
+    margin: 0 12px 12px;
+    padding: 64px 24px;
+    border-radius: 32px;
+  }
+  .final-cta .ctas { width: 100%; }
+  .final-cta .ctas .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  /* Footer */
+  footer { padding: 48px 16px 24px; }
+  .footer-cols {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .footer-brand { grid-column: 1 / -1; }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ NAVBAR ============ -->
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">
+    <img src="SVG%20Logos/Recurso%206.svg" alt="Paktum">
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#product">Product</a></li>
+    <li><a href="index.html#features">Features</a></li>
+    <li><a href="index.html#stats">Value</a></li>
+    <li><a href="pricing.html" class="active">Pricing</a></li>
+  </ul>
+  <a href="index.html#demo" class="btn btn-primary">Book a demo</a>
+</nav>
+
+<!-- ============ PRICING HERO ============ -->
+<section class="pricing-hero">
+  <div class="pricing-hero-inner">
+    <h1 class="pricing-title">Paktum lives<br>by <span class="accent">roles</span>.</h1>
+    <p class="pricing-subtitle">We believe role-based access should actually be lived. That's why we don't charge per user. Instead, we calculate your price based on your <strong>sponsoring volume</strong> and the number of <strong>active partners</strong>. <span class="accent">Everyone gets access to the data relevant to their role</span>, without licensing barriers slowing things down.</p>
+    
+    <div class="currency-toggle">
+      <button class="currency-btn active" data-currency="EUR">€ EUR</button>
+      <button class="currency-btn" data-currency="CHF">CHF</button>
+    </div>
+    <div class="currency-note">Same value in both currencies</div>
+  </div>
+</section>
+
+<!-- ============ PRICING TIERS ============ -->
+<section class="tiers-section">
+  <div class="tiers-header">
+    <h2 class="tiers-section-title">Choose your <span class="accent">tier</span>.</h2>
+    <p class="tiers-section-subtitle">Four tiers built around your sponsoring volume. All plans include unlimited users, unlimited data, and personal support.</p>
+  </div>
+  
+  <div class="tiers-grid">
+    
+    <!-- ROOKIE -->
+    <div class="tier-card">
+      <span class="tier-badge">Rookie</span>
+      <div class="tier-price-block">
+        <div class="tier-price"><span class="currency-symbol">€ </span><span class="price-value" data-eur="300" data-chf="300">300</span></div>
+        <div class="tier-period">per month</div>
+      </div>
+      <div class="tier-volume">Up to <span class="vol-currency">€</span>1M sponsoring volume</div>
+      <ul class="tier-features">
+        <li>Unlimited user access</li>
+        <li>Unlimited data</li>
+        <li>Personal support</li>
+      </ul>
+      <a href="index.html#demo" class="tier-cta tier-cta-ghost">Get started</a>
+    </div>
+    
+    <!-- PRO -->
+    <div class="tier-card">
+      <span class="tier-badge">Pro</span>
+      <div class="tier-price-block">
+        <div class="tier-price"><span class="currency-symbol">€ </span><span class="price-value" data-eur="750" data-chf="750">750</span></div>
+        <div class="tier-period">per month</div>
+      </div>
+      <div class="tier-volume"><span class="vol-currency">€</span>1M – <span class="vol-currency">€</span>2.5M sponsoring volume</div>
+      <ul class="tier-features">
+        <li>Unlimited user access</li>
+        <li>Unlimited data</li>
+        <li>Personal support</li>
+      </ul>
+      <a href="index.html#demo" class="tier-cta tier-cta-ghost">Get started</a>
+    </div>
+    
+    <!-- ALL-STAR (Featured) -->
+    <div class="tier-card featured">
+      <span class="tier-popular">Most popular</span>
+      <span class="tier-badge">All-Star</span>
+      <div class="tier-price-block">
+        <div class="tier-price"><span class="currency-symbol">€ </span><span class="price-value" data-eur="1,500" data-chf="1,500">1,500</span></div>
+        <div class="tier-period">per month</div>
+      </div>
+      <div class="tier-volume"><span class="vol-currency">€</span>2.5M – <span class="vol-currency">€</span>6.5M sponsoring volume</div>
+      <ul class="tier-features">
+        <li>Unlimited user access</li>
+        <li>Unlimited data</li>
+        <li>Personal support</li>
+      </ul>
+      <a href="index.html#demo" class="tier-cta tier-cta-light">Get started</a>
+    </div>
+    
+    <!-- ENTERPRISE -->
+    <div class="tier-card enterprise">
+      <span class="tier-badge">Enterprise</span>
+      <div class="tier-price-block">
+        <div class="tier-price">On request</div>
+        <div class="tier-period">Tailored to your needs</div>
+      </div>
+      <div class="tier-volume">From <span class="vol-currency">€</span>6.5M sponsoring volume</div>
+      <ul class="tier-features">
+        <li>Unlimited user access</li>
+        <li>Unlimited data</li>
+        <li>Personal support</li>
+      </ul>
+      <a href="index.html#demo" class="tier-cta tier-cta-primary">Contact sales</a>
+    </div>
+    
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final-cta" id="demo">
+  <div class="final-cta-grid">
+    <h2>Find the right<br><span class="accent">tier</span> for your<br>operation.</h2>
+    <div class="ctas">
+      <p>Book a 30-minute demo and let's figure out together which plan fits your sponsoring volume best.</p>
+      <a href="index.html#demo" class="btn btn-primary btn-lg btn-arrow">Book a demo</a>
+      <a href="index.html#demo" class="btn btn-ghost-dark btn-lg">Talk to sales</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-container">
+    <div class="footer-big">
+      <img src="SVG%20Logos/Recurso%201.svg" alt="Paktum">
+    </div>
+    <div class="footer-cols">
+      <div class="footer-brand">
+        <img src="SVG%20Logos/Recurso%205.svg" alt="Paktum">
+        <p>The Swiss Knife for your sponsoring. A product of KL Technologies GmbH, based in Luzern, Switzerland.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Product</h5>
+        <ul>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Legal</h5>
+        <ul>
+          <li><a href="#">Imprint</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 KL Technologies GmbH</span>
+      <div class="lang" style="display: none;">
+        <a href="#" class="active">EN</a>
+        <a href="#">DE</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Currency toggle
+const currencyBtns = document.querySelectorAll('.currency-btn');
+const priceValues = document.querySelectorAll('.price-value');
+const currencySymbols = document.querySelectorAll('.currency-symbol');
+const volCurrencies = document.querySelectorAll('.vol-currency');
+
+currencyBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const currency = btn.dataset.currency;
+    
+    currencyBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    
+    if (currency === 'CHF') {
+      currencySymbols.forEach(el => el.textContent = 'CHF ');
+      volCurrencies.forEach(el => el.textContent = 'CHF ');
+      priceValues.forEach(el => {
+        el.textContent = el.dataset.chf;
+      });
+    } else {
+      currencySymbols.forEach(el => el.textContent = '€ ');
+      volCurrencies.forEach(el => el.textContent = '€');
+      priceValues.forEach(el => {
+        el.textContent = el.dataset.eur;
+      });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
