@@ -25,7 +25,7 @@
   --color-border-dark: rgba(244, 242, 238, 0.12);
   --gradient-dark: linear-gradient(180deg, #1F0F3D 0%, #0A0612 100%);
   --gradient-glow: radial-gradient(ellipse at top, rgba(151, 14, 251, 0.25) 0%, transparent 55%);
-  --font-display: 'forma-djr-display', 'forma-djr-text', system-ui, sans-serif;
+  --font-display: 'forma-djr-display', 'forma-djr-text', 'Inter', 'Helvetica Neue', 'Arial', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
   --container: 1320px;
 }
@@ -48,9 +48,11 @@ body {
 /* ============ NAVBAR ============ */
 .navbar {
   position: fixed;
-  top: 16px;
-  left: 16px;
-  right: 16px;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 48px);
+  max-width: 1400px;
   z-index: 100;
   background: rgba(10, 6, 18, 0.85);
   backdrop-filter: blur(20px);
@@ -145,8 +147,8 @@ body {
 .hero h1 {
   font-size: clamp(56px, 9vw, 144px);
   font-weight: 700;
-  letter-spacing: -0.045em;
-  line-height: 0.9;
+  letter-spacing: -0.025em;
+  line-height: 0.92;
   margin-bottom: 40px;
 }
 
@@ -265,8 +267,8 @@ body {
 .section-title-xl {
   font-size: clamp(48px, 7vw, 112px);
   font-weight: 700;
-  letter-spacing: -0.045em;
-  line-height: 0.92;
+  letter-spacing: -0.025em;
+  line-height: 0.95;
   margin-top: 16px;
 }
 
@@ -348,8 +350,8 @@ body {
 .bridge-text {
   font-size: clamp(56px, 9vw, 144px);
   font-weight: 700;
-  letter-spacing: -0.045em;
-  line-height: 0.9;
+  letter-spacing: -0.025em;
+  line-height: 0.92;
   max-width: 1100px;
   margin: 0 auto;
 }
@@ -1295,8 +1297,8 @@ body {
 .final-cta h2 {
   font-size: clamp(56px, 9vw, 144px);
   font-weight: 700;
-  letter-spacing: -0.045em;
-  line-height: 0.88;
+  letter-spacing: -0.025em;
+  line-height: 0.92;
 }
 
 .final-cta h2 .accent { color: var(--color-primary); font-style: italic; }
@@ -1448,8 +1450,7 @@ footer {
   /* Navbar - more compact */
   .navbar {
     top: 12px;
-    left: 12px;
-    right: 12px;
+    width: calc(100% - 24px);
     padding: 8px 8px 8px 16px;
   }
   .navbar .btn-primary {
