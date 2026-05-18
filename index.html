@@ -190,11 +190,11 @@ body {
 .marquee {
   background: var(--color-ink);
   color: white;
-  margin: 0 16px;
+  margin: 16px 16px 0;
   border-top: 1px solid var(--color-border-dark);
+  border-radius: 24px;
   overflow: hidden;
   padding: 24px 0;
-  margin-top: -1px;
 }
 
 .marquee-track {
@@ -207,15 +207,26 @@ body {
   font-weight: 500;
   color: rgba(255,255,255,0.4);
   letter-spacing: -0.02em;
+  width: max-content;
+  animation: marqueeScroll 35s linear infinite;
 }
 
 .marquee-track span {
   display: inline-flex;
   align-items: center;
   gap: 80px;
+  padding-right: 80px;
 }
 
 .marquee-track .sep { color: var(--color-primary); }
+
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Pause on hover - optional polish */
+.marquee:hover .marquee-track { animation-play-state: paused; }
 
 /* ============ PROBLEM ============ */
 .problem {
@@ -260,7 +271,12 @@ body {
 }
 
 .section-title-xl .accent { color: var(--color-primary); font-style: italic; }
-.section-title-xl .strike { text-decoration: line-through; text-decoration-thickness: 4px; opacity: 0.5; }
+.section-title-xl .strike {
+  text-decoration: line-through;
+  text-decoration-thickness: 6px;
+  text-decoration-color: var(--color-primary);
+  opacity: 0.55;
+}
 
 .problem-grid {
   display: grid;
@@ -430,8 +446,8 @@ body {
   pointer-events: none;
 }
 
-.feature-block.right .feature-number-big { top: -60px; left: -40px; }
-.feature-block.left .feature-number-big { top: -60px; right: -40px; }
+.feature-block.right .feature-number-big { top: -60px; right: -40px; left: auto; }
+.feature-block.left .feature-number-big { top: -60px; left: -40px; right: auto; }
 
 .feature-content { position: relative; z-index: 2; }
 
@@ -478,10 +494,10 @@ body {
 .feature-content > p {
   font-size: 18px;
   color: var(--color-text-inverse-muted);
-  line-height: 1.5;
+  line-height: 1.6;
   margin-bottom: 32px;
   max-width: 480px;
-  letter-spacing: -0.005em;
+  letter-spacing: 0.01em;
 }
 
 .feature-list {
@@ -1326,7 +1342,7 @@ footer {
 
 .footer-cols {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr;
   gap: 64px;
   padding-top: 48px;
   border-top: 1px solid var(--color-border);
@@ -1402,7 +1418,14 @@ footer {
   }
   .feature-block.left .feature-content,
   .feature-block.left .feature-visual { order: initial; }
-  .feature-block { margin-bottom: 80px; }
+  .feature-block { margin-bottom: 80px; padding-top: 40px; }
+  .feature-block.right .feature-number-big,
+  .feature-block.left .feature-number-big {
+    top: 0;
+    left: -10px;
+    right: auto;
+    font-size: 140px;
+  }
 }
 
 @media (max-width: 900px) {
@@ -1411,7 +1434,10 @@ footer {
   .hero-ctas { justify-content: flex-start; }
   .problem-grid, .stats-grid, .footer-cols { grid-template-columns: 1fr; }
   .testimonial-feature, .final-cta, .faq { padding: 64px 32px; }
-  .feature-number-big { font-size: 120px; }
+  .feature-block.right .feature-number-big,
+  .feature-block.left .feature-number-big {
+    font-size: 110px;
+  }
 }
 
 /* ============ MOBILE ============ */
@@ -1466,7 +1492,7 @@ footer {
   }
   
   /* Marquee */
-  .marquee { margin: 0 12px; padding: 18px 0; }
+  .marquee { margin: 12px 12px 0; padding: 18px 0; border-radius: 16px; }
   .marquee-track { font-size: 20px; gap: 40px; }
   .marquee-track span { gap: 40px; }
   
@@ -1505,15 +1531,15 @@ footer {
     border-radius: 32px;
     padding: 80px 0 100px;
   }
+  .features-path {
+    margin-top: 56px;
+  }
   .feature-block {
     margin-bottom: 64px;
     gap: 28px;
   }
   .feature-number-big {
-    font-size: 100px;
-    top: -40px !important;
-    left: -20px !important;
-    right: auto !important;
+    display: none;
   }
   .feature-content h3 {
     font-size: 36px;
@@ -1681,8 +1707,8 @@ footer {
   <ul class="nav-links">
     <li><a href="#product">Product</a></li>
     <li><a href="#features">Features</a></li>
-    <li><a href="#stats">Results</a></li>
-    <li><a href="#about">About us</a></li>
+    <li><a href="#stats">Value</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
   </ul>
   <a href="#demo" class="btn btn-primary">Book a demo</a>
 </nav>
@@ -1690,13 +1716,13 @@ footer {
 <!-- ============ HERO ============ -->
 <section class="hero">
   <div class="hero-grid">
-    <h1>The Swiss<br>Knife for your<br><span class="accent">sponsoring</span>.</h1>
-    <div class="hero-trust">→ Trusted by Bundesliga clubs and marketing agencies</div>
+    <h1>The Swiss Knife<br>for your sponsoring<br><span class="accent">management</span>.</h1>
+    <div class="hero-trust">→ Used by sports clubs, marketing agencies, leagues and federations</div>
     <div class="hero-bottom">
-      <p class="hero-description">Paktum brings together <strong>partner management</strong>, <strong>rights management</strong>, and <strong>inventory control</strong> in one place for the first time, specially developed for sports clubs and marketing agencies.</p>
+      <p class="hero-description">Paktum brings together <strong>partner management</strong>, <strong>rights & contract management</strong>, and <strong>invoice generation</strong> on a single platform for the first time. Built for sports.</p>
       <div class="hero-ctas">
         <a href="#demo" class="btn btn-primary btn-lg btn-arrow">Book a demo</a>
-        <a href="#how" class="btn btn-ghost-dark btn-lg">See how it works</a>
+        <a href="#features" class="btn btn-ghost-dark btn-lg">See how it works</a>
       </div>
     </div>
   </div>
@@ -1705,7 +1731,8 @@ footer {
 <!-- Marquee strip -->
 <div class="marquee">
   <div class="marquee-track">
-    <span>Bundesliga Club <span class="sep">●</span> Marketing Agency <span class="sep">●</span> Premier Stadium <span class="sep">●</span> Sports Federation <span class="sep">●</span> Sponsorship Group <span class="sep">●</span> Arena Operator <span class="sep">●</span> Bundesliga Club <span class="sep">●</span> Marketing Agency <span class="sep">●</span></span>
+    <span aria-hidden="false">Sports Clubs <span class="sep">●</span> Marketing Agencies <span class="sep">●</span> Leagues <span class="sep">●</span> Federations <span class="sep">●</span> Sports Clubs <span class="sep">●</span> Marketing Agencies <span class="sep">●</span> Leagues <span class="sep">●</span> Federations <span class="sep">●</span></span>
+    <span aria-hidden="true">Sports Clubs <span class="sep">●</span> Marketing Agencies <span class="sep">●</span> Leagues <span class="sep">●</span> Federations <span class="sep">●</span> Sports Clubs <span class="sep">●</span> Marketing Agencies <span class="sep">●</span> Leagues <span class="sep">●</span> Federations <span class="sep">●</span></span>
   </div>
 </div>
 
@@ -1713,7 +1740,7 @@ footer {
 <section class="problem" id="product">
   <div class="section-header">
     <div class="section-tag">01 / The reality</div>
-    <h2 class="section-title-xl">Sponsoring today<br>is <span class="strike">working</span> <span class="accent">broken</span>.</h2>
+    <h2 class="section-title-xl">Sponsoring today is<br><span class="strike">organized</span> <span class="accent">Excel chaos</span>.</h2>
   </div>
   <div class="problem-grid">
     <div class="problem-card">
@@ -1721,23 +1748,23 @@ footer {
         <div class="problem-num">→ 01</div>
         <h3>Untapped<br>potential.</h3>
       </div>
-      <p>Sales opportunities are missed because inventory and rights are not fully visible across teams.</p>
+      <p>Lack of transparency on rights and inventory utilization at matchday and season level leads to lost revenue potential.</p>
       <div class="visual-mark">↓</div>
     </div>
     <div class="problem-card">
       <div>
         <div class="problem-num">→ 02</div>
-        <h3>Manual<br>everything.</h3>
+        <h3>High manual<br>effort.</h3>
       </div>
-      <p>Contract creation, invoicing, and rights tracking still rely on manual workflows that take hours.</p>
+      <p>From offer creation to contract drafting and invoicing, manual processes consume significant resources.</p>
       <div class="visual-mark">✕</div>
     </div>
     <div class="problem-card">
       <div>
         <div class="problem-num">→ 03</div>
-        <h3>Compliance<br>risk.</h3>
+        <h3>High error<br>risk.</h3>
       </div>
-      <p>Growing CSRD requirements mean greenwashing risks. Sponsorship needs traceable, auditable data.</p>
+      <p>Missing structure and traceability lead to errors in documentation, partner management, and billing.</p>
       <div class="visual-mark">⚠</div>
     </div>
   </div>
@@ -1745,7 +1772,7 @@ footer {
 
 <!-- ============ BRIDGE ============ -->
 <section class="bridge">
-  <h2 class="bridge-text">Then <span class="accent">work with</span><br><span class="underline">Paktum</span>.</h2>
+  <h2 class="bridge-text">Organize your sponsoring<br><span class="underline">with Paktum</span>.</h2>
 </section>
 
 <!-- ============ FEATURES (ZIGZAG) ============ -->
@@ -1765,11 +1792,11 @@ footer {
           <div class="feature-num">Module 01</div>
           <h3>All rights<br>at a <span class="accent">glance</span>.</h3>
           <div class="feature-subtitle">Rights & Inventory Management</div>
-          <p>See every sponsorship asset across your stadium in real time. Plan matchday and season inventory visually, including LED panels and digital boards.</p>
+          <p>Keep all sponsoring areas in your stadium in view in real time. Plan matchday and season utilization visually, and generate playlists for LED boards and digital displays.</p>
           <ul class="feature-list">
-            <li>Matchday and season quotas</li>
-            <li>Visual stadium and perimeter board plan</li>
-            <li>LED board planning</li>
+            <li>Matchday and season utilization</li>
+            <li>Visual position plans for stadiums, racetracks, and more</li>
+            <li>Playlists for LED boards and digital displays</li>
           </ul>
         </div>
         <div class="feature-visual">
@@ -1906,13 +1933,13 @@ footer {
         <div class="feature-number-big">02</div>
         <div class="feature-content">
           <div class="feature-num">Module 02</div>
-          <h3>Contracts in<br><span class="accent">seconds</span>.</h3>
+          <h3>Contracts and docs<br>in <span class="accent">seconds</span>.</h3>
           <div class="feature-subtitle">Contract & Document Management</div>
-          <p>Use your own templates and league conditions. Manage barter deals and rollout planning without leaving the platform.</p>
+          <p>Use your own templates as a base. Manage budgets, barter deals and executions, all on one platform.</p>
           <ul class="feature-list">
             <li>Your templates as a base</li>
-            <li>League-level conditions</li>
-            <li>Barter deals and rollout planner</li>
+            <li>League conditions and forecasts</li>
+            <li>Barter deals and execution management</li>
           </ul>
         </div>
         <div class="feature-visual">
@@ -2011,13 +2038,13 @@ footer {
         <div class="feature-number-big">03</div>
         <div class="feature-content">
           <div class="feature-num">Module 03</div>
-          <h3>Invoicing without<br>the <span class="accent">grind</span>.</h3>
+          <h3>Invoicing on<br><span class="accent">autopilot</span>.</h3>
           <div class="feature-subtitle">Invoicing & Controlling Module</div>
-          <p>Automated invoicing, real-time controlling and forecasting, with direct integration to your accounting software.</p>
+          <p>Automated invoicing on due dates, real-time controlling and forecasts with an interface to your accounting software.</p>
           <ul class="feature-list">
-            <li>Automatic invoice creation</li>
-            <li>Controlling and forecast</li>
-            <li>Accounting software integration</li>
+            <li>Automatic invoice generation</li>
+            <li>Controlling and forecasts</li>
+            <li>Interface to accounting software</li>
           </ul>
         </div>
         <div class="feature-visual">
@@ -2053,22 +2080,22 @@ footer {
                   </div>
                   <div class="mockup-invoice-list">
                     <div class="mockup-invoice-item">
-                      <span class="mockup-invoice-id"><span class="mono">001</span>Allianz Arena</span>
+                      <span class="mockup-invoice-id"><span class="mono">001</span>Partner A</span>
                       <span class="mockup-invoice-amount">€12,400</span>
                       <span class="mockup-invoice-status paid">Paid</span>
                     </div>
                     <div class="mockup-invoice-item">
-                      <span class="mockup-invoice-id"><span class="mono">002</span>BSV Bern</span>
+                      <span class="mockup-invoice-id"><span class="mono">002</span>Partner B</span>
                       <span class="mockup-invoice-amount">€8,900</span>
                       <span class="mockup-invoice-status paid">Paid</span>
                     </div>
                     <div class="mockup-invoice-item">
-                      <span class="mockup-invoice-id"><span class="mono">003</span>FC Luzern</span>
+                      <span class="mockup-invoice-id"><span class="mono">003</span>Partner C</span>
                       <span class="mockup-invoice-amount">€15,600</span>
                       <span class="mockup-invoice-status sent">Sent</span>
                     </div>
                     <div class="mockup-invoice-item">
-                      <span class="mockup-invoice-id"><span class="mono">004</span>GC Zürich</span>
+                      <span class="mockup-invoice-id"><span class="mono">004</span>Partner D</span>
                       <span class="mockup-invoice-amount">€4,200</span>
                       <span class="mockup-invoice-status draft">Draft</span>
                     </div>
@@ -2089,32 +2116,32 @@ footer {
   <div class="stats-container">
     <div class="stats-intro">
       <div>
-        <div class="section-tag">03 / Real results</div>
+        <div class="section-tag">03 / Value</div>
         <h2 class="section-title-xl">Paktum<br>in <span class="accent">numbers</span>.</h2>
       </div>
-      <p>Paktum already makes everyday work easier for more than 50 people. Measured impact after deployment at a 2. Bundesliga soccer club.</p>
+      <p>Paktum already supports over 25 teams across clubs, agencies, leagues and federations. The metrics below were collected at a 2. Bundesliga club during the 24/25 season.</p>
     </div>
 
     <div class="stats-grid">
       <div class="stat-card">
         <div class="stat-num">40<span class="unit">min</span></div>
         <div>
-          <div class="stat-label">Less time spent creating each contract.</div>
+          <div class="stat-label">Reduced creation effort.</div>
           <div class="stat-meta">Per contract</div>
         </div>
       </div>
       <div class="stat-card">
         <div class="stat-num">30<span class="unit">%</span></div>
         <div>
-          <div class="stat-label">Shorter sales cycles from lead to signed deal.</div>
-          <div class="stat-meta">End-to-end</div>
+          <div class="stat-label">Found invoices that went uninvoiced the previous season.</div>
+          <div class="stat-meta">Sales team</div>
         </div>
       </div>
       <div class="stat-card">
         <div class="stat-num">85<span class="unit">%</span></div>
         <div>
-          <div class="stat-label">Less effort in monthly invoice creation.</div>
-          <div class="stat-meta">Operations team</div>
+          <div class="stat-label">Less effort in invoice creation.</div>
+          <div class="stat-meta">Accounting team</div>
         </div>
       </div>
     </div>
@@ -2122,53 +2149,19 @@ footer {
 </section>
 
 <!-- ============ TESTIMONIAL FEATURED ============ -->
-<section class="testimonials">
-  <div class="testimonials-container">
-    <div class="section-header">
-      <div class="section-tag">04 / Trusted voices</div>
-      <h2 class="section-title-xl">In their<br><span class="accent">own words</span>.</h2>
-    </div>
-    <div class="testimonial-feature">
-      <div class="testimonial-quote-mark">"</div>
-      <p class="testimonial-text">Paktum reduced our contract creation time by more than half. What used to take a full afternoon now takes <span class="highlight">minutes</span>, and nothing falls through the cracks anymore.</p>
-      <div class="testimonial-author">
-        <div class="testimonial-avatar">MK</div>
-        <div>
-          <div class="testimonial-name">Markus Klein</div>
-          <div class="testimonial-role">Head of Sponsorship · Bundesliga Club</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- Section removed: pending real testimonials from client -->
 
 <!-- ============ FAQ ============ -->
 <section class="faq">
   <div class="faq-container">
     <div class="section-header">
-      <div class="section-tag">05 / FAQ</div>
+      <div class="section-tag">04 / FAQ</div>
       <h2 class="section-title-xl">Common<br><span class="accent">questions</span>.</h2>
     </div>
     <div class="faq-list">
       <div class="faq-item open">
-        <div class="faq-question">Is Paktum suitable for smaller clubs or only top-tier?</div>
-        <div class="faq-answer">Paktum is built to scale. We work with everything from regional clubs and marketing agencies to top-tier professional teams. The platform adapts to your size and needs.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">How long does onboarding take?</div>
-        <div class="faq-answer">Most clients are fully operational within 2 weeks. Our team helps with data migration from spreadsheets or existing tools.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">Is my data secure and GDPR compliant?</div>
-        <div class="faq-answer">Yes. Paktum is hosted on EU-based infrastructure and fully GDPR compliant. Your data never leaves European servers.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">Can Paktum integrate with my existing tools?</div>
-        <div class="faq-answer">Paktum offers API access and integrations with common CRM, accounting, and venue management tools.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">What about ESG and CSRD reporting?</div>
-        <div class="faq-answer">Paktum tracks the data you need to support CSRD reporting and ESG claims, with audit-ready exports.</div>
+        <div class="faq-question">From what club or agency size does Paktum make sense?</div>
+        <div class="faq-answer">Paktum is built to scale. We work with regional clubs and marketing agencies all the way up to clubs in the top leagues. The platform adapts to any size and requirements.</div>
       </div>
     </div>
   </div>
@@ -2177,9 +2170,9 @@ footer {
 <!-- ============ FINAL CTA ============ -->
 <section class="final-cta" id="demo">
   <div class="final-cta-grid">
-    <h2>Ready to<br><span class="accent">unlock</span> your<br>sponsoring?</h2>
+    <h2>Ready to unlock your<br>full <span class="accent">sponsoring</span><br>potential?</h2>
     <div class="ctas">
-      <p>Book a 30-minute demo and see how Paktum can transform your sponsorship operation.</p>
+      <p>Book a 30-minute demo and discover how Paktum can take your sponsoring management to the next level.</p>
       <a href="#" class="btn btn-primary btn-lg btn-arrow">Book a demo</a>
       <a href="#" class="btn btn-ghost-dark btn-lg">Talk to sales</a>
     </div>
@@ -2200,34 +2193,20 @@ footer {
       <div class="footer-col">
         <h5>Product</h5>
         <ul>
-          <li><a href="#">Features</a></li>
-          <li><a href="#">Pricing</a></li>
-          <li><a href="#">Integrations</a></li>
-          <li><a href="#">Roadmap</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Company</h5>
-        <ul>
-          <li><a href="#">About us</a></li>
-          <li><a href="#">Customers</a></li>
-          <li><a href="#">Contact</a></li>
-          <li><a href="#">Press</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h5>Legal</h5>
         <ul>
-          <li><a href="#">Privacy</a></li>
-          <li><a href="#">Terms</a></li>
           <li><a href="#">Imprint</a></li>
-          <li><a href="#">GDPR</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
       <span>© 2026 KL Technologies GmbH</span>
-      <div class="lang">
+      <div class="lang" style="display: none;">
         <a href="#" class="active">EN</a>
         <a href="#">DE</a>
       </div>
