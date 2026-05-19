@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -88,12 +88,45 @@ body {
   text-decoration: none;
   font-size: 14px;
   font-weight: 500;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.04em;
   opacity: 0.8;
   transition: opacity 0.2s;
 }
 .nav-links a:hover, .nav-links a.active { opacity: 1; }
 .nav-links a.active { color: var(--color-primary); }
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-lang {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.nav-lang .lang-btn {
+  color: rgba(244, 242, 238, 0.5);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-lang .lang-btn:hover { color: white; }
+
+.nav-lang .lang-btn.active {
+  color: var(--color-primary);
+}
+
+.nav-lang-sep {
+  color: rgba(244, 242, 238, 0.3);
+}
 
 .btn {
   font-family: var(--font-display);
@@ -107,7 +140,7 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  letter-spacing: 0.01em;
+  letter-spacing: 0;
   text-decoration: none;
 }
 
@@ -135,10 +168,10 @@ body {
 }
 
 .pricing-title {
-  font-size: clamp(48px, 8vw, 128px);
+  font-size: clamp(40px, 6vw, 92px);
   font-weight: 700;
-  letter-spacing: 0.025em;
-  line-height: 0.95;
+  letter-spacing: 0;
+  line-height: 1;
   margin-bottom: 36px;
 }
 
@@ -153,7 +186,7 @@ body {
   max-width: 720px;
   margin: 0 auto 40px;
   line-height: 1.6;
-  letter-spacing: 0.025em;
+  letter-spacing: 0;
 }
 
 .pricing-subtitle strong {
@@ -224,7 +257,7 @@ body {
 .tiers-section-title {
   font-size: clamp(36px, 5vw, 72px);
   font-weight: 700;
-  letter-spacing: 0.03em;
+  letter-spacing: 0;
   line-height: 1;
   margin-bottom: 16px;
 }
@@ -333,7 +366,7 @@ body {
 .tier-price {
   font-size: 56px;
   font-weight: 700;
-  letter-spacing: 0.02em;
+  letter-spacing: 0;
   line-height: 1;
   color: var(--color-text-primary);
 }
@@ -344,7 +377,7 @@ body {
 
 .tier-card.enterprise .tier-price {
   font-size: 40px;
-  letter-spacing: 0.025em;
+  letter-spacing: 0;
 }
 
 .tier-period {
@@ -386,7 +419,7 @@ body {
   padding: 10px 0;
   font-size: 14px;
   color: var(--color-text-primary);
-  letter-spacing: 0.025em;
+  letter-spacing: 0;
   font-weight: 500;
 }
 
@@ -412,7 +445,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  letter-spacing: 0.025em;
+  letter-spacing: 0;
   text-decoration: none;
   width: 100%;
   transition: all 0.2s ease;
@@ -471,10 +504,10 @@ body {
 }
 
 .final-cta h2 {
-  font-size: clamp(48px, 8vw, 128px);
+  font-size: clamp(40px, 6vw, 92px);
   font-weight: 700;
-  letter-spacing: 0.025em;
-  line-height: 0.92;
+  letter-spacing: 0;
+  line-height: 1;
 }
 
 .final-cta h2 .accent { color: var(--color-primary); font-style: italic; }
@@ -549,7 +582,7 @@ footer {
   text-decoration: none;
   font-size: 16px;
   font-weight: 500;
-  letter-spacing: 0.01em;
+  letter-spacing: 0;
   transition: color 0.2s;
 }
 
@@ -610,6 +643,13 @@ footer {
     padding: 9px 14px;
   }
   .nav-logo img { height: 24px; }
+  .nav-actions {
+    gap: 12px;
+  }
+  .nav-lang {
+    font-size: 11px;
+    gap: 4px;
+  }
   
   /* Hero */
   .pricing-hero { padding: 130px 16px 70px; }
@@ -650,6 +690,55 @@ footer {
     align-items: flex-start;
   }
 }
+
+/* ============ GLOBAL READABILITY: paragraphs and descriptive text ============ */
+.pricing-title,
+.pricing-subtitle,
+.tiers-section-title,
+.tiers-section-subtitle,
+.tier-features li,
+.tier-period,
+.tier-volume,
+.tier-cta,
+.tier-price,
+.final-cta h2,
+.final-cta p,
+.footer-brand p,
+.footer-col a,
+.currency-btn,
+.currency-note {
+  letter-spacing: 0.01em;
+}
+
+/* Slightly more spacing for ALL CAPS small text (more legible) */
+.tier-badge,
+.tier-popular,
+.tier-volume,
+.currency-btn,
+.currency-note {
+  letter-spacing: 0.12em;
+}
+
+/* German long-word handling on mobile */
+.pricing-title,
+.pricing-subtitle,
+.tiers-section-title,
+.tiers-section-subtitle,
+.final-cta h2,
+.tier-volume,
+.tier-features li {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+@media (max-width: 640px) {
+  .pricing-title,
+  .tiers-section-title,
+  .final-cta h2 {
+    hyphens: auto;
+    -webkit-hyphens: auto;
+  }
+}
 </style>
 </head>
 <body>
@@ -660,33 +749,40 @@ footer {
     <img src="SVG%20Logos/Recurso%206.svg" alt="Paktum">
   </a>
   <ul class="nav-links">
-    <li><a href="index.html#product">Product</a></li>
-    <li><a href="index.html#features">Features</a></li>
-    <li><a href="index.html#stats">Value</a></li>
-    <li><a href="pricing.html" class="active">Pricing</a></li>
+    <li><a href="index.html#product" data-i18n="nav.product">Product</a></li>
+    <li><a href="index.html#features" data-i18n="nav.features">Features</a></li>
+    <li><a href="index.html#stats" data-i18n="nav.value">Value</a></li>
+    <li><a href="pricing.html" class="active" data-i18n="nav.pricing">Pricing</a></li>
   </ul>
-  <a href="index.html#demo" class="btn btn-primary">Book a demo</a>
+  <div class="nav-actions">
+    <div class="nav-lang">
+      <a href="#" class="lang-btn" data-lang="en">EN</a>
+      <span class="nav-lang-sep">/</span>
+      <a href="#" class="lang-btn active" data-lang="de">DE</a>
+    </div>
+    <a href="index.html#demo" class="btn btn-primary" data-i18n="nav.cta">Book a demo</a>
+  </div>
 </nav>
 
 <!-- ============ PRICING HERO ============ -->
 <section class="pricing-hero">
   <div class="pricing-hero-inner">
-    <h1 class="pricing-title">Paktum lives<br>by <span class="accent">roles</span>.</h1>
-    <p class="pricing-subtitle">We believe role-based access should actually be lived. That's why we don't charge per user. Instead, we calculate your price based on your <strong>sponsoring volume</strong> and the number of <strong>active partners</strong>. <span class="accent">Everyone gets access to the data relevant to their role</span>, without licensing barriers slowing things down.</p>
+    <h1 class="pricing-title" data-i18n-html="pricing.title">Paktum lives<br>by <span class="accent">roles</span>.</h1>
+    <p class="pricing-subtitle" data-i18n-html="pricing.subtitle">We believe role-based access should actually be lived. That's why we don't charge per user. Instead, we calculate your price based on your <strong>sponsoring volume</strong> and the number of <strong>active partners</strong>. <span class="accent">Everyone gets access to the data relevant to their role</span>, without licensing barriers slowing things down.</p>
     
     <div class="currency-toggle">
       <button class="currency-btn active" data-currency="EUR">€ EUR</button>
       <button class="currency-btn" data-currency="CHF">CHF</button>
     </div>
-    <div class="currency-note">Same value in both currencies</div>
+    <div class="currency-note" data-i18n="pricing.currency_note">Same value in both currencies</div>
   </div>
 </section>
 
 <!-- ============ PRICING TIERS ============ -->
 <section class="tiers-section">
   <div class="tiers-header">
-    <h2 class="tiers-section-title">Choose your <span class="accent">tier</span>.</h2>
-    <p class="tiers-section-subtitle">Four tiers built around your sponsoring volume. All plans include unlimited users, unlimited data, and personal support.</p>
+    <h2 class="tiers-section-title" data-i18n-html="tiers.section.title">Choose your <span class="accent">tier</span>.</h2>
+    <p class="tiers-section-subtitle" data-i18n="tiers.section.subtitle">Four tiers built around your sponsoring volume. All plans include unlimited users, unlimited data, and personal support.</p>
   </div>
   
   <div class="tiers-grid">
@@ -696,15 +792,15 @@ footer {
       <span class="tier-badge">Rookie</span>
       <div class="tier-price-block">
         <div class="tier-price"><span class="currency-symbol">€ </span><span class="price-value" data-eur="300" data-chf="300">300</span></div>
-        <div class="tier-period">per month</div>
+        <div class="tier-period" data-i18n="tier.period">per month</div>
       </div>
-      <div class="tier-volume">Up to <span class="vol-currency">€</span>1M sponsoring volume</div>
+      <div class="tier-volume" data-i18n-html="tier.rookie.volume">Up to <span class="vol-currency">€</span>1M sponsoring volume</div>
       <ul class="tier-features">
-        <li>Unlimited user access</li>
-        <li>Unlimited data</li>
-        <li>Personal support</li>
+        <li data-i18n="tier.f1">Unlimited user access</li>
+        <li data-i18n="tier.f2">Unlimited data</li>
+        <li data-i18n="tier.f3">Personal support</li>
       </ul>
-      <a href="index.html#demo" class="tier-cta tier-cta-ghost">Get started</a>
+      <a href="index.html#demo" class="tier-cta tier-cta-ghost" data-i18n="tier.cta.start">Get started</a>
     </div>
     
     <!-- PRO -->
@@ -712,48 +808,48 @@ footer {
       <span class="tier-badge">Pro</span>
       <div class="tier-price-block">
         <div class="tier-price"><span class="currency-symbol">€ </span><span class="price-value" data-eur="750" data-chf="750">750</span></div>
-        <div class="tier-period">per month</div>
+        <div class="tier-period" data-i18n="tier.period">per month</div>
       </div>
-      <div class="tier-volume"><span class="vol-currency">€</span>1M – <span class="vol-currency">€</span>2.5M sponsoring volume</div>
+      <div class="tier-volume" data-i18n-html="tier.pro.volume"><span class="vol-currency">€</span>1M – <span class="vol-currency">€</span>2.5M sponsoring volume</div>
       <ul class="tier-features">
-        <li>Unlimited user access</li>
-        <li>Unlimited data</li>
-        <li>Personal support</li>
+        <li data-i18n="tier.f1">Unlimited user access</li>
+        <li data-i18n="tier.f2">Unlimited data</li>
+        <li data-i18n="tier.f3">Personal support</li>
       </ul>
-      <a href="index.html#demo" class="tier-cta tier-cta-ghost">Get started</a>
+      <a href="index.html#demo" class="tier-cta tier-cta-ghost" data-i18n="tier.cta.start">Get started</a>
     </div>
     
     <!-- ALL-STAR (Featured) -->
     <div class="tier-card featured">
-      <span class="tier-popular">Most popular</span>
+      <span class="tier-popular" data-i18n="tier.popular">Most popular</span>
       <span class="tier-badge">All-Star</span>
       <div class="tier-price-block">
         <div class="tier-price"><span class="currency-symbol">€ </span><span class="price-value" data-eur="1,500" data-chf="1,500">1,500</span></div>
-        <div class="tier-period">per month</div>
+        <div class="tier-period" data-i18n="tier.period">per month</div>
       </div>
-      <div class="tier-volume"><span class="vol-currency">€</span>2.5M – <span class="vol-currency">€</span>6.5M sponsoring volume</div>
+      <div class="tier-volume" data-i18n-html="tier.allstar.volume"><span class="vol-currency">€</span>2.5M – <span class="vol-currency">€</span>6.5M sponsoring volume</div>
       <ul class="tier-features">
-        <li>Unlimited user access</li>
-        <li>Unlimited data</li>
-        <li>Personal support</li>
+        <li data-i18n="tier.f1">Unlimited user access</li>
+        <li data-i18n="tier.f2">Unlimited data</li>
+        <li data-i18n="tier.f3">Personal support</li>
       </ul>
-      <a href="index.html#demo" class="tier-cta tier-cta-light">Get started</a>
+      <a href="index.html#demo" class="tier-cta tier-cta-light" data-i18n="tier.cta.start">Get started</a>
     </div>
     
     <!-- ENTERPRISE -->
     <div class="tier-card enterprise">
       <span class="tier-badge">Enterprise</span>
       <div class="tier-price-block">
-        <div class="tier-price">On request</div>
-        <div class="tier-period">Tailored to your needs</div>
+        <div class="tier-price" data-i18n="tier.onrequest">On request</div>
+        <div class="tier-period" data-i18n="tier.tailored">Tailored to your needs</div>
       </div>
-      <div class="tier-volume">From <span class="vol-currency">€</span>6.5M sponsoring volume</div>
+      <div class="tier-volume" data-i18n-html="tier.enterprise.volume">From <span class="vol-currency">€</span>6.5M sponsoring volume</div>
       <ul class="tier-features">
-        <li>Unlimited user access</li>
-        <li>Unlimited data</li>
-        <li>Personal support</li>
+        <li data-i18n="tier.f1">Unlimited user access</li>
+        <li data-i18n="tier.f2">Unlimited data</li>
+        <li data-i18n="tier.f3">Personal support</li>
       </ul>
-      <a href="index.html#demo" class="tier-cta tier-cta-primary">Contact sales</a>
+      <a href="index.html#demo" class="tier-cta tier-cta-primary" data-i18n="tier.cta.contact">Contact sales</a>
     </div>
     
   </div>
@@ -762,11 +858,11 @@ footer {
 <!-- ============ FINAL CTA ============ -->
 <section class="final-cta" id="demo">
   <div class="final-cta-grid">
-    <h2>Find the right<br><span class="accent">tier</span> for your<br>operation.</h2>
+    <h2 data-i18n-html="pricing.finalcta.title">Find the right <span class="accent">tier</span> for your operation.</h2>
     <div class="ctas">
-      <p>Book a 30-minute demo and let's figure out together which plan fits your sponsoring volume best.</p>
-      <a href="index.html#demo" class="btn btn-primary btn-lg btn-arrow">Book a demo</a>
-      <a href="index.html#demo" class="btn btn-ghost-dark btn-lg">Talk to sales</a>
+      <p data-i18n="pricing.finalcta.description">Book a 30-minute demo and let's figure out together which plan fits your sponsoring volume best.</p>
+      <a href="index.html#demo" class="btn btn-primary btn-lg btn-arrow" data-i18n="pricing.finalcta.cta1">Book a demo</a>
+      <a href="index.html#demo" class="btn btn-ghost-dark btn-lg" data-i18n="pricing.finalcta.cta2">Talk to sales</a>
     </div>
   </div>
 </section>
@@ -780,28 +876,24 @@ footer {
     <div class="footer-cols">
       <div class="footer-brand">
         <img src="SVG%20Logos/Recurso%205.svg" alt="Paktum">
-        <p>The Swiss Knife for your sponsoring. A product of KL Technologies GmbH, based in Luzern, Switzerland.</p>
+        <p data-i18n="footer.tagline">The Swiss Knife for your sponsoring. A product of KL Technologies GmbH, based in Luzern, Switzerland.</p>
       </div>
       <div class="footer-col">
-        <h5>Product</h5>
+        <h5 data-i18n="footer.col1.title">Product</h5>
         <ul>
-          <li><a href="index.html#features">Features</a></li>
-          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="index.html#features" data-i18n="footer.col1.l1">Features</a></li>
+          <li><a href="pricing.html" data-i18n="footer.col1.l2">Pricing</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h5>Legal</h5>
+        <h5 data-i18n="footer.col2.title">Legal</h5>
         <ul>
-          <li><a href="#">Imprint</a></li>
+          <li><a href="#" data-i18n="footer.col2.l1">Imprint</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
       <span>© 2026 KL Technologies GmbH</span>
-      <div class="lang" style="display: none;">
-        <a href="#" class="active">EN</a>
-        <a href="#">DE</a>
-      </div>
     </div>
   </div>
 </footer>
@@ -835,9 +927,124 @@ currencyBtns.forEach(btn => {
     }
   });
 });
+
+// ============ i18n SYSTEM ============
+const translations = {
+  en: {
+    "nav.product": "Product",
+    "nav.features": "Features",
+    "nav.value": "Value",
+    "nav.pricing": "Pricing",
+    "nav.cta": "Book a demo",
+    
+    "pricing.title": "Paktum lives<br>by <span class=\"accent\">roles</span>.",
+    "pricing.subtitle": "We believe role-based access should actually be lived. That's why we don't charge per user. Instead, we calculate your price based on your <strong>sponsoring volume</strong> and the number of <strong>active partners</strong>. <span class=\"accent\">Everyone gets access to the data relevant to their role</span>, without licensing barriers slowing things down.",
+    "pricing.currency_note": "Same value in both currencies",
+    
+    "tiers.section.title": "Choose your <span class=\"accent\">tier</span>.",
+    "tiers.section.subtitle": "Four tiers built around your sponsoring volume. All plans include unlimited users, unlimited data, and personal support.",
+    
+    "tier.period": "per month",
+    "tier.onrequest": "On request",
+    "tier.tailored": "Tailored to your needs",
+    "tier.popular": "Most popular",
+    "tier.f1": "Unlimited user access",
+    "tier.f2": "Unlimited data",
+    "tier.f3": "Personal support",
+    "tier.cta.start": "Get started",
+    "tier.cta.contact": "Contact sales",
+    "tier.rookie.volume": "Up to <span class=\"vol-currency\">€</span>1M sponsoring volume",
+    "tier.pro.volume": "<span class=\"vol-currency\">€</span>1M – <span class=\"vol-currency\">€</span>2.5M sponsoring volume",
+    "tier.allstar.volume": "<span class=\"vol-currency\">€</span>2.5M – <span class=\"vol-currency\">€</span>6.5M sponsoring volume",
+    "tier.enterprise.volume": "From <span class=\"vol-currency\">€</span>6.5M sponsoring volume",
+    
+    "pricing.finalcta.title": "Find the right <span class=\"accent\">tier</span> for your operation.",
+    "pricing.finalcta.description": "Book a 30-minute demo and let's figure out together which plan fits your sponsoring volume best.",
+    "pricing.finalcta.cta1": "Book a demo",
+    "pricing.finalcta.cta2": "Talk to sales",
+    
+    "footer.tagline": "The Swiss Knife for your sponsoring. A product of KL Technologies GmbH, based in Luzern, Switzerland.",
+    "footer.col1.title": "Product",
+    "footer.col1.l1": "Features",
+    "footer.col1.l2": "Pricing",
+    "footer.col2.title": "Legal",
+    "footer.col2.l1": "Imprint"
+  },
+  de: {
+    "nav.product": "Produkt",
+    "nav.features": "Funktionen",
+    "nav.value": "Mehrwerte",
+    "nav.pricing": "Preise",
+    "nav.cta": "Demo buchen",
+    
+    "pricing.title": "Paktum lebt <span class=\"accent\">Rollen</span>.",
+    "pricing.subtitle": "Wir möchten, dass <strong>Rollenkonzepte gelebt werden</strong>. Daher verzichten wir auf ein nutzerbasiertes Lizenzmodell. Stattdessen kalkulieren wir den Preis anhand eures <strong>Sponsoringvolumens</strong> und der Anzahl <strong>aktiver Partner</strong>. <span class=\"accent\">Ob Geschäftsführung oder Spieltagsorganisation: Jeder hat Zugriff auf die für seine Rolle relevanten Daten.</span>",
+    "pricing.currency_note": "Gleicher Wert in beiden Währungen",
+    
+    "tiers.section.title": "Wähle deinen <span class=\"accent\">Tarif</span>.",
+    "tiers.section.subtitle": "Vier Stufen, basierend auf eurem Sponsoringvolumen. Alle Pläne enthalten unbegrenzte Nutzerzugänge, unbegrenzte Daten und persönlichen Support.",
+    
+    "tier.period": "pro Monat",
+    "tier.onrequest": "Auf Anfrage",
+    "tier.tailored": "Maßgeschneidert für eure Bedürfnisse",
+    "tier.popular": "Am beliebtesten",
+    "tier.f1": "Unbegrenzte Nutzerzugänge",
+    "tier.f2": "Unbegrenzte Daten",
+    "tier.f3": "Persönlicher Support",
+    "tier.cta.start": "Loslegen",
+    "tier.cta.contact": "Sales kontaktieren",
+    "tier.rookie.volume": "Bis <span class=\"vol-currency\">€</span>1 Mio. Sponsoringvolumen",
+    "tier.pro.volume": "<span class=\"vol-currency\">€</span>1 Mio. – <span class=\"vol-currency\">€</span>2,5 Mio. Sponsoringvolumen",
+    "tier.allstar.volume": "<span class=\"vol-currency\">€</span>2,5 Mio. – <span class=\"vol-currency\">€</span>6,5 Mio. Sponsoringvolumen",
+    "tier.enterprise.volume": "Ab <span class=\"vol-currency\">€</span>6,5 Mio. Sponsoringvolumen",
+    
+    "pricing.finalcta.title": "Finde den richtigen <span class=\"accent\">Tarif</span> für deine Organisation.",
+    "pricing.finalcta.description": "Buche eine 30-minütige Demo und lass uns gemeinsam herausfinden, welcher Tarif am besten zu eurem Sponsoringvolumen passt.",
+    "pricing.finalcta.cta1": "Demo buchen",
+    "pricing.finalcta.cta2": "Mit dem Sales-Team sprechen",
+    
+    "footer.tagline": "Das Schweizer Taschenmesser für deine Sponsoringverwaltung. Ein Produkt der KL Technologies GmbH, mit Sitz in Luzern, Schweiz.",
+    "footer.col1.title": "Produkt",
+    "footer.col1.l1": "Funktionen",
+    "footer.col1.l2": "Preise",
+    "footer.col2.title": "Rechtliches",
+    "footer.col2.l1": "Impressum"
+  }
+};
+
+function setLanguage(lang) {
+  const dict = translations[lang];
+  if (!dict) return;
+  
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (dict[key]) el.textContent = dict[key];
+  });
+  
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.getAttribute('data-i18n-html');
+    if (dict[key]) el.innerHTML = dict[key];
+  });
+  
+  document.documentElement.setAttribute('lang', lang);
+  
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+  });
+  
+  localStorage.setItem('paktum-lang', lang);
+}
+
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    setLanguage(btn.getAttribute('data-lang'));
+  });
+});
+
+const savedLang = localStorage.getItem('paktum-lang') || 'de';
+setLanguage(savedLang);
 </script>
 
-</body>
-</html>
 </body>
 </html>
