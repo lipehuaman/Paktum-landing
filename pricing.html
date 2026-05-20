@@ -631,7 +631,7 @@ footer {
 }
 
 @media (max-width: 640px) {
-  .container { padding: 0 20px; }
+  .container { padding: 0 12px; }
   
   .navbar {
     top: 12px;
@@ -652,8 +652,8 @@ footer {
   }
   
   /* Hero */
-  .pricing-hero { padding: 130px 16px 70px; }
-  .pricing-subtitle { font-size: 16px; padding: 0 4px; }
+  .pricing-hero { padding: 130px 12px 70px; }
+  .pricing-subtitle { font-size: 16px; }
   .currency-toggle { width: 100%; max-width: 280px; }
   .currency-btn { flex: 1; padding: 10px 16px; }
   
@@ -661,7 +661,7 @@ footer {
   .tiers-section { padding: 60px 12px 80px; }
   .tiers-header { margin-bottom: 40px; }
   .tiers-grid { grid-template-columns: 1fr; gap: 16px; }
-  .tier-card { padding: 32px 28px; }
+  .tier-card { padding: 32px 24px; }
   .tier-price { font-size: 48px; }
   .tier-card.enterprise .tier-price { font-size: 32px; }
   
@@ -678,7 +678,7 @@ footer {
   }
   
   /* Footer */
-  footer { padding: 48px 16px 24px; }
+  footer { padding: 48px 12px 24px; }
   .footer-cols {
     grid-template-columns: 1fr 1fr;
     gap: 32px;
@@ -753,6 +753,7 @@ footer {
     <li><a href="index.html#features" data-i18n="nav.features">Features</a></li>
     <li><a href="index.html#stats" data-i18n="nav.value">Value</a></li>
     <li><a href="pricing.html" class="active" data-i18n="nav.pricing">Pricing</a></li>
+    <li><a href="about.html" data-i18n="nav.about">About Us</a></li>
   </ul>
   <div class="nav-actions">
     <div class="nav-lang">
@@ -760,7 +761,7 @@ footer {
       <span class="nav-lang-sep">/</span>
       <a href="#" class="lang-btn active" data-lang="de">DE</a>
     </div>
-    <a href="index.html#demo" class="btn btn-primary" data-i18n="nav.cta">Book a demo</a>
+    <a href="book-a-demo.html" class="btn btn-primary" data-i18n="nav.cta">Book a demo</a>
   </div>
 </nav>
 
@@ -788,7 +789,7 @@ footer {
   <div class="tiers-grid">
     
     <!-- ROOKIE -->
-    <div class="tier-card">
+    <div class="tier-card featured">
       <span class="tier-badge">Rookie</span>
       <div class="tier-price-block">
         <div class="tier-price"><span class="currency-symbol">€ </span><span class="price-value" data-eur="300" data-chf="300">300</span></div>
@@ -800,11 +801,11 @@ footer {
         <li data-i18n="tier.f2">Unlimited data</li>
         <li data-i18n="tier.f3">Personal support</li>
       </ul>
-      <a href="index.html#demo" class="tier-cta tier-cta-ghost" data-i18n="tier.cta.start">Get started</a>
+      <a href="book-a-demo.html" class="tier-cta tier-cta-light" data-i18n="tier.cta.start">Get started</a>
     </div>
     
     <!-- PRO -->
-    <div class="tier-card">
+    <div class="tier-card featured">
       <span class="tier-badge">Pro</span>
       <div class="tier-price-block">
         <div class="tier-price"><span class="currency-symbol">€ </span><span class="price-value" data-eur="750" data-chf="750">750</span></div>
@@ -816,12 +817,11 @@ footer {
         <li data-i18n="tier.f2">Unlimited data</li>
         <li data-i18n="tier.f3">Personal support</li>
       </ul>
-      <a href="index.html#demo" class="tier-cta tier-cta-ghost" data-i18n="tier.cta.start">Get started</a>
+      <a href="book-a-demo.html" class="tier-cta tier-cta-light" data-i18n="tier.cta.start">Get started</a>
     </div>
     
-    <!-- ALL-STAR (Featured) -->
+    <!-- ALL-STAR -->
     <div class="tier-card featured">
-      <span class="tier-popular" data-i18n="tier.popular">Most popular</span>
       <span class="tier-badge">All-Star</span>
       <div class="tier-price-block">
         <div class="tier-price"><span class="currency-symbol">€ </span><span class="price-value" data-eur="1,500" data-chf="1,500">1,500</span></div>
@@ -833,10 +833,10 @@ footer {
         <li data-i18n="tier.f2">Unlimited data</li>
         <li data-i18n="tier.f3">Personal support</li>
       </ul>
-      <a href="index.html#demo" class="tier-cta tier-cta-light" data-i18n="tier.cta.start">Get started</a>
+      <a href="book-a-demo.html" class="tier-cta tier-cta-light" data-i18n="tier.cta.start">Get started</a>
     </div>
     
-    <!-- ENTERPRISE -->
+    <!-- ENTERPRISE (white) -->
     <div class="tier-card enterprise">
       <span class="tier-badge">Enterprise</span>
       <div class="tier-price-block">
@@ -849,7 +849,7 @@ footer {
         <li data-i18n="tier.f2">Unlimited data</li>
         <li data-i18n="tier.f3">Personal support</li>
       </ul>
-      <a href="index.html#demo" class="tier-cta tier-cta-primary" data-i18n="tier.cta.contact">Contact sales</a>
+      <a href="book-a-demo.html" class="tier-cta tier-cta-primary" data-i18n="tier.cta.contact">Contact sales</a>
     </div>
     
   </div>
@@ -861,8 +861,8 @@ footer {
     <h2 data-i18n-html="pricing.finalcta.title">Find the right <span class="accent">tier</span> for your operation.</h2>
     <div class="ctas">
       <p data-i18n="pricing.finalcta.description">Book a 30-minute demo and let's figure out together which plan fits your sponsoring volume best.</p>
-      <a href="index.html#demo" class="btn btn-primary btn-lg btn-arrow" data-i18n="pricing.finalcta.cta1">Book a demo</a>
-      <a href="index.html#demo" class="btn btn-ghost-dark btn-lg" data-i18n="pricing.finalcta.cta2">Talk to sales</a>
+      <a href="book-a-demo.html" class="btn btn-primary btn-lg btn-arrow" data-i18n="pricing.finalcta.cta1">Book a demo</a>
+      <a href="book-a-demo.html" class="btn btn-ghost-dark btn-lg" data-i18n="pricing.finalcta.cta2">Talk to sales</a>
     </div>
   </div>
 </section>
@@ -935,6 +935,7 @@ const translations = {
     "nav.features": "Features",
     "nav.value": "Value",
     "nav.pricing": "Pricing",
+    "nav.about": "About Us",
     "nav.cta": "Book a demo",
     
     "pricing.title": "Paktum lives<br>by <span class=\"accent\">roles</span>.",
@@ -975,6 +976,7 @@ const translations = {
     "nav.features": "Funktionen",
     "nav.value": "Mehrwerte",
     "nav.pricing": "Preise",
+    "nav.about": "Über uns",
     "nav.cta": "Demo buchen",
     
     "pricing.title": "Paktum lebt <span class=\"accent\">Rollen</span>.",
