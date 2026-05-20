@@ -237,25 +237,29 @@ body {
   align-items: center;
   white-space: nowrap;
   width: max-content;
-  animation: marqueeScroll 40s linear infinite;
+  animation: marqueeScroll 50s linear infinite;
+  will-change: transform;
 }
 
 .marquee-track .logo-group {
   display: inline-flex;
   align-items: center;
-  gap: 64px;
-  padding-right: 64px;
+  gap: 80px;
+  padding-right: 80px;
+  flex-shrink: 0;
 }
 
 .marquee-logo {
   height: 56px;
   width: auto;
+  min-width: 80px;
   max-width: 140px;
   object-fit: contain;
   filter: brightness(0) invert(1);
   opacity: 0.7;
   transition: opacity 0.3s;
   flex-shrink: 0;
+  flex-grow: 0;
 }
 
 .marquee-logo:hover { opacity: 1; }
@@ -267,8 +271,8 @@ body {
 }
 
 @keyframes marqueeScroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
 .marquee:hover .marquee-track { animation-play-state: paused; }
@@ -1996,24 +2000,24 @@ footer {
 <div class="marquee">
   <div class="marquee-track">
     <div class="logo-group">
-      <img src="client-logos/FC_Zuerich_svg.png" alt="FC Zürich" class="marquee-logo preserve-color" loading="lazy">
-      <img src="client-logos/TVB_Stuttgart.webp" alt="TVB Handball Stuttgart" class="marquee-logo preserve-color" loading="lazy">
-      <img src="client-logos/SSV_Ulm_1846_Fussball_svg.png" alt="SSV Ulm 1846 Fussball" class="marquee-logo" loading="lazy">
-      <img src="client-logos/BSV_Bern.svg" alt="BSV Bern" class="marquee-logo preserve-color" loading="lazy">
-      <img src="client-logos/DEL2_svg.png" alt="DEL2" class="marquee-logo preserve-color" loading="lazy">
-      <img src="client-logos/Eisba_ren_Bremerhaven.png" alt="Eisbären Bremerhaven" class="marquee-logo preserve-color" loading="lazy">
-      <img src="client-logos/Volleyball_Bundesliga.png" alt="Volleyball Bundesliga" class="marquee-logo preserve-color" loading="lazy">
-      <img src="client-logos/Galopprennbahn_Mu_nchen.jpeg" alt="Galopprennbahn München" class="marquee-logo preserve-color" loading="lazy">
+      <img src="SVG%20Logos/FC_Zuerich_svg.png" alt="FC Zürich" class="marquee-logo preserve-color" loading="lazy">
+      <img src="SVG%20Logos/TVB_Stuttgart.webp" alt="TVB Handball Stuttgart" class="marquee-logo preserve-color" loading="lazy">
+      <img src="SVG%20Logos/SSV_Ulm_1846_Fussball_svg.png" alt="SSV Ulm 1846 Fussball" class="marquee-logo" loading="lazy">
+      <img src="SVG%20Logos/BSV_Bern.svg" alt="BSV Bern" class="marquee-logo preserve-color" loading="lazy">
+      <img src="SVG%20Logos/DEL2_svg.png" alt="DEL2" class="marquee-logo preserve-color" loading="lazy">
+      <img src="SVG%20Logos/Eisba_ren_Bremerhaven.png" alt="Eisbären Bremerhaven" class="marquee-logo preserve-color" loading="lazy">
+      <img src="SVG%20Logos/Volleyball_Bundesliga.png" alt="Volleyball Bundesliga" class="marquee-logo preserve-color" loading="lazy">
+      <img src="SVG%20Logos/Galopprennbahn_Mu_nchen.jpeg" alt="Galopprennbahn München" class="marquee-logo preserve-color" loading="lazy">
     </div>
     <div class="logo-group" aria-hidden="true">
-      <img src="client-logos/FC_Zuerich_svg.png" alt="" class="marquee-logo preserve-color" loading="lazy">
-      <img src="client-logos/TVB_Stuttgart.webp" alt="" class="marquee-logo preserve-color" loading="lazy">
-      <img src="client-logos/SSV_Ulm_1846_Fussball_svg.png" alt="" class="marquee-logo" loading="lazy">
-      <img src="client-logos/BSV_Bern.svg" alt="" class="marquee-logo preserve-color" loading="lazy">
-      <img src="client-logos/DEL2_svg.png" alt="" class="marquee-logo preserve-color" loading="lazy">
-      <img src="client-logos/Eisba_ren_Bremerhaven.png" alt="" class="marquee-logo preserve-color" loading="lazy">
-      <img src="client-logos/Volleyball_Bundesliga.png" alt="" class="marquee-logo preserve-color" loading="lazy">
-      <img src="client-logos/Galopprennbahn_Mu_nchen.jpeg" alt="" class="marquee-logo preserve-color" loading="lazy">
+      <img src="SVG%20Logos/FC_Zuerich_svg.png" alt="" class="marquee-logo preserve-color" loading="lazy">
+      <img src="SVG%20Logos/TVB_Stuttgart.webp" alt="" class="marquee-logo preserve-color" loading="lazy">
+      <img src="SVG%20Logos/SSV_Ulm_1846_Fussball_svg.png" alt="" class="marquee-logo" loading="lazy">
+      <img src="SVG%20Logos/BSV_Bern.svg" alt="" class="marquee-logo preserve-color" loading="lazy">
+      <img src="SVG%20Logos/DEL2_svg.png" alt="" class="marquee-logo preserve-color" loading="lazy">
+      <img src="SVG%20Logos/Eisba_ren_Bremerhaven.png" alt="" class="marquee-logo preserve-color" loading="lazy">
+      <img src="SVG%20Logos/Volleyball_Bundesliga.png" alt="" class="marquee-logo preserve-color" loading="lazy">
+      <img src="SVG%20Logos/Galopprennbahn_Mu_nchen.jpeg" alt="" class="marquee-logo preserve-color" loading="lazy">
     </div>
   </div>
 </div>
