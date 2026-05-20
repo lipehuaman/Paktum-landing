@@ -269,24 +269,30 @@ body {
 .team-card.ai-card > * { position: relative; z-index: 1; }
 
 .team-photo {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 16px;
   overflow: hidden;
   margin-bottom: 24px;
-  background: var(--color-bg-tinted);
-  border: 3px solid var(--color-primary-soft);
+  background: #E5E3DF;
+  position: relative;
 }
 
 .team-photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center top;
   display: block;
+  transition: transform 0.4s ease;
+}
+
+.team-card:hover .team-photo img {
+  transform: scale(1.04);
 }
 
 .team-card.ai-card .team-photo {
-  border-color: var(--color-primary);
+  background: rgba(151, 14, 251, 0.15);
 }
 
 .team-name {
@@ -565,7 +571,7 @@ footer {
   .team-section { padding: 60px 12px 80px; }
   .team-grid, .team-grid.bottom-row { grid-template-columns: 1fr; gap: 20px; }
   .team-card { padding: 32px 24px; }
-  .team-photo { width: 100px; height: 100px; }
+  .team-photo { aspect-ratio: 1 / 1; }
   .team-name { font-size: 22px; }
   
   .contact-section {
@@ -631,7 +637,7 @@ footer {
       <!-- Patrick Laux -->
       <div class="team-card">
         <div class="team-photo">
-          <img src="https://unicorn-images.b-cdn.net/215d1279-4951-4260-abb7-5875f4d23367?optimizer=gif" alt="Patrick Laux" loading="lazy">
+          <img src="SVG%20Logos/Patrick_Laux.png" alt="Patrick Laux" loading="lazy">
         </div>
         <div class="team-name">Patrick Laux</div>
         <div class="team-role" data-i18n="team.patrick.role">Founder & CEO</div>
@@ -649,7 +655,7 @@ footer {
       <!-- Jens Kaeske -->
       <div class="team-card">
         <div class="team-photo">
-          <img src="https://unicorn-images.b-cdn.net/0c61f2a4-79e9-4f93-a897-57fd709e185a?optimizer=gif" alt="Dr. Jens Kaeske" loading="lazy">
+          <img src="SVG%20Logos/Jens_Kaeske.png" alt="Dr. Jens Kaeske" loading="lazy">
         </div>
         <div class="team-name">Dr. Jens Kaeske</div>
         <div class="team-role" data-i18n="team.jens.role">Founder & IT Development</div>
@@ -667,7 +673,7 @@ footer {
       <!-- Robin Laux -->
       <div class="team-card">
         <div class="team-photo">
-          <img src="https://unicorn-images.b-cdn.net/e3e1a3aa-c858-4a30-bbda-9e9953669887?optimizer=gif" alt="Robin Laux" loading="lazy">
+          <img src="SVG%20Logos/Robin_Laux.png" alt="Robin Laux" loading="lazy">
         </div>
         <div class="team-name">Robin Laux</div>
         <div class="team-role" data-i18n="team.robin.role">Sales & Partner Care</div>
@@ -690,7 +696,7 @@ footer {
       <!-- Jonas Walch -->
       <div class="team-card">
         <div class="team-photo">
-          <img src="https://unicorn-images.b-cdn.net/1a26b182-8171-4170-9d3b-4f548c7e9980?optimizer=gif" alt="Jonas Walch" loading="lazy">
+          <img src="SVG%20Logos/Jonas_Walch.png" alt="Jonas Walch" loading="lazy">
         </div>
         <div class="team-name">Jonas Walch</div>
         <div class="team-role" data-i18n="team.jonas.role">Onboarding & Partner Care</div>
@@ -906,5 +912,7 @@ const savedLang = localStorage.getItem('paktum-lang') || 'de';
 setLanguage(savedLang);
 </script>
 
+</body>
+</html>
 </body>
 </html>
