@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book a demo — Paktum</title>
+<link rel="stylesheet" href="https://use.typekit.net/apb2slf.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --color-primary: #970EFB;
+  --color-primary-soft: rgba(151, 14, 251, 0.1);
+  --color-primary-softer: rgba(151, 14, 251, 0.04);
+  --color-primary-medium: rgba(151, 14, 251, 0.18);
+  --color-bg-base: #F4F2EE;
+  --color-bg-surface: #FFFFFF;
+  --color-ink: #0A0612;
+  --color-ink-soft: #1F0F3D;
+  --color-text-primary: #0A0612;
+  --color-text-secondary: #635A6F;
+  --color-text-muted: #908AA0;
+  --color-text-inverse: #F4F2EE;
+  --color-text-inverse-muted: #A89DB8;
+  --color-border: rgba(10, 6, 18, 0.1);
+  --color-border-purple: rgba(151, 14, 251, 0.2);
+  --color-border-dark: rgba(244, 242, 238, 0.12);
+  --font-display: 'forma-djr-display', 'forma-djr-text', 'Inter', 'Helvetica Neue', 'Arial', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --container: 1320px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-display);
+  background: var(--color-bg-base);
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.4;
+  overflow-x: hidden;
+}
+
+/* ============ NAVBAR ============ */
+.navbar {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 48px);
+  max-width: 1400px;
+  z-index: 100;
+  background: rgba(10, 6, 18, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 100px;
+  padding: 12px 16px 12px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  border: 1px solid var(--color-border-dark);
+}
+
+.nav-logo { display: flex; align-items: center; text-decoration: none; }
+.nav-logo img { height: 28px; width: auto; display: block; }
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--color-text-inverse);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+.nav-links a:hover { opacity: 1; }
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-lang {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.nav-lang .lang-btn {
+  color: rgba(244, 242, 238, 0.5);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-lang .lang-btn:hover { color: white; }
+.nav-lang .lang-btn.active { color: var(--color-primary); }
+.nav-lang-sep { color: rgba(244, 242, 238, 0.3); }
+
+.btn {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  padding: 14px 24px;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+}
+
+.btn-primary { background: var(--color-primary); color: white; }
+.btn-primary:hover { background: #AD2FFC; }
+
+/* ============ DEMO PAGE ============ */
+.demo-hero {
+  padding: 160px 16px 60px;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at top, var(--color-primary-medium) 0%, transparent 50%),
+    var(--color-bg-base);
+}
+
+.demo-hero-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.demo-tag {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  margin-bottom: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.demo-tag::before {
+  content: '';
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  background: var(--color-primary);
+}
+
+.demo-title {
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.05;
+  margin-bottom: 20px;
+}
+
+.demo-title .accent {
+  color: var(--color-primary);
+  font-style: italic;
+}
+
+.demo-subtitle {
+  font-size: 17px;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* ============ FORM SECTION ============ */
+.form-section {
+  padding: 40px 16px 100px;
+}
+
+.form-container {
+  max-width: 720px;
+  margin: 0 auto;
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: 24px;
+  padding: 48px 40px;
+  box-shadow: 0 24px 48px rgba(10, 6, 18, 0.06);
+}
+
+.form-container iframe {
+  display: block;
+  width: 100%;
+  border: none;
+  min-height: 420px;
+}
+
+/* ============ BACK LINK ============ */
+.back-link-wrap {
+  max-width: 720px;
+  margin: 0 auto 24px;
+  padding: 0 16px;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition: color 0.2s;
+}
+
+.back-link:hover { color: var(--color-primary); }
+
+/* ============ FOOTER ============ */
+footer {
+  background: var(--color-ink);
+  color: white;
+  padding: 48px 16px 32px;
+  margin-top: auto;
+}
+
+.footer-container {
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-text-inverse-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.footer-bottom a {
+  color: var(--color-text-inverse-muted);
+  text-decoration: none;
+}
+
+.footer-bottom a:hover { color: white; }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+}
+
+@media (max-width: 640px) {
+  .navbar {
+    top: 12px;
+    width: calc(100% - 24px);
+    padding: 8px 8px 8px 16px;
+  }
+  .navbar .btn-primary { font-size: 12px; padding: 9px 14px; }
+  .nav-logo img { height: 24px; }
+  .nav-actions { gap: 12px; }
+  .nav-lang { font-size: 11px; gap: 4px; }
+  
+  .demo-hero { padding: 110px 12px 40px; }
+  .form-section { padding: 24px 12px 80px; }
+  .back-link-wrap { padding: 0; margin-bottom: 16px; }
+  .form-container { padding: 28px 20px; border-radius: 20px; }
+  
+  footer { padding: 32px 12px; }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ NAVBAR ============ -->
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">
+    <img src="SVG%20Logos/Recurso%206.svg" alt="Paktum">
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#product" data-i18n="nav.product">Product</a></li>
+    <li><a href="index.html#features" data-i18n="nav.features">Features</a></li>
+    <li><a href="index.html#stats" data-i18n="nav.value">Value</a></li>
+    <li><a href="pricing.html" data-i18n="nav.pricing">Pricing</a></li>
+    <li><a href="about.html" data-i18n="nav.about">About Us</a></li>
+  </ul>
+  <div class="nav-actions">
+    <div class="nav-lang">
+      <a href="#" class="lang-btn" data-lang="en">EN</a>
+      <span class="nav-lang-sep">/</span>
+      <a href="#" class="lang-btn active" data-lang="de">DE</a>
+    </div>
+    <a href="book-a-demo.html" class="btn btn-primary" data-i18n="nav.cta">Book a demo</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="demo-hero">
+  <div class="demo-hero-inner">
+    <div class="demo-tag" data-i18n="demo.tag">Book a demo</div>
+    <h1 class="demo-title" data-i18n-html="demo.title">Let's see Paktum<br>in <span class="accent">action</span>.</h1>
+    <p class="demo-subtitle" data-i18n="demo.subtitle">Book a 30-minute call with our team. We'll walk you through the platform and answer any questions about your sponsoring management.</p>
+  </div>
+</section>
+
+<!-- ============ FORM ============ -->
+<section class="form-section">
+  <div class="back-link-wrap">
+    <a href="index.html" class="back-link" data-i18n="demo.back">← Back to home</a>
+  </div>
+  <div class="form-container">
+    <iframe data-tally-src="https://tally.so/embed/wgrzyO?hideTitle=0&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="361" frameborder="0" marginheight="0" marginwidth="0" title="Jetzt Demo vereinbaren"></iframe>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-container">
+    <div class="footer-bottom">
+      <span>© 2026 KL Technologies GmbH</span>
+      <span><a href="index.html" data-i18n="footer.home">← Back to paktum.ch</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- Tally embed script -->
+<script>
+var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}
+</script>
+
+<!-- i18n -->
+<script>
+const translations = {
+  en: {
+    "nav.product": "Product",
+    "nav.features": "Features",
+    "nav.value": "Value",
+    "nav.pricing": "Pricing",
+    "nav.about": "About Us",
+    "nav.cta": "Book a demo",
+    "demo.tag": "Book a demo",
+    "demo.title": "Let's see Paktum<br>in <span class=\"accent\">action</span>.",
+    "demo.subtitle": "Book a 30-minute call with our team. We'll walk you through the platform and answer any questions about your sponsoring management.",
+    "demo.back": "← Back to home",
+    "footer.home": "← Back to paktum.ch"
+  },
+  de: {
+    "nav.product": "Produkt",
+    "nav.features": "Funktionen",
+    "nav.value": "Mehrwerte",
+    "nav.pricing": "Preise",
+    "nav.about": "Über uns",
+    "nav.cta": "Demo buchen",
+    "demo.tag": "Demo buchen",
+    "demo.title": "Erlebe Paktum<br>in <span class=\"accent\">Aktion</span>.",
+    "demo.subtitle": "Buche ein 30-minütiges Gespräch mit unserem Team. Wir führen dich durch die Plattform und beantworten alle Fragen rund um deine Sponsoringverwaltung.",
+    "demo.back": "← Zurück zur Startseite",
+    "footer.home": "← Zurück zu paktum.ch"
+  }
+};
+
+function setLanguage(lang) {
+  const dict = translations[lang];
+  if (!dict) return;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (dict[key]) el.textContent = dict[key];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.getAttribute('data-i18n-html');
+    if (dict[key]) el.innerHTML = dict[key];
+  });
+  document.documentElement.setAttribute('lang', lang);
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+  });
+  localStorage.setItem('paktum-lang', lang);
+}
+
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    setLanguage(btn.getAttribute('data-lang'));
+  });
+});
+
+const savedLang = localStorage.getItem('paktum-lang') || 'de';
+setLanguage(savedLang);
+</script>
+
+</body>
+</html>

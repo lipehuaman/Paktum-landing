@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Paktum</title>
+<link rel="stylesheet" href="https://use.typekit.net/apb2slf.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --color-primary: #970EFB;
+  --color-primary-soft: rgba(151, 14, 251, 0.1);
+  --color-primary-softer: rgba(151, 14, 251, 0.04);
+  --color-primary-medium: rgba(151, 14, 251, 0.18);
+  --color-primary-deep: #6B0AB8;
+  --color-bg-base: #F4F2EE;
+  --color-bg-surface: #FFFFFF;
+  --color-bg-tinted: #FAF7FE;
+  --color-ink: #0A0612;
+  --color-ink-soft: #1F0F3D;
+  --color-text-primary: #0A0612;
+  --color-text-secondary: #635A6F;
+  --color-text-muted: #908AA0;
+  --color-text-inverse: #F4F2EE;
+  --color-text-inverse-muted: #A89DB8;
+  --color-border: rgba(10, 6, 18, 0.1);
+  --color-border-purple: rgba(151, 14, 251, 0.2);
+  --color-border-dark: rgba(244, 242, 238, 0.12);
+  --font-display: 'forma-djr-display', 'forma-djr-text', 'Inter', 'Helvetica Neue', 'Arial', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --container: 1320px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-display);
+  background: var(--color-bg-base);
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.4;
+  overflow-x: hidden;
+}
+
+.container { max-width: var(--container); margin: 0 auto; padding: 0 32px; }
+
+/* ============ NAVBAR ============ */
+.navbar {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 48px);
+  max-width: 1400px;
+  z-index: 100;
+  background: rgba(10, 6, 18, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 100px;
+  padding: 12px 16px 12px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  border: 1px solid var(--color-border-dark);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.nav-logo img { height: 28px; width: auto; display: block; }
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--color-text-inverse);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+.nav-links a:hover, .nav-links a.active { opacity: 1; }
+.nav-links a.active { color: var(--color-primary); }
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-lang {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.nav-lang .lang-btn {
+  color: rgba(244, 242, 238, 0.5);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-lang .lang-btn:hover { color: white; }
+.nav-lang .lang-btn.active { color: var(--color-primary); }
+
+.nav-lang-sep {
+  color: rgba(244, 242, 238, 0.3);
+}
+
+.btn {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  padding: 14px 24px;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+}
+
+.btn-primary { background: var(--color-primary); color: white; }
+.btn-primary:hover { background: #AD2FFC; }
+.btn-ghost-dark { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.2); }
+.btn-ghost-dark:hover { border-color: white; background: rgba(255,255,255,0.05); }
+.btn-arrow::after { content: '↗'; font-size: 16px; }
+.btn-lg { padding: 18px 32px; font-size: 16px; }
+
+/* ============ HERO ============ */
+.about-hero {
+  padding: 200px 16px 100px;
+  text-align: center;
+  position: relative;
+  background:
+    radial-gradient(ellipse at top, var(--color-primary-medium) 0%, transparent 50%),
+    var(--color-bg-base);
+}
+
+.about-hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.about-tag {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  margin-bottom: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.about-tag::before {
+  content: '';
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  background: var(--color-primary);
+}
+
+.about-title {
+  font-size: clamp(40px, 6vw, 92px);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  margin-bottom: 32px;
+}
+
+.about-title .accent {
+  color: var(--color-primary);
+  font-style: italic;
+}
+
+.about-subtitle {
+  font-size: 19px;
+  color: var(--color-text-secondary);
+  max-width: 720px;
+  margin: 0 auto;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
+
+/* ============ TEAM SECTION ============ */
+.team-section {
+  padding: 80px 16px 120px;
+  background:
+    radial-gradient(ellipse at center top, var(--color-primary-softer) 0%, transparent 60%),
+    var(--color-bg-surface);
+  border-top: 1px solid var(--color-border-purple);
+}
+
+.team-container {
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-bottom: 32px;
+}
+
+.team-grid.bottom-row {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.team-card {
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: 24px;
+  padding: 40px 32px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.team-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 48px rgba(151, 14, 251, 0.12);
+  border-color: var(--color-border-purple);
+}
+
+.team-card.ai-card {
+  background: linear-gradient(180deg, #1F0F3D 0%, #0A0612 100%);
+  border: none;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.team-card.ai-card::before {
+  content: '';
+  position: absolute;
+  top: -100px; right: -100px;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(151, 14, 251, 0.4) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.team-card.ai-card > * { position: relative; z-index: 1; }
+
+.team-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 24px;
+  background: var(--color-bg-tinted);
+  border: 3px solid var(--color-primary-soft);
+}
+
+.team-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.team-card.ai-card .team-photo {
+  border-color: var(--color-primary);
+}
+
+.team-name {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  margin-bottom: 6px;
+  color: var(--color-text-primary);
+}
+
+.team-card.ai-card .team-name { color: white; }
+
+.team-role {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-primary);
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.team-bio {
+  font-size: 15px;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  margin-bottom: 24px;
+  flex: 1;
+}
+
+.team-card.ai-card .team-bio { color: var(--color-text-inverse-muted); }
+
+.team-links {
+  display: flex;
+  gap: 12px;
+}
+
+.team-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--color-bg-base);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  transition: all 0.2s;
+  font-size: 14px;
+}
+
+.team-link:hover {
+  background: var(--color-primary);
+  color: white;
+}
+
+.team-link svg { width: 16px; height: 16px; }
+
+/* ============ CONTACT SECTION ============ */
+.contact-section {
+  margin: 16px 16px;
+  background: var(--color-ink);
+  color: white;
+  border-radius: 48px;
+  padding: 120px 64px;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at top, rgba(151, 14, 251, 0.3) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.contact-container {
+  max-width: var(--container);
+  margin: 0 auto;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.contact-title {
+  font-size: clamp(40px, 6vw, 92px);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  margin-bottom: 24px;
+}
+
+.contact-title .accent {
+  color: var(--color-primary);
+  font-style: italic;
+}
+
+.contact-intro {
+  font-size: 17px;
+  color: var(--color-text-inverse-muted);
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  max-width: 480px;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(244, 242, 238, 0.1);
+}
+
+.contact-item:last-child { border-bottom: none; }
+
+.contact-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(151, 14, 251, 0.15);
+  color: var(--color-primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.contact-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-text-inverse-muted);
+  margin-bottom: 6px;
+}
+
+.contact-value {
+  font-size: 17px;
+  font-weight: 500;
+  color: white;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  line-height: 1.4;
+  display: block;
+}
+
+a.contact-value:hover { color: var(--color-primary); }
+
+/* ============ FOOTER ============ */
+footer {
+  background: var(--color-bg-base);
+  padding: 64px 16px 32px;
+}
+
+.footer-container {
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+.footer-big {
+  margin-bottom: 48px;
+  display: flex;
+  justify-content: center;
+  padding: 32px 0;
+}
+
+.footer-big img {
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+}
+
+.footer-cols {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 64px;
+  padding-top: 48px;
+  border-top: 1px solid var(--color-border);
+  margin-bottom: 48px;
+}
+
+.footer-col h5 {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-bottom: 24px;
+}
+
+.footer-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-col a {
+  color: var(--color-text-primary);
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition: color 0.2s;
+}
+
+.footer-col a:hover { color: var(--color-primary); }
+
+.footer-brand img { height: 32px; width: auto; margin-bottom: 16px; }
+
+.footer-brand p {
+  font-size: 15px;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  max-width: 320px;
+}
+
+.footer-bottom {
+  padding-top: 32px;
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 1100px) {
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .team-grid.bottom-row { grid-template-columns: repeat(2, 1fr); max-width: 100%; }
+}
+
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .contact-container { grid-template-columns: 1fr; gap: 40px; }
+  .contact-section { padding: 80px 40px; }
+}
+
+@media (max-width: 640px) {
+  .container { padding: 0 12px; }
+  
+  .navbar {
+    top: 12px;
+    width: calc(100% - 24px);
+    padding: 8px 8px 8px 16px;
+  }
+  .navbar .btn-primary {
+    font-size: 12px;
+    padding: 9px 14px;
+  }
+  .nav-logo img { height: 24px; }
+  .nav-actions { gap: 12px; }
+  .nav-lang { font-size: 11px; gap: 4px; }
+  
+  .about-hero { padding: 130px 12px 70px; }
+  .about-subtitle { font-size: 16px; }
+  
+  .team-section { padding: 60px 12px 80px; }
+  .team-grid, .team-grid.bottom-row { grid-template-columns: 1fr; gap: 20px; }
+  .team-card { padding: 32px 24px; }
+  .team-photo { width: 100px; height: 100px; }
+  .team-name { font-size: 22px; }
+  
+  .contact-section {
+    margin: 0 12px 12px;
+    padding: 64px 24px;
+    border-radius: 32px;
+  }
+  
+  footer { padding: 48px 12px 24px; }
+  .footer-cols {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .footer-brand { grid-column: 1 / -1; }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ NAVBAR ============ -->
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">
+    <img src="SVG%20Logos/Recurso%206.svg" alt="Paktum">
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#product" data-i18n="nav.product">Product</a></li>
+    <li><a href="index.html#features" data-i18n="nav.features">Features</a></li>
+    <li><a href="index.html#stats" data-i18n="nav.value">Value</a></li>
+    <li><a href="pricing.html" data-i18n="nav.pricing">Pricing</a></li>
+    <li><a href="about.html" class="active" data-i18n="nav.about">About Us</a></li>
+  </ul>
+  <div class="nav-actions">
+    <div class="nav-lang">
+      <a href="#" class="lang-btn" data-lang="en">EN</a>
+      <span class="nav-lang-sep">/</span>
+      <a href="#" class="lang-btn active" data-lang="de">DE</a>
+    </div>
+    <a href="book-a-demo.html" class="btn btn-primary" data-i18n="nav.cta">Book a demo</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="about-hero">
+  <div class="about-hero-inner">
+    <div class="about-tag" data-i18n="about.tag">About us</div>
+    <h1 class="about-title" data-i18n-html="about.title">Meet the <span class="accent">Paktum</span> team.</h1>
+    <p class="about-subtitle" data-i18n="about.subtitle">A small team of engineers and operators building the sponsoring management platform we always wished existed.</p>
+  </div>
+</section>
+
+<!-- ============ TEAM ============ -->
+<section class="team-section">
+  <div class="team-container">
+    
+    <!-- First row: 3 founders/leads -->
+    <div class="team-grid">
+      
+      <!-- Patrick Laux -->
+      <div class="team-card">
+        <div class="team-photo">
+          <img src="https://unicorn-images.b-cdn.net/215d1279-4951-4260-abb7-5875f4d23367?optimizer=gif" alt="Patrick Laux" loading="lazy">
+        </div>
+        <div class="team-name">Patrick Laux</div>
+        <div class="team-role" data-i18n="team.patrick.role">Founder & CEO</div>
+        <p class="team-bio" data-i18n="team.patrick.bio">Patrick has contributed to various consulting projects in sports and agency environments and holds a degree in engineering. At Paktum he combines this experience with the insights from his board work in finance, digitalization and administration in local clubs and federations.</p>
+        <div class="team-links">
+          <a href="mailto:patrick.laux@kltechnologies.ch" class="team-link" title="Email">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/laux-patrick/" target="_blank" rel="noopener" class="team-link" title="LinkedIn">
+            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Jens Kaeske -->
+      <div class="team-card">
+        <div class="team-photo">
+          <img src="https://unicorn-images.b-cdn.net/0c61f2a4-79e9-4f93-a897-57fd709e185a?optimizer=gif" alt="Dr. Jens Kaeske" loading="lazy">
+        </div>
+        <div class="team-name">Dr. Jens Kaeske</div>
+        <div class="team-role" data-i18n="team.jens.role">Founder & IT Development</div>
+        <p class="team-bio" data-i18n="team.jens.bio">As founder, engineer and board member, Jens connects the worlds of technology and business at Paktum. After his PhD at CERN, he co-founded a software company in the Swiss real estate industry and now drives digital innovation in our team.</p>
+        <div class="team-links">
+          <a href="mailto:jens.kaeske@kltechnologies.ch" class="team-link" title="Email">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </a>
+          <a href="https://linkedin.com/jens-kaeske" target="_blank" rel="noopener" class="team-link" title="LinkedIn">
+            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Robin Laux -->
+      <div class="team-card">
+        <div class="team-photo">
+          <img src="https://unicorn-images.b-cdn.net/e3e1a3aa-c858-4a30-bbda-9e9953669887?optimizer=gif" alt="Robin Laux" loading="lazy">
+        </div>
+        <div class="team-name">Robin Laux</div>
+        <div class="team-role" data-i18n="team.robin.role">Sales & Partner Care</div>
+        <p class="team-bio" data-i18n="team.robin.bio">Robin is the point of contact for our users and those who want to become one. With his background in customer service and sales, he identifies needs early on and helps turn feedback into action.</p>
+        <div class="team-links">
+          <a href="mailto:robin.laux@kltechnologies.ch" class="team-link" title="Email">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/robin-laux-478b32329/" target="_blank" rel="noopener" class="team-link" title="LinkedIn">
+            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+          </a>
+        </div>
+      </div>
+      
+    </div>
+    
+    <!-- Bottom row: 2 cards (Jonas + Rollo AI) -->
+    <div class="team-grid bottom-row">
+      
+      <!-- Jonas Walch -->
+      <div class="team-card">
+        <div class="team-photo">
+          <img src="https://unicorn-images.b-cdn.net/1a26b182-8171-4170-9d3b-4f548c7e9980?optimizer=gif" alt="Jonas Walch" loading="lazy">
+        </div>
+        <div class="team-name">Jonas Walch</div>
+        <div class="team-role" data-i18n="team.jonas.role">Onboarding & Partner Care</div>
+        <p class="team-bio" data-i18n="team.jonas.bio">Jonas is our point of contact for onboarding, data integration and the personal support of our users in everyday life. With several years of experience in the service sector, he stands for clear communication and an open ear so new users quickly find their way and no questions go unanswered.</p>
+        <div class="team-links">
+          <a href="mailto:jonas.walch@kltechnologies.ch" class="team-link" title="Email">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Rollo die Rolle (AI) -->
+      <div class="team-card ai-card">
+        <div class="team-photo">
+          <img src="https://unicorn-images.b-cdn.net/88cf1b6b-3bd8-4346-b51c-66c15f12aad4?optimizer=gif" alt="Rollo die Rolle" loading="lazy">
+        </div>
+        <div class="team-name">Rollo die Rolle</div>
+        <div class="team-role" data-i18n="team.rollo.role">AI Assistant</div>
+        <p class="team-bio" data-i18n="team.rollo.bio">Rollo is your intelligent companion in Paktum. He creates summaries, generates lead lists and answers your questions around the tool.</p>
+      </div>
+      
+    </div>
+    
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact-section">
+  <div class="contact-container">
+    <div>
+      <h2 class="contact-title" data-i18n-html="contact.title">Let's <span class="accent">talk</span>.</h2>
+      <p class="contact-intro" data-i18n="contact.intro">Reach out to learn more about Paktum, request a demo or discuss how we can support your sponsoring management.</p>
+    </div>
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="contact-icon">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18" height="18"><path d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        </div>
+        <div>
+          <div class="contact-label" data-i18n="contact.email">Email</div>
+          <a href="mailto:info@kltechnologies.ch" class="contact-value">info@kltechnologies.ch</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18" height="18"><path d="M3 5a2 2 0 012-2h2.28a2 2 0 011.94 1.51l.6 2.4a2 2 0 01-.5 1.92L8.09 10.34a11 11 0 005.57 5.57l1.51-1.23a2 2 0 011.92-.5l2.4.6A2 2 0 0121 16.72V19a2 2 0 01-2 2A16 16 0 013 5z"/></svg>
+        </div>
+        <div>
+          <div class="contact-label" data-i18n="contact.phone">Phone</div>
+          <a href="tel:+41767716617" class="contact-value">+41 (0) 76 771 66 17</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18" height="18"><path d="M17.66 5.84A8 8 0 016.34 5.84a8 8 0 010 11.32L12 22.83l5.66-5.66a8 8 0 000-11.33zM12 13a3 3 0 100-6 3 3 0 000 6z"/></svg>
+        </div>
+        <div>
+          <div class="contact-label" data-i18n="contact.address">Address</div>
+          <span class="contact-value">Waldweg 12<br>6005 Luzern, CH</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-container">
+    <div class="footer-big">
+      <img src="SVG%20Logos/Recurso%201.svg" alt="Paktum">
+    </div>
+    <div class="footer-cols">
+      <div class="footer-brand">
+        <img src="SVG%20Logos/Recurso%205.svg" alt="Paktum">
+        <p data-i18n="footer.tagline">The Swiss Knife for your sponsoring. A product of KL Technologies GmbH, based in Luzern, Switzerland.</p>
+      </div>
+      <div class="footer-col">
+        <h5 data-i18n="footer.col1.title">Product</h5>
+        <ul>
+          <li><a href="index.html#features" data-i18n="footer.col1.l1">Features</a></li>
+          <li><a href="pricing.html" data-i18n="footer.col1.l2">Pricing</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5 data-i18n="footer.col2.title">Legal</h5>
+        <ul>
+          <li><a href="#" data-i18n="footer.col2.l1">Imprint</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 KL Technologies GmbH</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ============ i18n SYSTEM ============
+const translations = {
+  en: {
+    "nav.product": "Product",
+    "nav.features": "Features",
+    "nav.value": "Value",
+    "nav.pricing": "Pricing",
+    "nav.about": "About Us",
+    "nav.cta": "Book a demo",
+    
+    "about.tag": "About us",
+    "about.title": "Meet the <span class=\"accent\">Paktum</span> team.",
+    "about.subtitle": "A small team of engineers and operators building the sponsoring management platform we always wished existed.",
+    
+    "team.patrick.role": "Founder & CEO",
+    "team.patrick.bio": "Patrick has contributed to various consulting projects in sports and agency environments and holds a degree in engineering. At Paktum he combines this experience with the insights from his board work in finance, digitalization and administration in local clubs and federations.",
+    
+    "team.jens.role": "Founder & IT Development",
+    "team.jens.bio": "As founder, engineer and board member, Jens connects the worlds of technology and business at Paktum. After his PhD at CERN, he co-founded a software company in the Swiss real estate industry and now drives digital innovation in our team.",
+    
+    "team.robin.role": "Sales & Partner Care",
+    "team.robin.bio": "Robin is the point of contact for our users and those who want to become one. With his background in customer service and sales, he identifies needs early on and helps turn feedback into action.",
+    
+    "team.jonas.role": "Onboarding & Partner Care",
+    "team.jonas.bio": "Jonas is our point of contact for onboarding, data integration and the personal support of our users in everyday life. With several years of experience in the service sector, he stands for clear communication and an open ear so new users quickly find their way and no questions go unanswered.",
+    
+    "team.rollo.role": "AI Assistant",
+    "team.rollo.bio": "Rollo is your intelligent companion in Paktum. He creates summaries, generates lead lists and answers your questions around the tool.",
+    
+    "contact.title": "Let's <span class=\"accent\">talk</span>.",
+    "contact.intro": "Reach out to learn more about Paktum, request a demo or discuss how we can support your sponsoring management.",
+    "contact.email": "Email",
+    "contact.phone": "Phone",
+    "contact.address": "Address",
+    
+    "footer.tagline": "The Swiss Knife for your sponsoring. A product of KL Technologies GmbH, based in Luzern, Switzerland.",
+    "footer.col1.title": "Product",
+    "footer.col1.l1": "Features",
+    "footer.col1.l2": "Pricing",
+    "footer.col2.title": "Legal",
+    "footer.col2.l1": "Imprint"
+  },
+  de: {
+    "nav.product": "Produkt",
+    "nav.features": "Funktionen",
+    "nav.value": "Mehrwerte",
+    "nav.pricing": "Preise",
+    "nav.about": "Über uns",
+    "nav.cta": "Demo buchen",
+    
+    "about.tag": "Über uns",
+    "about.title": "Lerne das <span class=\"accent\">Paktum</span>-Team kennen.",
+    "about.subtitle": "Ein kleines Team aus Ingenieuren und Operatoren, das die Sponsoring-Management-Plattform baut, die wir uns schon immer gewünscht haben.",
+    
+    "team.patrick.role": "Gründer & Geschäftsführer",
+    "team.patrick.bio": "Patrick hat in diversen Beratungsprojekten im Sport- und Agenturbereich mitgewirkt und verfügt über einen Abschluss in den Ingenieurswissenschaften. Bei Paktum bringt er diese Erfahrungen zusammen mit den Erkenntnissen aus seinen Vorstandsarbeiten im Bereich Finanzen, Digitalisierung und Verwaltung in lokalen Vereinen und Verbänden ein.",
+    
+    "team.jens.role": "Gründer & IT-Entwicklung",
+    "team.jens.bio": "Als Gründer, Ingenieur und Vorstandsmitglied verbindet Jens bei Paktum die Welten von Technologie und Wirtschaft. Nach seiner Promotion am CERN war er Mitbegründer eines Softwareunternehmens in der Schweizer Immobilienbranche und treibt nun die digitale Innovation in unserem Team voran.",
+    
+    "team.robin.role": "Vertrieb & Partnerbetreuung",
+    "team.robin.bio": "Robin ist der Ansprechpartner für unsere Nutzer und die die es werden möchten. Mit seinem Hintergrund im Kundenservice und im Vertrieb erkennt er Bedürfnisse frühzeitig und hilft, Feedback in die Tat umzusetzen.",
+    
+    "team.jonas.role": "Onboarding & Partnerbetreuung",
+    "team.jonas.bio": "Jonas ist unser Ansprechpartner für Onboarding, Datenintegration und die persönliche Betreuung unserer Nutzer im Alltag. Mit mehreren Jahren Erfahrung im Dienstleistungsbereich steht er für klare Kommunikation und ein offenes Ohr, damit sich neue Nutzer schnell zurechtfinden und keine Fragen offen bleiben.",
+    
+    "team.rollo.role": "KI-Assistent",
+    "team.rollo.bio": "Rollo ist dein intelligenter Begleiter in Paktum. Er erstellt Zusammenfassungen, generiert Lead-Listen und beantwortet deine Fragen rund um das Tool.",
+    
+    "contact.title": "Lass uns <span class=\"accent\">reden</span>.",
+    "contact.intro": "Kontaktiere uns, um mehr über Paktum zu erfahren, eine Demo anzufragen oder zu besprechen, wie wir deine Sponsoringverwaltung unterstützen können.",
+    "contact.email": "E-Mail",
+    "contact.phone": "Telefon",
+    "contact.address": "Adresse",
+    
+    "footer.tagline": "Das Schweizer Taschenmesser für deine Sponsoringverwaltung. Ein Produkt der KL Technologies GmbH, mit Sitz in Luzern, Schweiz.",
+    "footer.col1.title": "Produkt",
+    "footer.col1.l1": "Funktionen",
+    "footer.col1.l2": "Preise",
+    "footer.col2.title": "Rechtliches",
+    "footer.col2.l1": "Impressum"
+  }
+};
+
+function setLanguage(lang) {
+  const dict = translations[lang];
+  if (!dict) return;
+  
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (dict[key]) el.textContent = dict[key];
+  });
+  
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.getAttribute('data-i18n-html');
+    if (dict[key]) el.innerHTML = dict[key];
+  });
+  
+  document.documentElement.setAttribute('lang', lang);
+  
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+  });
+  
+  localStorage.setItem('paktum-lang', lang);
+}
+
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    setLanguage(btn.getAttribute('data-lang'));
+  });
+});
+
+const savedLang = localStorage.getItem('paktum-lang') || 'de';
+setLanguage(savedLang);
+</script>
+
+</body>
+</html>
