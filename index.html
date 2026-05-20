@@ -229,38 +229,48 @@ body {
   border-top: 1px solid var(--color-border-dark);
   border-radius: 24px;
   overflow: hidden;
-  padding: 24px 0;
+  padding: 32px 0;
 }
 
 .marquee-track {
   display: flex;
-  gap: 80px;
   align-items: center;
   white-space: nowrap;
-  font-family: var(--font-display);
-  font-size: 28px;
-  font-weight: 500;
-  color: rgba(255,255,255,0.4);
-  letter-spacing: 0;
   width: max-content;
-  animation: marqueeScroll 35s linear infinite;
+  animation: marqueeScroll 40s linear infinite;
 }
 
-.marquee-track span {
+.marquee-track .logo-group {
   display: inline-flex;
   align-items: center;
-  gap: 80px;
-  padding-right: 80px;
+  gap: 64px;
+  padding-right: 64px;
 }
 
-.marquee-track .sep { color: var(--color-primary); }
+.marquee-logo {
+  height: 56px;
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.7;
+  transition: opacity 0.3s;
+  flex-shrink: 0;
+}
+
+.marquee-logo:hover { opacity: 1; }
+
+/* Some logos need to keep their original colors */
+.marquee-logo.preserve-color {
+  filter: none;
+  opacity: 0.9;
+}
 
 @keyframes marqueeScroll {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
 
-/* Pause on hover - optional polish */
 .marquee:hover .marquee-track { animation-play-state: paused; }
 
 /* ============ PROBLEM ============ */
@@ -594,6 +604,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 0;
+  position: relative;
 }
 
 .mockup-header {
@@ -757,6 +768,79 @@ body {
 .mockup-table-row:last-child { border-bottom: none; }
 
 .mockup-table-row.highlighted { background: #FAF8FE; }
+
+/* ====== Animated alert popup for mockup 2 ====== */
+.mockup-alert {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%) translateX(20px);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px 20px;
+  background: white;
+  border: 1px solid var(--color-border);
+  border-left: 4px solid #F59E0B;
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(10, 6, 18, 0.18);
+  max-width: 280px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 10;
+  animation: alertPopIn 8s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+.mockup-alert-icon {
+  font-size: 18px;
+  color: #F59E0B;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.mockup-alert-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.mockup-alert-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 4px;
+  letter-spacing: 0.01em;
+}
+
+.mockup-alert-text {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+}
+
+.mockup-alert-close {
+  font-size: 18px;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  line-height: 1;
+  margin-top: -2px;
+}
+
+@keyframes alertPopIn {
+  0%, 100% {
+    opacity: 0;
+    transform: translateY(-50%) translateX(20px) scale(0.95);
+  }
+  10%, 55% {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0) scale(1);
+  }
+  65%, 95% {
+    opacity: 0;
+    transform: translateY(-50%) translateX(20px) scale(0.95);
+  }
+}
 
 .mockup-product-name {
   display: flex;
@@ -1004,6 +1088,70 @@ body {
 .mockup-invoice-status.overdue {
   background: rgba(239, 68, 68, 0.12);
   color: #b91c1c;
+}
+
+/* ====== Animated payment flow for mockup 3 ====== */
+.mockup-payment-flow {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  min-width: 110px;
+  justify-content: flex-end;
+}
+
+.mockup-payment-flow .mockup-invoice-status,
+.mockup-payment-flow .mockup-pay-btn {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  animation-duration: 7s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+.mockup-payment-flow .payment-due {
+  background: rgba(245, 158, 11, 0.15);
+  color: #d97706;
+  animation-name: payDueAnim;
+}
+
+.mockup-payment-flow .mockup-pay-btn {
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 100px;
+  padding: 6px 14px;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  animation-name: payBtnAnim;
+  box-shadow: 0 2px 8px rgba(151, 14, 251, 0.3);
+}
+
+.mockup-payment-flow .payment-paid {
+  animation-name: payPaidAnim;
+}
+
+@keyframes payDueAnim {
+  0%, 30% { opacity: 1; transform: translateY(-50%) scale(1); }
+  35%, 100% { opacity: 0; transform: translateY(-50%) scale(0.9); }
+}
+
+@keyframes payBtnAnim {
+  0%, 30% { opacity: 0; transform: translateY(-50%) scale(0.9); }
+  35%, 55% { opacity: 1; transform: translateY(-50%) scale(1); }
+  58% { opacity: 1; transform: translateY(-50%) scale(0.92); }
+  62%, 100% { opacity: 0; transform: translateY(-50%) scale(0.9); }
+}
+
+@keyframes payPaidAnim {
+  0%, 62% { opacity: 0; transform: translateY(-50%) scale(0.9); }
+  68%, 95% { opacity: 1; transform: translateY(-50%) scale(1); }
+  100% { opacity: 0; transform: translateY(-50%) scale(0.9); }
 }
 
 /* Counter animation for revenue number */
@@ -1482,7 +1630,7 @@ footer {
 /* ============ MOBILE ============ */
 @media (max-width: 640px) {
   /* Container & spacing */
-  .container { padding: 0 20px; }
+  .container { padding: 0 12px; }
   
   /* Navbar - more compact */
   .navbar {
@@ -1505,11 +1653,11 @@ footer {
   /* Hero */
   .hero {
     margin: 0 12px;
-    padding: 120px 4px 24px;
+    padding: 120px 16px 24px;
     border-radius: 0 0 32px 32px;
   }
   .hero-grid {
-    padding: 24px 16px 16px;
+    padding: 24px 0 16px;
   }
   .hero-trust {
     font-size: 11px;
@@ -1537,9 +1685,9 @@ footer {
   }
   
   /* Marquee */
-  .marquee { margin: 12px 12px 0; padding: 18px 0; border-radius: 16px; }
-  .marquee-track { font-size: 20px; gap: 40px; }
-  .marquee-track span { gap: 40px; }
+  .marquee { margin: 12px 12px 0; padding: 24px 0; border-radius: 16px; }
+  .marquee-logo { height: 36px; max-width: 100px; }
+  .marquee-track .logo-group { gap: 32px; padding-right: 32px; }
   
   /* Section header (problem, stats, etc) */
   .section-header {
@@ -1555,7 +1703,7 @@ footer {
     border-radius: 24px;
   }
   .problem-card {
-    padding: 40px 28px;
+    padding: 32px 24px;
     min-height: auto;
   }
   .problem-card h3 { font-size: 28px; }
@@ -1568,7 +1716,7 @@ footer {
   }
   
   /* Bridge */
-  .bridge { padding: 64px 16px; }
+  .bridge { padding: 64px 12px; }
   
   /* Features - the big one */
   .features {
@@ -1678,7 +1826,7 @@ footer {
     border-radius: 24px;
   }
   .stat-card {
-    padding: 48px 32px;
+    padding: 40px 24px;
     min-height: auto;
   }
   
@@ -1728,7 +1876,7 @@ footer {
   }
   
   /* Footer */
-  footer { padding: 48px 16px 24px; }
+  footer { padding: 48px 12px 24px; }
   .footer-cols {
     grid-template-columns: 1fr 1fr;
     gap: 32px;
@@ -1817,6 +1965,7 @@ footer {
     <li><a href="#features" data-i18n="nav.features">Features</a></li>
     <li><a href="#stats" data-i18n="nav.value">Value</a></li>
     <li><a href="pricing.html" data-i18n="nav.pricing">Pricing</a></li>
+    <li><a href="about.html" data-i18n="nav.about">About Us</a></li>
   </ul>
   <div class="nav-actions">
     <div class="nav-lang">
@@ -1824,7 +1973,7 @@ footer {
       <span class="nav-lang-sep">/</span>
       <a href="#" class="lang-btn active" data-lang="de">DE</a>
     </div>
-    <a href="#demo" class="btn btn-primary" data-i18n="nav.cta">Book a demo</a>
+    <a href="book-a-demo.html" class="btn btn-primary" data-i18n="nav.cta">Book a demo</a>
   </div>
 </nav>
 
@@ -1836,7 +1985,7 @@ footer {
     <div class="hero-bottom">
       <p class="hero-description" data-i18n-html="hero.description">Paktum brings together <strong>partner management</strong>, <strong>rights & contract management</strong>, and <strong>invoice generation</strong> on a single platform for the first time. Built for sports.</p>
       <div class="hero-ctas">
-        <a href="#demo" class="btn btn-primary btn-lg btn-arrow" data-i18n="hero.cta1">Book a demo</a>
+        <a href="book-a-demo.html" class="btn btn-primary btn-lg btn-arrow" data-i18n="hero.cta1">Book a demo</a>
         <a href="#features" class="btn btn-ghost-dark btn-lg" data-i18n="hero.cta2">See how it works</a>
       </div>
     </div>
@@ -1846,8 +1995,26 @@ footer {
 <!-- Marquee strip -->
 <div class="marquee">
   <div class="marquee-track">
-    <span data-i18n-html="marquee.text">Sports Clubs <span class="sep">●</span> Marketing Agencies <span class="sep">●</span> Leagues <span class="sep">●</span> Federations <span class="sep">●</span> Sports Clubs <span class="sep">●</span> Marketing Agencies <span class="sep">●</span> Leagues <span class="sep">●</span> Federations <span class="sep">●</span></span>
-    <span data-i18n-html="marquee.text" aria-hidden="true">Sports Clubs <span class="sep">●</span> Marketing Agencies <span class="sep">●</span> Leagues <span class="sep">●</span> Federations <span class="sep">●</span> Sports Clubs <span class="sep">●</span> Marketing Agencies <span class="sep">●</span> Leagues <span class="sep">●</span> Federations <span class="sep">●</span></span>
+    <div class="logo-group">
+      <img src="client-logos/FC_Zuerich_svg.png" alt="FC Zürich" class="marquee-logo preserve-color" loading="lazy">
+      <img src="client-logos/TVB_Stuttgart.webp" alt="TVB Handball Stuttgart" class="marquee-logo preserve-color" loading="lazy">
+      <img src="client-logos/SSV_Ulm_1846_Fussball_svg.png" alt="SSV Ulm 1846 Fussball" class="marquee-logo" loading="lazy">
+      <img src="client-logos/BSV_Bern.svg" alt="BSV Bern" class="marquee-logo preserve-color" loading="lazy">
+      <img src="client-logos/DEL2_svg.png" alt="DEL2" class="marquee-logo preserve-color" loading="lazy">
+      <img src="client-logos/Eisba_ren_Bremerhaven.png" alt="Eisbären Bremerhaven" class="marquee-logo preserve-color" loading="lazy">
+      <img src="client-logos/Volleyball_Bundesliga.png" alt="Volleyball Bundesliga" class="marquee-logo preserve-color" loading="lazy">
+      <img src="client-logos/Galopprennbahn_Mu_nchen.jpeg" alt="Galopprennbahn München" class="marquee-logo preserve-color" loading="lazy">
+    </div>
+    <div class="logo-group" aria-hidden="true">
+      <img src="client-logos/FC_Zuerich_svg.png" alt="" class="marquee-logo preserve-color" loading="lazy">
+      <img src="client-logos/TVB_Stuttgart.webp" alt="" class="marquee-logo preserve-color" loading="lazy">
+      <img src="client-logos/SSV_Ulm_1846_Fussball_svg.png" alt="" class="marquee-logo" loading="lazy">
+      <img src="client-logos/BSV_Bern.svg" alt="" class="marquee-logo preserve-color" loading="lazy">
+      <img src="client-logos/DEL2_svg.png" alt="" class="marquee-logo preserve-color" loading="lazy">
+      <img src="client-logos/Eisba_ren_Bremerhaven.png" alt="" class="marquee-logo preserve-color" loading="lazy">
+      <img src="client-logos/Volleyball_Bundesliga.png" alt="" class="marquee-logo preserve-color" loading="lazy">
+      <img src="client-logos/Galopprennbahn_Mu_nchen.jpeg" alt="" class="marquee-logo preserve-color" loading="lazy">
+    </div>
   </div>
 </div>
 
@@ -1919,12 +2086,12 @@ footer {
             <div class="mockup-body">
               <div class="mockup-header">
                 <div>
-                  <div class="mockup-title">Stadium Plan</div>
-                  <div class="mockup-subtitle">Live booking overview</div>
+                  <div class="mockup-title" data-i18n="mockup1.title">Stadium Plan</div>
+                  <div class="mockup-subtitle" data-i18n="mockup1.subtitle">Live booking overview</div>
                 </div>
                 <div class="mockup-controls">
-                  <div class="mockup-select">Season 25/26 ▾</div>
-                  <button class="mockup-btn">Open Editor</button>
+                  <div class="mockup-select" data-i18n="mockup1.season">Season 25/26 ▾</div>
+                  <button class="mockup-btn" data-i18n="mockup1.btn">Open Editor</button>
                 </div>
               </div>
               <div class="mockup-stadium-container">
@@ -2062,19 +2229,19 @@ footer {
             <div class="mockup-body">
               <div class="mockup-header">
                 <div>
-                  <div class="mockup-title">Products & Inventory</div>
-                  <div class="mockup-subtitle">Available inventory per season</div>
+                  <div class="mockup-title" data-i18n="mockup2.title">Products & Inventory</div>
+                  <div class="mockup-subtitle" data-i18n="mockup2.subtitle">Available inventory per season</div>
                 </div>
                 <div class="mockup-controls">
-                  <div class="mockup-select">Season ▾</div>
-                  <button class="mockup-btn">+ Add product</button>
+                  <div class="mockup-select" data-i18n="mockup2.season">Season ▾</div>
+                  <button class="mockup-btn" data-i18n="mockup2.btn">+ Add product</button>
                 </div>
               </div>
               <div class="mockup-table-container">
                 <div class="mockup-table-header">
-                  <div>Name</div>
-                  <div>Group</div>
-                  <div>Available (Season)</div>
+                  <div data-i18n="mockup2.col.name">Name</div>
+                  <div data-i18n="mockup2.col.group">Group</div>
+                  <div data-i18n="mockup2.col.available">Available (Season)</div>
                 </div>
                 <div class="mockup-table-row" data-bar="bar-1" data-total="219">
                   <div class="mockup-product-name"><span class="mockup-pin">●</span>Bodenwerbung</div>
@@ -2143,6 +2310,17 @@ footer {
                   </div>
                 </div>
               </div>
+              
+              <!-- Animated alert popup -->
+              <div class="mockup-alert" id="mockup-alert">
+                <div class="mockup-alert-icon">⚠</div>
+                <div class="mockup-alert-content">
+                  <div class="mockup-alert-title" data-i18n="mockup2.alert.title">Low utilization detected</div>
+                  <div class="mockup-alert-text" data-i18n="mockup2.alert.text">Bande/Plakat is only at 63% — 37 spaces still available this season.</div>
+                </div>
+                <div class="mockup-alert-close">×</div>
+              </div>
+              
             </div>
           </div>
         </div>
@@ -2167,52 +2345,56 @@ footer {
             <div class="mockup-body">
               <div class="mockup-header">
                 <div>
-                  <div class="mockup-title">Invoicing & Controlling</div>
-                  <div class="mockup-subtitle">Q1 2026 overview</div>
+                  <div class="mockup-title" data-i18n="mockup3.title">Invoicing & Controlling</div>
+                  <div class="mockup-subtitle" data-i18n="mockup3.subtitle">Q1 2026 overview</div>
                 </div>
                 <div class="mockup-controls">
-                  <div class="mockup-select">This quarter ▾</div>
-                  <button class="mockup-btn">+ New invoice</button>
+                  <div class="mockup-select" data-i18n="mockup3.quarter">This quarter ▾</div>
+                  <button class="mockup-btn" data-i18n="mockup3.btn">+ New invoice</button>
                 </div>
               </div>
               <div class="mockup-dashboard">
                 <div class="mockup-stat-row">
                   <div class="mockup-stat-card featured">
-                    <div class="mockup-stat-label">Revenue</div>
+                    <div class="mockup-stat-label" data-i18n="mockup3.revenue">Revenue</div>
                     <div class="mockup-stat-value live-counter" id="revenue-counter">€241.5k</div>
-                    <div class="mockup-stat-meta">↑ 18.4% vs last quarter</div>
+                    <div class="mockup-stat-meta" data-i18n="mockup3.revenue.meta">↑ 18.4% vs last quarter</div>
                   </div>
                   <div class="mockup-stat-card">
-                    <div class="mockup-stat-label">Outstanding</div>
+                    <div class="mockup-stat-label" data-i18n="mockup3.outstanding">Outstanding</div>
                     <div class="mockup-stat-value">€38.2k</div>
-                    <div class="mockup-stat-meta" style="color: #f59e0b;">5 invoices pending</div>
+                    <div class="mockup-stat-meta" style="color: #f59e0b;" data-i18n="mockup3.outstanding.meta">5 invoices pending</div>
                   </div>
                 </div>
                 <div class="mockup-invoice-table">
                   <div class="mockup-invoice-header">
-                    <div class="mockup-invoice-header-title">Recent invoices</div>
-                    <div style="font-size: 11px; color: #635A6F; font-weight: 500;">View all →</div>
+                    <div class="mockup-invoice-header-title" data-i18n="mockup3.recent">Recent invoices</div>
+                    <div style="font-size: 11px; color: #635A6F; font-weight: 500;" data-i18n="mockup3.viewall">View all →</div>
                   </div>
                   <div class="mockup-invoice-list">
                     <div class="mockup-invoice-item">
                       <span class="mockup-invoice-id"><span class="mono">001</span>Partner A</span>
                       <span class="mockup-invoice-amount">€12,400</span>
-                      <span class="mockup-invoice-status paid">Paid</span>
+                      <span class="mockup-invoice-status paid" data-i18n="mockup3.status.paid">Paid</span>
                     </div>
                     <div class="mockup-invoice-item">
                       <span class="mockup-invoice-id"><span class="mono">002</span>Partner B</span>
                       <span class="mockup-invoice-amount">€8,900</span>
-                      <span class="mockup-invoice-status paid">Paid</span>
+                      <span class="mockup-invoice-status paid" data-i18n="mockup3.status.paid">Paid</span>
                     </div>
                     <div class="mockup-invoice-item">
                       <span class="mockup-invoice-id"><span class="mono">003</span>Partner C</span>
                       <span class="mockup-invoice-amount">€15,600</span>
-                      <span class="mockup-invoice-status sent">Sent</span>
+                      <span class="mockup-invoice-status sent" data-i18n="mockup3.status.sent">Sent</span>
                     </div>
-                    <div class="mockup-invoice-item">
+                    <div class="mockup-invoice-item" id="invoice-animated">
                       <span class="mockup-invoice-id"><span class="mono">004</span>Partner D</span>
                       <span class="mockup-invoice-amount">€4,200</span>
-                      <span class="mockup-invoice-status draft">Draft</span>
+                      <div class="mockup-payment-flow">
+                        <span class="mockup-invoice-status payment-due" data-i18n="mockup3.status.due">Payment due</span>
+                        <button class="mockup-pay-btn" data-i18n="mockup3.btn.pay">Pay</button>
+                        <span class="mockup-invoice-status paid payment-paid" data-i18n="mockup3.status.paid">✓ Paid</span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -2288,8 +2470,8 @@ footer {
     <h2 data-i18n-html="finalcta.title">Ready to unlock your full <span class="accent">sponsoring</span> potential?</h2>
     <div class="ctas">
       <p data-i18n="finalcta.description">Book a 30-minute demo and discover how Paktum can take your sponsoring management to the next level.</p>
-      <a href="#" class="btn btn-primary btn-lg btn-arrow" data-i18n="finalcta.cta1">Book a demo</a>
-      <a href="#" class="btn btn-ghost-dark btn-lg" data-i18n="finalcta.cta2">Talk to sales</a>
+      <a href="book-a-demo.html" class="btn btn-primary btn-lg btn-arrow" data-i18n="finalcta.cta1">Book a demo</a>
+      <a href="book-a-demo.html" class="btn btn-ghost-dark btn-lg" data-i18n="finalcta.cta2">Talk to sales</a>
     </div>
   </div>
 </section>
@@ -2535,6 +2717,7 @@ const translations = {
     "nav.features": "Features",
     "nav.value": "Value",
     "nav.pricing": "Pricing",
+    "nav.about": "About Us",
     "nav.cta": "Book a demo",
     
     "hero.title": "The Swiss Knife<br>for your sponsoring<br><span class=\"accent\">management</span>.",
@@ -2543,7 +2726,6 @@ const translations = {
     "hero.cta1": "Book a demo",
     "hero.cta2": "See how it works",
     
-    "marquee.text": "Sports Clubs <span class=\"sep\">●</span> Marketing Agencies <span class=\"sep\">●</span> Leagues <span class=\"sep\">●</span> Federations <span class=\"sep\">●</span> Sports Clubs <span class=\"sep\">●</span> Marketing Agencies <span class=\"sep\">●</span> Leagues <span class=\"sep\">●</span> Federations <span class=\"sep\">●</span>",
     
     "problem.tag": "01 / The reality",
     "problem.title": "Sponsoring today is <span class=\"strike\">organized</span><br><span class=\"accent\">Excel chaos</span>.",
@@ -2608,13 +2790,44 @@ const translations = {
     "footer.col1.l1": "Features",
     "footer.col1.l2": "Pricing",
     "footer.col2.title": "Legal",
-    "footer.col2.l1": "Imprint"
+    "footer.col2.l1": "Imprint",
+    
+    "mockup1.title": "Stadium Plan",
+    "mockup1.subtitle": "Live booking overview",
+    "mockup1.season": "Season 25/26 ▾",
+    "mockup1.btn": "Open Editor",
+    
+    "mockup2.title": "Products & Inventory",
+    "mockup2.subtitle": "Available inventory per season",
+    "mockup2.season": "Season ▾",
+    "mockup2.btn": "+ Add product",
+    "mockup2.col.name": "Name",
+    "mockup2.col.group": "Group",
+    "mockup2.col.available": "Available (Season)",
+    "mockup2.alert.title": "Low utilization detected",
+    "mockup2.alert.text": "Bande/Plakat is only at 63% — 37 spaces still available this season.",
+    
+    "mockup3.title": "Invoicing & Controlling",
+    "mockup3.subtitle": "Q1 2026 overview",
+    "mockup3.quarter": "This quarter ▾",
+    "mockup3.btn": "+ New invoice",
+    "mockup3.revenue": "Revenue",
+    "mockup3.revenue.meta": "↑ 18.4% vs last quarter",
+    "mockup3.outstanding": "Outstanding",
+    "mockup3.outstanding.meta": "5 invoices pending",
+    "mockup3.recent": "Recent invoices",
+    "mockup3.viewall": "View all →",
+    "mockup3.status.paid": "Paid",
+    "mockup3.status.sent": "Sent",
+    "mockup3.status.due": "Payment due",
+    "mockup3.btn.pay": "Pay"
   },
   de: {
     "nav.product": "Produkt",
     "nav.features": "Funktionen",
     "nav.value": "Mehrwerte",
     "nav.pricing": "Preise",
+    "nav.about": "Über uns",
     "nav.cta": "Demo buchen",
     
     "hero.title": "Das Schweizer Taschenmesser<br>für deine <span class=\"accent\">Sponsoringverwaltung</span>.",
@@ -2623,7 +2836,6 @@ const translations = {
     "hero.cta1": "Demo buchen",
     "hero.cta2": "So funktioniert's!",
     
-    "marquee.text": "Sportclubs <span class=\"sep\">●</span> Vermarktungsagenturen <span class=\"sep\">●</span> Ligen <span class=\"sep\">●</span> Verbände <span class=\"sep\">●</span> Sportclubs <span class=\"sep\">●</span> Vermarktungsagenturen <span class=\"sep\">●</span> Ligen <span class=\"sep\">●</span> Verbände <span class=\"sep\">●</span>",
     
     "problem.tag": "01 / Die Realität",
     "problem.title": "Sponsoring ist heute <span class=\"strike\">organisiert</span><br><span class=\"accent\">Excel-Chaos</span>.",
@@ -2688,7 +2900,37 @@ const translations = {
     "footer.col1.l1": "Funktionen",
     "footer.col1.l2": "Preise",
     "footer.col2.title": "Rechtliches",
-    "footer.col2.l1": "Impressum"
+    "footer.col2.l1": "Impressum",
+    
+    "mockup1.title": "Stadionplan",
+    "mockup1.subtitle": "Live Belegungsübersicht",
+    "mockup1.season": "Saison 25/26 ▾",
+    "mockup1.btn": "Editor öffnen",
+    
+    "mockup2.title": "Produkte & Inventar",
+    "mockup2.subtitle": "Verfügbares Inventar pro Saison",
+    "mockup2.season": "Saison ▾",
+    "mockup2.btn": "+ Produkt hinzufügen",
+    "mockup2.col.name": "Name",
+    "mockup2.col.group": "Gruppe",
+    "mockup2.col.available": "Verfügbar (Saison)",
+    "mockup2.alert.title": "Niedrige Auslastung erkannt",
+    "mockup2.alert.text": "Bande/Plakat ist erst zu 63% ausgelastet — 37 Plätze noch verfügbar in dieser Saison.",
+    
+    "mockup3.title": "Rechnungen & Controlling",
+    "mockup3.subtitle": "Q1 2026 Übersicht",
+    "mockup3.quarter": "Dieses Quartal ▾",
+    "mockup3.btn": "+ Neue Rechnung",
+    "mockup3.revenue": "Umsatz",
+    "mockup3.revenue.meta": "↑ 18,4% vs. letztes Quartal",
+    "mockup3.outstanding": "Offen",
+    "mockup3.outstanding.meta": "5 Rechnungen ausstehend",
+    "mockup3.recent": "Aktuelle Rechnungen",
+    "mockup3.viewall": "Alle ansehen →",
+    "mockup3.status.paid": "Bezahlt",
+    "mockup3.status.sent": "Versendet",
+    "mockup3.status.due": "Fällig",
+    "mockup3.btn.pay": "Zahlen"
   }
 };
 
