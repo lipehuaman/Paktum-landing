@@ -746,6 +746,159 @@ footer {
     -webkit-hyphens: auto;
   }
 }
+
+/* ============ MOBILE HAMBURGER MENU + FLOATING LANG TOGGLE ============ */
+.hamburger-btn {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  width: 40px;
+  height: 40px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  margin-left: 4px;
+}
+.hamburger-btn span {
+  width: 22px;
+  height: 2px;
+  background: white;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  display: block;
+}
+.hamburger-btn.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger-btn.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger-btn.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile menu overlay */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(10, 6, 18, 0.97);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 99;
+  padding: 100px 32px 40px;
+  flex-direction: column;
+  overflow-y: auto;
+}
+.mobile-menu.open {
+  display: flex;
+}
+.mobile-menu ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0;
+  margin: 0;
+}
+.mobile-menu li {
+  border-bottom: 1px solid rgba(244, 242, 238, 0.1);
+}
+.mobile-menu li:last-child {
+  border-bottom: none;
+}
+.mobile-menu a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  padding: 24px 0;
+  transition: color 0.2s;
+}
+.mobile-menu a:hover,
+.mobile-menu a.active {
+  color: var(--color-primary);
+}
+.mobile-menu-cta {
+  margin-top: 40px;
+}
+.mobile-menu-cta .btn {
+  width: 100%;
+  justify-content: center;
+  padding: 18px 24px;
+  font-size: 16px;
+}
+
+/* Floating lang toggle - mobile only */
+.lang-floating {
+  display: none;
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  z-index: 101;
+  background: rgba(10, 6, 18, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(244, 242, 238, 0.15);
+  border-radius: 100px;
+  padding: 8px 14px;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  box-shadow: 0 8px 24px rgba(10, 6, 18, 0.25);
+}
+.lang-floating .lang-btn {
+  color: rgba(244, 242, 238, 0.5);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.lang-floating .lang-btn:hover {
+  color: white;
+}
+.lang-floating .lang-btn.active {
+  color: var(--color-primary);
+}
+.lang-floating .nav-lang-sep {
+  color: rgba(244, 242, 238, 0.3);
+}
+
+@media (max-width: 900px) {
+  .nav-links {
+    display: none;
+  }
+  .nav-actions .nav-lang {
+    display: none !important;
+  }
+  .nav-actions .btn-primary {
+    display: none;
+  }
+  .hamburger-btn {
+    display: flex;
+  }
+  .lang-floating {
+    display: flex;
+  }
+  /* Cuando el menú está abierto, ocultar el toggle flotante */
+  body.menu-open .lang-floating {
+    display: none;
+  }
+  body.menu-open {
+    overflow: hidden;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -769,8 +922,34 @@ footer {
       <a href="#" class="lang-btn active" data-lang="de">DE</a>
     </div>
     <a href="book-a-demo.html" class="btn btn-primary" data-i18n="nav.cta">Book a demo</a>
+    <button class="hamburger-btn" aria-label="Toggle menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </div>
 </nav>
+
+<!-- Mobile menu overlay -->
+<div class="mobile-menu">
+  <ul>
+    <li><a href="index.html" data-i18n="nav.product">Product</a></li>
+    <li><a href="index.html#features" data-i18n="nav.features">Features</a></li>
+    <li><a href="index.html#stats" data-i18n="nav.value">Value</a></li>
+    <li><a href="pricing.html" class="active" data-i18n="nav.pricing">Pricing</a></li>
+    <li><a href="about.html" data-i18n="nav.about">About Us</a></li>
+  </ul>
+  <div class="mobile-menu-cta">
+    <a href="book-a-demo.html" class="btn btn-primary" data-i18n="nav.cta">Book a demo</a>
+  </div>
+</div>
+
+<!-- Floating lang toggle (mobile only) -->
+<div class="lang-floating">
+  <a href="#" class="lang-btn" data-lang="en">EN</a>
+  <span class="nav-lang-sep">/</span>
+  <a href="#" class="lang-btn active" data-lang="de">DE</a>
+</div>
 
 <!-- ============ PRICING HERO ============ -->
 <section class="pricing-hero">
@@ -906,32 +1085,41 @@ footer {
 </footer>
 
 <script>
-// Currency toggle
+// ============ State management ============
+let currentCurrency = 'EUR'; // Default
+
+// ============ Currency toggle ============
 const currencyBtns = document.querySelectorAll('.currency-btn');
-const priceValues = document.querySelectorAll('.price-value');
-const currencySymbols = document.querySelectorAll('.currency-symbol');
-const volCurrencies = document.querySelectorAll('.vol-currency');
+
+function applyCurrency(currency) {
+  currentCurrency = currency;
+  
+  // Toggle active button
+  currencyBtns.forEach(b => {
+    b.classList.toggle('active', b.dataset.currency === currency);
+  });
+  
+  // Update prices
+  document.querySelectorAll('.price-value').forEach(el => {
+    el.textContent = currency === 'CHF' ? el.dataset.chf : el.dataset.eur;
+  });
+  
+  // Update currency symbols in tier prices
+  document.querySelectorAll('.currency-symbol').forEach(el => {
+    el.textContent = currency === 'CHF' ? 'CHF ' : '€ ';
+  });
+  
+  // Update currency symbols in sponsoring volume
+  document.querySelectorAll('.vol-currency').forEach(el => {
+    el.textContent = currency === 'CHF' ? 'CHF ' : '€';
+  });
+  
+  localStorage.setItem('paktum-currency', currency);
+}
 
 currencyBtns.forEach(btn => {
   btn.addEventListener('click', () => {
-    const currency = btn.dataset.currency;
-    
-    currencyBtns.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    
-    if (currency === 'CHF') {
-      currencySymbols.forEach(el => el.textContent = 'CHF ');
-      volCurrencies.forEach(el => el.textContent = 'CHF ');
-      priceValues.forEach(el => {
-        el.textContent = el.dataset.chf;
-      });
-    } else {
-      currencySymbols.forEach(el => el.textContent = '€ ');
-      volCurrencies.forEach(el => el.textContent = '€');
-      priceValues.forEach(el => {
-        el.textContent = el.dataset.eur;
-      });
-    }
+    applyCurrency(btn.dataset.currency);
   });
 });
 
@@ -1042,6 +1230,9 @@ function setLanguage(lang) {
   });
   
   localStorage.setItem('paktum-lang', lang);
+  
+  // Reapply currency after i18n replaces the volume HTML
+  applyCurrency(currentCurrency);
 }
 
 document.querySelectorAll('.lang-btn').forEach(btn => {
@@ -1051,8 +1242,37 @@ document.querySelectorAll('.lang-btn').forEach(btn => {
   });
 });
 
+// Initialize: load saved currency first, then language
+const savedCurrency = localStorage.getItem('paktum-currency') || 'EUR';
+currentCurrency = savedCurrency;
 const savedLang = localStorage.getItem('paktum-lang') || 'de';
 setLanguage(savedLang);
+
+// ============ MOBILE HAMBURGER MENU ============
+(function() {
+  const hamburger = document.querySelector('.hamburger-btn');
+  const mobileMenu = document.querySelector('.mobile-menu');
+  if (!hamburger || !mobileMenu) return;
+  
+  function toggleMenu() {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    document.body.classList.toggle('menu-open', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  }
+  
+  hamburger.addEventListener('click', toggleMenu);
+  
+  // Close menu when clicking on a link
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      if (mobileMenu.classList.contains('open')) {
+        toggleMenu();
+      }
+    });
+  });
+})();
+
 </script>
 
 </body>
