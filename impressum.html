@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paktum</title>
+
+<!-- Cookie consent (Usercentrics) - required for GDPR compliance in Europe -->
+<script src="https://web.cmp.usercentrics.eu/modules/autoblocker.js"></script>
+<script id="usercentrics-cmp" src="https://web.cmp.usercentrics.eu/ui/loader.js" data-settings-id="vroPjhUClfR6mc" async></script>
+
+<!-- Webmetic analytics -->
+<script src="https://t.webmetic.de/iav.js?id=z3f444" async></script>
+
+<link rel="stylesheet" href="https://use.typekit.net/apb2slf.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --color-primary: #970EFB;
+  --color-primary-soft: rgba(151, 14, 251, 0.1);
+  --color-primary-medium: rgba(151, 14, 251, 0.18);
+  --color-bg-base: #F4F2EE;
+  --color-bg-surface: #FFFFFF;
+  --color-ink: #0A0612;
+  --color-text-primary: #0A0612;
+  --color-text-secondary: #635A6F;
+  --color-text-muted: #908AA0;
+  --color-text-inverse: #F4F2EE;
+  --color-text-inverse-muted: #A89DB8;
+  --color-border: rgba(10, 6, 18, 0.1);
+  --color-border-dark: rgba(244, 242, 238, 0.12);
+  --font-display: 'forma-djr-display', 'forma-djr-text', 'Inter', 'Helvetica Neue', 'Arial', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --container: 1320px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-display);
+  background: var(--color-bg-base);
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+/* ============ NAVBAR ============ */
+.navbar {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 48px);
+  max-width: 1400px;
+  z-index: 100;
+  background: rgba(10, 6, 18, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 100px;
+  padding: 12px 16px 12px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  border: 1px solid var(--color-border-dark);
+}
+
+.nav-logo { display: flex; align-items: center; text-decoration: none; }
+.nav-logo img { height: 28px; width: auto; display: block; }
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--color-text-inverse);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+.nav-links a:hover { opacity: 1; }
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-lang {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.nav-lang .lang-btn {
+  color: rgba(244, 242, 238, 0.5);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-lang .lang-btn:hover { color: white; }
+.nav-lang .lang-btn.active { color: var(--color-primary); }
+.nav-lang-sep { color: rgba(244, 242, 238, 0.3); }
+
+.btn {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  padding: 14px 24px;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+}
+
+.btn-primary { background: var(--color-primary); color: white; }
+.btn-primary:hover { background: #AD2FFC; }
+
+/* ============ PAGE ============ */
+.legal-hero {
+  padding: 160px 16px 40px;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at top, var(--color-primary-medium) 0%, transparent 50%),
+    var(--color-bg-base);
+}
+
+.legal-hero-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.legal-tag {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  margin-bottom: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.legal-tag::before {
+  content: '';
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  background: var(--color-primary);
+}
+
+.legal-title {
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.05;
+  margin-bottom: 16px;
+}
+
+.legal-subtitle {
+  font-size: 15px;
+  font-family: var(--font-mono);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ============ CONTENT ============ */
+.legal-content {
+  padding: 40px 16px 100px;
+}
+
+.legal-container {
+  max-width: 760px;
+  margin: 0 auto;
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: 24px;
+  padding: 56px 64px;
+}
+
+.legal-section {
+  margin-bottom: 40px;
+}
+
+.legal-section:last-child {
+  margin-bottom: 0;
+}
+
+.legal-section h2 {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.3;
+  margin-bottom: 16px;
+  color: var(--color-text-primary);
+}
+
+.legal-section h3 {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  margin-bottom: 8px;
+  color: var(--color-text-primary);
+}
+
+.legal-section p {
+  font-size: 15px;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+  margin-bottom: 12px;
+}
+
+.legal-section p:last-child {
+  margin-bottom: 0;
+}
+
+.legal-section a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.legal-section a:hover { text-decoration: underline; }
+
+.legal-section strong {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+.legal-divider {
+  height: 1px;
+  background: var(--color-border);
+  margin: 32px 0;
+  border: none;
+}
+
+.legal-address {
+  background: var(--color-bg-base);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-top: 12px;
+}
+
+.legal-address p {
+  margin-bottom: 4px;
+}
+
+/* ============ FOOTER ============ */
+footer {
+  background: var(--color-bg-base);
+  padding: 64px 16px 32px;
+}
+
+.footer-container {
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+.footer-cols {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 64px;
+  padding-top: 48px;
+  border-top: 1px solid var(--color-border);
+  margin-bottom: 48px;
+}
+
+.footer-col h5 {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-bottom: 24px;
+}
+
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+
+.footer-col a {
+  color: var(--color-text-primary);
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition: color 0.2s;
+}
+
+.footer-col a:hover { color: var(--color-primary); }
+
+.footer-brand img { height: 32px; width: auto; margin-bottom: 16px; }
+
+.footer-brand p {
+  font-size: 15px;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  max-width: 320px;
+}
+
+.footer-bottom {
+  padding-top: 32px;
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+}
+
+@media (max-width: 640px) {
+  .navbar {
+    top: 12px;
+    width: calc(100% - 24px);
+    padding: 8px 8px 8px 16px;
+  }
+  .navbar .btn-primary { font-size: 12px; padding: 9px 14px; }
+  .nav-logo img { height: 24px; }
+  .nav-actions { gap: 12px; }
+  .nav-lang { font-size: 11px; gap: 4px; }
+  
+  .legal-hero { padding: 110px 12px 32px; }
+  .legal-title { font-size: clamp(28px, 8vw, 44px); }
+  
+  .legal-content { padding: 24px 12px 64px; }
+  .legal-container { padding: 36px 24px; border-radius: 20px; }
+  
+  .legal-section h2 { font-size: 18px; }
+  .legal-section p { font-size: 14px; }
+  
+  footer { padding: 40px 12px 24px; }
+  .footer-cols { grid-template-columns: 1fr; gap: 32px; }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ NAVBAR ============ -->
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">
+    <img src="SVG%20Logos/Recurso%206.svg" alt="Paktum">
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#product" data-i18n="nav.product">Product</a></li>
+    <li><a href="index.html#features" data-i18n="nav.features">Features</a></li>
+    <li><a href="index.html#stats" data-i18n="nav.value">Value</a></li>
+    <li><a href="pricing.html" data-i18n="nav.pricing">Pricing</a></li>
+    <li><a href="about.html" data-i18n="nav.about">About Us</a></li>
+  </ul>
+  <div class="nav-actions">
+    <div class="nav-lang">
+      <a href="#" class="lang-btn" data-lang="en">EN</a>
+      <span class="nav-lang-sep">/</span>
+      <a href="#" class="lang-btn active" data-lang="de">DE</a>
+    </div>
+    <a href="book-a-demo.html" class="btn btn-primary" data-i18n="nav.cta">Book a demo</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="legal-hero">
+  <div class="legal-hero-inner">
+    <div class="legal-tag" data-i18n="impressum.tag">Legal</div>
+    <h1 class="legal-title" data-i18n="impressum.title">Impressum</h1>
+    <div class="legal-subtitle" data-i18n="impressum.subtitle">KL Technologies GmbH</div>
+  </div>
+</section>
+
+<!-- ============ CONTENT ============ -->
+<section class="legal-content">
+  <div class="legal-container">
+    
+    <div class="legal-section">
+      <h2 data-i18n="impressum.responsible.title">Verantwortliche Instanz</h2>
+      <div class="legal-address">
+        <p><strong>KL Technologies GmbH</strong></p>
+        <p>Waldweg 12</p>
+        <p>6005 Luzern</p>
+        <p data-i18n="impressum.responsible.country">Switzerland</p>
+        <p style="margin-top: 12px;"><span data-i18n="impressum.responsible.email">E-Mail</span>: <a href="mailto:info@kltechnologies.ch">info@kltechnologies.ch</a></p>
+      </div>
+    </div>
+    
+    <div class="legal-section">
+      <h2 data-i18n="impressum.representatives.title">Vertretungsberechtigte Personen</h2>
+      <p>Jens Kaeske<br>Patrick Laux</p>
+      <p style="margin-top: 12px;"><strong data-i18n="impressum.companyname.label">Name des Unternehmens</strong>: KL Technologies GmbH</p>
+    </div>
+    
+    <hr class="legal-divider">
+    
+    <div class="legal-section">
+      <h2 data-i18n="impressum.disclaimer.title">Haftungsausschluss</h2>
+      <p data-i18n="impressum.disclaimer.p1">Der Autor übernimmt keine Gewähr für die Richtigkeit, Genauigkeit, Aktualität, Zuverlässigkeit und Vollständigkeit der Informationen.</p>
+      <p data-i18n="impressum.disclaimer.p2">Haftungsansprüche gegen den Autor wegen Schäden materieller oder immaterieller Art, die aus dem Zugriff oder der Nutzung bzw. Nichtnutzung der veröffentlichten Informationen, durch Missbrauch der Verbindung oder durch technische Störungen entstanden sind, werden ausgeschlossen.</p>
+      <p data-i18n="impressum.disclaimer.p3">Alle Angebote sind freibleibend. Der Autor behält es sich ausdrücklich vor, Teile der Seiten oder das gesamte Angebot ohne gesonderte Ankündigung zu verändern, zu ergänzen, zu löschen oder die Veröffentlichung zeitweise oder endgültig einzustellen.</p>
+    </div>
+    
+    <div class="legal-section">
+      <h2 data-i18n="impressum.links.title">Haftungsausschluss für Inhalte und Links</h2>
+      <p data-i18n="impressum.links.p1">Verweise und Links auf Webseiten Dritter liegen ausserhalb unseres Verantwortungsbereichs. Es wird jegliche Verantwortung für solche Webseiten abgelehnt. Der Zugriff und die Nutzung solcher Webseiten erfolgen auf eigene Gefahr des jeweiligen Nutzers.</p>
+    </div>
+    
+    <div class="legal-section">
+      <h2 data-i18n="impressum.copyright.title">Urheberrechtserklärung</h2>
+      <p data-i18n="impressum.copyright.p1">Die Urheber- und alle anderen Rechte an Inhalten, Bildern, Fotos oder anderen Dateien auf dieser Website, gehören ausschliesslich KL Technologies GmbH oder den speziell genannten Rechteinhabern. Für die Reproduktion jeglicher Elemente ist die schriftliche Zustimmung des Urheberrechtsträgers im Voraus einzuholen.</p>
+    </div>
+    
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-container">
+    <div class="footer-cols">
+      <div class="footer-brand">
+        <img src="SVG%20Logos/Recurso%205.svg" alt="Paktum">
+        <p data-i18n="footer.tagline">The Swiss Knife for your sponsoring. A product of KL Technologies GmbH, based in Luzern, Switzerland.</p>
+      </div>
+      <div class="footer-col">
+        <h5 data-i18n="footer.col1.title">Product</h5>
+        <ul>
+          <li><a href="index.html#features" data-i18n="footer.col1.l1">Features</a></li>
+          <li><a href="pricing.html" data-i18n="footer.col1.l2">Pricing</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5 data-i18n="footer.col2.title">Legal</h5>
+        <ul>
+          <li><a href="impressum.html" data-i18n="footer.col2.l1">Imprint</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 KL Technologies GmbH</span>
+    </div>
+  </div>
+</footer>
+
+<!-- i18n -->
+<script>
+const translations = {
+  en: {
+    "nav.product": "Product",
+    "nav.features": "Features",
+    "nav.value": "Value",
+    "nav.pricing": "Pricing",
+    "nav.about": "About Us",
+    "nav.cta": "Book a demo",
+    
+    "impressum.tag": "Legal",
+    "impressum.title": "Imprint",
+    "impressum.subtitle": "KL Technologies GmbH",
+    
+    "impressum.responsible.title": "Responsible Entity",
+    "impressum.responsible.country": "Switzerland",
+    "impressum.responsible.email": "Email",
+    
+    "impressum.representatives.title": "Authorized Representatives",
+    "impressum.companyname.label": "Company Name",
+    
+    "impressum.disclaimer.title": "Disclaimer",
+    "impressum.disclaimer.p1": "The author assumes no liability for the correctness, accuracy, timeliness, reliability and completeness of the information.",
+    "impressum.disclaimer.p2": "Liability claims against the author for material or immaterial damage resulting from access to or use of, or non-use of the published information, through misuse of the connection or through technical disruptions, are excluded.",
+    "impressum.disclaimer.p3": "All offers are non-binding. The author expressly reserves the right to change, supplement, or delete parts of the pages or the entire offer without prior notice, or to temporarily or permanently discontinue publication.",
+    
+    "impressum.links.title": "Disclaimer for Content and Links",
+    "impressum.links.p1": "References and links to third-party websites are outside our area of responsibility. Any responsibility for such websites is rejected. Access to and use of such websites is at the user's own risk.",
+    
+    "impressum.copyright.title": "Copyright Declaration",
+    "impressum.copyright.p1": "The copyright and all other rights to content, images, photos or other files on this website belong exclusively to KL Technologies GmbH or to the specifically mentioned rights holders. For the reproduction of any elements, the written consent of the copyright holder must be obtained in advance.",
+    
+    "footer.tagline": "The Swiss Knife for your sponsoring. A product of KL Technologies GmbH, based in Luzern, Switzerland.",
+    "footer.col1.title": "Product",
+    "footer.col1.l1": "Features",
+    "footer.col1.l2": "Pricing",
+    "footer.col2.title": "Legal",
+    "footer.col2.l1": "Imprint"
+  },
+  de: {
+    "nav.product": "Produkt",
+    "nav.features": "Funktionen",
+    "nav.value": "Mehrwerte",
+    "nav.pricing": "Preise",
+    "nav.about": "Über uns",
+    "nav.cta": "Demo buchen",
+    
+    "impressum.tag": "Rechtliches",
+    "impressum.title": "Impressum",
+    "impressum.subtitle": "KL Technologies GmbH",
+    
+    "impressum.responsible.title": "Verantwortliche Instanz",
+    "impressum.responsible.country": "Schweiz",
+    "impressum.responsible.email": "E-Mail",
+    
+    "impressum.representatives.title": "Vertretungsberechtigte Personen",
+    "impressum.companyname.label": "Name des Unternehmens",
+    
+    "impressum.disclaimer.title": "Haftungsausschluss",
+    "impressum.disclaimer.p1": "Der Autor übernimmt keine Gewähr für die Richtigkeit, Genauigkeit, Aktualität, Zuverlässigkeit und Vollständigkeit der Informationen.",
+    "impressum.disclaimer.p2": "Haftungsansprüche gegen den Autor wegen Schäden materieller oder immaterieller Art, die aus dem Zugriff oder der Nutzung bzw. Nichtnutzung der veröffentlichten Informationen, durch Missbrauch der Verbindung oder durch technische Störungen entstanden sind, werden ausgeschlossen.",
+    "impressum.disclaimer.p3": "Alle Angebote sind freibleibend. Der Autor behält es sich ausdrücklich vor, Teile der Seiten oder das gesamte Angebot ohne gesonderte Ankündigung zu verändern, zu ergänzen, zu löschen oder die Veröffentlichung zeitweise oder endgültig einzustellen.",
+    
+    "impressum.links.title": "Haftungsausschluss für Inhalte und Links",
+    "impressum.links.p1": "Verweise und Links auf Webseiten Dritter liegen ausserhalb unseres Verantwortungsbereichs. Es wird jegliche Verantwortung für solche Webseiten abgelehnt. Der Zugriff und die Nutzung solcher Webseiten erfolgen auf eigene Gefahr des jeweiligen Nutzers.",
+    
+    "impressum.copyright.title": "Urheberrechtserklärung",
+    "impressum.copyright.p1": "Die Urheber- und alle anderen Rechte an Inhalten, Bildern, Fotos oder anderen Dateien auf dieser Website, gehören ausschliesslich KL Technologies GmbH oder den speziell genannten Rechteinhabern. Für die Reproduktion jeglicher Elemente ist die schriftliche Zustimmung des Urheberrechtsträgers im Voraus einzuholen.",
+    
+    "footer.tagline": "Das Schweizer Taschenmesser für deine Sponsoringverwaltung. Ein Produkt der KL Technologies GmbH, mit Sitz in Luzern, Schweiz.",
+    "footer.col1.title": "Produkt",
+    "footer.col1.l1": "Funktionen",
+    "footer.col1.l2": "Preise",
+    "footer.col2.title": "Rechtliches",
+    "footer.col2.l1": "Impressum"
+  }
+};
+
+function setLanguage(lang) {
+  const dict = translations[lang];
+  if (!dict) return;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (dict[key]) el.textContent = dict[key];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.getAttribute('data-i18n-html');
+    if (dict[key]) el.innerHTML = dict[key];
+  });
+  document.documentElement.setAttribute('lang', lang);
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+  });
+  localStorage.setItem('paktum-lang', lang);
+}
+
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    setLanguage(btn.getAttribute('data-lang'));
+  });
+});
+
+const savedLang = localStorage.getItem('paktum-lang') || 'de';
+setLanguage(savedLang);
+</script>
+
+</body>
+</html>
