@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About — Paktum</title>
+<title>Paktum</title>
 <link rel="stylesheet" href="https://use.typekit.net/apb2slf.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -293,6 +293,17 @@ body {
 
 .team-card.ai-card .team-photo {
   background: rgba(151, 14, 251, 0.15);
+}
+
+/* Rollo es un personaje completo (no retrato) - usar contain para verlo entero */
+.rollo-photo {
+  background: #E5E3DF !important;
+}
+
+.rollo-photo img {
+  object-fit: contain !important;
+  object-position: center bottom !important;
+  padding: 8px;
 }
 
 .team-name {
@@ -710,8 +721,8 @@ footer {
       
       <!-- Rollo die Rolle (AI) -->
       <div class="team-card ai-card">
-        <div class="team-photo">
-          <img src="https://unicorn-images.b-cdn.net/88cf1b6b-3bd8-4346-b51c-66c15f12aad4?optimizer=gif" alt="Rollo die Rolle" loading="lazy">
+        <div class="team-photo rollo-photo">
+          <img src="SVG%20Logos/Rollo.png" alt="Rollo die Rolle" loading="lazy">
         </div>
         <div class="team-name">Rollo die Rolle</div>
         <div class="team-role" data-i18n="team.rollo.role">AI Assistant</div>
@@ -912,7 +923,5 @@ const savedLang = localStorage.getItem('paktum-lang') || 'de';
 setLanguage(savedLang);
 </script>
 
-</body>
-</html>
 </body>
 </html>
