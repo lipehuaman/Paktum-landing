@@ -799,8 +799,20 @@ body {
   opacity: 0;
   pointer-events: none;
   z-index: 10;
-  animation: alertPopIn 8s ease-in-out infinite;
-  animation-delay: 2s;
+  transition: border-left-color 0.3s ease;
+}
+
+.mockup-alert.alert-warning { border-left-color: #F59E0B; }
+.mockup-alert.alert-warning .mockup-alert-icon { color: #F59E0B; }
+
+.mockup-alert.alert-critical { border-left-color: #ef4444; }
+.mockup-alert.alert-critical .mockup-alert-icon { color: #ef4444; }
+
+.mockup-alert.alert-success { border-left-color: #22c55e; }
+.mockup-alert.alert-success .mockup-alert-icon { color: #22c55e; }
+
+.mockup-alert.alert-visible {
+  animation: alertPopShow 4s ease-in-out forwards;
 }
 
 .mockup-alert-icon {
@@ -808,6 +820,7 @@ body {
   color: #F59E0B;
   flex-shrink: 0;
   line-height: 1;
+  transition: color 0.3s ease;
 }
 
 .mockup-alert-content {
@@ -838,16 +851,16 @@ body {
   margin-top: -2px;
 }
 
-@keyframes alertPopIn {
-  0%, 100% {
+@keyframes alertPopShow {
+  0% {
     opacity: 0;
     transform: translateY(-50%) translateX(20px) scale(0.95);
   }
-  10%, 55% {
+  15%, 85% {
     opacity: 1;
     transform: translateY(-50%) translateX(0) scale(1);
   }
-  65%, 95% {
+  100% {
     opacity: 0;
     transform: translateY(-50%) translateX(20px) scale(0.95);
   }
@@ -1962,6 +1975,159 @@ footer {
     -webkit-hyphens: auto;
   }
 }
+
+/* ============ MOBILE HAMBURGER MENU + FLOATING LANG TOGGLE ============ */
+.hamburger-btn {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  width: 40px;
+  height: 40px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  margin-left: 4px;
+}
+.hamburger-btn span {
+  width: 22px;
+  height: 2px;
+  background: white;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  display: block;
+}
+.hamburger-btn.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger-btn.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger-btn.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile menu overlay */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(10, 6, 18, 0.97);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 99;
+  padding: 100px 32px 40px;
+  flex-direction: column;
+  overflow-y: auto;
+}
+.mobile-menu.open {
+  display: flex;
+}
+.mobile-menu ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0;
+  margin: 0;
+}
+.mobile-menu li {
+  border-bottom: 1px solid rgba(244, 242, 238, 0.1);
+}
+.mobile-menu li:last-child {
+  border-bottom: none;
+}
+.mobile-menu a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  padding: 24px 0;
+  transition: color 0.2s;
+}
+.mobile-menu a:hover,
+.mobile-menu a.active {
+  color: var(--color-primary);
+}
+.mobile-menu-cta {
+  margin-top: 40px;
+}
+.mobile-menu-cta .btn {
+  width: 100%;
+  justify-content: center;
+  padding: 18px 24px;
+  font-size: 16px;
+}
+
+/* Floating lang toggle - mobile only */
+.lang-floating {
+  display: none;
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  z-index: 101;
+  background: rgba(10, 6, 18, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(244, 242, 238, 0.15);
+  border-radius: 100px;
+  padding: 8px 14px;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  box-shadow: 0 8px 24px rgba(10, 6, 18, 0.25);
+}
+.lang-floating .lang-btn {
+  color: rgba(244, 242, 238, 0.5);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.lang-floating .lang-btn:hover {
+  color: white;
+}
+.lang-floating .lang-btn.active {
+  color: var(--color-primary);
+}
+.lang-floating .nav-lang-sep {
+  color: rgba(244, 242, 238, 0.3);
+}
+
+@media (max-width: 900px) {
+  .nav-links {
+    display: none;
+  }
+  .nav-actions .nav-lang {
+    display: none !important;
+  }
+  .nav-actions .btn-primary {
+    display: none;
+  }
+  .hamburger-btn {
+    display: flex;
+  }
+  .lang-floating {
+    display: flex;
+  }
+  /* Cuando el menú está abierto, ocultar el toggle flotante */
+  body.menu-open .lang-floating {
+    display: none;
+  }
+  body.menu-open {
+    overflow: hidden;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -1985,8 +2151,34 @@ footer {
       <a href="#" class="lang-btn active" data-lang="de">DE</a>
     </div>
     <a href="book-a-demo.html" class="btn btn-primary" data-i18n="nav.cta">Book a demo</a>
+    <button class="hamburger-btn" aria-label="Toggle menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </div>
 </nav>
+
+<!-- Mobile menu overlay -->
+<div class="mobile-menu">
+  <ul>
+    <li><a href="index.html" class="active" data-i18n="nav.product">Product</a></li>
+    <li><a href="index.html#features" data-i18n="nav.features">Features</a></li>
+    <li><a href="index.html#stats" data-i18n="nav.value">Value</a></li>
+    <li><a href="pricing.html" data-i18n="nav.pricing">Pricing</a></li>
+    <li><a href="about.html" data-i18n="nav.about">About Us</a></li>
+  </ul>
+  <div class="mobile-menu-cta">
+    <a href="book-a-demo.html" class="btn btn-primary" data-i18n="nav.cta">Book a demo</a>
+  </div>
+</div>
+
+<!-- Floating lang toggle (mobile only) -->
+<div class="lang-floating">
+  <a href="#" class="lang-btn" data-lang="en">EN</a>
+  <span class="nav-lang-sep">/</span>
+  <a href="#" class="lang-btn active" data-lang="de">DE</a>
+</div>
 
 <!-- ============ HERO ============ -->
 <section class="hero">
@@ -2143,26 +2335,12 @@ footer {
                       <path d="M 380 130 Q 345 160 380 190 Z" fill="#FEF3C7" stroke="#0A0612" stroke-width="1"/>
                     </g>
                     
-                    <!-- Court advertising spots -->
-                    <g id="court-ads">
-                      <rect x="138" y="100" width="28" height="9" fill="#FECACA" stroke="#ef4444" stroke-width="1" rx="2"/>
-                      <rect x="170" y="120" width="32" height="9" fill="#FECACA" stroke="#ef4444" stroke-width="1" rx="2"/>
-                      <rect id="anim-spot-1" x="170" y="135" width="32" height="9" fill="#A7F3D0" stroke="#22c55e" stroke-width="1" rx="2"/>
-                      <rect x="170" y="175" width="32" height="9" fill="#FECACA" stroke="#ef4444" stroke-width="1" rx="2"/>
-                      <rect x="170" y="190" width="32" height="9" fill="#A7F3D0" stroke="#22c55e" stroke-width="1" rx="2"/>
-                      <rect x="138" y="215" width="28" height="9" fill="#FECACA" stroke="#ef4444" stroke-width="1" rx="2"/>
-                      <rect x="332" y="100" width="28" height="9" fill="#A7F3D0" stroke="#22c55e" stroke-width="1" rx="2"/>
-                      <rect x="298" y="120" width="32" height="9" fill="#FECACA" stroke="#ef4444" stroke-width="1" rx="2"/>
-                      <rect x="298" y="135" width="32" height="9" fill="#A7F3D0" stroke="#22c55e" stroke-width="1" rx="2"/>
-                      <rect x="298" y="175" width="32" height="9" fill="#FECACA" stroke="#ef4444" stroke-width="1" rx="2"/>
-                      <rect x="298" y="190" width="32" height="9" fill="#A7F3D0" stroke="#22c55e" stroke-width="1" rx="2"/>
-                      <rect x="332" y="215" width="28" height="9" fill="#FED7AA" stroke="#f59e0b" stroke-width="1" rx="2"/>
-                    </g>
+                    <!-- Court advertising spots removed (ads should only be on perimeter, not on court) -->
                     
                     <!-- Perimeter LED banners -->
                     <g id="perimeter-ads">
                       <rect x="100" y="100" width="14" height="22" fill="#A7F3D0" stroke="#22c55e" stroke-width="1" rx="2"/>
-                      <rect x="100" y="125" width="14" height="22" fill="#A7F3D0" stroke="#22c55e" stroke-width="1" rx="2"/>
+                      <rect id="anim-spot-1" x="100" y="125" width="14" height="22" fill="#A7F3D0" stroke="#22c55e" stroke-width="1" rx="2"/>
                       <rect x="100" y="150" width="14" height="22" fill="#A7F3D0" stroke="#22c55e" stroke-width="1" rx="2"/>
                       <rect x="100" y="175" width="14" height="22" fill="#A7F3D0" stroke="#22c55e" stroke-width="1" rx="2"/>
                       <rect x="100" y="200" width="14" height="22" fill="#FECACA" stroke="#ef4444" stroke-width="1" rx="2"/>
@@ -2322,12 +2500,12 @@ footer {
                 </div>
               </div>
               
-              <!-- Animated alert popup -->
+              <!-- Animated alert popup - cycles between 3 states -->
               <div class="mockup-alert" id="mockup-alert">
-                <div class="mockup-alert-icon">⚠</div>
+                <div class="mockup-alert-icon" id="mockup-alert-icon">⚠</div>
                 <div class="mockup-alert-content">
-                  <div class="mockup-alert-title" data-i18n="mockup2.alert.title">Low utilization detected</div>
-                  <div class="mockup-alert-text" data-i18n="mockup2.alert.text">Bande/Plakat is only at 63% — 37 spaces still available this season.</div>
+                  <div class="mockup-alert-title" id="mockup-alert-title">Low utilization detected</div>
+                  <div class="mockup-alert-text" id="mockup-alert-text">Bande/Plakat is only at 63% — 37 spaces still available this season.</div>
                 </div>
                 <div class="mockup-alert-close">×</div>
               </div>
@@ -2613,6 +2791,74 @@ function animateBars() {
 
 setTimeout(animateBars, 600);
 
+// ============ Cycling alerts in mockup 2 ============
+function startAlertCycle() {
+  const alert = document.getElementById('mockup-alert');
+  const alertIcon = document.getElementById('mockup-alert-icon');
+  const alertTitle = document.getElementById('mockup-alert-title');
+  const alertText = document.getElementById('mockup-alert-text');
+  if (!alert || !alertTitle || !alertText) return;
+  
+  // Helper to get current language from localStorage
+  function getCurrentLangAlerts() {
+    const lang = localStorage.getItem('paktum-lang') || 'de';
+    if (lang === 'de') {
+      return [
+        { type: 'warning', icon: '⚠', titleKey: 'mockup2.alert.warning.title', textKey: 'mockup2.alert.warning.text',
+          title: 'Niedrige Auslastung erkannt',
+          text: 'Bande/Plakat ist erst zu 63% ausgelastet — 37 Plätze noch verfügbar.' },
+        { type: 'critical', icon: '✕', titleKey: 'mockup2.alert.critical.title', textKey: 'mockup2.alert.critical.text',
+          title: 'Kritische Auslastung',
+          text: 'Dress Spieler (NLB) nur zu 9% gebucht — Handlungsbedarf!' },
+        { type: 'success', icon: '✓', titleKey: 'mockup2.alert.success.title', textKey: 'mockup2.alert.success.text',
+          title: 'Ausverkauft!',
+          text: 'Presenting Matchball zu 100% gebucht für die Saison.' }
+      ];
+    }
+    return [
+      { type: 'warning', icon: '⚠', titleKey: 'mockup2.alert.warning.title', textKey: 'mockup2.alert.warning.text',
+        title: 'Low utilization detected',
+        text: 'Bande/Plakat is only at 63% — 37 spaces still available.' },
+      { type: 'critical', icon: '✕', titleKey: 'mockup2.alert.critical.title', textKey: 'mockup2.alert.critical.text',
+        title: 'Critical utilization',
+        text: 'Dress Spieler (NLB) only at 9% booked — action needed!' },
+      { type: 'success', icon: '✓', titleKey: 'mockup2.alert.success.title', textKey: 'mockup2.alert.success.text',
+        title: 'Sold out!',
+        text: 'Presenting Matchball is 100% booked for the season.' }
+    ];
+  }
+  
+  let alertIndex = 0;
+  
+  function showNextAlert() {
+    const alerts = getCurrentLangAlerts();
+    const current = alerts[alertIndex];
+    
+    // Remove old type classes
+    alert.classList.remove('alert-warning', 'alert-critical', 'alert-success', 'alert-visible');
+    
+    // Update content
+    alertIcon.textContent = current.icon;
+    alertTitle.textContent = current.title;
+    alertText.textContent = current.text;
+    
+    // Force reflow then apply new class
+    void alert.offsetWidth;
+    alert.classList.add('alert-' + current.type, 'alert-visible');
+    
+    // Cycle to next alert
+    alertIndex = (alertIndex + 1) % alerts.length;
+    
+    // Next alert in 5 seconds (4s show + 1s gap)
+    setTimeout(showNextAlert, 5000);
+  }
+  
+  // Start first alert after 2s
+  setTimeout(showNextAlert, 2000);
+}
+
+setTimeout(startAlertCycle, 800);
+
 // Stadium animation - cursor selects spots and changes their state
 const cursor = document.getElementById('cursor');
 const selectionRing = document.getElementById('selection-ring');
@@ -2633,9 +2879,9 @@ const COLOR_STATES = {
 // Animation sequence: each step picks a spot, moves the cursor there, selects, changes state
 const SEQUENCE = [
   { 
-    spot: 'anim-spot-1', cursorX: 186, cursorY: 142, 
-    ringX: 170, ringY: 135, ringW: 32, ringH: 9,
-    tooltipX: 220, tooltipY: 80,
+    spot: 'anim-spot-1', cursorX: 120, cursorY: 138, 
+    ringX: 100, ringY: 125, ringW: 14, ringH: 22,
+    tooltipX: 145, tooltipY: 95,
     spotId: 'LED-1103', spotMeta: '12 matchdays',
     fromState: 'available', toState: 'booked'
   },
@@ -3016,6 +3262,32 @@ document.querySelectorAll('.lang-btn').forEach(btn => {
 // Load saved preference or default to EN
 const savedLang = localStorage.getItem('paktum-lang') || 'de';
 setLanguage(savedLang);
+
+// ============ MOBILE HAMBURGER MENU ============
+(function() {
+  const hamburger = document.querySelector('.hamburger-btn');
+  const mobileMenu = document.querySelector('.mobile-menu');
+  if (!hamburger || !mobileMenu) return;
+  
+  function toggleMenu() {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    document.body.classList.toggle('menu-open', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  }
+  
+  hamburger.addEventListener('click', toggleMenu);
+  
+  // Close menu when clicking on a link
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      if (mobileMenu.classList.contains('open')) {
+        toggleMenu();
+      }
+    });
+  });
+})();
+
 </script>
 
 </body>
