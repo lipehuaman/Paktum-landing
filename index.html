@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Paktum</title>
+
+<!-- Cookie consent (Usercentrics) - required for GDPR compliance in Europe -->
+<script src="https://web.cmp.usercentrics.eu/modules/autoblocker.js"></script>
+<script id="usercentrics-cmp" src="https://web.cmp.usercentrics.eu/ui/loader.js" data-settings-id="vroPjhUClfR6mc" async></script>
+
+<!-- Webmetic analytics -->
+<script src="https://t.webmetic.de/iav.js?id=z3f444" async></script>
+
 <link rel="stylesheet" href="https://use.typekit.net/apb2slf.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,10 +20,10 @@
 :root {
   --color-primary: #970EFB;
   --color-primary-soft: rgba(151, 14, 251, 0.1);
+  --color-primary-medium: rgba(151, 14, 251, 0.18);
   --color-bg-base: #F4F2EE;
   --color-bg-surface: #FFFFFF;
   --color-ink: #0A0612;
-  --color-ink-soft: #1F0F3D;
   --color-text-primary: #0A0612;
   --color-text-secondary: #635A6F;
   --color-text-muted: #908AA0;
@@ -23,8 +31,6 @@
   --color-text-inverse-muted: #A89DB8;
   --color-border: rgba(10, 6, 18, 0.1);
   --color-border-dark: rgba(244, 242, 238, 0.12);
-  --gradient-dark: linear-gradient(180deg, #1F0F3D 0%, #0A0612 100%);
-  --gradient-glow: radial-gradient(ellipse at top, rgba(151, 14, 251, 0.25) 0%, transparent 55%);
   --font-display: 'forma-djr-display', 'forma-djr-text', 'Inter', 'Helvetica Neue', 'Arial', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
   --container: 1320px;
@@ -39,11 +45,9 @@ body {
   color: var(--color-text-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  line-height: 1.4;
+  line-height: 1.5;
   overflow-x: hidden;
 }
-
-.container { max-width: var(--container); margin: 0 auto; padding: 0 32px; }
 
 /* ============ NAVBAR ============ */
 .navbar {
@@ -66,12 +70,7 @@ body {
   border: 1px solid var(--color-border-dark);
 }
 
-.nav-logo {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-}
-
+.nav-logo { display: flex; align-items: center; text-decoration: none; }
 .nav-logo img { height: 28px; width: auto; display: block; }
 
 .nav-links {
@@ -115,14 +114,8 @@ body {
 }
 
 .nav-lang .lang-btn:hover { color: white; }
-
-.nav-lang .lang-btn.active {
-  color: var(--color-primary);
-}
-
-.nav-lang-sep {
-  color: rgba(244, 242, 238, 0.3);
-}
+.nav-lang .lang-btn.active { color: var(--color-primary); }
+.nav-lang-sep { color: rgba(244, 242, 238, 0.3); }
 
 .btn {
   font-family: var(--font-display);
@@ -136,1375 +129,143 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  letter-spacing: 0;
+  letter-spacing: 0.01em;
   text-decoration: none;
 }
 
 .btn-primary { background: var(--color-primary); color: white; }
 .btn-primary:hover { background: #AD2FFC; }
-.btn-ghost-dark { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.2); }
-.btn-ghost-dark:hover { border-color: white; background: rgba(255,255,255,0.05); }
-.btn-ghost-light { background: transparent; color: var(--color-ink); border: 1px solid var(--color-border); }
-.btn-ghost-light:hover { background: white; border-color: var(--color-ink); }
-.btn-arrow::after { content: '↗'; font-size: 16px; }
-.btn-lg { padding: 18px 32px; font-size: 16px; }
 
-/* ============ HERO ============ */
-.hero {
-  background: var(--color-ink);
-  color: white;
-  position: relative;
-  padding: 160px 16px 32px;
-  border-radius: 0 0 48px 48px;
-  overflow: hidden;
-  margin: 0 16px;
+/* ============ PAGE ============ */
+.legal-hero {
+  padding: 160px 16px 40px;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at top, var(--color-primary-medium) 0%, transparent 50%),
+    var(--color-bg-base);
 }
 
-.hero::before {
-  content: '';
-  position: absolute;
-  top: -100px; left: -100px;
-  width: 800px; height: 800px;
-  background: var(--gradient-glow);
-  pointer-events: none;
-}
-
-.hero-grid {
-  max-width: var(--container);
+.legal-hero-inner {
+  max-width: 720px;
   margin: 0 auto;
-  padding: 80px 16px 40px;
-  position: relative;
-  z-index: 1;
 }
 
-.hero h1 {
-  font-size: clamp(40px, 6vw, 92px);
-  font-weight: 700;
-  letter-spacing: 0;
-  line-height: 1;
-  margin-bottom: 40px;
-}
-
-.hero h1 .accent {
-  color: var(--color-primary);
-  font-style: italic;
-  font-weight: 600;
-}
-
-.hero-trust {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--color-text-inverse-muted);
-  margin-bottom: 56px;
-}
-
-.hero-bottom {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-  align-items: end;
-  padding-top: 32px;
-  border-top: 1px solid var(--color-border-dark);
-}
-
-.hero-description {
-  font-size: 19px;
-  color: var(--color-text-inverse-muted);
-  max-width: 520px;
-  line-height: 1.5;
-  letter-spacing: 0;
-}
-
-.hero-description strong { color: white; font-weight: 500; }
-
-.hero-ctas { display: flex; gap: 12px; justify-content: flex-end; flex-wrap: wrap; }
-
-/* Marquee logos */
-.marquee {
-  background: var(--color-ink);
-  color: white;
-  margin: 16px 16px 0;
-  border-top: 1px solid var(--color-border-dark);
-  border-radius: 24px;
-  overflow: hidden;
-  padding: 32px 0;
-}
-
-.marquee-track {
-  display: flex;
-  align-items: center;
-  white-space: nowrap;
-  width: max-content;
-  animation: marqueeScroll 50s linear infinite;
-  will-change: transform;
-}
-
-.marquee-track .logo-group {
-  display: inline-flex;
-  align-items: center;
-  gap: 80px;
-  padding-right: 80px;
-  flex-shrink: 0;
-}
-
-.marquee-logo {
-  height: 56px;
-  width: auto;
-  min-width: 80px;
-  max-width: 140px;
-  object-fit: contain;
-  filter: brightness(0) invert(1);
-  opacity: 0.7;
-  transition: opacity 0.3s;
-  flex-shrink: 0;
-  flex-grow: 0;
-}
-
-.marquee-logo:hover { opacity: 1; }
-
-/* Some logos need to keep their original colors */
-.marquee-logo.preserve-color {
-  filter: none;
-  opacity: 0.9;
-}
-
-@keyframes marqueeScroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
-.marquee:hover .marquee-track { animation-play-state: paused; }
-
-/* ============ PROBLEM ============ */
-.problem {
-  padding: 160px 16px;
-  position: relative;
-}
-
-.section-header {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 80px;
-  margin-bottom: 80px;
-  align-items: end;
-  max-width: var(--container);
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.section-tag {
+.legal-tag {
   font-family: var(--font-mono);
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.12em;
+  font-weight: 600;
   color: var(--color-text-secondary);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.section-tag::before {
-  content: '';
-  width: 24px; height: 1px;
-  background: var(--color-primary);
-}
-
-.section-title-xl {
-  font-size: clamp(40px, 5.5vw, 88px);
-  font-weight: 700;
-  letter-spacing: 0;
-  line-height: 1;
-  margin-top: 16px;
-}
-
-.section-title-xl .accent { color: var(--color-primary); font-style: italic; }
-.section-title-xl .strike {
-  text-decoration: line-through;
-  text-decoration-thickness: 6px;
-  text-decoration-color: var(--color-primary);
-  opacity: 0.55;
-}
-
-.problem-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 4px;
-  max-width: var(--container);
-  margin: 0 auto;
-  border-radius: 32px;
-  overflow: hidden;
-  background: var(--color-border);
-}
-
-.problem-card {
-  padding: 56px 40px;
-  background: var(--color-bg-base);
-  position: relative;
-  min-height: 320px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: background 0.3s;
-}
-
-.problem-card:hover { background: white; }
-
-.problem-num {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--color-text-secondary);
-  letter-spacing: 0.15em;
-  margin-bottom: 8px;
-}
-
-.problem-card h3 {
-  font-size: 32px;
-  font-weight: 600;
-  line-height: 1.05;
-  letter-spacing: 0;
-  margin-bottom: 16px;
-}
-
-.problem-card p {
-  font-size: 16px;
-  color: var(--color-text-secondary);
-  line-height: 1.55;
-  letter-spacing: 0;
-}
-
-.problem-card .visual-mark {
-  position: absolute;
-  top: 32px; right: 32px;
-  width: 48px; height: 48px;
-  border-radius: 50%;
-  background: var(--color-primary-soft);
-  color: var(--color-primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-  font-weight: 700;
-}
-
-/* ============ BIG TYPE BRIDGE ============ */
-.bridge {
-  padding: 120px 16px;
-  text-align: center;
-}
-
-.bridge-text {
-  font-size: clamp(40px, 6vw, 92px);
-  font-weight: 700;
-  letter-spacing: 0;
-  line-height: 1;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.bridge-text .accent { color: var(--color-primary); }
-.bridge-text .underline {
-  text-decoration: underline;
-  text-decoration-thickness: 6px;
-  text-underline-offset: 8px;
-  text-decoration-color: var(--color-primary);
-}
-
-/* ============ FEATURES (ZIGZAG) ============ */
-.features {
-  background: var(--color-ink);
-  color: white;
-  margin: 0 16px;
-  border-radius: 48px;
-  padding: 120px 0 160px;
-  position: relative;
-  overflow: hidden;
-}
-
-.features::before {
-  content: '';
-  position: absolute;
-  top: -200px; right: -200px;
-  width: 700px; height: 700px;
-  background: var(--gradient-glow);
-  pointer-events: none;
-}
-
-.features .container { position: relative; z-index: 1; }
-
-.features .section-tag { color: var(--color-text-inverse-muted); }
-.features .section-tag::before { background: var(--color-primary); }
-.features .section-title-xl { color: white; }
-
-/* Connecting path line */
-.features-path {
-  position: relative;
-  margin-top: 80px;
-  padding: 0;
-}
-
-.feature-block {
-  position: relative;
-  margin-bottom: 120px;
-  display: grid;
-  align-items: center;
-  gap: 64px;
-}
-
-.feature-block:last-child { margin-bottom: 0; }
-
-/* RIGHT alignment (first card) */
-.feature-block.right {
-  grid-template-columns: 1fr 1.2fr;
-  padding-left: 0;
-  padding-right: 8%;
-}
-
-/* LEFT alignment (second card) */
-.feature-block.left {
-  grid-template-columns: 1.2fr 1fr;
-  padding-left: 8%;
-  padding-right: 0;
-}
-.feature-block.left .feature-content { order: 2; }
-.feature-block.left .feature-visual { order: 1; }
-
-/* CENTER (third card, bigger emphasis) */
-.feature-block.right.last {
-  padding-right: 4%;
-}
-
-/* SVG path connector */
-.path-svg {
-  position: absolute;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.feature-number-big {
-  font-family: var(--font-display);
-  font-size: 200px;
-  font-weight: 700;
-  font-style: italic;
-  color: var(--color-primary);
-  line-height: 0.8;
-  letter-spacing: 0;
-  opacity: 0.15;
-  position: absolute;
-  pointer-events: none;
-}
-
-.feature-block.right .feature-number-big { top: -60px; right: -40px; left: auto; }
-.feature-block.left .feature-number-big { top: -60px; left: -40px; right: auto; }
-
-.feature-content { position: relative; z-index: 2; }
-
-.feature-num {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--color-primary);
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.feature-num::before {
-  content: '';
-  width: 24px; height: 1px;
-  background: var(--color-primary);
-}
-
-.feature-content h3 {
-  font-size: clamp(34px, 4.5vw, 60px);
-  font-weight: 700;
-  letter-spacing: 0;
-  line-height: 1.05;
-  margin-bottom: 16px;
-}
-
-.feature-content h3 .accent {
-  color: var(--color-primary);
-  font-style: italic;
-}
-
-.feature-subtitle {
-  font-size: 14px;
-  font-family: var(--font-mono);
-  color: var(--color-text-inverse-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: 24px;
-}
-
-.feature-content > p {
-  font-size: 18px;
-  color: var(--color-text-inverse-muted);
-  line-height: 1.6;
-  margin-bottom: 32px;
-  max-width: 480px;
-  letter-spacing: 0.01em;
-}
-
-.feature-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-.feature-list li {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  color: white;
-  font-size: 16px;
-  padding: 16px 0;
-  border-bottom: 1px solid var(--color-border-dark);
-  letter-spacing: 0;
-}
-
-.feature-list li:first-child { border-top: 1px solid var(--color-border-dark); }
-
-.feature-list li::before {
-  content: '→';
-  color: var(--color-primary);
-  font-weight: 700;
-  flex-shrink: 0;
-}
-
-/* ============ MOCKUPS - ATTRACTIVE & ANIMATED ============ */
-.feature-visual {
-  position: relative;
-  z-index: 1;
-  aspect-ratio: 4/3;
-  background: linear-gradient(135deg, rgba(151, 14, 251, 0.1) 0%, rgba(31, 15, 61, 0.3) 100%);
-  border: 1px solid var(--color-border-dark);
-  border-radius: 24px;
-  overflow: hidden;
-  display: flex;
-  align-items: stretch;
-  justify-content: stretch;
-  padding: 28px;
-}
-
-.mockup-frame {
-  width: 100%;
-  background: white;
-  border-radius: 16px;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 20px 60px rgba(151, 14, 251, 0.25), 0 4px 12px rgba(10, 6, 18, 0.15);
-  color: var(--color-text-primary);
-}
-
-.mockup-body {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
-  position: relative;
-}
-
-.mockup-header {
-  padding: 18px 22px;
-  border-bottom: 1px solid rgba(10, 6, 18, 0.06);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-shrink: 0;
-}
-
-.mockup-title {
-  font-size: 17px;
-  font-weight: 700;
-  color: #0A0612;
-  letter-spacing: 0;
-}
-
-.mockup-subtitle {
-  font-size: 12px;
-  color: #635A6F;
-  margin-top: 3px;
-}
-
-.mockup-controls {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
-
-.mockup-select {
-  background: white;
-  border: 1px solid rgba(10, 6, 18, 0.1);
-  border-radius: 8px;
-  padding: 7px 12px;
-  font-size: 12px;
-  color: #0A0612;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-weight: 500;
-}
-
-.mockup-btn {
-  background: var(--color-primary);
-  color: white;
-  font-size: 12px;
-  font-weight: 600;
-  padding: 8px 14px;
-  border-radius: 8px;
-  border: none;
-  font-family: var(--font-display);
-}
-
-.mockup-btn-ghost {
-  background: white;
-  color: var(--color-text-primary);
-  border: 1px solid rgba(10, 6, 18, 0.1);
-  font-size: 12px;
-  font-weight: 500;
-  padding: 7px 12px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--font-display);
-}
-
-.mockup-status-dot {
-  width: 7px; height: 7px;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-/* ============ MOCKUP 1: STADIUM PLAN ============ */
-.mockup-stadium-container {
-  flex: 1;
-  padding: 20px 22px 22px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  background: #FCFBFD;
-  min-height: 0;
-}
-
-.stadium-svg-wrapper {
-  flex: 1;
-  position: relative;
-  border-radius: 12px;
-  background: linear-gradient(180deg, #FAFAFA 0%, #F4F2EE 100%);
-  border: 1px solid rgba(10, 6, 18, 0.05);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px;
-}
-
-.stadium-svg {
-  width: 100%;
-  height: 100%;
-  max-height: 100%;
-}
-
-.stadium-legend-bar {
-  display: flex;
-  gap: 20px;
-  font-size: 12px;
-  color: #0A0612;
-  align-items: center;
-  flex-wrap: wrap;
-  padding: 0 4px;
-  font-weight: 500;
-}
-
-.stadium-legend-bar span {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-}
-
-.stadium-legend-bar .count {
-  color: #635A6F;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 400;
-}
-
-/* ============ MOCKUP 2: PRODUCTS TABLE ============ */
-.mockup-table-container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
-  overflow: hidden;
-}
-
-.mockup-table-header {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr 1.2fr;
-  padding: 12px 22px;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--color-text-muted);
-  background: #FAFAFA;
-  border-bottom: 1px solid rgba(10, 6, 18, 0.06);
-  font-weight: 600;
-}
-
-.mockup-table-row {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr 1.2fr;
-  padding: 14px 22px;
-  font-size: 13px;
-  color: #0A0612;
-  border-bottom: 1px solid rgba(10, 6, 18, 0.04);
-  align-items: center;
-}
-
-.mockup-table-row:last-child { border-bottom: none; }
-
-.mockup-table-row.highlighted { background: #FAF8FE; }
-
-/* ====== Animated alert popup for mockup 2 ====== */
-.mockup-alert {
-  position: absolute;
-  top: 50%;
-  right: 20px;
-  transform: translateY(-50%) translateX(20px);
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 16px 20px;
-  background: white;
-  border: 1px solid var(--color-border);
-  border-left: 4px solid #F59E0B;
-  border-radius: 12px;
-  box-shadow: 0 12px 32px rgba(10, 6, 18, 0.18);
-  max-width: 280px;
-  opacity: 0;
-  pointer-events: none;
-  z-index: 10;
-  animation: alertPopIn 8s ease-in-out infinite;
-  animation-delay: 2s;
-}
-
-.mockup-alert-icon {
-  font-size: 18px;
-  color: #F59E0B;
-  flex-shrink: 0;
-  line-height: 1;
-}
-
-.mockup-alert-content {
-  flex: 1;
-  min-width: 0;
-}
-
-.mockup-alert-title {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--color-text-primary);
-  margin-bottom: 4px;
-  letter-spacing: 0.01em;
-}
-
-.mockup-alert-text {
-  font-size: 11px;
-  color: var(--color-text-secondary);
-  line-height: 1.4;
-  letter-spacing: 0.01em;
-}
-
-.mockup-alert-close {
-  font-size: 18px;
-  color: var(--color-text-muted);
-  cursor: pointer;
-  line-height: 1;
-  margin-top: -2px;
-}
-
-@keyframes alertPopIn {
-  0%, 100% {
-    opacity: 0;
-    transform: translateY(-50%) translateX(20px) scale(0.95);
-  }
-  10%, 55% {
-    opacity: 1;
-    transform: translateY(-50%) translateX(0) scale(1);
-  }
-  65%, 95% {
-    opacity: 0;
-    transform: translateY(-50%) translateX(20px) scale(0.95);
-  }
-}
-
-.mockup-product-name {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 600;
-  letter-spacing: 0;
-}
-
-.mockup-pin {
-  color: var(--color-primary);
-  font-size: 12px;
-}
-
-.mockup-progress-cell {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.mockup-progress-top {
-  display: flex;
-  justify-content: space-between;
-  font-size: 12px;
-  align-items: center;
-}
-
-.mockup-progress-percent {
-  color: #0A0612;
-  font-weight: 700;
-  font-size: 14px;
-  letter-spacing: 0;
-  font-variant-numeric: tabular-nums;
-}
-.mockup-progress-count {
-  color: #635A6F;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-variant-numeric: tabular-nums;
-}
-
-.mockup-progress-bar {
-  width: 100%;
-  height: 5px;
-  background: rgba(10, 6, 18, 0.06);
-  border-radius: 100px;
-  overflow: hidden;
-}
-
-.mockup-progress-fill {
-  height: 100%;
-  border-radius: 100px;
-  transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.mockup-progress-fill.green { background: linear-gradient(90deg, #16a34a, #22c55e); }
-.mockup-progress-fill.amber { background: linear-gradient(90deg, #d97706, #f59e0b); }
-.mockup-progress-fill.red { background: linear-gradient(90deg, #dc2626, #ef4444); }
-
-.mockup-group-tag {
-  font-size: 12px;
-  color: #635A6F;
-  font-weight: 500;
-}
-
-/* ============ MOCKUP 3: INVOICE DASHBOARD ============ */
-.mockup-dashboard {
-  flex: 1;
-  padding: 22px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  min-height: 0;
-  background: #FCFBFD;
-}
-
-.mockup-stat-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-
-.mockup-stat-card {
-  background: white;
-  border: 1px solid rgba(10, 6, 18, 0.06);
-  border-radius: 12px;
-  padding: 16px 18px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  position: relative;
-  overflow: hidden;
-}
-
-.mockup-stat-card.featured {
-  background: linear-gradient(135deg, #1F0F3D 0%, #0A0612 100%);
-  color: white;
-  border: none;
-}
-
-.mockup-stat-card.featured::before {
-  content: '';
-  position: absolute;
-  top: -50px; right: -50px;
-  width: 150px; height: 150px;
-  background: radial-gradient(circle, rgba(151, 14, 251, 0.4) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-.mockup-stat-label {
-  font-size: 11px;
-  color: var(--color-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-family: var(--font-mono);
-  font-weight: 600;
-}
-
-.mockup-stat-card.featured .mockup-stat-label { color: #A89DB8; }
-
-.mockup-stat-value {
-  font-size: 32px;
-  font-weight: 700;
-  color: var(--color-primary);
-  letter-spacing: 0;
-  font-style: italic;
-  line-height: 1;
-  margin-top: 4px;
-}
-
-.mockup-stat-card.featured .mockup-stat-value { color: white; }
-
-.mockup-stat-meta {
-  font-size: 11px;
-  color: #22c55e;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  margin-top: 4px;
-  font-weight: 600;
-}
-
-.mockup-stat-card.featured .mockup-stat-meta { color: #4ADE80; }
-
-.mockup-invoice-table {
-  background: white;
-  border: 1px solid rgba(10, 6, 18, 0.06);
-  border-radius: 12px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
-  overflow: hidden;
-}
-
-.mockup-invoice-header {
-  padding: 12px 16px;
-  border-bottom: 1px solid rgba(10, 6, 18, 0.06);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.mockup-invoice-header-title {
-  font-size: 13px;
-  font-weight: 700;
-  color: #0A0612;
-  letter-spacing: 0;
-}
-
-.mockup-invoice-list {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
-  overflow: hidden;
-}
-
-.mockup-invoice-item {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr 0.7fr;
-  align-items: center;
-  padding: 11px 16px;
-  border-bottom: 1px solid rgba(10, 6, 18, 0.04);
-  font-size: 12px;
-  gap: 8px;
-}
-
-.mockup-invoice-item:last-child { border-bottom: none; }
-
-.mockup-invoice-item:hover { background: #FAF8FE; }
-
-.mockup-invoice-id {
-  color: #0A0612;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.mockup-invoice-id .mono {
-  font-family: var(--font-mono);
-  color: #635A6F;
-  font-size: 10px;
-  font-weight: 400;
-  margin-right: 6px;
-}
-
-.mockup-invoice-amount {
-  font-weight: 700;
-  color: #0A0612;
-  font-size: 14px;
-  letter-spacing: 0;
-  text-align: right;
-}
-
-.mockup-invoice-status {
-  padding: 4px 10px;
-  border-radius: 100px;
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  text-align: center;
-  justify-self: end;
-}
-
-.mockup-invoice-status.paid {
-  background: rgba(34, 197, 94, 0.14);
-  color: #15803d;
-}
-
-.mockup-invoice-status.sent {
-  background: rgba(151, 14, 251, 0.12);
-  color: #6B0AB8;
-}
-
-.mockup-invoice-status.draft {
-  background: rgba(10, 6, 18, 0.07);
-  color: #635A6F;
-}
-
-.mockup-invoice-status.overdue {
-  background: rgba(239, 68, 68, 0.12);
-  color: #b91c1c;
-}
-
-/* ====== Animated payment flow for mockup 3 ====== */
-.mockup-payment-flow {
+  margin-bottom: 20px;
   display: inline-flex;
   align-items: center;
-  position: relative;
-  min-width: 110px;
-  justify-content: flex-end;
+  gap: 12px;
 }
 
-.mockup-payment-flow .mockup-invoice-status,
-.mockup-payment-flow .mockup-pay-btn {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  opacity: 0;
-  animation-duration: 7s;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
-}
-
-.mockup-payment-flow .payment-due {
-  background: rgba(245, 158, 11, 0.15);
-  color: #d97706;
-  animation-name: payDueAnim;
-}
-
-.mockup-payment-flow .mockup-pay-btn {
-  background: var(--color-primary);
-  color: white;
-  border: none;
-  border-radius: 100px;
-  padding: 6px 14px;
-  font-family: var(--font-display);
-  font-size: 11px;
-  font-weight: 600;
-  cursor: pointer;
-  letter-spacing: 0.04em;
-  animation-name: payBtnAnim;
-  box-shadow: 0 2px 8px rgba(151, 14, 251, 0.3);
-}
-
-.mockup-payment-flow .payment-paid {
-  animation-name: payPaidAnim;
-}
-
-@keyframes payDueAnim {
-  0%, 30% { opacity: 1; transform: translateY(-50%) scale(1); }
-  35%, 100% { opacity: 0; transform: translateY(-50%) scale(0.9); }
-}
-
-@keyframes payBtnAnim {
-  0%, 30% { opacity: 0; transform: translateY(-50%) scale(0.9); }
-  35%, 55% { opacity: 1; transform: translateY(-50%) scale(1); }
-  58% { opacity: 1; transform: translateY(-50%) scale(0.92); }
-  62%, 100% { opacity: 0; transform: translateY(-50%) scale(0.9); }
-}
-
-@keyframes payPaidAnim {
-  0%, 62% { opacity: 0; transform: translateY(-50%) scale(0.9); }
-  68%, 95% { opacity: 1; transform: translateY(-50%) scale(1); }
-  100% { opacity: 0; transform: translateY(-50%) scale(0.9); }
-}
-
-/* Counter animation for revenue number */
-@keyframes countUp {
-  0% { content: '€238.4k'; }
-  20% { content: '€239.1k'; }
-  40% { content: '€240.0k'; }
-  60% { content: '€240.8k'; }
-  80% { content: '€241.3k'; }
-  100% { content: '€241.5k'; }
-}
-
-.live-counter {
-  position: relative;
+.legal-tag::before {
+  content: '';
   display: inline-block;
+  width: 32px;
+  height: 1px;
+  background: var(--color-primary);
 }
 
-.live-counter::after {
-  content: '↑';
-  position: absolute;
-  top: -2px;
-  right: -16px;
-  font-size: 14px;
-  color: #22c55e;
-  animation: arrowBounce 1.5s ease-in-out infinite;
-}
-
-@keyframes arrowBounce {
-  0%, 100% { transform: translateY(0); opacity: 1; }
-  50% { transform: translateY(-4px); opacity: 0.7; }
-}
-
-/* Live indicator tag - HIDDEN */
-.mockup-tag { display: none; }
-
-@keyframes pulse {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.4); opacity: 0.6; }
-}
-
-/* Pulsing element animation for stadium spots */
-@keyframes spotPulse {
-  0%, 100% { fill-opacity: 1; }
-  50% { fill-opacity: 0.5; }
-}
-
-.spot-pulse {
-  animation: spotPulse 2s infinite;
-}
-
-/* Animated stadium spots - color cycling */
-@keyframes spotColorCycle1 {
-  0%, 100% { fill: #FECACA; stroke: #ef4444; }
-  50% { fill: #A7F3D0; stroke: #22c55e; }
-}
-
-@keyframes spotColorCycle2 {
-  0%, 100% { fill: #A7F3D0; stroke: #22c55e; }
-  50% { fill: #FED7AA; stroke: #f59e0b; }
-}
-
-.spot-cycle-1 { animation: spotColorCycle1 4s ease-in-out infinite; }
-.spot-cycle-2 { animation: spotColorCycle2 5s ease-in-out infinite 1s; }
-
-/* ============ STATS — BIG BOLD ============ */
-.stats {
-  padding: 160px 16px;
-}
-
-.stats-container {
-  max-width: var(--container);
-  margin: 0 auto;
-}
-
-.stats-intro {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: end;
-  margin-bottom: 80px;
-}
-
-.stats-intro p {
-  font-size: 18px;
-  color: var(--color-text-secondary);
-  line-height: 1.5;
-  letter-spacing: 0;
-  max-width: 480px;
-}
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 4px;
-  background: var(--color-border);
-  border-radius: 32px;
-  overflow: hidden;
-}
-
-.stat-card {
-  background: var(--color-bg-base);
-  padding: 64px 48px;
-  position: relative;
-  min-height: 360px;
-  display: flex;
-  flex-direction: column;
-}
-
-.stat-card .stat-num {
-  font-size: clamp(80px, 12vw, 180px);
+.legal-title {
+  font-size: clamp(36px, 5vw, 64px);
   font-weight: 700;
-  line-height: 0.85;
-  letter-spacing: 0;
-  color: var(--color-primary);
-  font-style: italic;
-  margin-bottom: 56px;
+  letter-spacing: 0.01em;
+  line-height: 1.05;
+  margin-bottom: 16px;
 }
 
-.stat-card .stat-num .unit {
-  font-size: 0.35em;
-  font-style: normal;
-  color: var(--color-text-primary);
-  margin-left: 4px;
-  vertical-align: 0.4em;
-  font-weight: 600;
-}
-
-.stat-card .stat-content {
-  margin-top: auto;
-}
-
-.stat-card .stat-label {
-  font-size: 18px;
-  color: var(--color-text-primary);
-  font-weight: 500;
-  line-height: 1.4;
-  letter-spacing: 0;
-  max-width: 280px;
-  margin-bottom: 24px;
-}
-
-.stat-card .stat-meta {
+.legal-subtitle {
+  font-size: 15px;
   font-family: var(--font-mono);
-  font-size: 11px;
   color: var(--color-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
 
-/* ============ TESTIMONIALS ============ */
-.testimonials {
-  padding: 160px 16px;
+/* ============ CONTENT ============ */
+.legal-content {
+  padding: 40px 16px 100px;
 }
 
-.testimonials-container {
-  max-width: var(--container);
+.legal-container {
+  max-width: 760px;
   margin: 0 auto;
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: 24px;
+  padding: 56px 64px;
 }
 
-.testimonial-feature {
-  background: var(--color-ink);
-  color: white;
-  border-radius: 32px;
-  padding: 80px 64px;
-  position: relative;
-  overflow: hidden;
-  margin-top: 64px;
+.legal-section {
+  margin-bottom: 40px;
 }
 
-.testimonial-feature::before {
-  content: '';
-  position: absolute;
-  top: -100px; right: -100px;
-  width: 500px; height: 500px;
-  background: radial-gradient(ellipse at center, rgba(151, 14, 251, 0.2) 0%, transparent 70%);
+.legal-section:last-child {
+  margin-bottom: 0;
 }
 
-.testimonial-quote-mark {
-  font-family: var(--font-display);
-  font-size: 200px;
-  line-height: 0.7;
-  color: var(--color-primary);
-  font-style: italic;
+.legal-section h2 {
+  font-size: 22px;
   font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.3;
   margin-bottom: 16px;
+  color: var(--color-text-primary);
 }
 
-.testimonial-text {
-  font-size: clamp(28px, 4vw, 48px);
-  font-weight: 500;
-  line-height: 1.15;
-  letter-spacing: 0;
-  max-width: 900px;
-  margin-bottom: 48px;
-  position: relative;
+.legal-section h3 {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  margin-bottom: 8px;
+  color: var(--color-text-primary);
 }
 
-.testimonial-text .highlight {
-  color: var(--color-primary);
-  font-style: italic;
-}
-
-.testimonial-author {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  position: relative;
-}
-
-.testimonial-avatar {
-  width: 56px; height: 56px;
-  border-radius: 50%;
-  background: var(--color-primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: 600;
-  font-size: 18px;
-}
-
-.testimonial-name {
-  font-weight: 600;
-  font-size: 17px;
-  margin-bottom: 4px;
-  letter-spacing: 0;
-}
-
-.testimonial-role {
-  font-size: 14px;
-  color: var(--color-text-inverse-muted);
-  font-family: var(--font-mono);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-/* ============ FAQ ============ */
-.faq {
-  padding: 160px 16px;
-  background: var(--color-bg-surface);
-  margin: 0 16px;
-  border-radius: 48px;
-}
-
-.faq-container {
-  max-width: var(--container);
-  margin: 0 auto;
-}
-
-.faq-list {
-  margin-top: 64px;
-  border-top: 1px solid var(--color-border);
-}
-
-.faq-item {
-  border-bottom: 1px solid var(--color-border);
-}
-
-.faq-question {
-  padding: 32px 0;
-  font-size: 28px;
-  font-weight: 600;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  letter-spacing: 0;
-  line-height: 1.2;
-}
-
-.faq-question::after {
-  content: '+';
-  font-size: 32px;
-  color: var(--color-primary);
-  font-weight: 400;
-  transition: transform 0.3s;
-  width: 48px; height: 48px;
-  border-radius: 50%;
-  background: var(--color-primary-soft);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.faq-item.open .faq-question::after { transform: rotate(45deg); }
-
-.faq-answer {
-  padding: 0 0 32px;
+.legal-section p {
+  font-size: 15px;
   color: var(--color-text-secondary);
-  font-size: 17px;
-  line-height: 1.6;
-  display: none;
-  max-width: 720px;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+  margin-bottom: 12px;
 }
 
-.faq-item.open .faq-answer { display: block; }
-
-/* ============ FINAL CTA ============ */
-.final-cta {
-  margin: 0 16px 16px;
-  background: var(--color-ink);
-  color: white;
-  border-radius: 48px;
-  padding: 120px 64px;
-  position: relative;
-  overflow: hidden;
+.legal-section p:last-child {
+  margin-bottom: 0;
 }
 
-.final-cta::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at top, rgba(151, 14, 251, 0.3) 0%, transparent 60%);
-  pointer-events: none;
+.legal-section a {
+  color: var(--color-primary);
+  text-decoration: none;
 }
 
-.final-cta-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 80px;
-  align-items: end;
-  max-width: var(--container);
-  margin: 0 auto;
-  position: relative;
+.legal-section a:hover { text-decoration: underline; }
+
+.legal-section strong {
+  color: var(--color-text-primary);
+  font-weight: 600;
 }
 
-.final-cta h2 {
-  font-size: clamp(40px, 6vw, 92px);
-  font-weight: 700;
-  letter-spacing: 0;
-  line-height: 1;
+.legal-divider {
+  height: 1px;
+  background: var(--color-border);
+  margin: 32px 0;
+  border: none;
 }
 
-.final-cta h2 .accent { color: var(--color-primary); font-style: italic; }
-
-.final-cta .ctas {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  align-items: flex-start;
+.legal-address {
+  background: var(--color-bg-base);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-top: 12px;
 }
 
-.final-cta p {
-  font-size: 17px;
-  color: var(--color-text-inverse-muted);
-  line-height: 1.5;
-  margin-bottom: 16px;
-  max-width: 380px;
+.legal-address p {
+  margin-bottom: 4px;
 }
 
 /* ============ FOOTER ============ */
@@ -1516,19 +277,6 @@ footer {
 .footer-container {
   max-width: var(--container);
   margin: 0 auto;
-}
-
-.footer-big {
-  margin-bottom: 48px;
-  display: flex;
-  justify-content: center;
-  padding: 32px 0;
-}
-
-.footer-big img {
-  width: 100%;
-  max-width: 1200px;
-  height: auto;
 }
 
 .footer-cols {
@@ -1550,19 +298,14 @@ footer {
   margin-bottom: 24px;
 }
 
-.footer-col ul {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
 
 .footer-col a {
   color: var(--color-text-primary);
   text-decoration: none;
   font-size: 16px;
   font-weight: 500;
-  letter-spacing: 0;
+  letter-spacing: 0.01em;
   transition: color 0.2s;
 }
 
@@ -1574,6 +317,7 @@ footer {
   font-size: 15px;
   color: var(--color-text-secondary);
   line-height: 1.5;
+  letter-spacing: 0.01em;
   max-width: 320px;
 }
 
@@ -1590,369 +334,37 @@ footer {
   letter-spacing: 0.1em;
 }
 
-.footer-bottom .lang { display: flex; gap: 16px; }
-
-.footer-bottom .lang a {
-  color: var(--color-text-muted);
-  text-decoration: none;
-}
-
-.footer-bottom .lang a.active { color: var(--color-primary); font-weight: 600; }
-
 /* ============ RESPONSIVE ============ */
-@media (max-width: 1100px) {
-  .feature-block.right, .feature-block.left {
-    grid-template-columns: 1fr;
-    padding-left: 0;
-    padding-right: 0;
-    gap: 32px;
-  }
-  .feature-block.left .feature-content,
-  .feature-block.left .feature-visual { order: initial; }
-  .feature-block { margin-bottom: 80px; padding-top: 40px; }
-  .feature-block.right .feature-number-big,
-  .feature-block.left .feature-number-big {
-    top: 0;
-    left: -10px;
-    right: auto;
-    font-size: 140px;
-  }
-}
-
 @media (max-width: 900px) {
   .nav-links { display: none; }
-  .hero-bottom, .stats-intro, .section-header, .final-cta-grid { grid-template-columns: 1fr; gap: 32px; }
-  .hero-ctas { justify-content: flex-start; }
-  .problem-grid, .stats-grid, .footer-cols { grid-template-columns: 1fr; }
-  .testimonial-feature, .final-cta, .faq { padding: 64px 32px; }
-  .feature-block.right .feature-number-big,
-  .feature-block.left .feature-number-big {
-    font-size: 110px;
-  }
 }
 
-/* ============ MOBILE ============ */
 @media (max-width: 640px) {
-  /* Container & spacing */
-  .container { padding: 0 12px; }
-  
-  /* Navbar - more compact */
   .navbar {
     top: 12px;
     width: calc(100% - 24px);
     padding: 8px 8px 8px 16px;
   }
-  .navbar .btn-primary {
-    font-size: 13px;
-    padding: 10px 16px;
-  }
-  .nav-actions {
-    gap: 12px;
-  }
-  .nav-lang {
-    font-size: 11px;
-    gap: 4px;
-  }
+  .navbar .btn-primary { font-size: 12px; padding: 9px 14px; }
+  .nav-logo img { height: 24px; }
+  .nav-actions { gap: 12px; }
+  .nav-lang { font-size: 11px; gap: 4px; }
   
-  /* Hero */
-  .hero {
-    margin: 0 12px;
-    padding: 120px 16px 24px;
-    border-radius: 0 0 32px 32px;
-  }
-  .hero-grid {
-    padding: 24px 0 16px;
-  }
-  .hero-trust {
-    font-size: 11px;
-    margin-bottom: 32px;
-  }
-  .hero-bottom {
-    padding-top: 24px;
-    gap: 24px;
-  }
-  .hero-description {
-    font-size: 16px;
-  }
-  .hero-ctas {
-    flex-direction: column;
-    align-items: stretch;
-    width: 100%;
-  }
-  .hero-ctas .btn {
-    justify-content: center;
-    width: 100%;
-  }
-  .btn-lg {
-    padding: 16px 24px;
-    font-size: 15px;
-  }
+  .legal-hero { padding: 110px 12px 32px; }
+  .legal-title { font-size: clamp(28px, 8vw, 44px); }
   
-  /* Marquee */
-  .marquee { margin: 12px 12px 0; padding: 24px 0; border-radius: 16px; }
-  .marquee-logo { height: 36px; max-width: 100px; }
-  .marquee-track .logo-group { gap: 32px; padding-right: 32px; }
+  .legal-content { padding: 24px 12px 64px; }
+  .legal-container { padding: 36px 24px; border-radius: 20px; }
   
-  /* Section header (problem, stats, etc) */
-  .section-header {
-    grid-template-columns: 1fr;
-    gap: 16px;
-    margin-bottom: 48px;
-  }
+  .legal-section h2 { font-size: 18px; }
+  .legal-section p { font-size: 14px; }
   
-  /* Problem section */
-  .problem { padding: 80px 12px; }
-  .problem-grid {
-    grid-template-columns: 1fr;
-    border-radius: 24px;
-  }
-  .problem-card {
-    padding: 32px 24px;
-    min-height: auto;
-  }
-  .problem-card h3 { font-size: 28px; }
-  .problem-card .visual-mark {
-    width: 40px;
-    height: 40px;
-    top: 24px;
-    right: 24px;
-    font-size: 18px;
-  }
-  
-  /* Bridge */
-  .bridge { padding: 64px 12px; }
-  
-  /* Features - the big one */
-  .features {
-    margin: 0 12px;
-    border-radius: 32px;
-    padding: 80px 0 100px;
-  }
-  .features-path {
-    margin-top: 56px;
-  }
-  .feature-block {
-    margin-bottom: 64px;
-    gap: 28px;
-  }
-  .feature-number-big {
-    display: none;
-  }
-  .feature-content h3 {
-    font-size: 36px;
-  }
-  .feature-content > p {
-    font-size: 15px;
-  }
-  .feature-subtitle {
-    font-size: 12px;
-  }
-  
-  /* Mockups - mobile sizing */
-  .feature-visual {
-    aspect-ratio: 4/3.5;
-    padding: 16px;
-    border-radius: 16px;
-  }
-  .mockup-frame {
-    border-radius: 12px;
-  }
-  .mockup-header {
-    padding: 12px 14px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-  }
-  .mockup-title { font-size: 14px; }
-  .mockup-subtitle { font-size: 10px; }
-  .mockup-controls {
-    width: 100%;
-    justify-content: space-between;
-  }
-  .mockup-select, .mockup-btn {
-    font-size: 10px;
-    padding: 6px 10px;
-  }
-  
-  /* Stadium mockup - more visible on mobile */
-  .mockup-stadium-container {
-    padding: 12px;
-    gap: 10px;
-  }
-  .stadium-svg-wrapper { padding: 8px; }
-  .stadium-legend-bar {
-    font-size: 10px;
-    gap: 10px;
-  }
-  
-  /* Products table mockup */
-  .mockup-table-header,
-  .mockup-table-row {
-    grid-template-columns: 1.4fr 1.2fr;
-    padding: 10px 14px;
-    font-size: 11px;
-  }
-  .mockup-table-header > div:nth-child(2),
-  .mockup-table-row > div:nth-child(2) {
-    display: none;
-  }
-  .mockup-progress-percent { font-size: 12px; }
-  .mockup-progress-count { font-size: 9px; }
-  
-  /* Invoice dashboard */
-  .mockup-dashboard {
-    padding: 14px;
-    gap: 10px;
-  }
-  .mockup-stat-card {
-    padding: 12px 14px;
-  }
-  .mockup-stat-value {
-    font-size: 24px;
-  }
-  .mockup-stat-label { font-size: 9px; }
-  .mockup-invoice-item {
-    grid-template-columns: 1.2fr 0.8fr 0.7fr;
-    padding: 9px 12px;
-    font-size: 11px;
-    gap: 6px;
-  }
-  .mockup-invoice-amount { font-size: 12px; }
-  .mockup-invoice-status {
-    font-size: 8px;
-    padding: 3px 7px;
-  }
-  
-  /* Stats */
-  .stats { padding: 80px 12px; }
-  .stats-grid {
-    grid-template-columns: 1fr;
-    border-radius: 24px;
-  }
-  .stat-card {
-    padding: 40px 24px;
-    min-height: auto;
-  }
-  
-  /* Testimonials */
-  .testimonials { padding: 80px 12px; }
-  .testimonial-feature {
-    padding: 48px 28px;
-    border-radius: 24px;
-  }
-  .testimonial-quote-mark { font-size: 120px; }
-  .testimonial-text { font-size: 22px; margin-bottom: 32px; }
-  .testimonial-avatar { width: 44px; height: 44px; font-size: 14px; }
-  .testimonial-name { font-size: 15px; }
-  .testimonial-role { font-size: 12px; }
-  
-  /* FAQ */
-  .faq {
-    margin: 0 12px;
-    border-radius: 32px;
-    padding: 64px 0;
-  }
-  .faq .container { padding: 0 24px; }
-  .faq-question {
-    font-size: 18px;
-    padding: 20px 0;
-    gap: 16px;
-  }
-  .faq-question::after {
-    width: 36px;
-    height: 36px;
-    font-size: 24px;
-  }
-  .faq-answer { font-size: 14px; padding-bottom: 24px; }
-  
-  /* Final CTA */
-  .final-cta {
-    margin: 0 12px 12px;
-    padding: 64px 24px;
-    border-radius: 32px;
-  }
-  .final-cta .ctas {
-    width: 100%;
-  }
-  .final-cta .ctas .btn {
-    width: 100%;
-    justify-content: center;
-  }
-  
-  /* Footer */
-  footer { padding: 48px 12px 24px; }
-  .footer-cols {
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-  }
-  .footer-brand { grid-column: 1 / -1; }
+  footer { padding: 40px 12px 24px; }
+  .footer-cols { grid-template-columns: 1fr; gap: 32px; }
   .footer-bottom {
     flex-direction: column;
     gap: 12px;
     align-items: flex-start;
-  }
-}
-
-/* ============ GLOBAL READABILITY: paragraphs and descriptive text ============ */
-.hero-description,
-.hero-trust,
-.problem-card p,
-.feature-content > p,
-.feature-list li,
-.feature-subtitle,
-.stat-card .stat-label,
-.stat-card .stat-meta,
-.stats-intro p,
-.faq-question,
-.faq-answer,
-.final-cta p,
-.footer-brand p,
-.footer-col a,
-.testimonial-text,
-.testimonial-role,
-.problem-num,
-.feature-num,
-.section-tag,
-.section-title-xl,
-.hero h1,
-.bridge-text,
-.final-cta h2 {
-  letter-spacing: 0.01em;
-}
-
-/* Slightly more spacing for ALL CAPS small text (more legible) */
-.section-tag,
-.problem-num,
-.feature-num,
-.feature-subtitle,
-.stat-card .stat-meta,
-.hero-trust,
-.testimonial-role {
-  letter-spacing: 0.12em;
-}
-
-/* German long-word handling - only on small screens */
-.hero-description,
-.problem-card p,
-.feature-content > p,
-.feature-list li,
-.tier-volume,
-.stat-card .stat-label {
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-}
-
-@media (max-width: 768px) {
-  .hero h1,
-  .section-title-xl,
-  .bridge-text,
-  .final-cta h2,
-  .feature-content h3,
-  .problem-card h3 {
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    hyphens: auto;
-    -webkit-hyphens: auto;
   }
 }
 </style>
@@ -1961,13 +373,13 @@ footer {
 
 <!-- ============ NAVBAR ============ -->
 <nav class="navbar">
-  <a href="#" class="nav-logo">
-<img src="SVG%20Logos/Recurso%206.svg" alt="Paktum">
+  <a href="index.html" class="nav-logo">
+    <img src="SVG%20Logos/Recurso%206.svg" alt="Paktum">
   </a>
   <ul class="nav-links">
-    <li><a href="#product" data-i18n="nav.product">Product</a></li>
-    <li><a href="#features" data-i18n="nav.features">Features</a></li>
-    <li><a href="#stats" data-i18n="nav.value">Value</a></li>
+    <li><a href="index.html#product" data-i18n="nav.product">Product</a></li>
+    <li><a href="index.html#features" data-i18n="nav.features">Features</a></li>
+    <li><a href="index.html#stats" data-i18n="nav.value">Value</a></li>
     <li><a href="pricing.html" data-i18n="nav.pricing">Pricing</a></li>
     <li><a href="about.html" data-i18n="nav.about">About Us</a></li>
   </ul>
@@ -1982,526 +394,60 @@ footer {
 </nav>
 
 <!-- ============ HERO ============ -->
-<section class="hero">
-  <div class="hero-grid">
-    <h1 data-i18n-html="hero.title">The Swiss Knife<br>for your sponsoring<br><span class="accent">management</span>.</h1>
-    <div class="hero-trust" data-i18n="hero.trust">→ Used by sports clubs, marketing agencies, leagues and federations</div>
-    <div class="hero-bottom">
-      <p class="hero-description" data-i18n-html="hero.description">Paktum brings together <strong>partner management</strong>, <strong>rights & contract management</strong>, and <strong>invoice generation</strong> on a single platform for the first time. Built for sports.</p>
-      <div class="hero-ctas">
-        <a href="book-a-demo.html" class="btn btn-primary btn-lg btn-arrow" data-i18n="hero.cta1">Book a demo</a>
-        <a href="#features" class="btn btn-ghost-dark btn-lg" data-i18n="hero.cta2">See how it works</a>
-      </div>
-    </div>
+<section class="legal-hero">
+  <div class="legal-hero-inner">
+    <div class="legal-tag" data-i18n="impressum.tag">Legal</div>
+    <h1 class="legal-title" data-i18n="impressum.title">Impressum</h1>
+    <div class="legal-subtitle" data-i18n="impressum.subtitle">KL Technologies GmbH</div>
   </div>
 </section>
 
-<!-- Marquee strip -->
-<div class="marquee">
-  <div class="marquee-track">
-    <div class="logo-group">
-      <img src="SVG%20Logos/FC_Zuerich.svg.png" alt="FC Zürich" class="marquee-logo preserve-color" loading="lazy">
-      <img src="SVG%20Logos/TVB_Stuttgart.webp" alt="TVB Handball Stuttgart" class="marquee-logo preserve-color" loading="lazy">
-      <img src="SVG%20Logos/SSV_Ulm_1846_Fussball.svg.png" alt="SSV Ulm 1846 Fussball" class="marquee-logo" loading="lazy">
-      <img src="SVG%20Logos/BSV_Bern.svg" alt="BSV Bern" class="marquee-logo preserve-color" loading="lazy">
-      <img src="SVG%20Logos/DEL2.svg.png" alt="DEL2" class="marquee-logo preserve-color" loading="lazy">
-      <img src="SVG%20Logos/Eisb%C3%A4ren%20Bremerhaven.png" alt="Eisbären Bremerhaven" class="marquee-logo preserve-color" loading="lazy">
-      <img src="SVG%20Logos/Volleyball%20Bundesliga.png" alt="Volleyball Bundesliga" class="marquee-logo preserve-color" loading="lazy">
-      <img src="SVG%20Logos/Galopprennbahn%20M%C3%BCnchen.jpeg" alt="Galopprennbahn München" class="marquee-logo preserve-color" loading="lazy">
-    </div>
-    <div class="logo-group" aria-hidden="true">
-      <img src="SVG%20Logos/FC_Zuerich.svg.png" alt="" class="marquee-logo preserve-color" loading="lazy">
-      <img src="SVG%20Logos/TVB_Stuttgart.webp" alt="" class="marquee-logo preserve-color" loading="lazy">
-      <img src="SVG%20Logos/SSV_Ulm_1846_Fussball.svg.png" alt="" class="marquee-logo" loading="lazy">
-      <img src="SVG%20Logos/BSV_Bern.svg" alt="" class="marquee-logo preserve-color" loading="lazy">
-      <img src="SVG%20Logos/DEL2.svg.png" alt="" class="marquee-logo preserve-color" loading="lazy">
-      <img src="SVG%20Logos/Eisb%C3%A4ren%20Bremerhaven.png" alt="" class="marquee-logo preserve-color" loading="lazy">
-      <img src="SVG%20Logos/Volleyball%20Bundesliga.png" alt="" class="marquee-logo preserve-color" loading="lazy">
-      <img src="SVG%20Logos/Galopprennbahn%20M%C3%BCnchen.jpeg" alt="" class="marquee-logo preserve-color" loading="lazy">
-    </div>
-  </div>
-</div>
-
-<!-- ============ PROBLEM ============ -->
-<section class="problem" id="product">
-  <div class="section-header">
-    <div class="section-tag" data-i18n="problem.tag">01 / The reality</div>
-    <h2 class="section-title-xl" data-i18n-html="problem.title">Sponsoring today is <span class="strike">organized</span><br><span class="accent">Excel chaos</span>.</h2>
-  </div>
-  <div class="problem-grid">
-    <div class="problem-card">
-      <div>
-        <div class="problem-num">→ 01</div>
-        <h3 data-i18n-html="problem.card1.title">Untapped<br>potential.</h3>
-      </div>
-      <p data-i18n="problem.card1.text">Lack of transparency on rights and inventory utilization at matchday and season level leads to lost revenue potential.</p>
-      <div class="visual-mark">↓</div>
-    </div>
-    <div class="problem-card">
-      <div>
-        <div class="problem-num">→ 02</div>
-        <h3 data-i18n-html="problem.card2.title">High manual<br>effort.</h3>
-      </div>
-      <p data-i18n="problem.card2.text">From offer creation to contract drafting and invoicing, manual processes consume significant resources.</p>
-      <div class="visual-mark">✕</div>
-    </div>
-    <div class="problem-card">
-      <div>
-        <div class="problem-num">→ 03</div>
-        <h3 data-i18n-html="problem.card3.title">High error<br>risk.</h3>
-      </div>
-      <p data-i18n="problem.card3.text">Missing structure and traceability lead to errors in documentation, partner management, and billing.</p>
-      <div class="visual-mark">⚠</div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ BRIDGE ============ -->
-<section class="bridge">
-  <h2 class="bridge-text" data-i18n-html="bridge.text">Organize your sponsoring<br><span class="underline">with Paktum</span>.</h2>
-</section>
-
-<!-- ============ FEATURES (ZIGZAG) ============ -->
-<section class="features" id="features">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-tag" data-i18n="features.tag">02 / Your sponsoring management</div>
-      <h2 class="section-title-xl" data-i18n-html="features.title">All in <span class="accent">one place</span>.</h2>
-    </div>
-
-    <div class="features-path">
-
-      <!-- Feature 1: Rights & Inventory (RIGHT alignment) -->
-      <div class="feature-block right">
-        <div class="feature-number-big">01</div>
-        <div class="feature-content">
-          <div class="feature-num" data-i18n="feature1.num">Module 01</div>
-          <h3 data-i18n-html="feature1.title">All rights<br>at a <span class="accent">glance</span>.</h3>
-          <div class="feature-subtitle" data-i18n="feature1.subtitle">Rights & Inventory Management</div>
-          <p data-i18n="feature1.description">Keep all sponsoring areas in your stadium in view in real time. Plan matchday and season utilization visually, and generate playlists for LED boards and digital displays.</p>
-          <ul class="feature-list">
-            <li data-i18n="feature1.li1">Matchday and season utilization</li>
-            <li data-i18n="feature1.li2">Visual position plans for stadiums, racetracks, and more</li>
-            <li data-i18n="feature1.li3">Playlists for LED boards and digital displays</li>
-          </ul>
-        </div>
-        <div class="feature-visual">
-          <div class="mockup-frame">
-            <div class="mockup-body">
-              <div class="mockup-header">
-                <div>
-                  <div class="mockup-title" data-i18n="mockup1.title">Stadium Plan</div>
-                  <div class="mockup-subtitle" data-i18n="mockup1.subtitle">Live booking overview</div>
-                </div>
-                <div class="mockup-controls">
-                  <div class="mockup-select" data-i18n="mockup1.season">Season 25/26 ▾</div>
-                  <button class="mockup-btn" data-i18n="mockup1.btn">Open Editor</button>
-                </div>
-              </div>
-              <div class="mockup-stadium-container">
-                <div class="stadium-svg-wrapper">
-                  <svg class="stadium-svg" viewBox="0 0 500 320" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
-                    <!-- Top row banners -->
-                    <g id="top-row">
-                      <rect x="150" y="20" width="38" height="14" fill="#A7F3D0" stroke="#22c55e" stroke-width="1" rx="3"/>
-                      <rect x="190" y="20" width="38" height="14" fill="#FECACA" stroke="#ef4444" stroke-width="1" rx="3"/>
-                      <rect x="230" y="20" width="38" height="14" fill="#A7F3D0" stroke="#22c55e" stroke-width="1" rx="3"/>
-                      <rect x="270" y="20" width="38" height="14" fill="#A7F3D0" stroke="#22c55e" stroke-width="1" rx="3"/>
-                      <rect x="150" y="36" width="38" height="14" fill="#A7F3D0" stroke="#22c55e" stroke-width="1" rx="3"/>
-                      <rect x="190" y="36" width="38" height="14" fill="#FECACA" stroke="#ef4444" stroke-width="1" rx="3"/>
-                      <rect x="230" y="36" width="38" height="14" fill="#A7F3D0" stroke="#22c55e" stroke-width="1" rx="3"/>
-                      <rect id="anim-spot-3" x="270" y="36" width="38" height="14" fill="#FED7AA" stroke="#f59e0b" stroke-width="1" rx="3"/>
-                      <rect x="310" y="36" width="38" height="14" fill="#A7F3D0" stroke="#22c55e" stroke-width="1" rx="3"/>
-                      <rect x="350" y="36" width="38" height="14" fill="#A7F3D0" stroke="#22c55e" stroke-width="1" rx="3"/>
-                    </g>
-                    
-                    <!-- Left side vertical banners -->
-                    <g id="left-banners">
-                      <rect x="65" y="80" width="14" height="32" fill="#A7F3D0" stroke="#22c55e" stroke-width="1" rx="3"/>
-                      <rect x="80" y="80" width="14" height="32" fill="#A7F3D0" stroke="#22c55e" stroke-width="1" rx="3"/>
-                      <rect x="65" y="120" width="14" height="32" fill="#A7F3D0" stroke="#22c55e" stroke-width="1" rx="3"/>
-                      <rect id="anim-spot-2" x="80" y="120" width="14" height="32" fill="#FECACA" stroke="#ef4444" stroke-width="1" rx="3"/>
-                      <rect x="65" y="160" width="14" height="32" fill="#A7F3D0" stroke="#22c55e" stroke-width="1" rx="3"/>
-                      <rect x="80" y="160" width="14" height="32" fill="#A7F3D0" stroke="#22c55e" stroke-width="1" rx="3"/>
-                    </g>
-                    
-                    <!-- Court/Field -->
-                    <g id="court">
-                      <rect x="120" y="80" width="260" height="160" fill="white" stroke="#0A0612" stroke-width="2" rx="3"/>
-                      <line x1="250" y1="80" x2="250" y2="240" stroke="#0A0612" stroke-width="1.2"/>
-                      <circle cx="250" cy="160" r="14" fill="#F4F2EE" stroke="#0A0612" stroke-width="1.2"/>
-                      <path d="M 120 110 Q 175 160 120 210" fill="none" stroke="#0A0612" stroke-width="1" stroke-dasharray="3,2"/>
-                      <path d="M 380 110 Q 325 160 380 210" fill="none" stroke="#0A0612" stroke-width="1" stroke-dasharray="3,2"/>
-                      <path d="M 120 130 Q 155 160 120 190 Z" fill="#FEF3C7" stroke="#0A0612" stroke-width="1"/>
-                      <path d="M 380 130 Q 345 160 380 190 Z" fill="#FEF3C7" stroke="#0A0612" stroke-width="1"/>
-                    </g>
-                    
-                    <!-- Court advertising spots -->
-                    <g id="court-ads">
-                      <rect x="138" y="100" width="28" height="9" fill="#FECACA" stroke="#ef4444" stroke-width="1" rx="2"/>
-                      <rect x="170" y="120" width="32" height="9" fill="#FECACA" stroke="#ef4444" stroke-width="1" rx="2"/>
-                      <rect id="anim-spot-1" x="170" y="135" width="32" height="9" fill="#A7F3D0" stroke="#22c55e" stroke-width="1" rx="2"/>
-                      <rect x="170" y="175" width="32" height="9" fill="#FECACA" stroke="#ef4444" stroke-width="1" rx="2"/>
-                      <rect x="170" y="190" width="32" height="9" fill="#A7F3D0" stroke="#22c55e" stroke-width="1" rx="2"/>
-                      <rect x="138" y="215" width="28" height="9" fill="#FECACA" stroke="#ef4444" stroke-width="1" rx="2"/>
-                      <rect x="332" y="100" width="28" height="9" fill="#A7F3D0" stroke="#22c55e" stroke-width="1" rx="2"/>
-                      <rect x="298" y="120" width="32" height="9" fill="#FECACA" stroke="#ef4444" stroke-width="1" rx="2"/>
-                      <rect x="298" y="135" width="32" height="9" fill="#A7F3D0" stroke="#22c55e" stroke-width="1" rx="2"/>
-                      <rect x="298" y="175" width="32" height="9" fill="#FECACA" stroke="#ef4444" stroke-width="1" rx="2"/>
-                      <rect x="298" y="190" width="32" height="9" fill="#A7F3D0" stroke="#22c55e" stroke-width="1" rx="2"/>
-                      <rect x="332" y="215" width="28" height="9" fill="#FED7AA" stroke="#f59e0b" stroke-width="1" rx="2"/>
-                    </g>
-                    
-                    <!-- Perimeter LED banners -->
-                    <g id="perimeter-ads">
-                      <rect x="100" y="100" width="14" height="22" fill="#A7F3D0" stroke="#22c55e" stroke-width="1" rx="2"/>
-                      <rect x="100" y="125" width="14" height="22" fill="#A7F3D0" stroke="#22c55e" stroke-width="1" rx="2"/>
-                      <rect x="100" y="150" width="14" height="22" fill="#A7F3D0" stroke="#22c55e" stroke-width="1" rx="2"/>
-                      <rect x="100" y="175" width="14" height="22" fill="#A7F3D0" stroke="#22c55e" stroke-width="1" rx="2"/>
-                      <rect x="100" y="200" width="14" height="22" fill="#FECACA" stroke="#ef4444" stroke-width="1" rx="2"/>
-                      <rect x="386" y="100" width="14" height="22" fill="#A7F3D0" stroke="#22c55e" stroke-width="1" rx="2"/>
-                      <rect x="386" y="125" width="14" height="22" fill="#FECACA" stroke="#ef4444" stroke-width="1" rx="2"/>
-                      <rect x="386" y="150" width="14" height="22" fill="#A7F3D0" stroke="#22c55e" stroke-width="1" rx="2"/>
-                      <rect x="386" y="175" width="14" height="22" fill="#A7F3D0" stroke="#22c55e" stroke-width="1" rx="2"/>
-                      <rect x="386" y="200" width="14" height="22" fill="#A7F3D0" stroke="#22c55e" stroke-width="1" rx="2"/>
-                    </g>
-                    
-                    <!-- Right side vertical banners -->
-                    <g id="right-banners">
-                      <rect x="406" y="80" width="14" height="32" fill="#A7F3D0" stroke="#22c55e" stroke-width="1" rx="3"/>
-                      <rect x="421" y="80" width="14" height="32" fill="#A7F3D0" stroke="#22c55e" stroke-width="1" rx="3"/>
-                      <rect x="406" y="120" width="14" height="32" fill="#A7F3D0" stroke="#22c55e" stroke-width="1" rx="3"/>
-                      <rect x="421" y="120" width="14" height="32" fill="#FECACA" stroke="#ef4444" stroke-width="1" rx="3"/>
-                      <rect x="406" y="160" width="14" height="32" fill="#A7F3D0" stroke="#22c55e" stroke-width="1" rx="3"/>
-                      <rect x="421" y="160" width="14" height="32" fill="#A7F3D0" stroke="#22c55e" stroke-width="1" rx="3"/>
-                    </g>
-                    
-                    <!-- Bottom row banners -->
-                    <g id="bottom-row">
-                      <rect x="150" y="270" width="38" height="14" fill="#A7F3D0" stroke="#22c55e" stroke-width="1" rx="3"/>
-                      <rect x="190" y="270" width="38" height="14" fill="#FECACA" stroke="#ef4444" stroke-width="1" rx="3"/>
-                      <rect x="230" y="270" width="38" height="14" fill="#A7F3D0" stroke="#22c55e" stroke-width="1" rx="3"/>
-                      <rect x="270" y="270" width="38" height="14" fill="#A7F3D0" stroke="#22c55e" stroke-width="1" rx="3"/>
-                      <rect x="310" y="270" width="38" height="14" fill="#FED7AA" stroke="#f59e0b" stroke-width="1" rx="3"/>
-                    </g>
-                    
-                    <!-- Selection highlight (animated ring around selected spot) -->
-                    <rect id="selection-ring" x="170" y="135" width="32" height="9" fill="none" stroke="#970EFB" stroke-width="2" rx="2" opacity="0"/>
-                    
-                    <!-- Tooltip group (animated) -->
-                    <g id="tooltip-group" opacity="0">
-                      <line id="tooltip-line" x1="186" y1="140" x2="280" y2="80" stroke="#970EFB" stroke-width="1.5" stroke-dasharray="2,2"/>
-                      <rect id="tooltip-bg" x="260" y="60" width="110" height="40" fill="#0A0612" rx="6"/>
-                      <text id="tooltip-id" x="315" y="76" text-anchor="middle" fill="white" font-family="forma-djr-display, sans-serif" font-size="10" font-weight="700">LED-1103</text>
-                      <text id="tooltip-status" x="315" y="88" text-anchor="middle" fill="#22c55e" font-family="JetBrains Mono, monospace" font-size="6.5" font-weight="600">● AVAILABLE</text>
-                      <text id="tooltip-meta" x="315" y="96" text-anchor="middle" fill="#A89DB8" font-family="JetBrains Mono, monospace" font-size="5.5">12 matchdays</text>
-                    </g>
-                    
-                    <!-- Cursor (animated pointer) -->
-                    <g id="cursor" transform="translate(186, 140)" opacity="0">
-                      <path d="M 0 0 L 0 14 L 4 10 L 8 18 L 11 17 L 7 9 L 12 9 Z" fill="#0A0612" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
-                    </g>
-                  </svg>
-                </div>
-                <div class="stadium-legend-bar">
-                  <span><span class="mockup-status-dot" style="background:#22c55e;"></span>Available <span class="count">142</span></span>
-                  <span><span class="mockup-status-dot" style="background:#f59e0b;"></span>Reserved <span class="count">8</span></span>
-                  <span><span class="mockup-status-dot" style="background:#ef4444;"></span>Booked <span class="count">68</span></span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Feature 2: Contracts (LEFT alignment) -->
-      <div class="feature-block left">
-        <div class="feature-number-big">02</div>
-        <div class="feature-content">
-          <div class="feature-num" data-i18n="feature2.num">Module 02</div>
-          <h3 data-i18n-html="feature2.title">Contracts and<br>docs in <span class="accent">seconds</span>.</h3>
-          <div class="feature-subtitle" data-i18n="feature2.subtitle">Contract & Document Management</div>
-          <p data-i18n="feature2.description">Use your own templates as a base. Manage budgets, barter deals and executions, all on one platform.</p>
-          <ul class="feature-list">
-            <li data-i18n="feature2.li1">Your templates as a base</li>
-            <li data-i18n="feature2.li2">League conditions and forecasts</li>
-            <li data-i18n="feature2.li3">Barter deals and execution management</li>
-          </ul>
-        </div>
-        <div class="feature-visual">
-          <div class="mockup-frame">
-            <div class="mockup-body">
-              <div class="mockup-header">
-                <div>
-                  <div class="mockup-title" data-i18n="mockup2.title">Products & Inventory</div>
-                  <div class="mockup-subtitle" data-i18n="mockup2.subtitle">Available inventory per season</div>
-                </div>
-                <div class="mockup-controls">
-                  <div class="mockup-select" data-i18n="mockup2.season">Season ▾</div>
-                  <button class="mockup-btn" data-i18n="mockup2.btn">+ Add product</button>
-                </div>
-              </div>
-              <div class="mockup-table-container">
-                <div class="mockup-table-header">
-                  <div data-i18n="mockup2.col.name">Name</div>
-                  <div data-i18n="mockup2.col.group">Group</div>
-                  <div data-i18n="mockup2.col.available">Available (Season)</div>
-                </div>
-                <div class="mockup-table-row" data-bar="bar-1" data-total="219">
-                  <div class="mockup-product-name"><span class="mockup-pin">●</span>Bodenwerbung</div>
-                  <div class="mockup-group-tag">Branding Rechte</div>
-                  <div class="mockup-progress-cell">
-                    <div class="mockup-progress-top">
-                      <span class="mockup-progress-percent">92.2%</span>
-                      <span class="mockup-progress-count">202/219</span>
-                    </div>
-                    <div class="mockup-progress-bar"><div class="mockup-progress-fill green" style="width: 92.2%"></div></div>
-                  </div>
-                </div>
-                <div class="mockup-table-row highlighted" data-bar="bar-2" data-total="100">
-                  <div class="mockup-product-name"><span class="mockup-pin">●</span>Bande/Plakat</div>
-                  <div class="mockup-group-tag">Branding Rechte</div>
-                  <div class="mockup-progress-cell">
-                    <div class="mockup-progress-top">
-                      <span class="mockup-progress-percent">63.0%</span>
-                      <span class="mockup-progress-count">63/100</span>
-                    </div>
-                    <div class="mockup-progress-bar"><div class="mockup-progress-fill green" style="width: 63%"></div></div>
-                  </div>
-                </div>
-                <div class="mockup-table-row" data-bar="bar-3" data-total="70">
-                  <div class="mockup-product-name"><span class="mockup-pin">●</span>Softbande</div>
-                  <div class="mockup-group-tag">Branding Rechte</div>
-                  <div class="mockup-progress-cell">
-                    <div class="mockup-progress-top">
-                      <span class="mockup-progress-percent">85.7%</span>
-                      <span class="mockup-progress-count">60/70</span>
-                    </div>
-                    <div class="mockup-progress-bar"><div class="mockup-progress-fill green" style="width: 85.7%"></div></div>
-                  </div>
-                </div>
-                <div class="mockup-table-row" data-bar="bar-4" data-total="10">
-                  <div class="mockup-product-name"><span class="mockup-pin">●</span>Dress Trainer</div>
-                  <div class="mockup-group-tag">Lizenzbereich</div>
-                  <div class="mockup-progress-cell">
-                    <div class="mockup-progress-top">
-                      <span class="mockup-progress-percent">50.0%</span>
-                      <span class="mockup-progress-count">5/10</span>
-                    </div>
-                    <div class="mockup-progress-bar"><div class="mockup-progress-fill amber" style="width: 50%"></div></div>
-                  </div>
-                </div>
-                <div class="mockup-table-row" data-bar="bar-5" data-total="22">
-                  <div class="mockup-product-name"><span class="mockup-pin">●</span>Dress Spieler (NLB)</div>
-                  <div class="mockup-group-tag">Campus / NLZ</div>
-                  <div class="mockup-progress-cell">
-                    <div class="mockup-progress-top">
-                      <span class="mockup-progress-percent">9.1%</span>
-                      <span class="mockup-progress-count">2/22</span>
-                    </div>
-                    <div class="mockup-progress-bar"><div class="mockup-progress-fill red" style="width: 9.1%"></div></div>
-                  </div>
-                </div>
-                <div class="mockup-table-row">
-                  <div class="mockup-product-name"><span class="mockup-pin">●</span>Presenting Matchball</div>
-                  <div class="mockup-group-tag">Presentings</div>
-                  <div class="mockup-progress-cell">
-                    <div class="mockup-progress-top">
-                      <span class="mockup-progress-percent">100%</span>
-                      <span class="mockup-progress-count">1/1</span>
-                    </div>
-                    <div class="mockup-progress-bar"><div class="mockup-progress-fill green" style="width: 100%;"></div></div>
-                  </div>
-                </div>
-              </div>
-              
-              <!-- Animated alert popup -->
-              <div class="mockup-alert" id="mockup-alert">
-                <div class="mockup-alert-icon">⚠</div>
-                <div class="mockup-alert-content">
-                  <div class="mockup-alert-title" data-i18n="mockup2.alert.title">Low utilization detected</div>
-                  <div class="mockup-alert-text" data-i18n="mockup2.alert.text">Bande/Plakat is only at 63% — 37 spaces still available this season.</div>
-                </div>
-                <div class="mockup-alert-close">×</div>
-              </div>
-              
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Feature 3: Invoicing (RIGHT alignment) -->
-      <div class="feature-block right last">
-        <div class="feature-number-big">03</div>
-        <div class="feature-content">
-          <div class="feature-num" data-i18n="feature3.num">Module 03</div>
-          <h3 data-i18n-html="feature3.title">Invoicing on<br><span class="accent">autopilot</span>.</h3>
-          <div class="feature-subtitle" data-i18n="feature3.subtitle">Invoicing & Controlling Module</div>
-          <p data-i18n="feature3.description">Automated invoicing on due dates, real-time controlling and forecasts with an interface to your accounting software.</p>
-          <ul class="feature-list">
-            <li data-i18n="feature3.li1">Automatic invoice generation</li>
-            <li data-i18n="feature3.li2">Controlling and forecasts</li>
-            <li data-i18n="feature3.li3">Interface to accounting software</li>
-          </ul>
-        </div>
-        <div class="feature-visual">
-          <div class="mockup-frame">
-            <div class="mockup-body">
-              <div class="mockup-header">
-                <div>
-                  <div class="mockup-title" data-i18n="mockup3.title">Invoicing & Controlling</div>
-                  <div class="mockup-subtitle" data-i18n="mockup3.subtitle">Q1 2026 overview</div>
-                </div>
-                <div class="mockup-controls">
-                  <div class="mockup-select" data-i18n="mockup3.quarter">This quarter ▾</div>
-                  <button class="mockup-btn" data-i18n="mockup3.btn">+ New invoice</button>
-                </div>
-              </div>
-              <div class="mockup-dashboard">
-                <div class="mockup-stat-row">
-                  <div class="mockup-stat-card featured">
-                    <div class="mockup-stat-label" data-i18n="mockup3.revenue">Revenue</div>
-                    <div class="mockup-stat-value live-counter" id="revenue-counter">€241.5k</div>
-                    <div class="mockup-stat-meta" data-i18n="mockup3.revenue.meta">↑ 18.4% vs last quarter</div>
-                  </div>
-                  <div class="mockup-stat-card">
-                    <div class="mockup-stat-label" data-i18n="mockup3.outstanding">Outstanding</div>
-                    <div class="mockup-stat-value">€38.2k</div>
-                    <div class="mockup-stat-meta" style="color: #f59e0b;" data-i18n="mockup3.outstanding.meta">5 invoices pending</div>
-                  </div>
-                </div>
-                <div class="mockup-invoice-table">
-                  <div class="mockup-invoice-header">
-                    <div class="mockup-invoice-header-title" data-i18n="mockup3.recent">Recent invoices</div>
-                    <div style="font-size: 11px; color: #635A6F; font-weight: 500;" data-i18n="mockup3.viewall">View all →</div>
-                  </div>
-                  <div class="mockup-invoice-list">
-                    <div class="mockup-invoice-item">
-                      <span class="mockup-invoice-id"><span class="mono">001</span>Partner A</span>
-                      <span class="mockup-invoice-amount">€12,400</span>
-                      <span class="mockup-invoice-status paid" data-i18n="mockup3.status.paid">Paid</span>
-                    </div>
-                    <div class="mockup-invoice-item">
-                      <span class="mockup-invoice-id"><span class="mono">002</span>Partner B</span>
-                      <span class="mockup-invoice-amount">€8,900</span>
-                      <span class="mockup-invoice-status paid" data-i18n="mockup3.status.paid">Paid</span>
-                    </div>
-                    <div class="mockup-invoice-item">
-                      <span class="mockup-invoice-id"><span class="mono">003</span>Partner C</span>
-                      <span class="mockup-invoice-amount">€15,600</span>
-                      <span class="mockup-invoice-status sent" data-i18n="mockup3.status.sent">Sent</span>
-                    </div>
-                    <div class="mockup-invoice-item" id="invoice-animated">
-                      <span class="mockup-invoice-id"><span class="mono">004</span>Partner D</span>
-                      <span class="mockup-invoice-amount">€4,200</span>
-                      <div class="mockup-payment-flow">
-                        <span class="mockup-invoice-status payment-due" data-i18n="mockup3.status.due">Payment due</span>
-                        <button class="mockup-pay-btn" data-i18n="mockup3.btn.pay">Pay</button>
-                        <span class="mockup-invoice-status paid payment-paid" data-i18n="mockup3.status.paid">✓ Paid</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ============ STATS ============ -->
-<section class="stats" id="stats">
-  <div class="stats-container">
-    <div class="stats-intro">
-      <div>
-        <div class="section-tag" data-i18n="stats.tag">03 / Value</div>
-        <h2 class="section-title-xl" data-i18n-html="stats.title">Paktum<br>in <span class="accent">numbers</span>.</h2>
-      </div>
-      <p data-i18n="stats.description">Paktum already supports over 25 teams across clubs, agencies, leagues and federations. The metrics below were collected at a 2. Bundesliga club during the 24/25 season.</p>
-    </div>
-
-    <div class="stats-grid">
-      <div class="stat-card">
-        <div class="stat-num">40<span class="unit">min</span></div>
-        <div class="stat-content">
-          <div class="stat-label" data-i18n="stats.s1.label">Reduced creation effort.</div>
-          <div class="stat-meta" data-i18n="stats.s1.meta">Per contract</div>
-        </div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">30<span class="unit">%</span></div>
-        <div class="stat-content">
-          <div class="stat-label" data-i18n="stats.s2.label">Found invoices that went uninvoiced the previous season.</div>
-          <div class="stat-meta" data-i18n="stats.s2.meta">Sales team</div>
-        </div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">85<span class="unit">%</span></div>
-        <div class="stat-content">
-          <div class="stat-label" data-i18n="stats.s3.label">Less effort in invoice creation.</div>
-          <div class="stat-meta" data-i18n="stats.s3.meta">Accounting team</div>
-        </div>
+<!-- ============ CONTENT ============ -->
+<section class="legal-content">
+  <div class="legal-container">
+    
+    <div class="legal-section">
+      <h2 data-i18n="impressum.responsible.title">Verantwortliche Instanz</h2>
+      <div class="legal-address">
+        <p><strong>KL Technologies GmbH</strong></p>
+        <p>Waldweg 12</p>
+        <p>6005 Luzern</p>
+        <p data-i18n="impressum.responsible.country">Switzerland</p>
+        <p style="margin-top: 12px;"><span data-i18n="impressum.responsible.email">E-Mail</span>: <a href="mailto:info@kltechnologies.ch">info@kltechnologies.ch</a></p>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ============ TESTIMONIAL FEATURED ============ -->
-<!-- Section removed: pending real testimonials from client -->
-
-<!-- ============ FAQ ============ -->
-<section class="faq">
-  <div class="faq-container">
-    <div class="section-header">
-      <div class="section-tag" data-i18n="faq.tag">04 / FAQ</div>
-      <h2 class="section-title-xl" data-i18n-html="faq.title">Common<br><span class="accent">questions</span>.</h2>
+    
+    <div class="legal-section">
+      <h2 data-i18n="impressum.representatives.title">Vertretungsberechtigte Personen</h2>
+      <p>Jens Kaeske<br>Patrick Laux</p>
+      <p style="margin-top: 12px;"><strong data-i18n="impressum.companyname.label">Name des Unternehmens</strong>: KL Technologies GmbH</p>
     </div>
-    <div class="faq-list">
-      <div class="faq-item open">
-        <div class="faq-question" data-i18n="faq.q1">From what club or agency size does Paktum make sense?</div>
-        <div class="faq-answer" data-i18n="faq.a1">Paktum is built to scale. We work with regional clubs and marketing agencies all the way up to clubs in the top leagues. The platform adapts to any size and requirements.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question" data-i18n="faq.q2">How long does onboarding take?</div>
-        <div class="faq-answer" data-i18n="faq.a2">An onboarding takes a maximum of three to four weeks. Our team supports you with data migration from Excel sheets or the tools you've used before. We also set up integrations such as the connection to your accounting system in parallel.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question" data-i18n="faq.q3">Is my data secure and GDPR compliant?</div>
-        <div class="faq-answer" data-i18n="faq.a3">Yes. Paktum is hosted on server infrastructure in the EU and Switzerland and meets all GDPR requirements. Your data never leaves European or Swiss servers at any time.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question" data-i18n="faq.q4">Can Paktum be integrated into my existing tool landscape?</div>
-        <div class="faq-answer" data-i18n="faq.a4">Yes. With our API interface we can connect any kind of tool. Whether it's a CRM system (HubSpot, Salesforce, ...), accounting systems (Bexio, DATEV, Abacus, Lexware, ...) or other tools. Get in touch with us to discuss your system landscape together.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question" data-i18n="faq.q5">Can my data be provided for ESG and CSRD reporting?</div>
-        <div class="faq-answer" data-i18n="faq.a5">Paktum captures the data you need for CSRD reporting and ESG disclosures, and makes it available in audit-ready export formats.</div>
-      </div>
+    
+    <hr class="legal-divider">
+    
+    <div class="legal-section">
+      <h2 data-i18n="impressum.disclaimer.title">Haftungsausschluss</h2>
+      <p data-i18n="impressum.disclaimer.p1">Der Autor übernimmt keine Gewähr für die Richtigkeit, Genauigkeit, Aktualität, Zuverlässigkeit und Vollständigkeit der Informationen.</p>
+      <p data-i18n="impressum.disclaimer.p2">Haftungsansprüche gegen den Autor wegen Schäden materieller oder immaterieller Art, die aus dem Zugriff oder der Nutzung bzw. Nichtnutzung der veröffentlichten Informationen, durch Missbrauch der Verbindung oder durch technische Störungen entstanden sind, werden ausgeschlossen.</p>
+      <p data-i18n="impressum.disclaimer.p3">Alle Angebote sind freibleibend. Der Autor behält es sich ausdrücklich vor, Teile der Seiten oder das gesamte Angebot ohne gesonderte Ankündigung zu verändern, zu ergänzen, zu löschen oder die Veröffentlichung zeitweise oder endgültig einzustellen.</p>
     </div>
-  </div>
-</section>
-
-<!-- ============ FINAL CTA ============ -->
-<section class="final-cta" id="demo">
-  <div class="final-cta-grid">
-    <h2 data-i18n-html="finalcta.title">Ready to unlock your full <span class="accent">sponsoring</span> potential?</h2>
-    <div class="ctas">
-      <p data-i18n="finalcta.description">Book a 30-minute demo and discover how Paktum can take your sponsoring management to the next level.</p>
-      <a href="book-a-demo.html" class="btn btn-primary btn-lg btn-arrow" data-i18n="finalcta.cta1">Book a demo</a>
-      <a href="book-a-demo.html" class="btn btn-ghost-dark btn-lg" data-i18n="finalcta.cta2">Talk to sales</a>
+    
+    <div class="legal-section">
+      <h2 data-i18n="impressum.links.title">Haftungsausschluss für Inhalte und Links</h2>
+      <p data-i18n="impressum.links.p1">Verweise und Links auf Webseiten Dritter liegen ausserhalb unseres Verantwortungsbereichs. Es wird jegliche Verantwortung für solche Webseiten abgelehnt. Der Zugriff und die Nutzung solcher Webseiten erfolgen auf eigene Gefahr des jeweiligen Nutzers.</p>
     </div>
+    
+    <div class="legal-section">
+      <h2 data-i18n="impressum.copyright.title">Urheberrechtserklärung</h2>
+      <p data-i18n="impressum.copyright.p1">Die Urheber- und alle anderen Rechte an Inhalten, Bildern, Fotos oder anderen Dateien auf dieser Website, gehören ausschliesslich KL Technologies GmbH oder den speziell genannten Rechteinhabern. Für die Reproduktion jeglicher Elemente ist die schriftliche Zustimmung des Urheberrechtsträgers im Voraus einzuholen.</p>
+    </div>
+    
   </div>
 </section>
 
 <!-- ============ FOOTER ============ -->
-<footer id="about">
+<footer>
   <div class="footer-container">
-    <div class="footer-big">
-     <img src="SVG%20Logos/Recurso%201.svg" alt="Paktum">
-    </div>
     <div class="footer-cols">
       <div class="footer-brand">
         <img src="SVG%20Logos/Recurso%205.svg" alt="Paktum">
@@ -2510,14 +456,14 @@ footer {
       <div class="footer-col">
         <h5 data-i18n="footer.col1.title">Product</h5>
         <ul>
-          <li><a href="#features" data-i18n="footer.col1.l1">Features</a></li>
+          <li><a href="index.html#features" data-i18n="footer.col1.l1">Features</a></li>
           <li><a href="pricing.html" data-i18n="footer.col1.l2">Pricing</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h5 data-i18n="footer.col2.title">Legal</h5>
         <ul>
-          <li><a href="#" data-i18n="footer.col2.l1">Imprint</a></li>
+          <li><a href="impressum.html" data-i18n="footer.col2.l1">Imprint</a></li>
         </ul>
       </div>
     </div>
@@ -2527,210 +473,8 @@ footer {
   </div>
 </footer>
 
+<!-- i18n -->
 <script>
-document.querySelectorAll('.faq-question').forEach(q => {
-  q.addEventListener('click', () => {
-    q.parentElement.classList.toggle('open');
-  });
-});
-
-// Animated revenue counter
-const revenueCounter = document.getElementById('revenue-counter');
-if (revenueCounter) {
-  let currentValue = 238400;
-  const targetValues = [241500, 243200, 244800, 246100, 247500, 249000, 250400];
-  let targetIndex = 0;
-  
-  function updateCounter() {
-    const target = targetValues[targetIndex];
-    if (currentValue < target) {
-      currentValue += Math.ceil((target - currentValue) / 20) + 50;
-      if (currentValue > target) currentValue = target;
-      const formatted = '€' + (currentValue / 1000).toFixed(1) + 'k';
-      revenueCounter.textContent = formatted;
-      requestAnimationFrame(updateCounter);
-    } else {
-      setTimeout(() => {
-        targetIndex = (targetIndex + 1) % targetValues.length;
-        if (targetIndex === 0) currentValue = 238400;
-        updateCounter();
-      }, 2500);
-    }
-  }
-  
-  setTimeout(updateCounter, 1500);
-}
-
-// Animated progress bars with synced percentage and count
-function animateBars() {
-  const bars = [
-    { id: 'bar-1', total: 219, current: 202, sequence: [202, 198, 205, 210, 207, 202] },
-    { id: 'bar-2', total: 100, current: 63, sequence: [63, 68, 72, 67, 65, 63] },
-    { id: 'bar-3', total: 70, current: 60, sequence: [60, 58, 62, 65, 63, 60] },
-    { id: 'bar-4', total: 10, current: 5, sequence: [5, 4, 6, 7, 5, 5] },
-    { id: 'bar-5', total: 22, current: 2, sequence: [2, 3, 4, 3, 2, 2] }
-  ];
-  
-  bars.forEach((bar, idx) => {
-    const row = document.querySelector(`[data-bar="${bar.id}"]`);
-    if (!row) return;
-    
-    const fill = row.querySelector('.mockup-progress-fill');
-    const percentEl = row.querySelector('.mockup-progress-percent');
-    const countEl = row.querySelector('.mockup-progress-count');
-    
-    let stepIndex = 0;
-    
-    function tick() {
-      stepIndex = (stepIndex + 1) % bar.sequence.length;
-      const newCurrent = bar.sequence[stepIndex];
-      const pct = (newCurrent / bar.total) * 100;
-      
-      fill.style.width = pct + '%';
-      percentEl.textContent = pct.toFixed(1) + '%';
-      countEl.textContent = newCurrent + '/' + bar.total;
-      
-      // Update color class based on percentage
-      fill.classList.remove('green', 'amber', 'red');
-      if (pct >= 60) fill.classList.add('green');
-      else if (pct >= 25) fill.classList.add('amber');
-      else fill.classList.add('red');
-    }
-    
-    // Stagger each bar's animation
-    setTimeout(() => {
-      setInterval(tick, 2800);
-    }, idx * 400 + 800);
-  });
-}
-
-setTimeout(animateBars, 600);
-
-// Stadium animation - cursor selects spots and changes their state
-const cursor = document.getElementById('cursor');
-const selectionRing = document.getElementById('selection-ring');
-const tooltipGroup = document.getElementById('tooltip-group');
-const tooltipLine = document.getElementById('tooltip-line');
-const tooltipBg = document.getElementById('tooltip-bg');
-const tooltipId = document.getElementById('tooltip-id');
-const tooltipStatus = document.getElementById('tooltip-status');
-const tooltipMeta = document.getElementById('tooltip-meta');
-
-// Color states: from-fill, from-stroke, to-fill, to-stroke, status-text, status-color
-const COLOR_STATES = {
-  available: { fill: '#A7F3D0', stroke: '#22c55e', label: '● AVAILABLE', color: '#22c55e' },
-  reserved: { fill: '#FED7AA', stroke: '#f59e0b', label: '● RESERVED', color: '#f59e0b' },
-  booked: { fill: '#FECACA', stroke: '#ef4444', label: '● BOOKED', color: '#ef4444' }
-};
-
-// Animation sequence: each step picks a spot, moves the cursor there, selects, changes state
-const SEQUENCE = [
-  { 
-    spot: 'anim-spot-1', cursorX: 186, cursorY: 142, 
-    ringX: 170, ringY: 135, ringW: 32, ringH: 9,
-    tooltipX: 220, tooltipY: 80,
-    spotId: 'LED-1103', spotMeta: '12 matchdays',
-    fromState: 'available', toState: 'booked'
-  },
-  { 
-    spot: 'anim-spot-2', cursorX: 90, cursorY: 138, 
-    ringX: 80, ringY: 120, ringW: 14, ringH: 32,
-    tooltipX: 130, tooltipY: 90,
-    spotId: 'BAND-2104', spotMeta: 'Season pack',
-    fromState: 'booked', toState: 'available'
-  },
-  { 
-    spot: 'anim-spot-3', cursorX: 290, cursorY: 44, 
-    ringX: 270, ringY: 36, ringW: 38, ringH: 14,
-    tooltipX: 200, tooltipY: 90,
-    spotId: 'TOP-3010', spotMeta: '8 matchdays',
-    fromState: 'reserved', toState: 'booked'
-  }
-];
-
-function setSpotColor(spotEl, state) {
-  const colors = COLOR_STATES[state];
-  spotEl.setAttribute('fill', colors.fill);
-  spotEl.setAttribute('stroke', colors.stroke);
-}
-
-function animateStep(stepIndex) {
-  const step = SEQUENCE[stepIndex];
-  const spot = document.getElementById(step.spot);
-  if (!spot) return;
-  
-  // Reset spot to its "from" state
-  setSpotColor(spot, step.fromState);
-  
-  // Hide tooltip and ring
-  selectionRing.style.transition = 'opacity 0.3s';
-  selectionRing.style.opacity = '0';
-  tooltipGroup.style.transition = 'opacity 0.3s';
-  tooltipGroup.style.opacity = '0';
-  
-  // Step 1: Show cursor and move it to spot
-  setTimeout(() => {
-    cursor.style.transition = 'transform 1.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s';
-    cursor.style.opacity = '1';
-    cursor.setAttribute('transform', `translate(${step.cursorX}, ${step.cursorY})`);
-  }, 300);
-  
-  // Step 2: "Click" - show selection ring
-  setTimeout(() => {
-    selectionRing.setAttribute('x', step.ringX);
-    selectionRing.setAttribute('y', step.ringY);
-    selectionRing.setAttribute('width', step.ringW);
-    selectionRing.setAttribute('height', step.ringH);
-    selectionRing.style.opacity = '1';
-    
-    // Show tooltip
-    tooltipGroup.style.opacity = '1';
-    const lineX1 = step.ringX + step.ringW / 2;
-    const lineY1 = step.ringY + step.ringH / 2;
-    tooltipLine.setAttribute('x1', lineX1);
-    tooltipLine.setAttribute('y1', lineY1);
-    tooltipLine.setAttribute('x2', step.tooltipX + 55);
-    tooltipLine.setAttribute('y2', step.tooltipY + 20);
-    
-    tooltipBg.setAttribute('x', step.tooltipX);
-    tooltipBg.setAttribute('y', step.tooltipY);
-    tooltipId.setAttribute('x', step.tooltipX + 55);
-    tooltipId.setAttribute('y', step.tooltipY + 16);
-    tooltipId.textContent = step.spotId;
-    tooltipStatus.setAttribute('x', step.tooltipX + 55);
-    tooltipStatus.setAttribute('y', step.tooltipY + 28);
-    tooltipStatus.textContent = COLOR_STATES[step.fromState].label;
-    tooltipStatus.setAttribute('fill', COLOR_STATES[step.fromState].color);
-    tooltipMeta.setAttribute('x', step.tooltipX + 55);
-    tooltipMeta.setAttribute('y', step.tooltipY + 36);
-    tooltipMeta.textContent = step.spotMeta;
-  }, 1700);
-  
-  // Step 3: Change state - the cool moment
-  setTimeout(() => {
-    spot.style.transition = 'fill 0.5s, stroke 0.5s';
-    setSpotColor(spot, step.toState);
-    tooltipStatus.textContent = COLOR_STATES[step.toState].label;
-    tooltipStatus.setAttribute('fill', COLOR_STATES[step.toState].color);
-  }, 2700);
-  
-  // Step 4: Hide cursor and tooltip, move to next
-  setTimeout(() => {
-    cursor.style.opacity = '0';
-  }, 4000);
-  
-  setTimeout(() => {
-    const nextIndex = (stepIndex + 1) % SEQUENCE.length;
-    animateStep(nextIndex);
-  }, 4500);
-}
-
-// Start animation after a brief delay
-setTimeout(() => {
-  animateStep(0);
-}, 1000);
-
-// ============ i18n SYSTEM ============
 const translations = {
   en: {
     "nav.product": "Product",
@@ -2740,115 +484,34 @@ const translations = {
     "nav.about": "About Us",
     "nav.cta": "Book a demo",
     
-    "hero.title": "The Swiss Knife<br>for your sponsoring<br><span class=\"accent\">management</span>.",
-    "hero.trust": "→ Used by sports clubs, marketing agencies, leagues and federations",
-    "hero.description": "Paktum brings together <strong>partner management</strong>, <strong>rights & contract management</strong>, and <strong>invoice generation</strong> on a single platform for the first time. Built for sports.",
-    "hero.cta1": "Book a demo",
-    "hero.cta2": "See how it works",
+    "impressum.tag": "Legal",
+    "impressum.title": "Imprint",
+    "impressum.subtitle": "KL Technologies GmbH",
     
+    "impressum.responsible.title": "Responsible Entity",
+    "impressum.responsible.country": "Switzerland",
+    "impressum.responsible.email": "Email",
     
-    "problem.tag": "01 / The reality",
-    "problem.title": "Sponsoring today is <span class=\"strike\">organized</span><br><span class=\"accent\">Excel chaos</span>.",
-    "problem.card1.title": "Untapped<br>potential.",
-    "problem.card1.text": "Lack of transparency on rights and inventory utilization at matchday and season level leads to lost revenue potential.",
-    "problem.card2.title": "High manual<br>effort.",
-    "problem.card2.text": "From offer creation to contract drafting and invoicing, manual processes consume significant resources.",
-    "problem.card3.title": "High error<br>risk.",
-    "problem.card3.text": "Missing structure and traceability lead to errors in documentation, partner management, and billing.",
+    "impressum.representatives.title": "Authorized Representatives",
+    "impressum.companyname.label": "Company Name",
     
-    "bridge.text": "Organize your sponsoring<br><span class=\"underline\">with Paktum</span>.",
+    "impressum.disclaimer.title": "Disclaimer",
+    "impressum.disclaimer.p1": "The author assumes no liability for the correctness, accuracy, timeliness, reliability and completeness of the information.",
+    "impressum.disclaimer.p2": "Liability claims against the author for material or immaterial damage resulting from access to or use of, or non-use of the published information, through misuse of the connection or through technical disruptions, are excluded.",
+    "impressum.disclaimer.p3": "All offers are non-binding. The author expressly reserves the right to change, supplement, or delete parts of the pages or the entire offer without prior notice, or to temporarily or permanently discontinue publication.",
     
-    "features.tag": "02 / Your sponsoring management",
-    "features.title": "All in <span class=\"accent\">one place</span>.",
+    "impressum.links.title": "Disclaimer for Content and Links",
+    "impressum.links.p1": "References and links to third-party websites are outside our area of responsibility. Any responsibility for such websites is rejected. Access to and use of such websites is at the user's own risk.",
     
-    "feature1.num": "Module 01",
-    "feature1.title": "All rights<br>at a <span class=\"accent\">glance</span>.",
-    "feature1.subtitle": "Rights & Inventory Management",
-    "feature1.description": "Keep all sponsoring areas in your stadium in view in real time. Plan matchday and season utilization visually, and generate playlists for LED boards and digital displays.",
-    "feature1.li1": "Matchday and season utilization",
-    "feature1.li2": "Visual position plans for stadiums, racetracks, and more",
-    "feature1.li3": "Playlists for LED boards and digital displays",
-    
-    "feature2.num": "Module 02",
-    "feature2.title": "Contracts and<br>docs in <span class=\"accent\">seconds</span>.",
-    "feature2.subtitle": "Contract & Document Management",
-    "feature2.description": "Use your own templates as a base. Manage budgets, barter deals and executions, all on one platform.",
-    "feature2.li1": "Your templates as a base",
-    "feature2.li2": "League conditions and forecasts",
-    "feature2.li3": "Barter deals and execution management",
-    
-    "feature3.num": "Module 03",
-    "feature3.title": "Invoicing on<br><span class=\"accent\">autopilot</span>.",
-    "feature3.subtitle": "Invoicing & Controlling Module",
-    "feature3.description": "Automated invoicing on due dates, real-time controlling and forecasts with an interface to your accounting software.",
-    "feature3.li1": "Automatic invoice generation",
-    "feature3.li2": "Controlling and forecasts",
-    "feature3.li3": "Interface to accounting software",
-    
-    "stats.tag": "03 / Value",
-    "stats.title": "Paktum<br>in <span class=\"accent\">numbers</span>.",
-    "stats.description": "Paktum already supports over 25 teams across clubs, agencies, leagues and federations. The metrics below were collected at a 2. Bundesliga club during the 24/25 season.",
-    "stats.s1.label": "Reduced creation effort.",
-    "stats.s1.meta": "Per contract",
-    "stats.s2.label": "Found invoices that went uninvoiced the previous season.",
-    "stats.s2.meta": "Sales team",
-    "stats.s3.label": "Less effort in invoice creation.",
-    "stats.s3.meta": "Accounting team",
-    
-    "faq.tag": "04 / FAQ",
-    "faq.title": "Common<br><span class=\"accent\">questions</span>.",
-    "faq.q1": "From what club or agency size does Paktum make sense?",
-    "faq.a1": "Paktum is built to scale. We work with regional clubs and marketing agencies all the way up to clubs in the top leagues. The platform adapts to any size and requirements.",
-    "faq.q2": "How long does onboarding take?",
-    "faq.a2": "An onboarding takes a maximum of three to four weeks. Our team supports you with data migration from Excel sheets or the tools you've used before. We also set up integrations such as the connection to your accounting system in parallel.",
-    "faq.q3": "Is my data secure and GDPR compliant?",
-    "faq.a3": "Yes. Paktum is hosted on server infrastructure in the EU and Switzerland and meets all GDPR requirements. Your data never leaves European or Swiss servers at any time.",
-    "faq.q4": "Can Paktum be integrated into my existing tool landscape?",
-    "faq.a4": "Yes. With our API interface we can connect any kind of tool. Whether it's a CRM system (HubSpot, Salesforce, ...), accounting systems (Bexio, DATEV, Abacus, Lexware, ...) or other tools. Get in touch with us to discuss your system landscape together.",
-    "faq.q5": "Can my data be provided for ESG and CSRD reporting?",
-    "faq.a5": "Paktum captures the data you need for CSRD reporting and ESG disclosures, and makes it available in audit-ready export formats.",
-    
-    "finalcta.title": "Ready to unlock your full <span class=\"accent\">sponsoring</span> potential?",
-    "finalcta.description": "Book a 30-minute demo and discover how Paktum can take your sponsoring management to the next level.",
-    "finalcta.cta1": "Book a demo",
-    "finalcta.cta2": "Talk to sales",
+    "impressum.copyright.title": "Copyright Declaration",
+    "impressum.copyright.p1": "The copyright and all other rights to content, images, photos or other files on this website belong exclusively to KL Technologies GmbH or to the specifically mentioned rights holders. For the reproduction of any elements, the written consent of the copyright holder must be obtained in advance.",
     
     "footer.tagline": "The Swiss Knife for your sponsoring. A product of KL Technologies GmbH, based in Luzern, Switzerland.",
     "footer.col1.title": "Product",
     "footer.col1.l1": "Features",
     "footer.col1.l2": "Pricing",
     "footer.col2.title": "Legal",
-    "footer.col2.l1": "Imprint",
-    
-    "mockup1.title": "Stadium Plan",
-    "mockup1.subtitle": "Live booking overview",
-    "mockup1.season": "Season 25/26 ▾",
-    "mockup1.btn": "Open Editor",
-    
-    "mockup2.title": "Products & Inventory",
-    "mockup2.subtitle": "Available inventory per season",
-    "mockup2.season": "Season ▾",
-    "mockup2.btn": "+ Add product",
-    "mockup2.col.name": "Name",
-    "mockup2.col.group": "Group",
-    "mockup2.col.available": "Available (Season)",
-    "mockup2.alert.title": "Low utilization detected",
-    "mockup2.alert.text": "Bande/Plakat is only at 63% — 37 spaces still available this season.",
-    
-    "mockup3.title": "Invoicing & Controlling",
-    "mockup3.subtitle": "Q1 2026 overview",
-    "mockup3.quarter": "This quarter ▾",
-    "mockup3.btn": "+ New invoice",
-    "mockup3.revenue": "Revenue",
-    "mockup3.revenue.meta": "↑ 18.4% vs last quarter",
-    "mockup3.outstanding": "Outstanding",
-    "mockup3.outstanding.meta": "5 invoices pending",
-    "mockup3.recent": "Recent invoices",
-    "mockup3.viewall": "View all →",
-    "mockup3.status.paid": "Paid",
-    "mockup3.status.sent": "Sent",
-    "mockup3.status.due": "Payment due",
-    "mockup3.btn.pay": "Pay"
+    "footer.col2.l1": "Imprint"
   },
   de: {
     "nav.product": "Produkt",
@@ -2858,147 +521,55 @@ const translations = {
     "nav.about": "Über uns",
     "nav.cta": "Demo buchen",
     
-    "hero.title": "Das Schweizer Taschenmesser<br>für deine <span class=\"accent\">Sponsoringverwaltung</span>.",
-    "hero.trust": "→ Von Sportclubs, Vermarktungsagenturen, Ligen und Verbänden genutzt",
-    "hero.description": "Paktum vereint <strong>Partnermanagement</strong>, <strong>Rechte- und Vertragsverwaltung</strong> und die <strong>Rechnungsgenerierung</strong> erstmalig auf einer Plattform. Für den Sport entwickelt.",
-    "hero.cta1": "Demo buchen",
-    "hero.cta2": "So funktioniert's!",
+    "impressum.tag": "Rechtliches",
+    "impressum.title": "Impressum",
+    "impressum.subtitle": "KL Technologies GmbH",
     
+    "impressum.responsible.title": "Verantwortliche Instanz",
+    "impressum.responsible.country": "Schweiz",
+    "impressum.responsible.email": "E-Mail",
     
-    "problem.tag": "01 / Die Realität",
-    "problem.title": "Sponsoring ist heute <span class=\"strike\">organisiert</span><br><span class=\"accent\">Excel-Chaos</span>.",
-    "problem.card1.title": "Ungenutztes<br>Potential.",
-    "problem.card1.text": "Fehlende Transparenz in der Auslastung von Rechten und Inventaren auf Spieltags- und Saisonebene führt zu verlorenem Umsatzpotential.",
-    "problem.card2.title": "Hohe manuelle<br>Aufwände.",
-    "problem.card2.text": "Ob Angebots-, Vertrags- und Rechnungserstellung: Manuelle Aufwände kosten viel Ressourcen.",
-    "problem.card3.title": "Hohe<br>Fehlerpotentiale.",
-    "problem.card3.text": "Fehlende Struktur und Nachverfolgbarkeit führen zu Fehlern in der Dokumentation, Betreuung und Abrechnung.",
+    "impressum.representatives.title": "Vertretungsberechtigte Personen",
+    "impressum.companyname.label": "Name des Unternehmens",
     
-    "bridge.text": "Organisiere jetzt dein Sponsoring neu<br><span class=\"underline\">mit Paktum</span>.",
+    "impressum.disclaimer.title": "Haftungsausschluss",
+    "impressum.disclaimer.p1": "Der Autor übernimmt keine Gewähr für die Richtigkeit, Genauigkeit, Aktualität, Zuverlässigkeit und Vollständigkeit der Informationen.",
+    "impressum.disclaimer.p2": "Haftungsansprüche gegen den Autor wegen Schäden materieller oder immaterieller Art, die aus dem Zugriff oder der Nutzung bzw. Nichtnutzung der veröffentlichten Informationen, durch Missbrauch der Verbindung oder durch technische Störungen entstanden sind, werden ausgeschlossen.",
+    "impressum.disclaimer.p3": "Alle Angebote sind freibleibend. Der Autor behält es sich ausdrücklich vor, Teile der Seiten oder das gesamte Angebot ohne gesonderte Ankündigung zu verändern, zu ergänzen, zu löschen oder die Veröffentlichung zeitweise oder endgültig einzustellen.",
     
-    "features.tag": "02 / Deine Sponsoringverwaltung",
-    "features.title": "Alles an <span class=\"accent\">einem Platz</span>.",
+    "impressum.links.title": "Haftungsausschluss für Inhalte und Links",
+    "impressum.links.p1": "Verweise und Links auf Webseiten Dritter liegen ausserhalb unseres Verantwortungsbereichs. Es wird jegliche Verantwortung für solche Webseiten abgelehnt. Der Zugriff und die Nutzung solcher Webseiten erfolgen auf eigene Gefahr des jeweiligen Nutzers.",
     
-    "feature1.num": "Modul 01",
-    "feature1.title": "Alle Rechte<br>auf einen <span class=\"accent\">Blick</span>.",
-    "feature1.subtitle": "Rechte & Inventar Management",
-    "feature1.description": "Behalte alle Sponsoring-Flächen in deinem Stadion in Echtzeit im Blick. Plane die Belegung an Spieltagen und während der Saison visuell, generiere Playlists für LED-Banden und digitale Anzeigetafeln.",
-    "feature1.li1": "Spieltags- und Saisonbelegungen",
-    "feature1.li2": "Visuelle Stellplatzpläne für Stadien, Rennstrecken und mehr",
-    "feature1.li3": "Playlists für LED-Banden und digitale Anzeigetafeln",
-    
-    "feature2.num": "Modul 02",
-    "feature2.title": "Verträge und Dokumente<br>in <span class=\"accent\">Sekunden</span>.",
-    "feature2.subtitle": "Vertrags- & Dokumentenmanagement",
-    "feature2.description": "Verwende deine eigenen Templates. Verwalte Budgets, Barter-Deals und Umsetzungen.",
-    "feature2.li1": "Deine Templates als Basis",
-    "feature2.li2": "Ligakonditionen und Forecasts",
-    "feature2.li3": "Barter-Deals und Umsetzungsmanagement",
-    
-    "feature3.num": "Modul 03",
-    "feature3.title": "Rechnungstellung<br>von ganz <span class=\"accent\">allein</span>.",
-    "feature3.subtitle": "Rechnungs- & Controlling Modul",
-    "feature3.description": "Automatisierte Rechnungsstellung zur Fälligkeit, Echtzeit Controlling und Forecasts mit einer Schnittstelle zu deiner Buchhaltungs-Software.",
-    "feature3.li1": "Automatische Rechnungserstellung",
-    "feature3.li2": "Controlling und Forecasts",
-    "feature3.li3": "Schnittstelle zur Buchhaltungssoftware",
-    
-    "stats.tag": "03 / Mehrwerte",
-    "stats.title": "Paktum<br>in <span class=\"accent\">Zahlen</span>.",
-    "stats.description": "Paktum unterstützt bereits über 25 Teams in Clubs, Agenturen, Ligen und Verbänden. Die Kennzahlen wurden bei einem Club der 2.Bundesliga in der Saison 24/25 erhoben.",
-    "stats.s1.label": "Geringerer Erstellungsaufwand.",
-    "stats.s1.meta": "Pro Vertrag",
-    "stats.s2.label": "Gefundene Rechnungen, die in der Vorsaison nicht in Rechnung gestellt wurden.",
-    "stats.s2.meta": "Sales-Team",
-    "stats.s3.label": "Geringerer Aufwand bei der Rechnungserstellung.",
-    "stats.s3.meta": "Buchhaltungs-Team",
-    
-    "faq.tag": "04 / FAQ",
-    "faq.title": "Häufige<br><span class=\"accent\">Fragen</span>.",
-    "faq.q1": "Ab welcher Club- und Agenturgröße ist Paktum sinnvoll?",
-    "faq.a1": "Paktum ist auf Skalierbarkeit ausgelegt: Wir arbeiten mit regionalen Clubs, Vermarktungsagenturen bis hin zu Clubs in den höchsten Ligen. Die Plattform passt für jede Größe und Anforderungen.",
-    "faq.q2": "Wie lange dauert ein Onboarding?",
-    "faq.a2": "Ein Onboarding benötigt maximal drei bis vier Wochen. Unser Team unterstützt dich bei der Datenmigration aus Excel-Tabellen oder deinen bisher genutzten Tools. Schnittstellen wie zum Buchhaltungssystem richtet unser Team parallel für dich ein.",
-    "faq.q3": "Sind meine Daten sicher und DSGVO-konform?",
-    "faq.a3": "Ja. Paktum wird auf einer Server-Infrastruktur in der EU und der Schweiz gehostet und erfüllt alle Anforderungen der DSGVO. Deine Daten verlassen zu keinem Zeitpunkt die europäischen/schweizer Server.",
-    "faq.q4": "Lässt sich Paktum in meine bestehende Toollandschaft integrieren?",
-    "faq.a4": "Ja. Mit unserer API-Schnittstelle können wir jegliche Art von Tools anknüpfen. Egal ob ein CRM-System (HubSpot, Salesforce, ...), Buchhaltungssysteme (Bexio, DATEV, Abacus, Lexware, ...) oder auch weitere Tools. Sprich uns gerne an, um mit uns deine System-Landschaft zu besprechen.",
-    "faq.q5": "Können meine Daten zur ESG- und CSRD-Berichterstattung zur Verfügung gestellt werden?",
-    "faq.a5": "Paktum erfasst die Daten, die du für die CSRD-Berichterstattung und ESG-Angaben benötigst, und stellt diese in auditfähigen Exportformaten bereit.",
-    
-    "finalcta.title": "Bereit dein volles <span class=\"accent\">Sponsoring</span> Potential zu entdecken?",
-    "finalcta.description": "Buche eine 30-minütige Demo und erfahre wie Paktum auch deine Sponsoringverwaltung auf ein neues Level hebt.",
-    "finalcta.cta1": "Demo buchen",
-    "finalcta.cta2": "Mit dem Sales-Team sprechen",
+    "impressum.copyright.title": "Urheberrechtserklärung",
+    "impressum.copyright.p1": "Die Urheber- und alle anderen Rechte an Inhalten, Bildern, Fotos oder anderen Dateien auf dieser Website, gehören ausschliesslich KL Technologies GmbH oder den speziell genannten Rechteinhabern. Für die Reproduktion jeglicher Elemente ist die schriftliche Zustimmung des Urheberrechtsträgers im Voraus einzuholen.",
     
     "footer.tagline": "Das Schweizer Taschenmesser für deine Sponsoringverwaltung. Ein Produkt der KL Technologies GmbH, mit Sitz in Luzern, Schweiz.",
     "footer.col1.title": "Produkt",
     "footer.col1.l1": "Funktionen",
     "footer.col1.l2": "Preise",
     "footer.col2.title": "Rechtliches",
-    "footer.col2.l1": "Impressum",
-    
-    "mockup1.title": "Stadionplan",
-    "mockup1.subtitle": "Live Belegungsübersicht",
-    "mockup1.season": "Saison 25/26 ▾",
-    "mockup1.btn": "Editor öffnen",
-    
-    "mockup2.title": "Produkte & Inventar",
-    "mockup2.subtitle": "Verfügbares Inventar pro Saison",
-    "mockup2.season": "Saison ▾",
-    "mockup2.btn": "+ Produkt hinzufügen",
-    "mockup2.col.name": "Name",
-    "mockup2.col.group": "Gruppe",
-    "mockup2.col.available": "Verfügbar (Saison)",
-    "mockup2.alert.title": "Niedrige Auslastung erkannt",
-    "mockup2.alert.text": "Bande/Plakat ist erst zu 63% ausgelastet — 37 Plätze noch verfügbar in dieser Saison.",
-    
-    "mockup3.title": "Rechnungen & Controlling",
-    "mockup3.subtitle": "Q1 2026 Übersicht",
-    "mockup3.quarter": "Dieses Quartal ▾",
-    "mockup3.btn": "+ Neue Rechnung",
-    "mockup3.revenue": "Umsatz",
-    "mockup3.revenue.meta": "↑ 18,4% vs. letztes Quartal",
-    "mockup3.outstanding": "Offen",
-    "mockup3.outstanding.meta": "5 Rechnungen ausstehend",
-    "mockup3.recent": "Aktuelle Rechnungen",
-    "mockup3.viewall": "Alle ansehen →",
-    "mockup3.status.paid": "Bezahlt",
-    "mockup3.status.sent": "Versendet",
-    "mockup3.status.due": "Fällig",
-    "mockup3.btn.pay": "Zahlen"
+    "footer.col2.l1": "Impressum"
   }
 };
 
 function setLanguage(lang) {
   const dict = translations[lang];
   if (!dict) return;
-  
-  // Apply translations to elements with data-i18n (text only)
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     if (dict[key]) el.textContent = dict[key];
   });
-  
-  // Apply translations to elements with data-i18n-html (allows HTML like <br> and <span>)
   document.querySelectorAll('[data-i18n-html]').forEach(el => {
     const key = el.getAttribute('data-i18n-html');
     if (dict[key]) el.innerHTML = dict[key];
   });
-  
-  // Update html lang attribute
   document.documentElement.setAttribute('lang', lang);
-  
-  // Update active state on lang toggle
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
   });
-  
-  // Save preference
   localStorage.setItem('paktum-lang', lang);
 }
 
-// Setup lang toggle click handlers
 document.querySelectorAll('.lang-btn').forEach(btn => {
   btn.addEventListener('click', (e) => {
     e.preventDefault();
@@ -3006,7 +577,6 @@ document.querySelectorAll('.lang-btn').forEach(btn => {
   });
 });
 
-// Load saved preference or default to EN
 const savedLang = localStorage.getItem('paktum-lang') || 'de';
 setLanguage(savedLang);
 </script>
