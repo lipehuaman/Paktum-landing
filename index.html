@@ -12,9 +12,6 @@
 <!-- Webmetic analytics -->
 <script src="https://t.webmetic.de/iav.js?id=z3f444" async></script>
 <link rel="stylesheet" href="https://use.typekit.net/apb2slf.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
   --color-primary: #970EFB;
@@ -33,7 +30,7 @@
   --gradient-dark: linear-gradient(180deg, #1F0F3D 0%, #0A0612 100%);
   --gradient-glow: radial-gradient(ellipse at top, rgba(151, 14, 251, 0.25) 0%, transparent 55%);
   --font-display: 'forma-djr-display', 'forma-djr-text', 'Inter', 'Helvetica Neue', 'Arial', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-mono: 'forma-djr-display', 'forma-djr-text', 'Inter', 'Helvetica Neue', 'Arial', system-ui, sans-serif;
   --container: 1320px;
 }
 
@@ -309,13 +306,6 @@ body {
   color: var(--color-text-secondary);
   display: flex;
   align-items: center;
-  gap: 8px;
-}
-
-.section-tag::before {
-  content: '';
-  width: 24px; height: 1px;
-  background: var(--color-primary);
 }
 
 .section-title-xl {
@@ -441,7 +431,6 @@ body {
 .features .container { position: relative; z-index: 1; }
 
 .features .section-tag { color: var(--color-text-inverse-muted); }
-.features .section-tag::before { background: var(--color-primary); }
 .features .section-title-xl { color: white; }
 
 /* Connecting path line */
@@ -516,13 +505,6 @@ body {
   margin-bottom: 16px;
   display: flex;
   align-items: center;
-  gap: 8px;
-}
-
-.feature-num::before {
-  content: '';
-  width: 24px; height: 1px;
-  background: var(--color-primary);
 }
 
 .feature-content h3 {
@@ -2378,8 +2360,8 @@ footer {
                       <line id="tooltip-line" x1="186" y1="140" x2="280" y2="80" stroke="#970EFB" stroke-width="1.5" stroke-dasharray="2,2"/>
                       <rect id="tooltip-bg" x="260" y="60" width="110" height="40" fill="#0A0612" rx="6"/>
                       <text id="tooltip-id" x="315" y="76" text-anchor="middle" fill="white" font-family="forma-djr-display, sans-serif" font-size="10" font-weight="700">LED-1103</text>
-                      <text id="tooltip-status" x="315" y="88" text-anchor="middle" fill="#22c55e" font-family="JetBrains Mono, monospace" font-size="6.5" font-weight="600">● AVAILABLE</text>
-                      <text id="tooltip-meta" x="315" y="96" text-anchor="middle" fill="#A89DB8" font-family="JetBrains Mono, monospace" font-size="5.5">12 matchdays</text>
+                      <text id="tooltip-status" x="315" y="88" text-anchor="middle" fill="#22c55e" font-family="forma-djr-display, sans-serif" font-size="6.5" font-weight="600">● AVAILABLE</text>
+                      <text id="tooltip-meta" x="315" y="96" text-anchor="middle" fill="#A89DB8" font-family="forma-djr-display, sans-serif" font-size="5.5">12 matchdays</text>
                     </g>
                     
                     <!-- Cursor (animated pointer) -->
