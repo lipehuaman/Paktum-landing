@@ -223,9 +223,7 @@ body {
 }
 
 .team-grid.bottom-row {
-  grid-template-columns: repeat(2, 1fr);
-  max-width: 880px;
-  margin: 0 auto;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .team-card {
@@ -553,7 +551,9 @@ footer {
 @media (max-width: 1100px) {
   .container { padding: 0 24px; }
   .team-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
-  .team-grid.bottom-row { grid-template-columns: repeat(2, 1fr); max-width: 100%; }
+  .team-grid.bottom-row { grid-template-columns: repeat(2, 1fr); }
+  /* If 3 items in bottom-row, the 3rd one (Rollo) spans full width on tablet */
+  .team-grid.bottom-row .team-card.ai-card { grid-column: 1 / -1; }
   .team-card { padding: 36px 28px; }
   .about-title { font-size: clamp(36px, 6vw, 72px); }
   .contact-title { font-size: clamp(36px, 6vw, 72px); }
@@ -838,7 +838,7 @@ footer {
   <div class="about-hero-inner">
     <div class="about-tag" data-i18n="about.tag">About us</div>
     <h1 class="about-title" data-i18n-html="about.title">Meet the <span class="accent">Paktum</span> team.</h1>
-    <p class="about-subtitle" data-i18n="about.subtitle">A small team of engineers and operators building the sponsoring management platform we always wished existed.</p>
+    <p class="about-subtitle" data-i18n="about.subtitle">Experience from sports and business, deep technical know-how and a real feeling for people – we are more than software.</p>
   </div>
 </section>
 
@@ -858,7 +858,7 @@ footer {
         <div class="team-role" data-i18n="team.patrick.role">Founder & CEO</div>
         <p class="team-bio" data-i18n="team.patrick.bio">Patrick has contributed to various consulting projects in sports and agency environments and holds a degree in engineering. At Paktum he combines this experience with the insights from his board work in finance, digitalization and administration in local clubs and federations.</p>
         <div class="team-links">
-          <a href="mailto:info@kltechnologies.ch" class="team-link" title="Email">
+          <a href="mailto:patrick.laux@kltechnologies.ch" class="team-link" title="Email">
             <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
           </a>
           <a href="https://www.linkedin.com/in/laux-patrick/" target="_blank" rel="noopener" class="team-link" title="LinkedIn">
@@ -876,8 +876,11 @@ footer {
         <div class="team-role" data-i18n="team.jens.role">Founder & IT Development</div>
         <p class="team-bio" data-i18n="team.jens.bio">As founder, engineer and board member, Jens connects the worlds of technology and business at Paktum. After his PhD at CERN, he co-founded a software company in the Swiss real estate industry and now drives digital innovation in our team.</p>
         <div class="team-links">
-          <a href="mailto:info@kltechnologies.ch" class="team-link" title="Email">
+          <a href="mailto:jens.kaeske@kltechnologies.ch" class="team-link" title="Email">
             <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </a>
+          <a href="tel:+41767716617" class="team-link" title="Phone">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h2.28a2 2 0 011.94 1.51l.6 2.4a2 2 0 01-.5 1.92L8.09 10.34a11 11 0 005.57 5.57l1.51-1.23a2 2 0 011.92-.5l2.4.6A2 2 0 0121 16.72V19a2 2 0 01-2 2A16 16 0 013 5z"/></svg>
           </a>
           <a href="https://www.linkedin.com/in/jens-kaeske/" target="_blank" rel="noopener" class="team-link" title="LinkedIn">
             <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
@@ -894,8 +897,11 @@ footer {
         <div class="team-role" data-i18n="team.robin.role">Sales & Partner Care</div>
         <p class="team-bio" data-i18n="team.robin.bio">Robin is the point of contact for our users and those who want to become one. With his background in customer service and sales, he identifies needs early on and helps turn feedback into action.</p>
         <div class="team-links">
-          <a href="mailto:info@kltechnologies.ch" class="team-link" title="Email">
+          <a href="mailto:robin.laux@kltechnologies.ch" class="team-link" title="Email">
             <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </a>
+          <a href="tel:+494087406714" class="team-link" title="Phone">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h2.28a2 2 0 011.94 1.51l.6 2.4a2 2 0 01-.5 1.92L8.09 10.34a11 11 0 005.57 5.57l1.51-1.23a2 2 0 011.92-.5l2.4.6A2 2 0 0121 16.72V19a2 2 0 01-2 2A16 16 0 013 5z"/></svg>
           </a>
           <a href="https://www.linkedin.com/in/robin-laux-478b32329/" target="_blank" rel="noopener" class="team-link" title="LinkedIn">
             <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
@@ -917,8 +923,29 @@ footer {
         <div class="team-role" data-i18n="team.jonas.role">Onboarding & Partner Care</div>
         <p class="team-bio" data-i18n="team.jonas.bio">Jonas is our point of contact for onboarding, data integration and the personal support of our users in everyday life. With several years of experience in the service sector, he stands for clear communication and an open ear so new users quickly find their way and no questions go unanswered.</p>
         <div class="team-links">
-          <a href="mailto:info@kltechnologies.ch" class="team-link" title="Email">
+          <a href="mailto:jonas.walch@kltechnologies.ch" class="team-link" title="Email">
             <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/jonas-walch-a31003408/" target="_blank" rel="noopener" class="team-link" title="LinkedIn">
+            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Lipe Huamán -->
+      <div class="team-card">
+        <div class="team-photo">
+          <img src="SVG%20Logos/Lipe_Huaman.png" alt="Lipe Huamán" loading="lazy">
+        </div>
+        <div class="team-name">Lipe Huamán</div>
+        <div class="team-role" data-i18n="team.lipe.role">Marketing & Design</div>
+        <p class="team-bio" data-i18n="team.lipe.bio">Lipe is responsible for Paktum's visual marketing and brand experience. With 6 years of experience across graphic design, web design and branding, he shapes how Paktum looks and feels across every touchpoint, from the landing page to campaigns and product communication.</p>
+        <div class="team-links">
+          <a href="mailto:lipehuamant@gmail.com" class="team-link" title="Email">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/lipehuaman/" target="_blank" rel="noopener" class="team-link" title="LinkedIn">
+            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
           </a>
         </div>
       </div>
@@ -983,7 +1010,7 @@ footer {
     <div class="footer-cols">
       <div class="footer-brand">
         <img src="SVG%20Logos/Recurso%205.svg" alt="Paktum">
-        <p data-i18n="footer.tagline">The Swiss Knife for your sponsoring. A product of KL Technologies GmbH, based in Luzern, Switzerland.</p>
+        <p data-i18n="footer.tagline">The Swiss Knife for your sponsoring. A product of KLTechnologies GmbH, based in Luzern, Switzerland.</p>
       </div>
       <div class="footer-col">
         <h5 data-i18n="footer.col1.title">Product</h5>
@@ -1000,7 +1027,7 @@ footer {
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 KL Technologies GmbH</span>
+      <span>© 2026 KLTechnologies GmbH</span>
     </div>
   </div>
 </footer>
@@ -1018,7 +1045,7 @@ const translations = {
     
     "about.tag": "About us",
     "about.title": "Meet the <span class=\"accent\">Paktum</span> team.",
-    "about.subtitle": "A small team of engineers and operators building the sponsoring management platform we always wished existed.",
+    "about.subtitle": "Experience from sports and business, deep technical know-how and a real feeling for people – we are more than software.",
     
     "team.patrick.role": "Founder & CEO",
     "team.patrick.bio": "Patrick has contributed to various consulting projects in sports and agency environments and holds a degree in engineering. At Paktum he combines this experience with the insights from his board work in finance, digitalization and administration in local clubs and federations.",
@@ -1032,6 +1059,9 @@ const translations = {
     "team.jonas.role": "Onboarding & Partner Care",
     "team.jonas.bio": "Jonas is our point of contact for onboarding, data integration and the personal support of our users in everyday life. With several years of experience in the service sector, he stands for clear communication and an open ear so new users quickly find their way and no questions go unanswered.",
     
+    "team.lipe.role": "Marketing & Design",
+    "team.lipe.bio": "Lipe is responsible for Paktum's visual marketing and brand experience. With 6 years of experience across graphic design, web design and branding, he shapes how Paktum looks and feels across every touchpoint, from the landing page to campaigns and product communication.",
+    
     "team.rollo.role": "AI Assistant",
     "team.rollo.bio": "Rollo is your intelligent companion in Paktum. He creates summaries, generates lead lists and answers your questions around the tool.",
     
@@ -1041,7 +1071,7 @@ const translations = {
     "contact.phone": "Phone",
     "contact.address": "Address",
     
-    "footer.tagline": "The Swiss Knife for your sponsoring. A product of KL Technologies GmbH, based in Luzern, Switzerland.",
+    "footer.tagline": "The Swiss Knife for your sponsoring. A product of KLTechnologies GmbH, based in Luzern, Switzerland.",
     "footer.col1.title": "Product",
     "footer.col1.l1": "Features",
     "footer.col1.l2": "Pricing",
@@ -1058,7 +1088,7 @@ const translations = {
     
     "about.tag": "Über uns",
     "about.title": "Lerne das <span class=\"accent\">Paktum</span>-Team kennen.",
-    "about.subtitle": "Ein kleines Team aus Ingenieuren und Operatoren, das die Sponsoring-Management-Plattform baut, die wir uns schon immer gewünscht haben.",
+    "about.subtitle": "Erfahrung aus Sport und Wirtschaft, tiefes technisches Know-how und ein echtes Gespür für Menschen – wir sind mehr als Software.",
     
     "team.patrick.role": "Gründer & Geschäftsführer",
     "team.patrick.bio": "Patrick hat in diversen Beratungsprojekten im Sport- und Agenturbereich mitgewirkt und verfügt über einen Abschluss in den Ingenieurswissenschaften. Bei Paktum bringt er diese Erfahrungen zusammen mit den Erkenntnissen aus seinen Vorstandsarbeiten im Bereich Finanzen, Digitalisierung und Verwaltung in lokalen Vereinen und Verbänden ein.",
@@ -1072,6 +1102,9 @@ const translations = {
     "team.jonas.role": "Onboarding & Partnerbetreuung",
     "team.jonas.bio": "Jonas ist unser Ansprechpartner für Onboarding, Datenintegration und die persönliche Betreuung unserer Nutzer im Alltag. Mit mehreren Jahren Erfahrung im Dienstleistungsbereich steht er für klare Kommunikation und ein offenes Ohr, damit sich neue Nutzer schnell zurechtfinden und keine Fragen offen bleiben.",
     
+    "team.lipe.role": "Marketing & Design",
+    "team.lipe.bio": "Lipe verantwortet das visuelle Marketing und die Markenwelt von Paktum. Mit 6 Jahren Erfahrung in Grafikdesign, Webdesign und Branding prägt er das Erscheinungsbild von Paktum über alle Touchpoints hinweg, von der Landing Page bis zu Kampagnen und Produktkommunikation.",
+    
     "team.rollo.role": "KI-Assistent",
     "team.rollo.bio": "Rollo ist dein intelligenter Begleiter in Paktum. Er erstellt Zusammenfassungen, generiert Lead-Listen und beantwortet deine Fragen rund um das Tool.",
     
@@ -1081,7 +1114,7 @@ const translations = {
     "contact.phone": "Telefon",
     "contact.address": "Adresse",
     
-    "footer.tagline": "Das Schweizer Taschenmesser für deine Sponsoringverwaltung. Ein Produkt der KL Technologies GmbH, mit Sitz in Luzern, Schweiz.",
+    "footer.tagline": "Das Schweizer Taschenmesser für deine Sponsoringverwaltung. Ein Produkt der KLTechnologies GmbH, mit Sitz in Luzern, Schweiz.",
     "footer.col1.title": "Produkt",
     "footer.col1.l1": "Funktionen",
     "footer.col1.l2": "Preise",
