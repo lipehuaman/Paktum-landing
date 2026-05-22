@@ -12,9 +12,6 @@
 <!-- Webmetic analytics -->
 <script src="https://t.webmetic.de/iav.js?id=z3f444" async></script>
 <link rel="stylesheet" href="https://use.typekit.net/apb2slf.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
   --color-primary: #970EFB;
@@ -36,7 +33,7 @@
   --color-border-purple: rgba(151, 14, 251, 0.2);
   --color-border-dark: rgba(244, 242, 238, 0.12);
   --font-display: 'forma-djr-display', 'forma-djr-text', 'Inter', 'Helvetica Neue', 'Arial', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-mono: 'forma-djr-display', 'forma-djr-text', 'Inter', 'Helvetica Neue', 'Arial', system-ui, sans-serif;
   --container: 1320px;
 }
 
@@ -180,15 +177,6 @@ body {
   margin-bottom: 24px;
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-}
-
-.about-tag::before {
-  content: '';
-  display: inline-block;
-  width: 32px;
-  height: 1px;
-  background: var(--color-primary);
 }
 
 .about-title {
@@ -600,7 +588,6 @@ footer {
   .about-title { font-size: clamp(32px, 9vw, 56px); margin-bottom: 24px; }
   .about-subtitle { font-size: 15px; }
   .about-tag { margin-bottom: 18px; font-size: 11px; }
-  .about-tag::before { width: 24px; }
   
   .team-section { padding: 40px 12px 64px; }
   .team-grid, .team-grid.bottom-row { grid-template-columns: 1fr; gap: 16px; }
@@ -871,7 +858,7 @@ footer {
         <div class="team-role" data-i18n="team.patrick.role">Founder & CEO</div>
         <p class="team-bio" data-i18n="team.patrick.bio">Patrick has contributed to various consulting projects in sports and agency environments and holds a degree in engineering. At Paktum he combines this experience with the insights from his board work in finance, digitalization and administration in local clubs and federations.</p>
         <div class="team-links">
-          <a href="mailto:patrick.laux@kltechnologies.ch" class="team-link" title="Email">
+          <a href="mailto:info@kltechnologies.ch" class="team-link" title="Email">
             <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
           </a>
           <a href="https://www.linkedin.com/in/laux-patrick/" target="_blank" rel="noopener" class="team-link" title="LinkedIn">
@@ -889,10 +876,10 @@ footer {
         <div class="team-role" data-i18n="team.jens.role">Founder & IT Development</div>
         <p class="team-bio" data-i18n="team.jens.bio">As founder, engineer and board member, Jens connects the worlds of technology and business at Paktum. After his PhD at CERN, he co-founded a software company in the Swiss real estate industry and now drives digital innovation in our team.</p>
         <div class="team-links">
-          <a href="mailto:jens.kaeske@kltechnologies.ch" class="team-link" title="Email">
+          <a href="mailto:info@kltechnologies.ch" class="team-link" title="Email">
             <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
           </a>
-          <a href="https://linkedin.com/jens-kaeske" target="_blank" rel="noopener" class="team-link" title="LinkedIn">
+          <a href="https://www.linkedin.com/in/jens-kaeske/" target="_blank" rel="noopener" class="team-link" title="LinkedIn">
             <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
           </a>
         </div>
@@ -907,7 +894,7 @@ footer {
         <div class="team-role" data-i18n="team.robin.role">Sales & Partner Care</div>
         <p class="team-bio" data-i18n="team.robin.bio">Robin is the point of contact for our users and those who want to become one. With his background in customer service and sales, he identifies needs early on and helps turn feedback into action.</p>
         <div class="team-links">
-          <a href="mailto:robin.laux@kltechnologies.ch" class="team-link" title="Email">
+          <a href="mailto:info@kltechnologies.ch" class="team-link" title="Email">
             <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
           </a>
           <a href="https://www.linkedin.com/in/robin-laux-478b32329/" target="_blank" rel="noopener" class="team-link" title="LinkedIn">
@@ -930,7 +917,7 @@ footer {
         <div class="team-role" data-i18n="team.jonas.role">Onboarding & Partner Care</div>
         <p class="team-bio" data-i18n="team.jonas.bio">Jonas is our point of contact for onboarding, data integration and the personal support of our users in everyday life. With several years of experience in the service sector, he stands for clear communication and an open ear so new users quickly find their way and no questions go unanswered.</p>
         <div class="team-links">
-          <a href="mailto:jonas.walch@kltechnologies.ch" class="team-link" title="Email">
+          <a href="mailto:info@kltechnologies.ch" class="team-link" title="Email">
             <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
           </a>
         </div>
