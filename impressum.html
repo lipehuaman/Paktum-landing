@@ -508,6 +508,23 @@ footer {
   }
 }
 
+
+.swiss-made {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.swiss-made img {
+  height: 36px;
+  width: auto;
+  display: block;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+
+.swiss-made:hover img { opacity: 1; }
+
 </style>
 </head>
 <body>
@@ -636,6 +653,9 @@ footer {
     </div>
     <div class="footer-bottom">
       <span>© 2026 KLTechnologies GmbH</span>
+      <div class="swiss-made" title="Swiss Made">
+        <img src="SVG%20Logos/Swiss_Made.svg" alt="Swiss Made">
+      </div>
     </div>
   </div>
 </footer>
