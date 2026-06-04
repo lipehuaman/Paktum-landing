@@ -374,6 +374,26 @@ body {
   border-color: #D4D4D4;
 }
 
+/* Enterprise: lilac gradient border to differentiate from Light */
+.tier-card.enterprise {
+  border: 2px solid transparent;
+  background:
+    linear-gradient(white, white) padding-box,
+    linear-gradient(135deg, #6B0AB8 0%, #970EFB 45%, #C77DFF 100%) border-box;
+  box-shadow: 0 12px 32px rgba(151, 14, 251, 0.10);
+}
+
+.tier-card.enterprise:hover {
+  transform: translateY(-4px);
+  border-color: transparent;
+  box-shadow: 0 24px 48px rgba(151, 14, 251, 0.22);
+}
+
+.tier-card.enterprise .tier-badge {
+  background: var(--color-primary);
+  color: white;
+}
+
 /* Features that are NOT included (muted, shown with X marker) */
 .tier-feature-off {
   opacity: 0.5;
