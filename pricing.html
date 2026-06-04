@@ -309,11 +309,16 @@ body {
   align-items: stretch;
 }
 
+.tiers-grid-5 {
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+
 .tier-card {
   background: white;
   border: 1px solid var(--color-border);
   border-radius: 24px;
-  padding: 40px 32px;
+  padding: 32px 24px;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -346,6 +351,34 @@ body {
 
 .tier-card.featured > * { position: relative; z-index: 1; }
 
+/* Light tier: deliberately less colorful / muted to signal entry-level */
+.tier-card.tier-light {
+  background: #FAFAF9;
+  border: 1px solid var(--color-border);
+  box-shadow: none;
+}
+
+.tier-card.tier-light .tier-badge {
+  background: #8A8A8A;
+  color: white;
+}
+
+.tier-card.tier-light .tier-price .currency-symbol,
+.tier-card.tier-light .tier-volume .vol-currency {
+  color: #6B6B6B;
+}
+
+.tier-card.tier-light:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(10, 6, 18, 0.08);
+  border-color: #D4D4D4;
+}
+
+/* Features that are NOT included (muted, shown with X marker) */
+.tier-feature-off {
+  opacity: 0.5;
+}
+
 .tier-badge {
   display: inline-block;
   background: var(--color-ink);
@@ -356,7 +389,7 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  margin-bottom: 24px;
+  margin-bottom: 18px;
   align-self: flex-start;
 }
 
@@ -392,7 +425,7 @@ body {
 }
 
 .tier-price {
-  font-size: 56px;
+  font-size: 44px;
   font-weight: 700;
   letter-spacing: 0;
   line-height: 1;
@@ -404,14 +437,14 @@ body {
 .tier-card.featured .tier-price .currency-symbol { color: var(--color-primary); }
 
 .tier-card.enterprise .tier-price {
-  font-size: 40px;
+  font-size: 32px;
   letter-spacing: 0;
 }
 
 .tier-period {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--color-text-secondary);
-  margin-top: 8px;
+  margin-top: 6px;
   font-weight: 500;
 }
 
@@ -419,13 +452,13 @@ body {
 
 .tier-volume {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 11px;
   color: var(--color-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  margin-top: 16px;
-  margin-bottom: 32px;
-  padding-bottom: 24px;
+  margin-top: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -436,7 +469,7 @@ body {
 
 .tier-features {
   list-style: none;
-  margin-bottom: 32px;
+  margin-bottom: 20px;
   flex: 1;
 }
 
@@ -444,8 +477,8 @@ body {
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  padding: 10px 0;
-  font-size: 14px;
+  padding: 6px 0;
+  font-size: 13px;
   color: var(--color-text-primary);
   letter-spacing: 0;
   font-weight: 500;
@@ -458,14 +491,20 @@ body {
   color: var(--color-primary);
   font-weight: 700;
   flex-shrink: 0;
-  font-size: 14px;
+  font-size: 13px;
+}
+
+/* Features not included: show X instead of check */
+.tier-features li.tier-feature-off::before {
+  content: '✕';
+  color: #B0B0B0;
 }
 
 .tier-cta {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 15px;
-  padding: 14px 24px;
+  font-size: 14px;
+  padding: 12px 24px;
   border-radius: 100px;
   border: none;
   cursor: pointer;
@@ -650,6 +689,7 @@ footer {
 /* ============ RESPONSIVE ============ */
 @media (max-width: 1100px) {
   .tiers-grid { grid-template-columns: repeat(2, 1fr); }
+  .tiers-grid-5 { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (max-width: 900px) {
@@ -689,6 +729,7 @@ footer {
   .tiers-section { padding: 60px 12px 80px; }
   .tiers-header { margin-bottom: 40px; }
   .tiers-grid { grid-template-columns: 1fr; gap: 16px; }
+  .tiers-grid-5 { grid-template-columns: 1fr; gap: 16px; }
   .tier-card { padding: 32px 24px; }
   .tier-price { font-size: 48px; }
   .tier-card.enterprise .tier-price { font-size: 32px; }
@@ -1010,13 +1051,31 @@ footer {
     <p class="tiers-section-subtitle" data-i18n="tiers.section.subtitle">Four tiers built around your sponsoring volume. All plans include unlimited users, unlimited data, and personal support.</p>
   </div>
   
-  <div class="tiers-grid">
+  <div class="tiers-grid tiers-grid-5">
+    
+    <!-- LIGHT (cheapest, less colorful) -->
+    <div class="tier-card tier-light">
+      <span class="tier-badge">Light</span>
+      <div class="tier-price-block">
+        <div class="tier-price"><span class="currency-symbol">€ </span><span class="price-value" data-eur="150" data-chf="150">150</span></div>
+        <div class="tier-period" data-i18n="tier.period">per month</div>
+      </div>
+      <div class="tier-volume" data-i18n-html="tier.light.volume">Up to <span class="vol-currency">€</span>200k sponsoring volume</div>
+      <ul class="tier-features">
+        <li data-i18n="tier.light.f1">2 users</li>
+        <li data-i18n="tier.light.f2">1 stadium plan</li>
+        <li data-i18n="tier.f3">Personal support</li>
+        <li class="tier-feature-off" data-i18n="tier.light.f4">AI features</li>
+        <li class="tier-feature-off" data-i18n="tier.light.f5">Interfaces</li>
+      </ul>
+      <a href="/book-a-demo" class="tier-cta tier-cta-light" data-i18n="tier.cta.start">Get started</a>
+    </div>
     
     <!-- ROOKIE -->
     <div class="tier-card featured">
       <span class="tier-badge">Rookie</span>
       <div class="tier-price-block">
-        <div class="tier-price"><span class="currency-symbol">€ </span><span class="price-value" data-eur="300" data-chf="300">300</span></div>
+        <div class="tier-price"><span class="currency-symbol">€ </span><span class="price-value" data-eur="350" data-chf="350">350</span></div>
         <div class="tier-period" data-i18n="tier.period">per month</div>
       </div>
       <div class="tier-volume" data-i18n-html="tier.rookie.volume">Up to <span class="vol-currency">€</span>1M sponsoring volume</div>
@@ -1053,7 +1112,7 @@ footer {
         <div class="tier-price"><span class="currency-symbol">€ </span><span class="price-value" data-eur="1,500" data-chf="1,500">1,500</span></div>
         <div class="tier-period" data-i18n="tier.period">per month</div>
       </div>
-      <div class="tier-volume" data-i18n-html="tier.allstar.volume"><span class="vol-currency">€</span>2.5M – <span class="vol-currency">€</span>6.5M sponsoring volume</div>
+      <div class="tier-volume" data-i18n-html="tier.allstar.volume"><span class="vol-currency">€</span>2.5M – <span class="vol-currency">€</span>4.5M sponsoring volume</div>
       <ul class="tier-features">
         <li data-i18n="tier.f1">Unlimited user access</li>
         <li data-i18n="tier.f2">Unlimited data</li>
@@ -1070,12 +1129,13 @@ footer {
         <div class="tier-price" data-i18n="tier.onrequest">On request</div>
         <div class="tier-period" data-i18n="tier.tailored">Tailored to your needs</div>
       </div>
-      <div class="tier-volume" data-i18n-html="tier.enterprise.volume">From <span class="vol-currency">€</span>6.5M sponsoring volume</div>
+      <div class="tier-volume" data-i18n-html="tier.enterprise.volume">From <span class="vol-currency">€</span>4.5M sponsoring volume</div>
       <ul class="tier-features">
         <li data-i18n="tier.f1">Unlimited user access</li>
         <li data-i18n="tier.f2">Unlimited data</li>
         <li data-i18n="tier.f3">Personal support</li>
         <li data-i18n="tier.f4">All functions</li>
+        <li data-i18n="tier.enterprise.f5">Dedicated server</li>
       </ul>
       <a href="/book-a-demo" class="tier-cta tier-cta-primary" data-i18n="tier.cta.contact">Contact sales</a>
     </div>
@@ -1141,9 +1201,20 @@ function applyCurrency(currency) {
     b.classList.toggle('active', b.dataset.currency === currency);
   });
   
+  // Helper: format thousands separator based on currency
+  // CHF uses apostrophe (1'500), EUR uses comma (1,500)
+  function formatNumber(raw, curr) {
+    // Strip any existing separators, keep only digits
+    const digits = String(raw).replace(/[,.']/g, '');
+    if (digits.length <= 3) return digits;
+    const sep = curr === 'CHF' ? "'" : ',';
+    return digits.replace(/\B(?=(\d{3})+(?!\d))/g, sep);
+  }
+  
   // Update prices
   document.querySelectorAll('.price-value').forEach(el => {
-    el.textContent = currency === 'CHF' ? el.dataset.chf : el.dataset.eur;
+    const raw = currency === 'CHF' ? el.dataset.chf : el.dataset.eur;
+    el.textContent = formatNumber(raw, currency);
   });
   
   // Update currency symbols in tier prices
@@ -1190,12 +1261,18 @@ const translations = {
     "tier.f2": "Unlimited data",
     "tier.f3": "Personal support",
     "tier.f4": "All functions",
+    "tier.light.f1": "2 users",
+    "tier.light.f2": "1 stadium plan",
+    "tier.light.f4": "AI features",
+    "tier.light.f5": "Interfaces",
+    "tier.enterprise.f5": "Dedicated server",
     "tier.cta.start": "Get started",
     "tier.cta.contact": "Contact sales",
+    "tier.light.volume": "Up to <span class=\"vol-currency\">€</span>200k sponsoring volume",
     "tier.rookie.volume": "Up to <span class=\"vol-currency\">€</span>1M sponsoring volume",
     "tier.pro.volume": "<span class=\"vol-currency\">€</span>1M – <span class=\"vol-currency\">€</span>2.5M sponsoring volume",
-    "tier.allstar.volume": "<span class=\"vol-currency\">€</span>2.5M – <span class=\"vol-currency\">€</span>6.5M sponsoring volume",
-    "tier.enterprise.volume": "From <span class=\"vol-currency\">€</span>6.5M sponsoring volume",
+    "tier.allstar.volume": "<span class=\"vol-currency\">€</span>2.5M – <span class=\"vol-currency\">€</span>4.5M sponsoring volume",
+    "tier.enterprise.volume": "From <span class=\"vol-currency\">€</span>4.5M sponsoring volume",
     
     "pricing.finalcta.title": "Find the right <span class=\"accent\">tier</span> for your operation.",
     "pricing.finalcta.description": "Book a 30-minute demo and let's figure out together which plan fits your sponsoring volume best.",
@@ -1232,12 +1309,18 @@ const translations = {
     "tier.f2": "Unbegrenzte Daten",
     "tier.f3": "Persönlicher Support",
     "tier.f4": "Alle Funktionen",
+    "tier.light.f1": "2 Nutzer",
+    "tier.light.f2": "1 Stadionplan",
+    "tier.light.f4": "KI-Funktionen",
+    "tier.light.f5": "Schnittstellen",
+    "tier.enterprise.f5": "Dedizierter Server",
     "tier.cta.start": "Loslegen",
     "tier.cta.contact": "Sales kontaktieren",
+    "tier.light.volume": "Bis <span class=\"vol-currency\">€</span>200k Sponsoringvolumen",
     "tier.rookie.volume": "Bis <span class=\"vol-currency\">€</span>1 Mio. Sponsoringvolumen",
     "tier.pro.volume": "<span class=\"vol-currency\">€</span>1 Mio. – <span class=\"vol-currency\">€</span>2,5 Mio. Sponsoringvolumen",
-    "tier.allstar.volume": "<span class=\"vol-currency\">€</span>2,5 Mio. – <span class=\"vol-currency\">€</span>6,5 Mio. Sponsoringvolumen",
-    "tier.enterprise.volume": "Ab <span class=\"vol-currency\">€</span>6,5 Mio. Sponsoringvolumen",
+    "tier.allstar.volume": "<span class=\"vol-currency\">€</span>2,5 Mio. – <span class=\"vol-currency\">€</span>4,5 Mio. Sponsoringvolumen",
+    "tier.enterprise.volume": "Ab <span class=\"vol-currency\">€</span>4,5 Mio. Sponsoringvolumen",
     
     "pricing.finalcta.title": "Finde den richtigen <span class=\"accent\">Plan</span> für deine Organisation.",
     "pricing.finalcta.description": "Buche eine 30-minütige Demo und lass uns gemeinsam herausfinden, welcher Plan am besten zu eurem Sponsoringvolumen passt.",
