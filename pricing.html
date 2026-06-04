@@ -375,18 +375,32 @@ body {
 }
 
 /* Enterprise: lilac gradient border to differentiate from Light */
+@property --pk-angle {
+  syntax: '<angle>';
+  initial-value: 135deg;
+  inherits: false;
+}
+
 .tier-card.enterprise {
   border: 2px solid transparent;
+  --pk-angle: 135deg;
   background:
     linear-gradient(white, white) padding-box,
-    linear-gradient(135deg, #6B0AB8 0%, #970EFB 45%, #C77DFF 100%) border-box;
+    linear-gradient(var(--pk-angle), #6B0AB8 0%, #970EFB 45%, #C77DFF 100%) border-box;
   box-shadow: 0 12px 32px rgba(151, 14, 251, 0.10);
+  transition: --pk-angle 0.6s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .tier-card.enterprise:hover {
+  --pk-angle: 495deg;
   transform: translateY(-4px);
   border-color: transparent;
   box-shadow: 0 24px 48px rgba(151, 14, 251, 0.22);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tier-card.enterprise { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+  .tier-card.enterprise:hover { --pk-angle: 135deg; }
 }
 
 .tier-card.enterprise .tier-badge {
@@ -1080,11 +1094,11 @@ footer {
         <div class="tier-price"><span class="currency-symbol">€ </span><span class="price-value" data-eur="150" data-chf="150">150</span></div>
         <div class="tier-period" data-i18n="tier.period">per month</div>
       </div>
-      <div class="tier-volume" data-i18n-html="tier.light.volume">Up to <span class="vol-currency">€</span>200k sponsoring volume</div>
+      <div class="tier-volume" data-i18n-html="tier.light.volume">Up to <span class="vol-currency">€</span>200k yearly sponsoring volume</div>
       <ul class="tier-features">
         <li data-i18n="tier.light.f1">2 users</li>
         <li data-i18n="tier.light.f2">1 stadium plan</li>
-        <li data-i18n="tier.f3">Personal support</li>
+        <li data-i18n="tier.light.f3">Support</li>
         <li class="tier-feature-off" data-i18n="tier.light.f4">AI features</li>
         <li class="tier-feature-off" data-i18n="tier.light.f5">Interfaces</li>
       </ul>
@@ -1098,7 +1112,7 @@ footer {
         <div class="tier-price"><span class="currency-symbol">€ </span><span class="price-value" data-eur="350" data-chf="350">350</span></div>
         <div class="tier-period" data-i18n="tier.period">per month</div>
       </div>
-      <div class="tier-volume" data-i18n-html="tier.rookie.volume">Up to <span class="vol-currency">€</span>1M sponsoring volume</div>
+      <div class="tier-volume" data-i18n-html="tier.rookie.volume"><span class="vol-currency">€</span>200k – <span class="vol-currency">€</span>1M yearly sponsoring volume</div>
       <ul class="tier-features">
         <li data-i18n="tier.f1">Unlimited user access</li>
         <li data-i18n="tier.f2">Unlimited data</li>
@@ -1115,7 +1129,7 @@ footer {
         <div class="tier-price"><span class="currency-symbol">€ </span><span class="price-value" data-eur="750" data-chf="750">750</span></div>
         <div class="tier-period" data-i18n="tier.period">per month</div>
       </div>
-      <div class="tier-volume" data-i18n-html="tier.pro.volume"><span class="vol-currency">€</span>1M – <span class="vol-currency">€</span>2.5M sponsoring volume</div>
+      <div class="tier-volume" data-i18n-html="tier.pro.volume"><span class="vol-currency">€</span>1M – <span class="vol-currency">€</span>2.5M yearly sponsoring volume</div>
       <ul class="tier-features">
         <li data-i18n="tier.f1">Unlimited user access</li>
         <li data-i18n="tier.f2">Unlimited data</li>
@@ -1132,7 +1146,7 @@ footer {
         <div class="tier-price"><span class="currency-symbol">€ </span><span class="price-value" data-eur="1,500" data-chf="1,500">1,500</span></div>
         <div class="tier-period" data-i18n="tier.period">per month</div>
       </div>
-      <div class="tier-volume" data-i18n-html="tier.allstar.volume"><span class="vol-currency">€</span>2.5M – <span class="vol-currency">€</span>4.5M sponsoring volume</div>
+      <div class="tier-volume" data-i18n-html="tier.allstar.volume"><span class="vol-currency">€</span>2.5M – <span class="vol-currency">€</span>4.5M yearly sponsoring volume</div>
       <ul class="tier-features">
         <li data-i18n="tier.f1">Unlimited user access</li>
         <li data-i18n="tier.f2">Unlimited data</li>
@@ -1149,7 +1163,7 @@ footer {
         <div class="tier-price" data-i18n="tier.onrequest">On request</div>
         <div class="tier-period" data-i18n="tier.tailored">Tailored to your needs</div>
       </div>
-      <div class="tier-volume" data-i18n-html="tier.enterprise.volume">From <span class="vol-currency">€</span>4.5M sponsoring volume</div>
+      <div class="tier-volume" data-i18n-html="tier.enterprise.volume">From <span class="vol-currency">€</span>4.5M yearly sponsoring volume</div>
       <ul class="tier-features">
         <li data-i18n="tier.f1">Unlimited user access</li>
         <li data-i18n="tier.f2">Unlimited data</li>
@@ -1283,16 +1297,17 @@ const translations = {
     "tier.f4": "All functions",
     "tier.light.f1": "2 users",
     "tier.light.f2": "1 stadium plan",
+    "tier.light.f3": "Support",
     "tier.light.f4": "AI features",
     "tier.light.f5": "Interfaces",
     "tier.enterprise.f5": "Dedicated server",
     "tier.cta.start": "Get started",
     "tier.cta.contact": "Contact sales",
-    "tier.light.volume": "Up to <span class=\"vol-currency\">€</span>200k sponsoring volume",
-    "tier.rookie.volume": "Up to <span class=\"vol-currency\">€</span>1M sponsoring volume",
-    "tier.pro.volume": "<span class=\"vol-currency\">€</span>1M – <span class=\"vol-currency\">€</span>2.5M sponsoring volume",
-    "tier.allstar.volume": "<span class=\"vol-currency\">€</span>2.5M – <span class=\"vol-currency\">€</span>4.5M sponsoring volume",
-    "tier.enterprise.volume": "From <span class=\"vol-currency\">€</span>4.5M sponsoring volume",
+    "tier.light.volume": "Up to <span class=\"vol-currency\">€</span>200k yearly sponsoring volume",
+    "tier.rookie.volume": "<span class=\"vol-currency\">€</span>200k – <span class=\"vol-currency\">€</span>1M yearly sponsoring volume",
+    "tier.pro.volume": "<span class=\"vol-currency\">€</span>1M – <span class=\"vol-currency\">€</span>2.5M yearly sponsoring volume",
+    "tier.allstar.volume": "<span class=\"vol-currency\">€</span>2.5M – <span class=\"vol-currency\">€</span>4.5M yearly sponsoring volume",
+    "tier.enterprise.volume": "From <span class=\"vol-currency\">€</span>4.5M yearly sponsoring volume",
     
     "pricing.finalcta.title": "Find the right <span class=\"accent\">tier</span> for your operation.",
     "pricing.finalcta.description": "Book a 30-minute demo and let's figure out together which plan fits your sponsoring volume best.",
@@ -1331,16 +1346,17 @@ const translations = {
     "tier.f4": "Alle Funktionen",
     "tier.light.f1": "2 Nutzer",
     "tier.light.f2": "1 Stadionplan",
+    "tier.light.f3": "Support",
     "tier.light.f4": "KI-Funktionen",
     "tier.light.f5": "Schnittstellen",
     "tier.enterprise.f5": "Dedizierter Server",
     "tier.cta.start": "Loslegen",
     "tier.cta.contact": "Sales kontaktieren",
-    "tier.light.volume": "Bis <span class=\"vol-currency\">€</span>200k Sponsoringvolumen",
-    "tier.rookie.volume": "Bis <span class=\"vol-currency\">€</span>1 Mio. Sponsoringvolumen",
-    "tier.pro.volume": "<span class=\"vol-currency\">€</span>1 Mio. – <span class=\"vol-currency\">€</span>2,5 Mio. Sponsoringvolumen",
-    "tier.allstar.volume": "<span class=\"vol-currency\">€</span>2,5 Mio. – <span class=\"vol-currency\">€</span>4,5 Mio. Sponsoringvolumen",
-    "tier.enterprise.volume": "Ab <span class=\"vol-currency\">€</span>4,5 Mio. Sponsoringvolumen",
+    "tier.light.volume": "Bis <span class=\"vol-currency\">€</span>200k jährliches Sponsoringvolumen",
+    "tier.rookie.volume": "<span class=\"vol-currency\">€</span>200k – <span class=\"vol-currency\">€</span>1 Mio. jährliches Sponsoringvolumen",
+    "tier.pro.volume": "<span class=\"vol-currency\">€</span>1 Mio. – <span class=\"vol-currency\">€</span>2,5 Mio. jährliches Sponsoringvolumen",
+    "tier.allstar.volume": "<span class=\"vol-currency\">€</span>2,5 Mio. – <span class=\"vol-currency\">€</span>4,5 Mio. jährliches Sponsoringvolumen",
+    "tier.enterprise.volume": "Ab <span class=\"vol-currency\">€</span>4,5 Mio. jährliches Sponsoringvolumen",
     
     "pricing.finalcta.title": "Finde den richtigen <span class=\"accent\">Plan</span> für deine Organisation.",
     "pricing.finalcta.description": "Buche eine 30-minütige Demo und lass uns gemeinsam herausfinden, welcher Plan am besten zu eurem Sponsoringvolumen passt.",
