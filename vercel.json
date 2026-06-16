@@ -1,6 +1,11 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "rewrites": [
+    { "source": "/blog", "destination": "https://paktum-blog.vercel.app/blog" },
+    { "source": "/blog/:path*", "destination": "https://paktum-blog.vercel.app/blog/:path*" },
+    { "source": "/_astro/:path*", "destination": "https://paktum-blog.vercel.app/_astro/:path*" }
+  ],
   "headers": [
     {
       "source": "/(.*)",
