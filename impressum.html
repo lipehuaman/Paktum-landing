@@ -550,6 +550,27 @@ footer {
 .swiss-made:hover img { opacity: 1; }
 
 </style>
+<style>
+/* ===== Language dropdown selector ===== */
+.nav-lang { position: relative; display: flex; align-items: center; }
+.lang-trigger { display: inline-flex; align-items: center; gap: 6px; background: transparent; border: none; cursor: pointer; color: rgba(244,242,238,0.7); font-family: var(--font-mono); font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 8px; border-radius: 100px; transition: color 0.2s; }
+.lang-trigger:hover { color: #fff; }
+.lang-trigger .lang-globe { width: 15px; height: 15px; opacity: 0.7; flex-shrink: 0; }
+.lang-trigger .lang-caret { width: 9px; height: 9px; opacity: 0.6; flex-shrink: 0; transition: transform 0.2s, color 0.2s; }
+.nav-lang.open .lang-trigger .lang-caret, .lang-floating.open .lang-trigger .lang-caret { transform: rotate(180deg); color: var(--color-primary); opacity: 1; }
+.lang-menu { position: absolute; top: calc(100% + 8px); right: 0; min-width: 140px; background: #15101F; border: 1px solid rgba(244,242,238,0.12); border-radius: 12px; padding: 4px; display: none; flex-direction: column; box-shadow: 0 12px 32px rgba(10,6,18,0.4); z-index: 200; }
+.nav-lang.open .lang-menu, .lang-floating.open .lang-menu { display: flex; }
+.lang-menu .lang-btn { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 9px 12px; border-radius: 8px; color: rgba(244,242,238,0.7); text-decoration: none; font-family: inherit; font-size: 13px; font-weight: 400; letter-spacing: 0; text-transform: none; transition: background 0.15s, color 0.15s; }
+.lang-menu .lang-btn:hover { background: rgba(255,255,255,0.06); color: #fff; }
+.lang-menu .lang-btn.active { color: var(--color-primary); font-weight: 500; background: rgba(151,14,251,0.12); }
+.lang-menu .lang-check { width: 14px; height: 14px; opacity: 0; flex-shrink: 0; }
+.lang-menu .lang-btn.active .lang-check { opacity: 1; }
+.lang-floating { position: fixed; bottom: 16px; right: 16px; z-index: 101; display: none; padding: 0; background: transparent; border: none; box-shadow: none; }
+.lang-floating .lang-trigger { background: rgba(10,6,18,0.92); border: 1px solid rgba(244,242,238,0.15); box-shadow: 0 8px 24px rgba(10,6,18,0.25); padding: 8px 14px; }
+.lang-floating .lang-menu { top: auto; bottom: calc(100% + 8px); right: 0; }
+@media (max-width: 900px) { .lang-floating { display: flex; } }
+body.menu-open .lang-floating { display: none; }
+</style>
 </head>
 <body>
 
@@ -567,9 +588,12 @@ footer {
   </ul>
   <div class="nav-actions">
     <div class="nav-lang">
-      <a href="#" class="lang-btn" data-lang="en">EN</a>
-      <span class="nav-lang-sep">/</span>
-      <a href="#" class="lang-btn active" data-lang="de">DE</a>
+      <button type="button" class="lang-trigger" aria-haspopup="true" aria-expanded="false" aria-label="Sprache wählen"><svg class="lang-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 16 0 18M12 3c-2.5 2.5-2.5 16 0 18"/></svg><span class="lang-current">DE</span><svg class="lang-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+      <div class="lang-menu">
+        <a href="#" class="lang-btn" data-lang="de"><span>Deutsch</span><svg class="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg></a>
+        <a href="#" class="lang-btn" data-lang="en"><span>English</span><svg class="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg></a>
+        <a href="#" class="lang-btn" data-lang="es"><span>Español</span><svg class="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg></a>
+      </div>
     </div>
     <a href="/book-a-demo" class="btn btn-primary" data-i18n="nav.cta">Book a demo</a>
     <button class="hamburger-btn" aria-label="Toggle menu" aria-expanded="false">
@@ -596,9 +620,12 @@ footer {
 
 <!-- Floating lang toggle (mobile only) -->
 <div class="lang-floating">
-  <a href="#" class="lang-btn" data-lang="en">EN</a>
-  <span class="nav-lang-sep">/</span>
-  <a href="#" class="lang-btn active" data-lang="de">DE</a>
+  <button type="button" class="lang-trigger" aria-haspopup="true" aria-expanded="false" aria-label="Sprache wählen"><svg class="lang-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 16 0 18M12 3c-2.5 2.5-2.5 16 0 18"/></svg><span class="lang-current">DE</span><svg class="lang-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+  <div class="lang-menu">
+    <a href="#" class="lang-btn" data-lang="de"><span>Deutsch</span><svg class="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg></a>
+    <a href="#" class="lang-btn" data-lang="en"><span>English</span><svg class="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg></a>
+    <a href="#" class="lang-btn" data-lang="es"><span>Español</span><svg class="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg></a>
+  </div>
 </div>
 
 <!-- ============ HERO ============ -->
@@ -760,6 +787,36 @@ const translations = {
     "footer.col1.l2": "Preise",
     "footer.col2.title": "Rechtliches",
     "footer.col2.l1": "Impressum"
+  },
+  es: {
+    "nav.product": "Producto",
+    "nav.features": "Funciones",
+    "nav.value": "Valor",
+    "nav.pricing": "Precios",
+    "nav.about": "Nosotros",
+    "nav.cta": "Reservar una demo",
+    "impressum.tag": "Legal",
+    "impressum.title": "Aviso legal",
+    "impressum.subtitle": "KLTechnologies GmbH",
+    "impressum.responsible.title": "Entidad responsable",
+    "impressum.responsible.country": "Suiza",
+    "impressum.responsible.email": "Email",
+    "impressum.representatives.title": "Representantes autorizados",
+    "impressum.companyname.label": "Nombre de la empresa",
+    "impressum.disclaimer.title": "Descargo de responsabilidad",
+    "impressum.disclaimer.p1": "El autor no asume ninguna responsabilidad por la corrección, exactitud, actualidad, fiabilidad e integridad de la información.",
+    "impressum.disclaimer.p2": "Se excluyen las reclamaciones de responsabilidad contra el autor por daños materiales o inmateriales derivados del acceso, el uso o la falta de uso de la información publicada, del uso indebido de la conexión o de fallos técnicos.",
+    "impressum.disclaimer.p3": "Todas las ofertas son sin compromiso. El autor se reserva expresamente el derecho de modificar, ampliar o eliminar partes de las páginas o la totalidad de la oferta sin previo aviso, o de suspender la publicación de forma temporal o definitiva.",
+    "impressum.links.title": "Descargo sobre contenidos y enlaces",
+    "impressum.links.p1": "Las referencias y enlaces a sitios web de terceros están fuera de nuestro ámbito de responsabilidad. Se rechaza toda responsabilidad sobre dichos sitios. El acceso y el uso de esos sitios corren por cuenta y riesgo del usuario.",
+    "impressum.copyright.title": "Declaración de derechos de autor",
+    "impressum.copyright.p1": "Los derechos de autor y todos los demás derechos sobre los contenidos, imágenes, fotos u otros archivos de este sitio web pertenecen exclusivamente a KLTechnologies GmbH o a los titulares de derechos mencionados específicamente. Para la reproducción de cualquier elemento, debe obtenerse previamente el consentimiento por escrito del titular de los derechos.",
+    "footer.tagline": "La navaja suiza para tu patrocinio. Un producto de KLTechnologies GmbH, con sede en Lucerna, Suiza.",
+    "footer.col1.title": "Producto",
+    "footer.col1.l1": "Funciones",
+    "footer.col1.l2": "Precios",
+    "footer.col2.title": "Legal",
+    "footer.col2.l1": "Aviso legal"
   }
 };
 
@@ -778,14 +835,34 @@ function setLanguage(lang) {
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
   });
+  document.querySelectorAll('.lang-current').forEach(el => { el.textContent = lang.toUpperCase(); });
   localStorage.setItem('paktum-lang', lang);
+  document.querySelectorAll('.nav-lang, .lang-floating').forEach(c => c.classList.remove('open'));
+  document.querySelectorAll('.lang-trigger').forEach(t => t.setAttribute('aria-expanded', 'false'));
 }
+
+document.querySelectorAll('.lang-trigger').forEach(trigger => {
+  trigger.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const container = trigger.closest('.nav-lang, .lang-floating');
+    const willOpen = !container.classList.contains('open');
+    document.querySelectorAll('.nav-lang, .lang-floating').forEach(c => c.classList.remove('open'));
+    document.querySelectorAll('.lang-trigger').forEach(t => t.setAttribute('aria-expanded', 'false'));
+    if (willOpen) { container.classList.add('open'); trigger.setAttribute('aria-expanded', 'true'); }
+  });
+});
 
 document.querySelectorAll('.lang-btn').forEach(btn => {
   btn.addEventListener('click', (e) => {
     e.preventDefault();
     setLanguage(btn.getAttribute('data-lang'));
   });
+});
+
+document.addEventListener('click', () => {
+  document.querySelectorAll('.nav-lang, .lang-floating').forEach(c => c.classList.remove('open'));
+  document.querySelectorAll('.lang-trigger').forEach(t => t.setAttribute('aria-expanded', 'false'));
 });
 
 const savedLang = localStorage.getItem('paktum-lang') || 'de';

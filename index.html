@@ -2151,6 +2151,27 @@ footer {
 }
 
 </style>
+<style>
+/* ===== Language dropdown selector ===== */
+.nav-lang { position: relative; display: flex; align-items: center; }
+.lang-trigger { display: inline-flex; align-items: center; gap: 6px; background: transparent; border: none; cursor: pointer; color: rgba(244,242,238,0.7); font-family: var(--font-mono); font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 8px; border-radius: 100px; transition: color 0.2s; }
+.lang-trigger:hover { color: #fff; }
+.lang-trigger .lang-globe { width: 15px; height: 15px; opacity: 0.7; flex-shrink: 0; }
+.lang-trigger .lang-caret { width: 9px; height: 9px; opacity: 0.6; flex-shrink: 0; transition: transform 0.2s, color 0.2s; }
+.nav-lang.open .lang-trigger .lang-caret, .lang-floating.open .lang-trigger .lang-caret { transform: rotate(180deg); color: var(--color-primary); opacity: 1; }
+.lang-menu { position: absolute; top: calc(100% + 8px); right: 0; min-width: 140px; background: #15101F; border: 1px solid rgba(244,242,238,0.12); border-radius: 12px; padding: 4px; display: none; flex-direction: column; box-shadow: 0 12px 32px rgba(10,6,18,0.4); z-index: 200; }
+.nav-lang.open .lang-menu, .lang-floating.open .lang-menu { display: flex; }
+.lang-menu .lang-btn { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 9px 12px; border-radius: 8px; color: rgba(244,242,238,0.7); text-decoration: none; font-family: inherit; font-size: 13px; font-weight: 400; letter-spacing: 0; text-transform: none; transition: background 0.15s, color 0.15s; }
+.lang-menu .lang-btn:hover { background: rgba(255,255,255,0.06); color: #fff; }
+.lang-menu .lang-btn.active { color: var(--color-primary); font-weight: 500; background: rgba(151,14,251,0.12); }
+.lang-menu .lang-check { width: 14px; height: 14px; opacity: 0; flex-shrink: 0; }
+.lang-menu .lang-btn.active .lang-check { opacity: 1; }
+.lang-floating { position: fixed; bottom: 16px; right: 16px; z-index: 101; display: none; padding: 0; background: transparent; border: none; box-shadow: none; }
+.lang-floating .lang-trigger { background: rgba(10,6,18,0.92); border: 1px solid rgba(244,242,238,0.15); box-shadow: 0 8px 24px rgba(10,6,18,0.25); padding: 8px 14px; }
+.lang-floating .lang-menu { top: auto; bottom: calc(100% + 8px); right: 0; }
+@media (max-width: 900px) { .lang-floating { display: flex; } }
+body.menu-open .lang-floating { display: none; }
+</style>
 </head>
 <body>
 
@@ -2168,9 +2189,12 @@ footer {
   </ul>
   <div class="nav-actions">
     <div class="nav-lang">
-      <a href="#" class="lang-btn" data-lang="en">EN</a>
-      <span class="nav-lang-sep">/</span>
-      <a href="#" class="lang-btn active" data-lang="de">DE</a>
+      <button type="button" class="lang-trigger" aria-haspopup="true" aria-expanded="false" aria-label="Sprache wählen"><svg class="lang-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 16 0 18M12 3c-2.5 2.5-2.5 16 0 18"/></svg><span class="lang-current">DE</span><svg class="lang-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+      <div class="lang-menu">
+        <a href="#" class="lang-btn" data-lang="de"><span>Deutsch</span><svg class="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg></a>
+        <a href="#" class="lang-btn" data-lang="en"><span>English</span><svg class="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg></a>
+        <a href="#" class="lang-btn" data-lang="es"><span>Español</span><svg class="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg></a>
+      </div>
     </div>
     <a href="/book-a-demo" class="btn btn-primary" data-i18n="nav.cta">Book a demo</a>
     <button class="hamburger-btn" aria-label="Toggle menu" aria-expanded="false">
@@ -2197,9 +2221,12 @@ footer {
 
 <!-- Floating lang toggle (mobile only) -->
 <div class="lang-floating">
-  <a href="#" class="lang-btn" data-lang="en">EN</a>
-  <span class="nav-lang-sep">/</span>
-  <a href="#" class="lang-btn active" data-lang="de">DE</a>
+  <button type="button" class="lang-trigger" aria-haspopup="true" aria-expanded="false" aria-label="Sprache wählen"><svg class="lang-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 16 0 18M12 3c-2.5 2.5-2.5 16 0 18"/></svg><span class="lang-current">DE</span><svg class="lang-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+  <div class="lang-menu">
+    <a href="#" class="lang-btn" data-lang="de"><span>Deutsch</span><svg class="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg></a>
+    <a href="#" class="lang-btn" data-lang="en"><span>English</span><svg class="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg></a>
+    <a href="#" class="lang-btn" data-lang="es"><span>Español</span><svg class="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg></a>
+  </div>
 </div>
 
 <!-- ============ HERO ============ -->
@@ -3244,38 +3271,145 @@ const translations = {
     "mockup3.status.sent": "Versendet",
     "mockup3.status.due": "Fällig",
     "mockup3.btn.pay": "Zahlen"
+  },
+  es: {
+    "nav.product": "Producto",
+    "nav.features": "Funciones",
+    "nav.value": "Valor",
+    "nav.pricing": "Precios",
+    "nav.about": "Nosotros",
+    "nav.cta": "Reservar una demo",
+    "hero.title": "La navaja suiza<br>para la gestión de tu<br><span class=\"accent\">patrocinio</span>.",
+    "hero.trust": "→ Usado por clubes deportivos, agencias de marketing, ligas y federaciones",
+    "hero.description": "Paktum reúne por primera vez la <strong>gestión de partners</strong>, la <strong>gestión de derechos y contratos</strong> y la <strong>generación de facturas</strong> en una sola plataforma. Hecho para el deporte.",
+    "hero.cta1": "Reservar una demo",
+    "hero.cta2": "Ver cómo funciona",
+    "problem.tag": "01 / La realidad",
+    "problem.title": "El patrocinio hoy es <span class=\"strike\">ordenado</span><br><span class=\"accent\">caos en Excel</span>.",
+    "problem.card1.title": "Potencial<br>sin explotar.",
+    "problem.card1.text": "La falta de transparencia sobre los derechos y el uso del inventario, a nivel de jornada y de temporada, hace perder potencial de ingresos.",
+    "problem.card2.title": "Mucho trabajo<br>manual.",
+    "problem.card2.text": "Desde crear ofertas hasta redactar contratos y facturar, los procesos manuales consumen muchos recursos.",
+    "problem.card3.title": "Alto riesgo<br>de error.",
+    "problem.card3.text": "La falta de estructura y trazabilidad genera errores en la documentación, la gestión de partners y la facturación.",
+    "bridge.text": "Organiza tu patrocinio.<br><span class=\"underline\">Con Paktum</span>.",
+    "features.tag": "02 / Tu gestión de patrocinios",
+    "features.title": "Todo en <span class=\"accent\">un solo lugar</span>.",
+    "feature1.num": "Módulo 01",
+    "feature1.title": "Todos los derechos<br>de un <span class=\"accent\">vistazo</span>.",
+    "feature1.subtitle": "Gestión de derechos e inventario",
+    "feature1.description": "Mantén todos los espacios de patrocinio de tu estadio bajo control en tiempo real. Planifica el uso por jornada y temporada de forma visual, y genera playlists para pantallas LED y displays digitales.",
+    "feature1.li1": "Uso por jornada y temporada",
+    "feature1.li2": "Planos de posición visuales para estadios, circuitos y más",
+    "feature1.li3": "Playlists para pantallas LED y displays digitales",
+    "feature2.num": "Módulo 02",
+    "feature2.title": "Contratos y<br>documentos en <span class=\"accent\">segundos</span>.",
+    "feature2.subtitle": "Gestión de contratos y documentos",
+    "feature2.description": "Usa tus propias plantillas como base. Gestiona presupuestos, canjes y ejecuciones, todo en una sola plataforma.",
+    "feature2.li1": "Tus plantillas como base",
+    "feature2.li2": "Condiciones de liga y previsiones",
+    "feature2.li3": "Canjes y gestión de ejecución",
+    "feature3.num": "Módulo 03",
+    "feature3.title": "Facturación en<br><span class=\"accent\">piloto automático</span>.",
+    "feature3.subtitle": "Módulo de facturación y control",
+    "feature3.description": "Facturación automática en las fechas de vencimiento, control en tiempo real y previsiones con conexión a tu software de contabilidad.",
+    "feature3.li1": "Generación automática de facturas",
+    "feature3.li2": "Control de gestión y previsiones",
+    "feature3.li3": "Conexión con software de contabilidad",
+    "stats.tag": "03 / Valor",
+    "stats.title": "Paktum<br>en <span class=\"accent\">números</span>.",
+    "stats.description": "Paktum ya da soporte a más de 25 equipos entre clubes, agencias, ligas y federaciones. Las métricas siguientes se recogieron en un club de la 2. Bundesliga durante la temporada 24/25.",
+    "stats.s1.label": "Menos esfuerzo de creación.",
+    "stats.s1.meta": "Por contrato",
+    "stats.s2.label": "Facturas encontradas que la temporada anterior quedaron sin facturar.",
+    "stats.s2.meta": "Equipo comercial",
+    "stats.s3.label": "Menos esfuerzo en la creación de facturas.",
+    "stats.s3.meta": "Equipo de contabilidad",
+    "faq.tag": "04 / FAQ",
+    "faq.title": "Preguntas<br><span class=\"accent\">frecuentes</span>.",
+    "faq.q1": "¿A partir de qué tamaño de club o agencia tiene sentido Paktum?",
+    "faq.a1": "Paktum está hecho para escalar. Trabajamos con clubes regionales y agencias de marketing, hasta clubes de las primeras ligas. La plataforma se adapta a cualquier tamaño y necesidad.",
+    "faq.q2": "¿Cuánto dura el onboarding?",
+    "faq.a2": "Un onboarding dura como máximo tres o cuatro semanas. Nuestro equipo te acompaña en la migración de datos desde hojas de Excel o las herramientas que usabas antes. En paralelo configuramos también las integraciones, como la conexión con tu sistema de contabilidad.",
+    "faq.q3": "¿Mis datos están seguros y cumplen el RGPD?",
+    "faq.a3": "Sí. Paktum se aloja en infraestructura de servidores en la UE y Suiza, y cumple todos los requisitos del RGPD. Tus datos nunca salen de servidores europeos o suizos en ningún momento.",
+    "faq.q4": "¿Se puede integrar Paktum en mi conjunto de herramientas actual?",
+    "faq.a4": "Sí. Con nuestra interfaz de API podemos conectar cualquier tipo de herramienta. Ya sea un CRM (HubSpot, Salesforce, ...), sistemas de contabilidad (Bexio, DATEV, Abacus, Lexware, ...) u otras herramientas. Contáctanos para analizar juntos tu ecosistema de sistemas.",
+    "faq.q5": "¿Pueden mis datos servir para informes ESG y CSRD?",
+    "faq.a5": "Paktum captura los datos que necesitas para los informes CSRD y las divulgaciones ESG, y los pone a disposición en formatos de exportación listos para auditoría.",
+    "finalcta.title": "¿Listo para liberar todo el potencial de tu <span class=\"accent\">patrocinio</span>?",
+    "finalcta.description": "Reserva una demo de 30 minutos y descubre cómo Paktum puede llevar tu gestión de patrocinios al siguiente nivel.",
+    "finalcta.cta1": "Reservar una demo",
+    "finalcta.cta2": "Hablar con ventas",
+    "footer.tagline": "La navaja suiza para tu patrocinio. Un producto de KLTechnologies GmbH, con sede en Lucerna, Suiza.",
+    "footer.col1.title": "Producto",
+    "footer.col1.l1": "Funciones",
+    "footer.col1.l2": "Precios",
+    "footer.col2.title": "Legal",
+    "footer.col2.l1": "Aviso legal",
+    "mockup1.title": "Plano del estadio",
+    "mockup1.subtitle": "Vista de reservas en vivo",
+    "mockup1.season": "Temporada 25/26 ▾",
+    "mockup1.btn": "Abrir editor",
+    "mockup2.title": "Productos e inventario",
+    "mockup2.subtitle": "Inventario disponible por temporada",
+    "mockup2.season": "Temporada ▾",
+    "mockup2.btn": "+ Añadir producto",
+    "mockup2.col.name": "Nombre",
+    "mockup2.col.group": "Grupo",
+    "mockup2.col.available": "Disponible (temporada)",
+    "mockup2.alert.title": "Baja utilización detectada",
+    "mockup2.alert.text": "Valla/Cartel está solo al 63% — quedan 37 espacios disponibles esta temporada.",
+    "mockup3.title": "Facturación y control",
+    "mockup3.subtitle": "Resumen Q1 2026",
+    "mockup3.quarter": "Este trimestre ▾",
+    "mockup3.btn": "+ Nueva factura",
+    "mockup3.revenue": "Ingresos",
+    "mockup3.revenue.meta": "↑ 18,4% vs. trimestre anterior",
+    "mockup3.outstanding": "Pendiente",
+    "mockup3.outstanding.meta": "5 facturas pendientes",
+    "mockup3.recent": "Facturas recientes",
+    "mockup3.viewall": "Ver todas →",
+    "mockup3.status.paid": "Pagada",
+    "mockup3.status.sent": "Enviada",
+    "mockup3.status.due": "Vencida",
+    "mockup3.btn.pay": "Pagar"
   }
 };
 
 function setLanguage(lang) {
   const dict = translations[lang];
   if (!dict) return;
-  
-  // Apply translations to elements with data-i18n (text only)
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     if (dict[key]) el.textContent = dict[key];
   });
-  
-  // Apply translations to elements with data-i18n-html (allows HTML like <br> and <span>)
   document.querySelectorAll('[data-i18n-html]').forEach(el => {
     const key = el.getAttribute('data-i18n-html');
     if (dict[key]) el.innerHTML = dict[key];
   });
-  
-  // Update html lang attribute
   document.documentElement.setAttribute('lang', lang);
-  
-  // Update active state on lang toggle
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
   });
-  
-  // Save preference
+  document.querySelectorAll('.lang-current').forEach(el => { el.textContent = lang.toUpperCase(); });
   localStorage.setItem('paktum-lang', lang);
+  document.querySelectorAll('.nav-lang, .lang-floating').forEach(c => c.classList.remove('open'));
+  document.querySelectorAll('.lang-trigger').forEach(t => t.setAttribute('aria-expanded', 'false'));
 }
 
-// Setup lang toggle click handlers
+document.querySelectorAll('.lang-trigger').forEach(trigger => {
+  trigger.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const container = trigger.closest('.nav-lang, .lang-floating');
+    const willOpen = !container.classList.contains('open');
+    document.querySelectorAll('.nav-lang, .lang-floating').forEach(c => c.classList.remove('open'));
+    document.querySelectorAll('.lang-trigger').forEach(t => t.setAttribute('aria-expanded', 'false'));
+    if (willOpen) { container.classList.add('open'); trigger.setAttribute('aria-expanded', 'true'); }
+  });
+});
+
 document.querySelectorAll('.lang-btn').forEach(btn => {
   btn.addEventListener('click', (e) => {
     e.preventDefault();
@@ -3283,7 +3417,11 @@ document.querySelectorAll('.lang-btn').forEach(btn => {
   });
 });
 
-// Load saved preference or default to EN
+document.addEventListener('click', () => {
+  document.querySelectorAll('.nav-lang, .lang-floating').forEach(c => c.classList.remove('open'));
+  document.querySelectorAll('.lang-trigger').forEach(t => t.setAttribute('aria-expanded', 'false'));
+});
+
 const savedLang = localStorage.getItem('paktum-lang') || 'de';
 setLanguage(savedLang);
 
