@@ -1,0 +1,11 @@
+# Paktum
+> Die Schweizer Software für die Verwaltung von Sponsoring. Partnerverwaltung, Rechte- und Vertragsverwaltung und Rechnungsstellung in einer Plattform. Ein Produkt der KLTechnologies GmbH, Luzern.
+
+## Core pages
+- [Home](https://www.paktum.ch/): Überblick über Paktum und die Plattform
+- [Pricing](https://www.paktum.ch/pricing): Preise nach Sponsoring-Volumen
+- [About](https://www.paktum.ch/about): Team und Unternehmen
+- [Blog](https://www.paktum.ch/blog): Insights rund um Sponsoring-Management
+
+## Contact
+- Book a demo: https://www.paktum.ch/book-a-demo
