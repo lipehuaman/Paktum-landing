@@ -49,7 +49,7 @@
   --gradient-dark: linear-gradient(180deg, #1F0F3D 0%, #0A0612 100%);
   --gradient-glow: radial-gradient(ellipse at top, rgba(151, 14, 251, 0.25) 0%, transparent 55%);
   --font-display: 'forma-djr-display', 'forma-djr-text', 'Inter', 'Helvetica Neue', 'Arial', system-ui, sans-serif;
-  --font-mono: 'forma-djr-display', 'forma-djr-text', 'Inter', 'Helvetica Neue', 'Arial', system-ui, sans-serif;
+  --font-mono: 'forma-djr-text', 'Inter', 'Helvetica Neue', 'Arial', system-ui, sans-serif;
   --container: 1320px;
 }
 
@@ -57,7 +57,7 @@
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: var(--font-display);
+  font-family: var(--font-mono);
   background: var(--color-bg-base);
   color: var(--color-text-primary);
   -webkit-font-smoothing: antialiased;
@@ -2145,7 +2145,10 @@ footer {
   }
 }
 
-</style>
+
+      /* Hibrido: titulares en Display, cuerpo y navbar en Text */
+      h1, h2, h3, .section-title-xl, .bridge-text, .stat-card .stat-num, .testimonial-text, .faq-question { font-family: var(--font-display); }
+    </style>
 <style>
 /* ===== Language dropdown selector ===== */
 .nav-lang { position: relative; display: flex; align-items: center; }
