@@ -1,6 +1,17 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    { "source": "/home", "destination": "/", "permanent": true },
+    { "source": "/about-us", "destination": "/about", "permanent": true },
+    { "source": "/contact", "destination": "/book-a-demo", "permanent": true },
+    { "source": "/contacts", "destination": "/book-a-demo", "permanent": true },
+    { "source": "/contacts/home", "destination": "/book-a-demo", "permanent": true },
+    { "source": "/privacy-policy", "destination": "/impressum", "permanent": true },
+    { "source": "/data-protection", "destination": "/impressum", "permanent": true },
+    { "source": "/paktum_for_leagues", "destination": "/", "permanent": true },
+    { "source": "/paktum_for_agencys", "destination": "/", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/blog", "destination": "https://paktum-blog.vercel.app/blog" },
     { "source": "/blog/:path*", "destination": "https://paktum-blog.vercel.app/blog/:path*" },
