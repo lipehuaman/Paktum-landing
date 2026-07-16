@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://www.paktum.ch/sitemap.xml
+Sitemap: https://www.paktum.ch/blog/sitemap.xml
