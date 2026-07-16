@@ -1203,7 +1203,7 @@ body.menu-open .lang-floating { display: none; }
 <div class="tier-card featured">
 <span class="tier-badge">All-Star</span>
 <div class="tier-price-block">
-<div class="tier-price"><span class="currency-symbol">€ </span><span class="price-value" data-chf="1,500" data-eur="1,500">1,500</span></div>
+<div class="tier-price"><span class="currency-symbol">€ </span><span class="price-value" data-chf="1,500" data-eur="1,500">1.500</span></div>
 <div class="tier-period" data-i18n="tier.period">pro Monat</div>
 </div>
 <div class="tier-volume" data-i18n-html="tier.allstar.volume"><span class="vol-currency">€</span>2,5 Mio. – <span class="vol-currency">€</span>4,5 Mio. jährliches Sponsoringvolumen</div>
@@ -1297,7 +1297,7 @@ function applyCurrency(currency) {
     // Strip any existing separators, keep only digits
     const digits = String(raw).replace(/[,.']/g, '');
     if (digits.length <= 3) return digits;
-    const sep = curr === 'CHF' ? "'" : ',';
+    const sep = curr === 'CHF' ? "'" : '.';
     return digits.replace(/\B(?=(\d{3})+(?!\d))/g, sep);
   }
   
