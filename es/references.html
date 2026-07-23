@@ -857,11 +857,13 @@ body.menu-open .lang-floating { display: none; }
 .ref-stat span{display:block;margin-top:6px;font-size:13px;text-transform:uppercase;
  letter-spacing:.08em;color:var(--color-text-muted)}
 
-.ref-section{padding:44px 0 110px}
-.map-card{position:relative;background:var(--color-bg-surface);border:1px solid var(--color-border);
- border-radius:28px;padding:26px 26px 18px;max-width:840px;margin:0 auto}
-.map-card h2{font-size:17px;font-weight:700;margin-bottom:4px}
-.map-card .map-sub{font-size:13px;color:var(--color-text-muted);margin-bottom:6px}
+.ref-section{padding:44px 0 16px}
+.map-band{margin:0 16px;background:var(--color-bg-surface);border:1px solid var(--color-border);
+ border-radius:48px;padding:72px 0 56px;overflow:hidden}
+.map-band .band-head{max-width:var(--container);margin:0 auto;padding:0 32px;text-align:center}
+.map-band h2{font-family:var(--font-display);font-size:clamp(24px,3vw,34px);font-weight:700;line-height:1.15}
+.map-band .map-sub{margin-top:8px;font-size:14px;color:var(--color-text-muted)}
+.map-card{position:relative;max-width:860px;margin:28px auto 0;padding:0 32px}
 .dach-map{width:100%;height:auto;display:block;overflow:hidden;border-radius:16px;
  background:var(--color-bg-base)}
 .map-other path{fill:#E7E4E0;stroke:var(--color-bg-surface);stroke-width:1.2;pointer-events:none}
@@ -893,10 +895,13 @@ body.menu-open .lang-floating { display: none; }
 .tip-cat{margin-top:2px;font-size:12px;font-weight:600;color:#D3A0FF}
 .tip-desc{margin-top:11px;font-size:13px;line-height:1.45;color:rgba(244,242,238,.80)}
 
-.ref-cta{background:var(--color-ink);color:#F4F2EE;border-radius:28px;padding:58px 40px;
- text-align:center;max-width:840px;margin:0 auto 104px}
-.ref-cta h2{font-size:clamp(26px,3.4vw,40px);font-weight:700;line-height:1.1;color:#F4F2EE}
-.ref-cta p{margin:14px auto 26px;color:rgba(244,242,238,.7);max-width:48ch}
+.ref-cta{position:relative;overflow:hidden;background:var(--color-ink);color:#F4F2EE;
+ border-radius:48px;padding:110px 32px;text-align:center;margin:44px 16px 16px}
+.ref-cta::before{content:'';position:absolute;inset:0;
+ background:radial-gradient(ellipse at top, rgba(151,14,251,.3) 0%, transparent 60%);pointer-events:none}
+.ref-cta>*{position:relative;z-index:1}
+.ref-cta h2{font-size:clamp(28px,3.6vw,44px);font-weight:700;line-height:1.1;color:#F4F2EE}
+.ref-cta p{margin:16px auto 28px;color:rgba(244,242,238,.7);max-width:48ch}
 
 @media (max-width:900px){
   .ref-stats{gap:40px}
@@ -904,9 +909,11 @@ body.menu-open .lang-floating { display: none; }
 }
 @media (max-width:640px){
   .ref-hero{padding-top:118px}
+  .map-band{margin:0 10px;border-radius:28px;padding:44px 0 32px}
+  .map-card{padding:0 16px}
+  .ref-cta{margin:32px 10px 10px;border-radius:28px;padding:72px 20px}
   .ref-stats{gap:30px}
   .ref-stat b{font-size:34px}
-  .map-card{padding:18px 16px 12px;border-radius:22px}
   .map-tip{width:214px;padding:13px 14px}
   .tip-desc{font-size:12.5px}
 }
@@ -997,10 +1004,12 @@ body.menu-open .lang-floating { display: none; }
 </div>
 </header>
 <section class="ref-section">
-<div class="container">
-<div class="map-card" id="refMapCard">
+<div class="map-band">
+<div class="band-head">
 <h2>Dónde están nuestros clientes</h2>
 <p class="map-sub">Pasa por un punto para ver la organización.</p>
+</div>
+<div class="map-card" id="refMapCard">
 <svg class="dach-map" viewBox="0 0 900 780" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="mapTitle">
   <title id="mapTitle">Standorte unserer Kunden in der Schweiz, Deutschland und Österreich</title>
   <g class="map-other">
@@ -1119,12 +1128,10 @@ body.menu-open .lang-floating { display: none; }
 </div>
 </div>
 </section>
-<section class="container">
-<div class="ref-cta">
+<section class="ref-cta">
 <h2>Bienvenido al club.</h2>
 <p>Descubre en 30 minutos cómo Paktum simplifica tu patrocinio.</p>
 <a class="btn btn-primary" href="/es/book-a-demo">Reservar una demo</a>
-</div>
 </section>
 <footer>
 <div class="footer-container">
