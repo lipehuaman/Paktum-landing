@@ -851,31 +851,53 @@ body.menu-open .lang-floating { display: none; }
  letter-spacing:-.01em;max-width:17ch;margin:0 auto}
 .ref-hero .ref-lead{margin-top:22px;font-size:19px;line-height:1.5;
  color:var(--color-text-secondary);max-width:58ch;margin-left:auto;margin-right:auto}
-.ref-stats{display:flex;gap:56px;margin-top:38px;flex-wrap:wrap;justify-content:center}
-.ref-stat b{display:block;font-family:var(--font-display);font-size:44px;font-weight:700;line-height:1;
- color:var(--color-ink)}
-.ref-stat span{display:block;margin-top:6px;font-size:13px;text-transform:uppercase;
- letter-spacing:.08em;color:var(--color-text-muted)}
+
+/* Hero stats — bordered pill, gradient numerals, divider rules */
+.ref-stats{display:inline-flex;flex-wrap:wrap;justify-content:center;margin-top:44px;
+ background:var(--color-bg-surface);border:1px solid var(--color-border);border-radius:26px;
+ box-shadow:0 20px 60px rgba(10,6,18,.07);overflow:hidden}
+.ref-stat{padding:26px 52px;text-align:center}
+.ref-stat + .ref-stat{border-left:1px solid var(--color-border)}
+.ref-stat b{display:block;font-family:var(--font-display);font-size:clamp(48px,6vw,70px);font-weight:700;
+ line-height:.92;letter-spacing:-.03em;
+ background:linear-gradient(140deg,var(--color-ink) 28%,var(--color-primary));
+ -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.ref-stat span{display:block;margin-top:12px;font-size:12px;text-transform:uppercase;
+ letter-spacing:.12em;font-weight:600;color:var(--color-text-muted)}
 
 .ref-section{padding:44px 0 16px}
-.map-band{margin:0 16px;background:var(--color-bg-surface);border:1px solid var(--color-border);
- border-radius:48px;padding:72px 0 56px;overflow:hidden}
-.map-band .band-head{max-width:var(--container);margin:0 auto;padding:0 32px;text-align:center}
-.map-band h2{font-family:var(--font-display);font-size:clamp(24px,3vw,34px);font-weight:700;line-height:1.15}
-.map-band .map-sub{margin-top:8px;font-size:14px;color:var(--color-text-muted)}
-.map-card{position:relative;max-width:860px;margin:28px auto 0;padding:0 32px}
-.dach-map{width:100%;height:auto;display:block;overflow:hidden;border-radius:16px;
- background:var(--color-bg-base)}
-.map-other path{fill:#E7E4E0;stroke:var(--color-bg-surface);stroke-width:1.2;pointer-events:none}
-.map-dach path{fill:rgba(151,14,251,.10);stroke:var(--color-primary);stroke-width:2.2;
+
+/* Map band — dark canvas with purple glow */
+.map-band{position:relative;overflow:hidden;margin:0 16px;
+ background:radial-gradient(ellipse 80% 60% at 50% 0%, rgba(151,14,251,.30) 0%, transparent 60%), var(--color-ink);
+ border:1px solid rgba(151,14,251,.22);border-radius:48px;padding:76px 0 64px}
+.map-band .band-head{position:relative;z-index:1;max-width:var(--container);margin:0 auto;padding:0 32px;text-align:center}
+.map-band h2{font-family:var(--font-display);font-size:clamp(24px,3vw,34px);font-weight:700;line-height:1.15;color:#F4F2EE}
+.map-band .map-sub{margin-top:8px;font-size:14px;color:rgba(244,242,238,.58)}
+.map-card{position:relative;z-index:1;max-width:1120px;margin:20px auto 0;padding:0 40px}
+.dach-map{width:100%;height:auto;display:block;overflow:hidden;border-radius:16px;background:transparent}
+.map-other path{fill:rgba(244,242,238,.045);stroke:rgba(244,242,238,.09);stroke-width:1;pointer-events:none}
+.map-dach path{fill:rgba(151,14,251,.16);stroke:var(--color-primary);stroke-width:2.2;
  stroke-linejoin:round;transition:fill .22s ease}
-.map-dach path:hover{fill:rgba(151,14,251,.24)}
+.map-dach path:hover{fill:rgba(151,14,251,.32)}
 .map-dot{cursor:pointer;outline:none}
-.dot-halo{fill:var(--color-primary);opacity:.14;transition:opacity .2s}
-.dot-core{fill:var(--color-primary);transition:r .2s}
-.map-dot:hover .dot-halo,.map-dot:focus-visible .dot-halo{opacity:.34}
-.map-dot:hover .dot-core,.map-dot:focus-visible .dot-core{r:8}
-.map-dot:focus-visible .dot-halo{opacity:.5}
+.dot-halo{fill:var(--color-primary);opacity:.18;transition:opacity .2s}
+.dot-core{fill:#B98CFF;transition:r .2s,fill .2s}
+.map-dot:hover .dot-halo,.map-dot:focus-visible .dot-halo,.map-dot.is-active .dot-halo{opacity:.4}
+.map-dot:hover .dot-core,.map-dot:focus-visible .dot-core,.map-dot.is-active .dot-core{r:8;fill:#fff}
+.map-dot:focus-visible .dot-halo{opacity:.55}
+
+/* Logo grid — white cards below the map */
+.ref-logos{position:relative;z-index:1;max-width:1120px;margin:40px auto 0;padding:0 40px;
+ display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:14px}
+.logo-card{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
+ background:#fff;border:1px solid rgba(244,242,238,.08);border-radius:18px;padding:24px 16px;
+ cursor:pointer;text-align:center;-webkit-appearance:none;appearance:none;
+ transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.logo-card img{height:42px;max-width:78%;width:auto;object-fit:contain}
+.logo-card span{font-size:11.5px;font-weight:600;line-height:1.25;color:var(--color-ink)}
+.logo-card:hover,.logo-card:focus-visible{transform:translateY(-5px);
+ box-shadow:0 18px 44px rgba(0,0,0,.4);border-color:var(--color-primary);outline:none}
 
 /* Tarjeta glass morado oscuro */
 .map-tip{position:absolute;z-index:6;width:262px;padding:16px 18px;border-radius:18px;
@@ -895,30 +917,36 @@ body.menu-open .lang-floating { display: none; }
 .tip-cat{margin-top:2px;font-size:12px;font-weight:600;color:#D3A0FF}
 .tip-desc{margin-top:11px;font-size:13px;line-height:1.45;color:rgba(244,242,238,.80)}
 
-.ref-cta{position:relative;overflow:hidden;background:var(--color-ink);color:#F4F2EE;
+/* CTA — inverted to light, mirroring the dark map band */
+.ref-cta{position:relative;overflow:hidden;background:var(--color-bg-surface);color:var(--color-ink);
+ border:1px solid var(--color-border);box-shadow:0 30px 80px rgba(10,6,18,.06);
  border-radius:48px;padding:110px 32px;text-align:center;margin:44px 16px 16px}
 .ref-cta::before{content:'';position:absolute;inset:0;
- background:radial-gradient(ellipse at top, rgba(151,14,251,.3) 0%, transparent 60%);pointer-events:none}
+ background:radial-gradient(ellipse at top, rgba(151,14,251,.12) 0%, transparent 60%);pointer-events:none}
 .ref-cta>*{position:relative;z-index:1}
-.ref-cta h2{font-size:clamp(28px,3.6vw,44px);font-weight:700;line-height:1.1;color:#F4F2EE}
-.ref-cta p{margin:16px auto 28px;color:rgba(244,242,238,.7);max-width:48ch}
+.ref-cta h2{font-size:clamp(28px,3.6vw,44px);font-weight:700;line-height:1.1;color:var(--color-ink)}
+.ref-cta p{margin:16px auto 28px;color:var(--color-text-secondary);max-width:48ch}
 
 @media (max-width:900px){
-  .ref-stats{gap:40px}
-  .map-card{max-width:100%}
+  .map-card,.ref-logos{max-width:100%}
 }
 @media (max-width:640px){
   .ref-hero{padding-top:118px}
-  .map-band{margin:0 10px;border-radius:28px;padding:44px 0 32px}
-  .map-card{padding:0 16px}
+  .ref-stats{display:flex;width:100%;margin-top:32px;border-radius:20px}
+  .ref-stat{flex:1;padding:18px 8px}
+  .ref-stat b{font-size:clamp(30px,9vw,42px)}
+  .ref-stat span{font-size:10px;letter-spacing:.04em}
+  .map-band{margin:0 10px;border-radius:28px;padding:44px 0 40px}
+  .map-card{padding:0 14px}
+  .ref-logos{padding:0 14px;margin-top:28px;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:10px}
+  .logo-card{padding:18px 12px;gap:10px}
+  .logo-card img{height:34px}
   .ref-cta{margin:32px 10px 10px;border-radius:28px;padding:72px 20px}
-  .ref-stats{gap:30px}
-  .ref-stat b{font-size:34px}
   .map-tip{width:214px;padding:13px 14px}
   .tip-desc{font-size:12.5px}
 }
 @media (prefers-reduced-motion:reduce){
-  .map-tip,.map-dach path,.dot-halo,.dot-core{transition:none}
+  .map-tip,.map-dach path,.dot-halo,.dot-core,.logo-card{transition:none}
 }
 </style>
 <link rel="alternate" hreflang="de" href="https://www.paktum.ch/references">
@@ -1010,7 +1038,7 @@ body.menu-open .lang-floating { display: none; }
 <p class="map-sub">Hover a dot to see the organisation.</p>
 </div>
 <div class="map-card" id="refMapCard">
-<svg class="dach-map" viewBox="0 0 900 780" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="mapTitle">
+<svg class="dach-map" viewBox="40 100 820 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="mapTitle">
   <title id="mapTitle">Standorte unserer Kunden in der Schweiz, Deutschland und Österreich</title>
   <g class="map-other">
     <path d="M768.7,877.7 L772.0,866.3 L769.4,863.7 L769.0,858.9 L772.3,850.9 L775.1,849.2 L775.7,839.4 L769.2,836.7 L765.8,837.2 L764.9,832.0 L767.2,824.6 L762.1,820.6 L777.7,799.1 L781.0,796.9 L784.0,805.8 L795.9,801.9 L800.1,804.6 L803.3,813.5 L812.2,816.0 L815.4,819.3 L819.6,831.6 L815.0,842.4 L815.7,847.7 L812.5,853.1 L817.0,858.8 L814.0,862.6 L815.1,866.7 L818.6,874.2 L821.6,874.5 L824.3,883.0 L827.7,883.5 L829.2,881.9 L835.0,883.8 L835.0,888.8 L838.0,894.6 L837.5,900.0 L833.7,904.3 L826.8,906.3 L821.7,922.3 L812.1,923.5 L806.4,927.3 L810.5,935.8 L809.2,937.2 L805.3,936.2 L806.5,939.9 L802.2,943.9 L792.3,941.9 L792.3,933.3 L787.0,925.1 L769.4,916.2 L762.4,906.9 L764.7,906.3 L768.0,911.3 L770.5,910.2 L769.5,900.0 L763.2,895.9 L767.7,885.2 L772.3,883.2 L771.9,880.2 L768.7,877.7 Z"/>
@@ -1126,6 +1154,19 @@ body.menu-open .lang-floating { display: none; }
 <p class="tip-desc" id="tipDesc"></p>
 </div>
 </div>
+<div class="ref-logos" id="refLogos">
+<button class="logo-card" data-club="fcz" type="button" aria-label="FC Zürich"><img alt="FC Zürich" src="/SVG%20Logos/FC_Zuerich.svg.png"/><span>FC Zürich</span></button>
+<button class="logo-card" data-club="bsv-bern" type="button" aria-label="BSV Bern"><img alt="BSV Bern" src="/SVG%20Logos/BSV_Bern.svg"/><span>BSV Bern</span></button>
+<button class="logo-card" data-club="tvb-stuttgart" type="button" aria-label="TVB Stuttgart"><img alt="TVB Stuttgart" src="/SVG%20Logos/TVB_Stuttgart.webp"/><span>TVB Stuttgart</span></button>
+<button class="logo-card" data-club="ssv-ulm" type="button" aria-label="SSV Ulm 1846 Fussball"><img alt="SSV Ulm 1846 Fussball" src="/SVG%20Logos/SSV_Ulm_1846_Fussball.svg.png"/><span>SSV Ulm 1846</span></button>
+<button class="logo-card" data-club="vfl-luebeck" type="button" aria-label="VfL Lübeck-Schwartau"><img alt="VfL Lübeck-Schwartau" src="/SVG%20Logos/VfL_Luebeck-Schwartau.svg"/><span>VfL Lübeck-Schwartau</span></button>
+<button class="logo-card" data-club="eisbaeren" type="button" aria-label="Eisbären Bremerhaven"><img alt="Eisbären Bremerhaven" src="/SVG%20Logos/EisbarenBremerhaven.png"/><span>Eisbären Bremerhaven</span></button>
+<button class="logo-card" data-club="bremer-fv" type="button" aria-label="Bremer Fussball-Verband"><img alt="Bremer Fussball-Verband" src="/SVG%20Logos/Bremer_Fussball-Verband.svg"/><span>Bremer Fussball-Verband</span></button>
+<button class="logo-card" data-club="saar-fv" type="button" aria-label="Saarländischer Fussball-Verband"><img alt="Saarländischer Fussball-Verband" src="/SVG%20Logos/Saarlaendischer_Fussball-Verband.png"/><span>Saarländischer FV</span></button>
+<button class="logo-card" data-club="galopp-muenchen" type="button" aria-label="Galopprennbahn München"><img alt="Galopprennbahn München" src="/SVG%20Logos/GalopprennbahnMunchen.png"/><span>Galopprennbahn München</span></button>
+<button class="logo-card" data-club="del2" type="button" aria-label="DEL2"><img alt="DEL2" src="/SVG%20Logos/DEL2.svg.png"/><span>DEL2</span></button>
+<button class="logo-card" data-club="vbl" type="button" aria-label="Volleyball Bundesliga"><img alt="Volleyball Bundesliga" src="/SVG%20Logos/Volleyball%20Bundesliga.png"/><span>Volleyball Bundesliga</span></button>
+</div>
 </div>
 </section>
 <section class="ref-cta">
@@ -1240,12 +1281,27 @@ document.addEventListener('click', function(){
   }
   function hide(){ tip.classList.remove('is-visible'); tip.setAttribute('aria-hidden','true'); }
 
+  var dotByClub = {};
+  Array.prototype.forEach.call(dots, function(d){ dotByClub[d.getAttribute('data-club')] = d; });
+
+  function activate(dot){ if(!dot) return; dot.classList.add('is-active'); show(dot); }
+  function deactivate(dot){ if(dot) dot.classList.remove('is-active'); hide(); }
+
   Array.prototype.forEach.call(dots, function(d){
-    d.addEventListener('mouseenter', function(){ show(d); });
-    d.addEventListener('focus', function(){ show(d); });
-    d.addEventListener('mouseleave', hide);
-    d.addEventListener('blur', hide);
-    d.addEventListener('keydown', function(e){ if(e.key==='Escape') hide(); });
+    d.addEventListener('mouseenter', function(){ activate(d); });
+    d.addEventListener('focus', function(){ activate(d); });
+    d.addEventListener('mouseleave', function(){ deactivate(d); });
+    d.addEventListener('blur', function(){ deactivate(d); });
+    d.addEventListener('keydown', function(e){ if(e.key==='Escape') deactivate(d); });
+  });
+
+  var logos = document.querySelectorAll('#refLogos .logo-card');
+  Array.prototype.forEach.call(logos, function(l){
+    var dot = dotByClub[l.getAttribute('data-club')];
+    l.addEventListener('mouseenter', function(){ activate(dot); });
+    l.addEventListener('focus', function(){ activate(dot); });
+    l.addEventListener('mouseleave', function(){ deactivate(dot); });
+    l.addEventListener('blur', function(){ deactivate(dot); });
   });
   window.addEventListener('scroll', hide, {passive:true});
 })();
