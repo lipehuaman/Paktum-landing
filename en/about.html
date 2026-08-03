@@ -245,6 +245,17 @@ body {
   grid-template-columns: repeat(3, 1fr);
 }
 
+/* Fila final: Rollo solo, centrado con el mismo ancho que una columna */
+.team-grid.ai-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0;
+}
+
+.team-grid.ai-row .team-card {
+  width: calc((100% - 64px) / 3);
+}
+
 .team-card {
   background: white;
   border: 1px solid var(--color-border);
@@ -571,8 +582,7 @@ footer {
   .container { padding: 0 24px; }
   .team-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
   .team-grid.bottom-row { grid-template-columns: repeat(2, 1fr); }
-  /* If 3 items in bottom-row, the 3rd one (Rollo) spans full width on tablet */
-  .team-grid.bottom-row .team-card.ai-card { grid-column: 1 / -1; }
+  .team-grid.ai-row .team-card { width: calc((100% - 24px) / 2); }
   .team-card { padding: 36px 28px; }
   .about-title { font-size: clamp(36px, 6vw, 72px); }
   .contact-title { font-size: clamp(36px, 6vw, 72px); }
@@ -610,6 +620,7 @@ footer {
   
   .team-section { padding: 40px 12px 64px; }
   .team-grid, .team-grid.bottom-row { grid-template-columns: 1fr; gap: 16px; }
+  .team-grid.ai-row .team-card { width: 100%; }
   .team-card { padding: 28px 24px; border-radius: 20px; }
   .team-photo { aspect-ratio: 1 / 1; border-radius: 14px; margin-bottom: 20px; }
   .team-name { font-size: 22px; margin-bottom: 4px; }
@@ -1040,6 +1051,26 @@ body.menu-open .lang-floating { display: none; }
           </a>
 </div>
 </div>
+<!-- Lucía Bernuy -->
+<div class="team-card">
+<div class="team-photo">
+<img alt="Lucía Bernuy" loading="lazy" src="/SVG%20Logos/Lucia_Bernuy.png"/>
+</div>
+<div class="team-name">Lucía Bernuy</div>
+<div class="team-role" data-i18n="team.lucia.role">Business Development Manager</div>
+<p class="team-bio" data-i18n="team.lucia.bio">Lucía leads Paktum's market development in Spain. She works with sports organisations to understand their sponsorship operations and help them modernise the way they manage them. Her background in strategic marketing and communications brings a customer-focused perspective and a strong emphasis on building long-term relationships.</p>
+<div class="team-links">
+<a class="team-link" href="mailto:lucia.bernuy@paktum.ch" title="Email">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </a>
+<a class="team-link" href="tel:+34692474729" title="Phone">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h2.28a2 2 0 011.94 1.51l.6 2.4a2 2 0 01-.5 1.92L8.09 10.34a11 11 0 005.57 5.57l1.51-1.23a2 2 0 011.92-.5l2.4.6A2 2 0 0121 16.72V19a2 2 0 01-2 2A16 16 0 013 5z"/></svg>
+          </a>
+</div>
+</div>
+</div>
+<!-- Fila final: Rollo (IA) -->
+<div class="team-grid ai-row">
 <!-- Rollo die Rolle (AI) -->
 <div class="team-card ai-card">
 <div class="team-photo rollo-photo">
