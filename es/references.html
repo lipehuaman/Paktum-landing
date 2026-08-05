@@ -847,10 +847,14 @@ body.menu-open .lang-floating { display: none; }
 .ref-hero{padding:150px 0 8px;text-align:center}
 .ref-hero .eyebrow{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;
  color:var(--color-primary);margin-bottom:16px}
-.ref-hero h1{font-size:clamp(38px,5.2vw,66px);font-weight:700;line-height:1.03;
- letter-spacing:-.01em;max-width:17ch;margin:0 auto}
-.ref-hero .ref-lead{margin-top:22px;font-size:19px;line-height:1.5;
- color:var(--color-text-secondary);max-width:58ch;margin-left:auto;margin-right:auto}
+.ref-hero h1{font-size:clamp(38px,6vw,72px);font-weight:700;line-height:1.06;
+ letter-spacing:-.01em;max-width:100%;margin:0 auto}
+.ref-hero h1 .accent{color:var(--color-primary)}
+/* One line on desktop: the size scales with the viewport so the sentence never
+   wraps; below ~900px it falls back to a readable, wrapping paragraph. */
+.ref-hero .ref-lead{margin-top:22px;font-size:clamp(15px,1.52vw,19px);line-height:1.5;
+ color:var(--color-text-secondary);max-width:100%;margin-left:auto;margin-right:auto;
+ text-wrap:balance}
 
 /* Hero stats — bordered pill, gradient numerals, divider rules */
 .ref-stats{display:inline-flex;flex-wrap:wrap;justify-content:center;margin-top:44px;
@@ -858,7 +862,7 @@ body.menu-open .lang-floating { display: none; }
  box-shadow:0 20px 60px rgba(10,6,18,.07);overflow:hidden}
 .ref-stat{padding:26px 52px;text-align:center}
 .ref-stat + .ref-stat{border-left:1px solid var(--color-border)}
-.ref-stat b{display:block;font-family:var(--font-display);font-size:clamp(48px,6vw,70px);font-weight:700;
+.ref-stat b{display:block;font-family:var(--font-display);font-size:clamp(54px,6.6vw,80px);font-weight:700;
  line-height:.92;letter-spacing:-.03em;
  background:linear-gradient(140deg,var(--color-ink) 28%,var(--color-primary));
  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
@@ -943,15 +947,24 @@ body.menu-open .lang-floating { display: none; }
   .ref-logos{grid-template-columns:repeat(5,minmax(0,1fr))}
 }
 @media (max-width:900px){
+  /* lead can no longer hold one line here — give it a comfortable measure back */
+  .ref-hero .ref-lead{font-size:17px;max-width:56ch}
+  .ref-stat{padding:22px 34px}
+}
+@media (max-width:900px){
   .map-card,.ref-logos{max-width:100%}
   .ref-logos{grid-template-columns:repeat(4,minmax(0,1fr))}
 }
 @media (max-width:640px){
   .ref-hero{padding-top:118px}
+  /* drop the forced two-line break: at this size it leaves an orphan word */
+  .ref-hero h1 br{display:none}
+  .ref-hero h1{text-wrap:balance}
   .ref-stats{display:flex;width:100%;margin-top:32px;border-radius:20px}
-  .ref-stat{flex:1;padding:18px 8px}
-  .ref-stat b{font-size:clamp(30px,9vw,42px)}
+  .ref-stat{flex:1;padding:18px 6px}
+  .ref-stat b{font-size:clamp(34px,10vw,48px)}
   .ref-stat span{font-size:10px;letter-spacing:.04em}
+  .ref-hero .ref-lead{font-size:16px;max-width:38ch}
   .map-band{margin:0 10px;border-radius:28px;padding:44px 0 40px}
   .map-card{padding:0 14px}
   .ref-logos{padding:0 14px;margin-top:28px;gap:10px;grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -1042,7 +1055,7 @@ body.menu-open .lang-floating { display: none; }
 <header class="ref-hero">
 <div class="container">
 <p class="eyebrow">Referencias</p>
-<h1>Clubes, federaciones y ligas que <span class="accent">trabajan con Paktum</span>.</h1>
+<h1>Clubes, federaciones y ligas <br/>que trabajan con <span class="accent">Paktum</span>.</h1>
 <p class="ref-lead">Desde clubes de fútbol suizos hasta ligas alemanas: estas organizaciones gestionan su patrocinio con Paktum.</p>
 <div class="ref-stats">
 <div class="ref-stat"><b>28</b><span>Organizaciones</span></div>
