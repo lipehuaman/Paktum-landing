@@ -878,7 +878,16 @@ body.menu-open .lang-floating { display: none; }
 .map-card::before{content:'';position:absolute;left:50%;top:47%;transform:translate(-50%,-50%);
  width:70%;height:74%;border-radius:50%;pointer-events:none;z-index:0;filter:blur(48px);
  background:radial-gradient(ellipse at center, rgba(151,14,251,.20) 0%, rgba(151,14,251,.06) 45%, transparent 72%)}
-.dach-map{position:relative;z-index:1;width:100%;height:auto;display:block;overflow:hidden;border-radius:16px;background:transparent}
+/* Height-driven size: the map never grows past ~62vh, so map + first logo row
+   always share the viewport. 1.3667 = viewBox aspect (820/600). */
+.dach-map{position:relative;z-index:1;width:100%;max-width:calc(62vh * 1.3667);height:auto;
+ margin-inline:auto;display:block;overflow:hidden;border-radius:16px;background:transparent;
+ -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 10%,#000 90%,transparent 100%),
+  linear-gradient(180deg,transparent 0,#000 4%,#000 96%,transparent 100%);
+ -webkit-mask-composite:source-in;
+ mask-image:linear-gradient(90deg,transparent 0,#000 10%,#000 90%,transparent 100%),
+  linear-gradient(180deg,transparent 0,#000 4%,#000 96%,transparent 100%);
+ mask-composite:intersect}
 .map-other path{fill:rgba(244,242,238,.045);stroke:rgba(244,242,238,.09);stroke-width:1;pointer-events:none}
 .map-dach path{fill:rgba(151,14,251,.16);stroke:var(--color-primary);stroke-width:2.2;
  stroke-linejoin:round;transition:fill .22s ease}
@@ -891,14 +900,14 @@ body.menu-open .lang-floating { display: none; }
 .map-dot:focus-visible .dot-halo{opacity:.55}
 
 /* Logo grid — white cards below the map */
-.ref-logos{position:relative;z-index:1;max-width:1120px;margin:40px auto 0;padding:0 40px;
- display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:14px}
-.logo-card{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
- background:#fff;border:1px solid rgba(244,242,238,.08);border-radius:18px;padding:24px 10px;
+.ref-logos{position:relative;z-index:1;max-width:1120px;margin:26px auto 0;padding:0 40px;
+ display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:12px}
+.logo-card{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;
+ background:#fff;border:1px solid rgba(244,242,238,.08);border-radius:15px;padding:13px 10px;
  cursor:pointer;text-align:center;-webkit-appearance:none;appearance:none;
  transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
-.logo-card img{height:42px;max-width:88%;width:auto;object-fit:contain}
-.logo-card span{font-size:11.5px;font-weight:600;line-height:1.25;color:var(--color-ink)}
+.logo-card img{height:34px;max-width:88%;width:auto;object-fit:contain}
+.logo-card span{font-size:11px;font-weight:600;line-height:1.2;color:var(--color-ink)}
 .logo-card:hover,.logo-card:focus-visible{transform:translateY(-5px);
  box-shadow:0 18px 44px rgba(0,0,0,.4);border-color:var(--color-primary);outline:none}
 
@@ -945,9 +954,11 @@ body.menu-open .lang-floating { display: none; }
   .ref-stat span{font-size:10px;letter-spacing:.04em}
   .map-band{margin:0 10px;border-radius:28px;padding:44px 0 40px}
   .map-card{padding:0 14px}
-  .ref-logos{padding:0 14px;margin-top:28px;gap:10px;grid-template-columns:repeat(3,minmax(0,1fr))}
-  .logo-card{padding:18px 8px;gap:10px}
-  .logo-card img{height:34px}
+  .ref-logos{padding:0 14px;margin-top:28px;gap:10px;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .logo-card{flex-direction:row;justify-content:flex-start;text-align:left;
+   padding:11px 12px;gap:10px;border-radius:14px}
+  .logo-card img{flex:0 0 44px;height:34px;max-width:44px}
+  .logo-card span{font-size:10.5px;line-height:1.22}
   .ref-cta{margin:32px 10px 10px;border-radius:28px;padding:72px 20px}
   .map-tip{width:214px;padding:13px 14px}
   .tip-desc{font-size:12.5px}
@@ -981,6 +992,7 @@ body.menu-open .lang-floating { display: none; }
 <li><a data-i18n="nav.product" href="/es#product">Producto</a></li>
 <li><a data-i18n="nav.features" href="/es#features">Funciones</a></li>
 <li><a data-i18n="nav.value" href="/es#stats">Valor</a></li>
+<li><a class="active" data-i18n="nav.references" href="/es/references">Referencias</a></li>
 <li><a data-i18n="nav.pricing" href="/es/pricing">Precios</a></li>
 <li><a data-i18n="nav.about" href="/es/about">Nosotros</a></li>
 <li><a data-i18n="nav.blog" href="/blog/es">Blog</a></li>
@@ -1008,6 +1020,7 @@ body.menu-open .lang-floating { display: none; }
 <li><a data-i18n="nav.product" href="/es">Producto</a></li>
 <li><a data-i18n="nav.features" href="/es#features">Funciones</a></li>
 <li><a data-i18n="nav.value" href="/es#stats">Valor</a></li>
+<li><a class="active" data-i18n="nav.references" href="/es/references">Referencias</a></li>
 <li><a data-i18n="nav.pricing" href="/es/pricing">Precios</a></li>
 <li><a data-i18n="nav.about" href="/es/about">Nosotros</a></li>
 <li><a data-i18n="nav.blog" href="/blog/es">Blog</a></li>
@@ -1045,7 +1058,7 @@ body.menu-open .lang-floating { display: none; }
 <p class="map-sub">Pasa por un punto para ver la organización.</p>
 </div>
 <div class="map-card" id="refMapCard">
-<svg class="dach-map" viewBox="40 100 820 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="mapTitle">
+<svg class="dach-map" viewBox="20.5 70 817 598" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="mapTitle">
   <title id="mapTitle">Standorte unserer Kunden in der Schweiz, Deutschland und Österreich</title>
   <g class="map-other">
     <path d="M768.7,877.7 L772.0,866.3 L769.4,863.7 L769.0,858.9 L772.3,850.9 L775.1,849.2 L775.7,839.4 L769.2,836.7 L765.8,837.2 L764.9,832.0 L767.2,824.6 L762.1,820.6 L777.7,799.1 L781.0,796.9 L784.0,805.8 L795.9,801.9 L800.1,804.6 L803.3,813.5 L812.2,816.0 L815.4,819.3 L819.6,831.6 L815.0,842.4 L815.7,847.7 L812.5,853.1 L817.0,858.8 L814.0,862.6 L815.1,866.7 L818.6,874.2 L821.6,874.5 L824.3,883.0 L827.7,883.5 L829.2,881.9 L835.0,883.8 L835.0,888.8 L838.0,894.6 L837.5,900.0 L833.7,904.3 L826.8,906.3 L821.7,922.3 L812.1,923.5 L806.4,927.3 L810.5,935.8 L809.2,937.2 L805.3,936.2 L806.5,939.9 L802.2,943.9 L792.3,941.9 L792.3,933.3 L787.0,925.1 L769.4,916.2 L762.4,906.9 L764.7,906.3 L768.0,911.3 L770.5,910.2 L769.5,900.0 L763.2,895.9 L767.7,885.2 L772.3,883.2 L771.9,880.2 L768.7,877.7 Z"/>
