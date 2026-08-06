@@ -145,10 +145,6 @@ body {
 .nav-lang .lang-btn:hover { color: white; }
 .nav-lang .lang-btn.active { color: var(--color-primary); }
 
-.nav-lang-sep {
-  color: rgba(244, 242, 238, 0.3);
-}
-
 .btn {
   font-family: var(--font-display);
   font-weight: 600;
@@ -494,19 +490,6 @@ footer {
   margin: 0 auto;
 }
 
-.footer-big {
-  margin-bottom: 48px;
-  display: flex;
-  justify-content: center;
-  padding: 32px 0;
-}
-
-.footer-big img {
-  width: 100%;
-  max-width: 1200px;
-  height: auto;
-}
-
 .footer-cols {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
@@ -633,7 +616,6 @@ footer {
   .contact-label { font-size: 10px; }
   
   footer { padding: 40px 12px 100px; }
-  .footer-big { padding: 24px 0; margin-bottom: 32px; }
   .footer-cols {
     grid-template-columns: 1fr;
     gap: 32px;
@@ -772,9 +754,6 @@ footer {
 .lang-floating .lang-btn.active {
   color: var(--color-primary);
 }
-.lang-floating .nav-lang-sep {
-  color: rgba(244, 242, 238, 0.3);
-}
 
 @media (max-width: 900px) {
   .nav-links {
@@ -801,7 +780,6 @@ footer {
   }
 }
 
-
 .swiss-made {
   display: inline-flex;
   align-items: center;
@@ -818,9 +796,8 @@ footer {
 
 .swiss-made:hover img { opacity: 1; }
 
-
       /* Hibrido: titulares en Display, cuerpo y navbar en Text */
-      h1, h2, h3, .section-title-xl, .bridge-text, .stat-card .stat-num, .testimonial-text, .faq-question { font-family: var(--font-display); }
+      h1, h2, h3, .section-title-xl, .bridge-text, .stat-card .stat-num, .faq-question { font-family: var(--font-display); }
     </style>
 <style>
 /* ===== Language dropdown selector ===== */
@@ -903,7 +880,6 @@ body.menu-open .lang-floating { display: none; }
 .map-dot:hover .dot-core,.map-dot:focus-visible .dot-core,.map-dot.is-active .dot-core{r:8;fill:#fff}
 .map-dot:focus-visible .dot-halo{opacity:.55}
 
-/* Logo grid — white cards below the map */
 /* --cols drives everything: exactly N cards per row, and an incomplete last row
    centres itself (grid 1fr columns would leave it hanging on the left). */
 .ref-logos{position:relative;z-index:1;max-width:1240px;margin:26px auto 0;padding:0 40px;
