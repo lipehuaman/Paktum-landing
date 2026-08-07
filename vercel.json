@@ -12,12 +12,19 @@
     { "source": "/paktum_for_leagues", "destination": "/", "permanent": true },
     { "source": "/paktum_for_agencys", "destination": "/", "permanent": true },
 
-    { "source": "/", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "ES" }], "missing": [{ "type": "cookie", "key": "paktum-lang" }], "destination": "/es", "permanent": false },
-    { "source": "/about", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "ES" }], "missing": [{ "type": "cookie", "key": "paktum-lang" }], "destination": "/es/about", "permanent": false },
-    { "source": "/pricing", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "ES" }], "missing": [{ "type": "cookie", "key": "paktum-lang" }], "destination": "/es/pricing", "permanent": false },
-    { "source": "/references", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "ES" }], "missing": [{ "type": "cookie", "key": "paktum-lang" }], "destination": "/es/references", "permanent": false },
-    { "source": "/book-a-demo", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "ES" }], "missing": [{ "type": "cookie", "key": "paktum-lang" }], "destination": "/es/book-a-demo", "permanent": false },
-    { "source": "/impressum", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "ES" }], "missing": [{ "type": "cookie", "key": "paktum-lang" }], "destination": "/es/impressum", "permanent": false }
+    { "source": "/", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "(?:AR|BO|CL|CO|CR|CU|DO|EC|ES|GQ|GT|HN|MX|NI|PA|PE|PR|PY|SV|UY|VE)" }], "missing": [{ "type": "cookie", "key": "paktum-lang" }], "destination": "/es", "permanent": false },
+    { "source": "/about", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "(?:AR|BO|CL|CO|CR|CU|DO|EC|ES|GQ|GT|HN|MX|NI|PA|PE|PR|PY|SV|UY|VE)" }], "missing": [{ "type": "cookie", "key": "paktum-lang" }], "destination": "/es/about", "permanent": false },
+    { "source": "/pricing", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "(?:AR|BO|CL|CO|CR|CU|DO|EC|ES|GQ|GT|HN|MX|NI|PA|PE|PR|PY|SV|UY|VE)" }], "missing": [{ "type": "cookie", "key": "paktum-lang" }], "destination": "/es/pricing", "permanent": false },
+    { "source": "/references", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "(?:AR|BO|CL|CO|CR|CU|DO|EC|ES|GQ|GT|HN|MX|NI|PA|PE|PR|PY|SV|UY|VE)" }], "missing": [{ "type": "cookie", "key": "paktum-lang" }], "destination": "/es/references", "permanent": false },
+    { "source": "/book-a-demo", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "(?:AR|BO|CL|CO|CR|CU|DO|EC|ES|GQ|GT|HN|MX|NI|PA|PE|PR|PY|SV|UY|VE)" }], "missing": [{ "type": "cookie", "key": "paktum-lang" }], "destination": "/es/book-a-demo", "permanent": false },
+    { "source": "/impressum", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "(?:AR|BO|CL|CO|CR|CU|DO|EC|ES|GQ|GT|HN|MX|NI|PA|PE|PR|PY|SV|UY|VE)" }], "missing": [{ "type": "cookie", "key": "paktum-lang" }], "destination": "/es/impressum", "permanent": false },
+
+    { "source": "/", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "(?:CA|GB|US)" }], "missing": [{ "type": "cookie", "key": "paktum-lang" }], "destination": "/en", "permanent": false },
+    { "source": "/about", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "(?:CA|GB|US)" }], "missing": [{ "type": "cookie", "key": "paktum-lang" }], "destination": "/en/about", "permanent": false },
+    { "source": "/pricing", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "(?:CA|GB|US)" }], "missing": [{ "type": "cookie", "key": "paktum-lang" }], "destination": "/en/pricing", "permanent": false },
+    { "source": "/references", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "(?:CA|GB|US)" }], "missing": [{ "type": "cookie", "key": "paktum-lang" }], "destination": "/en/references", "permanent": false },
+    { "source": "/book-a-demo", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "(?:CA|GB|US)" }], "missing": [{ "type": "cookie", "key": "paktum-lang" }], "destination": "/en/book-a-demo", "permanent": false },
+    { "source": "/impressum", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "(?:CA|GB|US)" }], "missing": [{ "type": "cookie", "key": "paktum-lang" }], "destination": "/en/impressum", "permanent": false }
   ],
   "rewrites": [
     { "source": "/blog", "destination": "https://paktum-blog.vercel.app/blog" },
