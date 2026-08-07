@@ -3171,30 +3171,16 @@ function startAlertCycle() {
   const alertText = document.getElementById('mockup-alert-text');
   if (!alert || !alertTitle || !alertText) return;
   
-  // Helper to get current language from localStorage
+  // Text is baked per URL, same as the rest of the page
   function getCurrentLangAlerts() {
-    const lang = localStorage.getItem('paktum-lang') || 'de';
-    if (lang === 'de') {
-      return [
-        { type: 'warning', icon: '⚠', titleKey: 'mockup2.alert.warning.title', textKey: 'mockup2.alert.warning.text',
-          title: 'Niedrige Auslastung erkannt',
-          text: 'Bande/Plakat ist erst zu 63% ausgelastet — 37 Plätze noch verfügbar.' },
-        { type: 'critical', icon: '✕', titleKey: 'mockup2.alert.critical.title', textKey: 'mockup2.alert.critical.text',
-          title: 'Kritische Auslastung',
-          text: 'Dress Spieler (NLB) nur zu 9% gebucht — Handlungsbedarf!' },
-        { type: 'success', icon: '✓', titleKey: 'mockup2.alert.success.title', textKey: 'mockup2.alert.success.text',
-          title: 'Ausverkauft!',
-          text: 'Presenting Matchball zu 100% gebucht für die Saison.' }
-      ];
-    }
     return [
-      { type: 'warning', icon: '⚠', titleKey: 'mockup2.alert.warning.title', textKey: 'mockup2.alert.warning.text',
+      { type: 'warning', icon: '⚠',
         title: 'Low utilization detected',
         text: 'Bande/Plakat is only at 63% — 37 spaces still available.' },
-      { type: 'critical', icon: '✕', titleKey: 'mockup2.alert.critical.title', textKey: 'mockup2.alert.critical.text',
+      { type: 'critical', icon: '✕',
         title: 'Critical utilization',
         text: 'Dress Spieler (NLB) only at 9% booked — action needed!' },
-      { type: 'success', icon: '✓', titleKey: 'mockup2.alert.success.title', textKey: 'mockup2.alert.success.text',
+      { type: 'success', icon: '✓',
         title: 'Sold out!',
         text: 'Presenting Matchball is 100% booked for the season.' }
     ];
@@ -3534,5 +3520,6 @@ document.addEventListener('click', function(){
 })();
 
 </script>
+<script src="/lang-preference.js" defer></script>
 </body>
 </html>

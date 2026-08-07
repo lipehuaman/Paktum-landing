@@ -10,7 +10,14 @@
     { "source": "/privacy-policy", "destination": "/impressum", "permanent": true },
     { "source": "/data-protection", "destination": "/impressum", "permanent": true },
     { "source": "/paktum_for_leagues", "destination": "/", "permanent": true },
-    { "source": "/paktum_for_agencys", "destination": "/", "permanent": true }
+    { "source": "/paktum_for_agencys", "destination": "/", "permanent": true },
+
+    { "source": "/", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "ES" }], "missing": [{ "type": "cookie", "key": "paktum-lang" }], "destination": "/es", "permanent": false },
+    { "source": "/about", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "ES" }], "missing": [{ "type": "cookie", "key": "paktum-lang" }], "destination": "/es/about", "permanent": false },
+    { "source": "/pricing", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "ES" }], "missing": [{ "type": "cookie", "key": "paktum-lang" }], "destination": "/es/pricing", "permanent": false },
+    { "source": "/references", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "ES" }], "missing": [{ "type": "cookie", "key": "paktum-lang" }], "destination": "/es/references", "permanent": false },
+    { "source": "/book-a-demo", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "ES" }], "missing": [{ "type": "cookie", "key": "paktum-lang" }], "destination": "/es/book-a-demo", "permanent": false },
+    { "source": "/impressum", "has": [{ "type": "header", "key": "x-vercel-ip-country", "value": "ES" }], "missing": [{ "type": "cookie", "key": "paktum-lang" }], "destination": "/es/impressum", "permanent": false }
   ],
   "rewrites": [
     { "source": "/blog", "destination": "https://paktum-blog.vercel.app/blog" },

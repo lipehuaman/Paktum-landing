@@ -2806,8 +2806,8 @@ body.menu-open .lang-floating { display: none; }
 <div class="mockup-alert" id="mockup-alert">
 <div class="mockup-alert-icon" id="mockup-alert-icon">⚠</div>
 <div class="mockup-alert-content">
-<div class="mockup-alert-title" id="mockup-alert-title">Low utilization detected</div>
-<div class="mockup-alert-text" id="mockup-alert-text">Bande/Plakat is only at 63% — 37 spaces still available this season.</div>
+<div class="mockup-alert-title" id="mockup-alert-title">Ocupación baja detectada</div>
+<div class="mockup-alert-text" id="mockup-alert-text">Bande/Plakat solo está al 63% — quedan 37 espacios esta temporada.</div>
 </div>
 <div class="mockup-alert-close">×</div>
 </div>
@@ -3171,32 +3171,18 @@ function startAlertCycle() {
   const alertText = document.getElementById('mockup-alert-text');
   if (!alert || !alertTitle || !alertText) return;
   
-  // Helper to get current language from localStorage
+  // Text is baked per URL, same as the rest of the page
   function getCurrentLangAlerts() {
-    const lang = localStorage.getItem('paktum-lang') || 'de';
-    if (lang === 'de') {
-      return [
-        { type: 'warning', icon: '⚠', titleKey: 'mockup2.alert.warning.title', textKey: 'mockup2.alert.warning.text',
-          title: 'Niedrige Auslastung erkannt',
-          text: 'Bande/Plakat ist erst zu 63% ausgelastet — 37 Plätze noch verfügbar.' },
-        { type: 'critical', icon: '✕', titleKey: 'mockup2.alert.critical.title', textKey: 'mockup2.alert.critical.text',
-          title: 'Kritische Auslastung',
-          text: 'Dress Spieler (NLB) nur zu 9% gebucht — Handlungsbedarf!' },
-        { type: 'success', icon: '✓', titleKey: 'mockup2.alert.success.title', textKey: 'mockup2.alert.success.text',
-          title: 'Ausverkauft!',
-          text: 'Presenting Matchball zu 100% gebucht für die Saison.' }
-      ];
-    }
     return [
-      { type: 'warning', icon: '⚠', titleKey: 'mockup2.alert.warning.title', textKey: 'mockup2.alert.warning.text',
-        title: 'Low utilization detected',
-        text: 'Bande/Plakat is only at 63% — 37 spaces still available.' },
-      { type: 'critical', icon: '✕', titleKey: 'mockup2.alert.critical.title', textKey: 'mockup2.alert.critical.text',
-        title: 'Critical utilization',
-        text: 'Dress Spieler (NLB) only at 9% booked — action needed!' },
-      { type: 'success', icon: '✓', titleKey: 'mockup2.alert.success.title', textKey: 'mockup2.alert.success.text',
-        title: 'Sold out!',
-        text: 'Presenting Matchball is 100% booked for the season.' }
+      { type: 'warning', icon: '⚠',
+        title: 'Ocupación baja detectada',
+        text: 'Bande/Plakat solo está al 63% — quedan 37 espacios.' },
+      { type: 'critical', icon: '✕',
+        title: 'Ocupación crítica',
+        text: 'Dress Spieler (NLB) solo al 9% reservado — ¡hay que actuar!' },
+      { type: 'success', icon: '✓',
+        title: '¡Agotado!',
+        text: 'Presenting Matchball reservado al 100% para la temporada.' }
     ];
   }
   
@@ -3534,5 +3520,6 @@ document.addEventListener('click', function(){
 })();
 
 </script>
+<script src="/lang-preference.js" defer></script>
 </body>
 </html>
