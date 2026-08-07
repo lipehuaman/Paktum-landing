@@ -1246,6 +1246,7 @@ body {
   flex-direction: column;
   gap: 3px;
   min-width: 0;
+  min-height: 0;
 }
 
 .led-lane-title {
@@ -1263,9 +1264,12 @@ body {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  flex: 0 0 auto;
 }
 
 .led-slot {
+  position: relative;
+  flex: 1 1 auto;
   min-height: 22px;
   padding: 4px 6px;
   border-radius: 4px;
@@ -1283,6 +1287,13 @@ body {
   overflow: hidden;
 }
 
+.led-slot span,
+.led-slot small {
+  position: relative;
+  z-index: 1;
+  transition: opacity 0.3s ease;
+}
+
 .led-slot span {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1298,26 +1309,45 @@ body {
 .led-slot.orange { background: linear-gradient(135deg, #B85CFF, #D99BFF); }
 .led-slot.blue { background: linear-gradient(135deg, #3B0764, #6B0AB8); }
 
-.led-slot-empty {
-  position: relative;
-  background: rgba(151, 14, 251, 0.035);
+/* empty state sits on top of the finished slot and cross-fades away on drop */
+.led-slot::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: #FCFBFD;
   border: 1px dashed rgba(151, 14, 251, 0.45);
-  box-shadow: none;
-  color: transparent;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease, background 0.25s ease, border-color 0.25s ease;
 }
 
-.led-slot-empty small { opacity: 0; }
-
-.led-slot-empty::after {
+.led-slot::after {
   content: '+';
   position: absolute;
   inset: 0;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #970EFB;
   font-size: 12px;
   font-weight: 500;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.led-slot.is-empty::before,
+.led-slot.is-empty::after { opacity: 1; }
+
+.led-slot.is-empty span,
+.led-slot.is-empty small { opacity: 0; }
+
+.led-slot.is-empty.is-target::before {
+  background: rgba(151, 14, 251, 0.1);
+  border-style: solid;
+  border-color: #970EFB;
 }
 
 .led-drag-card {
@@ -1334,15 +1364,20 @@ body {
   gap: 4px;
   color: white;
   background: linear-gradient(135deg, #B85CFF, #D99BFF);
-  box-shadow: 0 5px 14px rgba(151, 14, 251, 0.32);
+  box-shadow: 0 4px 10px rgba(151, 14, 251, 0.26);
   font-size: 7px;
   font-weight: 600;
   white-space: nowrap;
   overflow: hidden;
   opacity: 0;
   pointer-events: none;
-  transition: transform 0.85s cubic-bezier(0.4, 0, 0.2, 1), width 0.85s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.18s ease;
+  transition: transform var(--led-move, 700ms) cubic-bezier(0.4, 0, 0.2, 1),
+              width var(--led-move, 700ms) cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.2s ease,
+              opacity 0.18s ease;
 }
+
+.led-drag-card.blue { background: linear-gradient(135deg, #3B0764, #6B0AB8); }
 
 .led-drag-card span {
   overflow: hidden;
@@ -1356,6 +1391,7 @@ body {
 }
 
 .led-drag-card.is-visible { opacity: 1; }
+.led-drag-card.is-lifted { box-shadow: 0 10px 22px rgba(151, 14, 251, 0.42); }
 
 .led-slot.is-target {
   transform: translateY(-2px);
@@ -1373,6 +1409,7 @@ body {
 }
 
 .led-phase {
+  flex: 0 0 auto;
   min-height: 18px;
   border: 1px dashed rgba(151, 14, 251, 0.32);
   border-radius: 4px;
@@ -1391,7 +1428,7 @@ body {
   padding-left: 10px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 5px;
   min-width: 0;
 }
 
@@ -1399,15 +1436,15 @@ body {
   font-size: 9px;
   font-weight: 700;
   color: #0A0612;
-  margin-bottom: 2px;
+  margin-bottom: 1px;
 }
 
 .led-booking-card {
-  padding: 7px;
+  padding: 6px 7px;
   background: white;
   border: 1px solid rgba(10, 6, 18, 0.09);
   border-radius: 7px;
-  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  transition: border-color 0.25s ease, transform 0.18s ease, box-shadow 0.25s ease, opacity 0.25s ease;
 }
 
 .led-booking-card.is-active {
@@ -1416,14 +1453,27 @@ body {
   box-shadow: 0 5px 12px rgba(151, 14, 251, 0.14);
 }
 
-.led-booking-card.is-dragging { opacity: 0.38; }
+/* the moment the pointer presses down on a booking */
+.led-booking-card.is-grabbed {
+  transform: scale(0.96);
+  border-color: #970EFB;
+  box-shadow: inset 0 1px 3px rgba(151, 14, 251, 0.2);
+}
+
+/* the booking has been picked up - what stays behind is just a gap */
+.led-booking-card.is-dragging {
+  opacity: 0.4;
+  transform: none;
+  border-style: dashed;
+  box-shadow: none;
+}
 
 .led-booking-name {
   font-size: 7px;
   line-height: 1.2;
   color: #0A0612;
   font-weight: 700;
-  margin-bottom: 5px;
+  margin-bottom: 4px;
 }
 
 .led-booking-meta {
@@ -1467,6 +1517,7 @@ body {
   height: 100%;
   border-radius: inherit;
   background: linear-gradient(90deg, #970EFB, #C65CFF);
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .led-cursor {
@@ -1478,35 +1529,62 @@ body {
   height: 20px;
   opacity: 0;
   pointer-events: none;
-  transition: transform 0.85s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
+  transform-origin: 2px 2px;
+  transition: transform var(--led-move, 700ms) cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
   filter: drop-shadow(0 2px 2px rgba(10, 6, 18, 0.2));
 }
 
 .led-cursor.is-visible { opacity: 1; }
+.led-click-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 18;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid #970EFB;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.led-click-ring.is-on { animation: ledClickRing 0.5s ease-out; }
+
+@keyframes ledClickRing {
+  0% { opacity: 0.7; transform: scale(0.35); }
+  100% { opacity: 0; transform: scale(1.5); }
+}
+
+/* the "Bereit" badge only shows up once the plan is complete (JS-driven runs only) */
+.mockup-led-planner.is-animated .led-summary-live {
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+.mockup-led-planner.is-animated .led-summary-live.is-on { opacity: 1; }
 
 @media (max-width: 640px) {
   .led-workspace {
     grid-template-columns: 1fr;
-    padding: 9px 10px 5px;
+    padding: 8px 10px 4px;
+    overflow: hidden;
   }
   .led-bookings { display: none; }
   .led-summary-bar { padding: 8px 10px; }
   .led-summary-meta > span:first-child { display: none; }
-  .led-progress { margin: 0 10px 7px 34px; }
-  .led-slot { min-height: 18px; padding: 3px 4px; font-size: 6px; }
+  .led-progress { height: 18px; margin: 0 10px 6px 34px; }
+  .led-timeline { gap: 4px; min-height: 0; }
+  .led-lane { gap: 2px; }
+  .led-lane-title { height: 16px; }
+  .led-phase { min-height: 13px; }
+  .led-slot { min-height: 15px; padding: 2px 4px; font-size: 6px; }
   .led-slot small { display: none; }
+  .led-slot::after { font-size: 10px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .led-cursor { display: none; }
+  .led-cursor, .led-drag-card, .led-click-ring { display: none; }
   .led-slot, .led-booking-card { transition: none; animation: none; }
-  .led-slot-empty {
-    background: linear-gradient(135deg, #B85CFF, #D99BFF);
-    border-color: transparent;
-    color: white;
-  }
-  .led-slot-empty small { opacity: 0.75; }
-  .led-slot-empty::after { display: none; }
 }
 
 /* ============ STATS — BIG BOLD ============ */
@@ -2922,53 +3000,47 @@ body.menu-open .lang-floating { display: none; }
 <div class="mockup-led-planner" data-led-planner>
 <div class="led-summary-bar">
 <span class="led-summary-title" data-i18n="mockup4.plan">LED Arena · Spieltag 12</span>
-<span class="led-summary-meta"><span data-i18n="mockup4.duration">43:30 Min. geplant</span><span class="led-summary-live" data-i18n="mockup4.ready">Bereit</span></span>
+<span class="led-summary-meta"><span data-led-duration data-i18n="mockup4.duration">43:30 Min. geplant</span><span class="led-summary-live" data-i18n="mockup4.ready">Bereit</span></span>
 </div>
 <div class="led-workspace">
 <div class="led-timeline">
-<div class="led-time-axis"><span>18:55</span><span>19:15</span><span>19:45</span><span>20:15</span><span>20:45</span></div>
+<div class="led-time-axis"><span>18:55</span><span>19:15</span><span>20:15</span><span>20:45</span></div>
 <div class="led-lane">
 <div class="led-lane-title" data-i18n="mockup4.lane1">HAUPTTRIBÜNE</div>
 <div class="led-phase" data-i18n="mockup4.phase1">VOR DEM SPIEL</div>
-<div class="led-slot orange"><span>Partner A</span><small>00:30</small></div>
-<div class="led-slot blue" data-led-target><span>Klimapartner</span><small>00:20</small></div>
-<div class="led-slot orange"><span>Partner B</span><small>00:30</small></div>
-<div class="led-slot orange" data-led-pool="matchday"><span>Partner C</span><small>00:30</small></div>
+<div class="led-slot blue" data-led-row="1" data-led-lane="1" data-led-preset><span>Hauptsponsor</span><small>00:45</small></div>
+<div class="led-slot orange" data-led-row="2" data-led-lane="1"><span>Klimapartner</span><small>00:20</small></div>
 <div class="led-phase" data-i18n="mockup4.phase2">HALBZEIT</div>
-<div class="led-slot blue"><span>Hauptsponsor</span><small>00:45</small></div>
-<div class="led-slot orange"><span>Partner D</span><small>00:30</small></div>
+<div class="led-slot orange" data-led-row="3" data-led-lane="1"><span>Mobilitätspartner</span><small>00:30</small></div>
+<div class="led-slot blue" data-led-row="4" data-led-lane="1"><span>Hauptsponsor</span><small>00:45</small></div>
 </div>
 <div class="led-lane">
 <div class="led-lane-title" data-i18n="mockup4.lane2">GEGENGERADE</div>
 <div class="led-phase" data-i18n="mockup4.phase1">VOR DEM SPIEL</div>
-<div class="led-slot orange"><span>Partner B</span><small>00:30</small></div>
-<div class="led-slot blue"><span>Klimapartner</span><small>00:20</small></div>
-<div class="led-slot orange"><span>Partner C</span><small>00:30</small></div>
-<div class="led-slot orange" data-led-target="pool" data-led-pool="matchday"><span>Mobilitätspartner</span><small>00:30</small></div>
+<div class="led-slot blue" data-led-row="1" data-led-lane="2" data-led-preset><span>Hauptsponsor</span><small>00:45</small></div>
+<div class="led-slot orange" data-led-row="2" data-led-lane="2"><span>Klimapartner</span><small>00:20</small></div>
 <div class="led-phase" data-i18n="mockup4.phase2">HALBZEIT</div>
-<div class="led-slot blue"><span>Hauptsponsor</span><small>00:45</small></div>
-<div class="led-slot orange"><span>Partner A</span><small>00:30</small></div>
+<div class="led-slot orange" data-led-row="3" data-led-lane="2"><span>Mobilitätspartner</span><small>00:30</small></div>
+<div class="led-slot blue" data-led-row="4" data-led-lane="2"><span>Hauptsponsor</span><small>00:45</small></div>
 </div>
 <div class="led-lane">
 <div class="led-lane-title" data-i18n="mockup4.lane3">TORLINIE</div>
 <div class="led-phase" data-i18n="mockup4.phase1">VOR DEM SPIEL</div>
-<div class="led-slot orange"><span>Partner C</span><small>00:30</small></div>
-<div class="led-slot blue"><span>Klimapartner</span><small>00:20</small></div>
-<div class="led-slot orange"><span>Partner A</span><small>00:30</small></div>
-<div class="led-slot orange" data-led-pool="matchday"><span>Partner D</span><small>00:30</small></div>
+<div class="led-slot blue" data-led-row="1" data-led-lane="3" data-led-preset><span>Hauptsponsor</span><small>00:45</small></div>
+<div class="led-slot orange" data-led-row="2" data-led-lane="3"><span>Klimapartner</span><small>00:20</small></div>
 <div class="led-phase" data-i18n="mockup4.phase2">HALBZEIT</div>
-<div class="led-slot led-slot-empty" data-led-target="move"><span>Hauptsponsor</span><small>00:45</small></div>
-<div class="led-slot orange"><span>Partner B</span><small>00:30</small></div>
+<div class="led-slot orange" data-led-row="3" data-led-lane="3"><span>Mobilitätspartner</span><small>00:30</small></div>
+<div class="led-slot blue" data-led-row="4" data-led-lane="3"><span>Hauptsponsor</span><small>00:45</small></div>
 </div>
 </div>
 <aside class="led-bookings">
 <div class="led-bookings-title" data-i18n="mockup4.bookings">Buchungen</div>
-<div class="led-booking-card" data-led-source><div class="led-booking-name">Klimapartner</div><div class="led-booking-meta"><span>00:20</span><span class="led-booking-status">LED</span></div></div>
-<div class="led-booking-card" data-led-source><div class="led-booking-name">Mobilitätspartner</div><div class="led-booking-meta"><span>00:30</span><span class="led-booking-status">LED</span></div></div>
-<div class="led-booking-card" data-led-source><div class="led-booking-name">Hauptsponsor</div><div class="led-booking-meta"><span>00:45</span><span class="led-booking-status">LED</span></div></div>
+<div class="led-booking-card" data-led-source="main"><div class="led-booking-name">Hauptsponsor</div><div class="led-booking-meta"><span>00:45</span><span class="led-booking-status">LED</span></div></div>
+<div class="led-booking-card" data-led-source="climate"><div class="led-booking-name">Klimapartner</div><div class="led-booking-meta"><span>00:20</span><span class="led-booking-status">LED</span></div></div>
+<div class="led-booking-card" data-led-source="mobility"><div class="led-booking-name">Mobilitätspartner</div><div class="led-booking-meta"><span>00:30</span><span class="led-booking-status">LED</span></div></div>
 </aside>
 </div>
-<div class="led-progress"><span data-i18n="mockup4.progress">Auslastung 86%</span><div class="led-progress-track"><div class="led-progress-fill"></div></div></div>
+<div class="led-progress"><span data-led-progress data-i18n="mockup4.progress">Auslastung 86%</span><div class="led-progress-track"><div class="led-progress-fill"></div></div></div>
 <svg class="led-cursor" viewBox="0 0 16 20" aria-hidden="true"><path d="M1 1v14l4-4 3.5 7 3-1.5-3.5-6H14z" fill="#0A0612" stroke="white" stroke-width="1.4" stroke-linejoin="round"/></svg>
 </div>
 </div>
@@ -3341,30 +3413,85 @@ setTimeout(() => {
   animateStep(0);
 }, 1000);
 
-// LED playlist animation - assigns booked partners to timed venue slots
+// LED playlist animation - three gestures on the matchday grid:
+// place a single slot, fill the rest of the row by clicking, then move a
+// booking that was already scheduled to a different time
 document.querySelectorAll('[data-led-planner]').forEach((planner) => {
-  const sources = Array.from(planner.querySelectorAll('[data-led-source]'));
-  const targets = Array.from(planner.querySelectorAll('[data-led-target]'));
-  const animatedSlots = Array.from(planner.querySelectorAll('.led-slot'));
+  const slots = Array.from(planner.querySelectorAll('[data-led-row]'));
   const ledCursor = planner.querySelector('.led-cursor');
+  const progressFill = planner.querySelector('.led-progress-fill');
+  const progressLabel = planner.querySelector('[data-led-progress]');
+  const durationLabel = planner.querySelector('[data-led-duration]');
+  const readyBadge = planner.querySelector('.led-summary-live');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (!sources.length || !targets.length || !ledCursor || reduceMotion) return;
+  if (!slots.length || !ledCursor || reduceMotion) return;
+
+  function slotAt(row, lane) {
+    return planner.querySelector('[data-led-row="' + row + '"][data-led-lane="' + lane + '"]');
+  }
+
+  function bookingFor(key) {
+    return planner.querySelector('[data-led-source="' + key + '"]');
+  }
+
+  const SCRIPT = [
+    // 1 - drag a booking onto a single slot
+    { type: 'place', booking: 'climate', drop: [2, 1] },
+    // 2 - drag it in, then click the two remaining slots of the same row
+    { type: 'place', booking: 'mobility', drop: [3, 1], clicks: [[3, 2], [3, 3]] },
+    // 3 - pick up a slot that was already scheduled and drag it to another time
+    { type: 'move', from: [1, 3], drop: [4, 3] }
+  ];
+
+  const steps = SCRIPT.filter((step) => {
+    const drop = slotAt(step.drop[0], step.drop[1]);
+    const source = step.type === 'move' ? slotAt(step.from[0], step.from[1]) : bookingFor(step.booking);
+    return drop && source;
+  });
+  if (!steps.length) return;
+
+  // the labels keep their translated wording, only their numbers move
+  const progressText = progressLabel ? progressLabel.textContent : '';
+  const progressMatch = progressText.match(/\d+/);
+  const progressMax = progressMatch ? Number(progressMatch[0]) : 0;
+  const durationText = durationLabel ? durationLabel.textContent : '';
+  const durationMatch = durationText.match(/(\d+):(\d+)/);
+  const durationMax = durationMatch ? Number(durationMatch[1]) * 60 + Number(durationMatch[2]) : 0;
 
   const dragCard = document.createElement('div');
   const dragLabel = document.createElement('span');
   const dragDuration = document.createElement('small');
   dragCard.className = 'led-drag-card';
   dragCard.append(dragLabel, dragDuration);
-  planner.appendChild(dragCard);
+  const clickRing = document.createElement('div');
+  clickRing.className = 'led-click-ring';
+  planner.append(dragCard, clickRing);
+  planner.classList.add('is-animated');
 
-  let stepIndex = 0;
-  let running = false;
+  const REACH = 520;    // cursor travels over to what it is about to grab
+  const PRESS = 180;    // presses down on it
+  const LIFT = 140;     // the block comes off
+  const DRAG = 720;     // and gets dragged onto the slot
+  const HOP = 420;      // cursor moves on to the next slot of the row
+  const CLICK = 130;    // mouse down, then up
+  const GAP = 520;      // breather before the next gesture
+
   const timers = new Set();
+  let stepIndex = 0;
+  let filledCount = 0;
+  let running = false;
+  let cursorX = 0;
+  let cursorY = 0;
+  let cursorPressed = false;
+  let cardX = 0;
+  let cardY = 0;
+  let cardHeight = 22;
+  let cardLifted = false;
 
   function schedule(callback, delay) {
     const timer = window.setTimeout(() => {
       timers.delete(timer);
-      callback();
+      if (running) callback();
     }, delay);
     timers.add(timer);
   }
@@ -3374,102 +3501,233 @@ document.querySelectorAll('[data-led-planner]').forEach((planner) => {
     timers.clear();
   }
 
-  function clearLedState() {
-    sources.forEach((source) => source.classList.remove('is-active', 'is-dragging'));
-    animatedSlots.forEach((slot) => slot.classList.remove('is-target', 'is-placed'));
-    targets.filter((target) => target.dataset.ledTarget === 'move').forEach((target) => {
-      target.classList.remove('orange');
-      target.classList.add('led-slot-empty');
-    });
-    dragCard.classList.remove('is-visible');
-  }
-
-  function moveLedCursor(element) {
+  function offsetIn(element) {
     const plannerRect = planner.getBoundingClientRect();
     const elementRect = element.getBoundingClientRect();
-    const x = elementRect.left - plannerRect.left + elementRect.width / 2 - 3;
-    const y = elementRect.top - plannerRect.top + elementRect.height / 2 - 2;
-    ledCursor.style.transform = `translate(${x}px, ${y}px)`;
+    return {
+      left: elementRect.left - plannerRect.left,
+      top: elementRect.top - plannerRect.top,
+      width: elementRect.width,
+      height: elementRect.height
+    };
   }
 
-  function positionDragCard(element, width) {
-    const plannerRect = planner.getBoundingClientRect();
-    const elementRect = element.getBoundingClientRect();
-    const x = elementRect.left - plannerRect.left + (elementRect.width - width) / 2;
-    const y = elementRect.top - plannerRect.top + elementRect.height / 2 - 11;
+  function applyCursor() {
+    ledCursor.style.transform = 'translate(' + cursorX + 'px, ' + cursorY + 'px) scale(' + (cursorPressed ? 0.82 : 1) + ')';
+  }
+
+  function moveCursor(element, duration) {
+    const box = offsetIn(element);
+    cursorX = box.left + box.width / 2 - 3;
+    cursorY = box.top + box.height / 2 - 2;
+    ledCursor.style.setProperty('--led-move', duration + 'ms');
+    applyCursor();
+  }
+
+  function pressCursor(isDown) {
+    cursorPressed = isDown;
+    ledCursor.style.setProperty('--led-move', '120ms');
+    applyCursor();
+  }
+
+  function applyCard() {
+    dragCard.style.transform = 'translate(' + cardX + 'px, ' + cardY + 'px) scale(' + (cardLifted ? 1.05 : 1) + ')';
+  }
+
+  function moveCard(element, width, duration) {
+    const box = offsetIn(element);
+    cardX = box.left + (box.width - width) / 2;
+    cardY = box.top + box.height / 2 - cardHeight / 2;
     dragCard.style.width = width + 'px';
-    dragCard.style.transform = `translate(${x}px, ${y}px)`;
+    dragCard.style.setProperty('--led-move', duration + 'ms');
+    applyCard();
   }
 
-  function runLedStep() {
+  function ripple(element) {
+    const box = offsetIn(element);
+    clickRing.style.left = (box.left + box.width / 2 - 11) + 'px';
+    clickRing.style.top = (box.top + box.height / 2 - 11) + 'px';
+    clickRing.classList.remove('is-on');
+    void clickRing.offsetWidth;
+    clickRing.classList.add('is-on');
+  }
+
+  function updateMeters() {
+    const ratio = filledCount / slots.length;
+    if (progressFill) progressFill.style.width = (progressMax * ratio) + '%';
+    if (progressLabel && progressMax) {
+      progressLabel.textContent = progressText.replace(/\d+/, String(Math.round(progressMax * ratio)));
+    }
+    if (durationLabel && durationMax) {
+      const total = Math.round(durationMax * ratio);
+      const seconds = total % 60;
+      durationLabel.textContent = durationText.replace(/\d+:\d+/, Math.floor(total / 60) + ':' + (seconds < 10 ? '0' : '') + seconds);
+    }
+  }
+
+  function fillSlot(slot) {
+    slot.classList.remove('is-empty', 'is-target');
+    slot.classList.add('is-placed');
+    filledCount += 1;
+    updateMeters();
+    schedule(() => slot.classList.remove('is-placed'), 600);
+  }
+
+  function emptySlot(slot) {
+    slot.classList.remove('is-placed', 'is-target');
+    slot.classList.add('is-empty');
+    filledCount -= 1;
+    updateMeters();
+  }
+
+  function resetPlanner() {
+    clearTimers();
+    stepIndex = 0;
+    filledCount = 0;
+    cursorPressed = false;
+    cardLifted = false;
+    planner.querySelectorAll('[data-led-source]').forEach((booking) => {
+      booking.classList.remove('is-active', 'is-grabbed', 'is-dragging');
+    });
+    slots.forEach((slot) => {
+      slot.classList.remove('is-target', 'is-placed');
+      if (slot.hasAttribute('data-led-preset')) {
+        slot.classList.remove('is-empty');
+        filledCount += 1;
+      } else {
+        slot.classList.add('is-empty');
+      }
+    });
+    dragCard.classList.remove('is-visible', 'is-lifted');
+    clickRing.classList.remove('is-on');
+    ledCursor.classList.remove('is-visible');
+    if (readyBadge) readyBadge.classList.remove('is-on');
+    updateMeters();
+  }
+
+  function nextStep() {
+    stepIndex += 1;
+    if (stepIndex < steps.length) {
+      runStep();
+      return;
+    }
+    // done - hold the finished plan for a moment, then start over
+    ledCursor.classList.remove('is-visible');
+    if (readyBadge) readyBadge.classList.add('is-on');
+    schedule(() => {
+      resetPlanner();
+      schedule(runStep, 700);
+    }, 2200);
+  }
+
+  // fills the slot the drag lands on, then the ones the cursor clicks afterwards
+  function runClicks(step, at) {
+    const clicks = step.clicks || [];
+    let offset = at;
+    clicks.forEach((coords) => {
+      const slot = slotAt(coords[0], coords[1]);
+      if (!slot) return;
+      const hopAt = offset + GAP / 2;
+      schedule(() => {
+        slot.classList.add('is-target');
+        moveCursor(slot, HOP);
+      }, hopAt);
+      schedule(() => pressCursor(true), hopAt + HOP);
+      schedule(() => {
+        pressCursor(false);
+        ripple(slot);
+        fillSlot(slot);
+      }, hopAt + HOP + CLICK);
+      offset = hopAt + HOP + CLICK;
+    });
+    return offset;
+  }
+
+  function runStep() {
     if (!running) return;
-    clearLedState();
-    const source = sources[stepIndex % sources.length];
-    const target = targets[stepIndex % targets.length];
-    const targetGroup = target.dataset.ledTarget === 'pool'
-      ? Array.from(planner.querySelectorAll(`[data-led-pool="${target.dataset.ledPool}"]`))
-      : [target];
-    const isMoveAction = target.dataset.ledTarget === 'move';
-    const sourceIsVisible = source.getClientRects().length > 0;
+    const step = steps[stepIndex];
+    const dropSlot = slotAt(step.drop[0], step.drop[1]);
+    const isMove = step.type === 'move';
+    const source = isMove ? slotAt(step.from[0], step.from[1]) : bookingFor(step.booking);
 
-    source.classList.add('is-active');
-    moveLedCursor(sourceIsVisible ? source : target);
-    ledCursor.classList.add('is-visible');
-
-    if (isMoveAction) {
-      const sourceName = source.querySelector('.led-booking-name');
-      const sourceDuration = source.querySelector('.led-booking-meta > span');
-      dragLabel.textContent = sourceName ? sourceName.textContent : '';
-      dragDuration.textContent = sourceDuration ? sourceDuration.textContent : '';
-      dragCard.style.transition = 'none';
-      positionDragCard(sourceIsVisible ? source : target, target.getBoundingClientRect().width);
-      void dragCard.offsetWidth;
-      dragCard.style.transition = '';
-      dragCard.classList.add('is-visible');
+    // the bookings panel is hidden on small screens - show the result without the gesture
+    if (!isMove && !source.getClientRects().length) {
+      fillSlot(dropSlot);
+      let offset = 0;
+      (step.clicks || []).forEach((coords) => {
+        const slot = slotAt(coords[0], coords[1]);
+        offset += 220;
+        if (slot) schedule(() => fillSlot(slot), offset);
+      });
+      schedule(nextStep, offset + 700);
+      return;
     }
 
-    schedule(() => {
-      if (!running) return;
-      targetGroup.forEach((slot) => slot.classList.add('is-target'));
-      moveLedCursor(target);
-      if (isMoveAction) {
-        source.classList.add('is-dragging');
-        positionDragCard(target, target.getBoundingClientRect().width);
-      }
-    }, sourceIsVisible ? 850 : 250);
+    const pressAt = REACH;
+    const liftAt = pressAt + PRESS;
+    const dragAt = liftAt + LIFT;
+    const dropAt = dragAt + DRAG;
+
+    if (!isMove) source.classList.add('is-active');
+    ledCursor.classList.add('is-visible');
+    moveCursor(source, REACH);
 
     schedule(() => {
-      if (!running) return;
-      targetGroup.forEach((slot) => {
-        slot.classList.remove('is-target');
-        if (isMoveAction) {
-          slot.classList.remove('led-slot-empty');
-          slot.classList.add('orange');
-        }
-        slot.classList.add('is-placed');
-      });
-      source.classList.remove('is-active', 'is-dragging');
-      dragCard.classList.remove('is-visible');
-    }, sourceIsVisible ? 1750 : 1050);
+      pressCursor(true);
+      if (isMove) source.classList.add('is-target');
+      else source.classList.add('is-grabbed');
+    }, pressAt);
 
     schedule(() => {
-      if (!running) return;
-      ledCursor.classList.remove('is-visible');
-      stepIndex = (stepIndex + 1) % targets.length;
-      runLedStep();
-    }, sourceIsVisible ? 2800 : 2100);
+      // the block leaves its origin and follows the cursor from here on
+      const name = isMove ? source.querySelector('span') : source.querySelector('.led-booking-name');
+      const time = isMove ? source.querySelector('small') : source.querySelector('.led-booking-meta > span');
+      dragLabel.textContent = name ? name.textContent : '';
+      dragDuration.textContent = time ? time.textContent : '';
+      dragCard.classList.toggle('blue', dropSlot.classList.contains('blue'));
+      cardHeight = Math.round(dropSlot.getBoundingClientRect().height);
+      dragCard.style.height = cardHeight + 'px';
+      dragCard.style.transition = 'none';
+      cardLifted = false;
+      moveCard(source, source.getBoundingClientRect().width, 0);
+      void dragCard.offsetWidth;
+      dragCard.style.transition = '';
+      dragCard.style.setProperty('--led-move', LIFT + 'ms');
+      cardLifted = true;
+      applyCard();
+      dragCard.classList.add('is-visible', 'is-lifted');
+      if (isMove) emptySlot(source);
+      else source.classList.add('is-dragging');
+    }, liftAt);
+
+    schedule(() => {
+      dropSlot.classList.add('is-target');
+      moveCursor(dropSlot, DRAG);
+      moveCard(dropSlot, dropSlot.getBoundingClientRect().width, DRAG);
+    }, dragAt);
+
+    schedule(() => {
+      pressCursor(false);
+      cardLifted = false;
+      dragCard.classList.remove('is-visible', 'is-lifted');
+      source.classList.remove('is-active', 'is-grabbed', 'is-dragging', 'is-target');
+      fillSlot(dropSlot);
+    }, dropAt);
+
+    schedule(nextStep, runClicks(step, dropAt) + GAP);
   }
+
+  resetPlanner();
 
   const ledObserver = new IntersectionObserver((entries) => {
     const isVisible = entries[0].isIntersecting;
     if (isVisible && !running) {
       running = true;
-      runLedStep();
+      resetPlanner();
+      schedule(runStep, 400);
     } else if (!isVisible && running) {
       running = false;
-      clearTimers();
-      clearLedState();
-      ledCursor.classList.remove('is-visible');
+      resetPlanner();
     }
   }, { threshold: 0.25 });
 
