@@ -223,9 +223,21 @@ body {
   min-height: 420px;
 }
 
-/* Outlook Bookings cannot auto-resize cross-origin, so reserve the height it needs */
+/* Outlook Bookings paints its own white card on a grey canvas, so the wrapper
+   drops its own card chrome to avoid a card-inside-a-card, and widens so
+   Bookings uses its desktop layout instead of the narrow one. */
+.form-container.bookings-container {
+  max-width: 1040px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  overflow: hidden;
+}
+
+/* Bookings cannot auto-resize cross-origin, so reserve the height it needs */
 .form-container iframe.bookings-embed {
-  min-height: 1100px;
+  min-height: 1400px;
+  border-radius: 24px;
 }
 
 /* ============ BACK LINK ============ */
@@ -233,6 +245,10 @@ body {
   max-width: 720px;
   margin: 0 auto 24px;
   padding: 0 16px;
+}
+
+.form-section:has(.bookings-container) .back-link-wrap {
+  max-width: 1040px;
 }
 
 .back-link {
@@ -300,7 +316,8 @@ footer {
   .form-section { padding: 24px 12px 80px; }
   .back-link-wrap { padding: 0; margin-bottom: 16px; }
   .form-container { padding: 28px 20px; border-radius: 20px; }
-  .form-container iframe.bookings-embed { min-height: 1300px; }
+  .form-container.bookings-container { padding: 0; border-radius: 20px; }
+  .form-container iframe.bookings-embed { min-height: 1500px; border-radius: 20px; }
   
   footer { padding: 32px 12px 100px; }
   .footer-bottom {
@@ -605,7 +622,7 @@ body.menu-open .lang-floating { display: none; }
 <div class="back-link-wrap">
 <a class="back-link" data-i18n="demo.back" href="/en">← Back to home</a>
 </div>
-<div class="form-container">
+<div class="form-container bookings-container">
 <iframe class="bookings-embed" height="100%" loading="lazy" scrolling="yes" src="https://outlook.office.com/book/PaktumEnglish@kltechnologies.ch/?ismsaljsauthenabled" style="border:0" title="Book a demo" width="100%"></iframe>
 </div>
 </section>
