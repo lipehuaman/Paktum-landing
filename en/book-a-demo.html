@@ -223,6 +223,11 @@ body {
   min-height: 420px;
 }
 
+/* Outlook Bookings cannot auto-resize cross-origin, so reserve the height it needs */
+.form-container iframe.bookings-embed {
+  min-height: 1100px;
+}
+
 /* ============ BACK LINK ============ */
 .back-link-wrap {
   max-width: 720px;
@@ -295,6 +300,7 @@ footer {
   .form-section { padding: 24px 12px 80px; }
   .back-link-wrap { padding: 0; margin-bottom: 16px; }
   .form-container { padding: 28px 20px; border-radius: 20px; }
+  .form-container iframe.bookings-embed { min-height: 1300px; }
   
   footer { padding: 32px 12px 100px; }
   .footer-bottom {
@@ -600,7 +606,7 @@ body.menu-open .lang-floating { display: none; }
 <a class="back-link" data-i18n="demo.back" href="/en">← Back to home</a>
 </div>
 <div class="form-container">
-<iframe data-tally-src="https://tally.so/embed/wgrzyO?hideTitle=0&amp;transparentBackground=1&amp;dynamicHeight=1" frameborder="0" height="361" loading="lazy" marginheight="0" marginwidth="0" title="Jetzt Demo vereinbaren" width="100%"></iframe>
+<iframe class="bookings-embed" height="100%" loading="lazy" scrolling="yes" src="https://outlook.office.com/book/PaktumEnglish@kltechnologies.ch/?ismsaljsauthenabled" style="border:0" title="Book a demo" width="100%"></iframe>
 </div>
 </section>
 <!-- ============ FOOTER ============ -->
@@ -615,10 +621,6 @@ body.menu-open .lang-floating { display: none; }
 </div>
 </div>
 </footer>
-<!-- Tally embed script -->
-<script>
-var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}
-</script>
 <!-- i18n -->
 <script>
 // Language dropdown open/close (text is baked per URL; switching language uses real links)
