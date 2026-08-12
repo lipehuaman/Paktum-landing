@@ -223,9 +223,8 @@ body {
   min-height: 420px;
 }
 
-/* Outlook Bookings paints its own white card on a grey canvas, so the wrapper
-   drops its own card chrome to avoid a card-inside-a-card, and widens so
-   Bookings uses its desktop layout instead of the narrow one. */
+/* Cal.com renders its own booker card, so the wrapper drops its own card
+   chrome to avoid a card-inside-a-card, and widens for the month view. */
 .form-container.bookings-container {
   max-width: 1040px;
   padding: 0;
@@ -234,10 +233,10 @@ body {
   overflow: hidden;
 }
 
-/* Bookings cannot auto-resize cross-origin, so reserve the height it needs */
-.form-container iframe.bookings-embed {
-  min-height: 1771px;
-  border-radius: 24px;
+/* Cal's embed script sizes its own iframe, so only reserve a floor to stop
+   the page collapsing while the widget loads. */
+.form-container .cal-inline-embed {
+  min-height: 640px;
 }
 
 /* ============ BACK LINK ============ */
@@ -317,7 +316,6 @@ footer {
   .back-link-wrap { padding: 0; margin-bottom: 16px; }
   .form-container { padding: 28px 20px; border-radius: 20px; }
   .form-container.bookings-container { padding: 0; border-radius: 20px; }
-  .form-container iframe.bookings-embed { min-height: 2970px; border-radius: 20px; }
   
   footer { padding: 32px 12px 100px; }
   .footer-bottom {
@@ -623,7 +621,23 @@ body.menu-open .lang-floating { display: none; }
 <a class="back-link" data-i18n="demo.back" href="/en">← Back to home</a>
 </div>
 <div class="form-container bookings-container">
-<iframe class="bookings-embed" height="100%" loading="lazy" scrolling="yes" src="https://outlook.office.com/book/PaktumEnglish@kltechnologies.ch/?ismsaljsauthenabled" style="border:0" title="Book a demo" width="100%"></iframe>
+<!-- Cal inline embed code begins -->
+<div class="cal-inline-embed" id="my-cal-inline-30min" style="width:100%;height:100%;overflow:scroll"></div>
+<script type="text/javascript">
+  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+Cal("init", "30min", {origin:"https://app.cal.com"});
+Cal.config = Cal.config || {};
+Cal.config.forwardQueryParams = true;
+
+  Cal.ns["30min"]("inline", {
+    elementOrSelector:"#my-cal-inline-30min",
+    config: {"layout":"month_view","useSlotsViewOnSmallScreen":"true"},
+    calLink: "jkaeske/30min",
+  });
+
+  Cal.ns["30min"]("ui", {"cssVarsPerTheme":{"light":{"cal-brand":"#8c21f1"}},"hideEventTypeDetails":true,"layout":"month_view"});
+  </script>
+  <!-- Cal inline embed code ends -->
 </div>
 </section>
 <!-- ============ FOOTER ============ -->
