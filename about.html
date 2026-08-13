@@ -241,9 +241,10 @@ body {
   grid-template-columns: repeat(3, 1fr);
 }
 
-/* Fila final: Rollo solo, centrado con el mismo ancho que una columna */
+/* Fila final: centrada, tarjetas con el mismo ancho que una columna */
 .team-grid.ai-row {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   margin-bottom: 0;
 }
@@ -1054,8 +1055,25 @@ body.menu-open .lang-floating { display: none; }
 </div>
 </div>
 </div>
-<!-- Fila final: Rollo (IA) -->
+<!-- Fila final: Alexandre + Rollo (IA) -->
 <div class="team-grid ai-row">
+<!-- Alexandre De Freitas -->
+<div class="team-card">
+<div class="team-photo">
+<img alt="Alexandre De Freitas" loading="lazy" src="/SVG%20Logos/Alexandre_De_Freitas.webp"/>
+</div>
+<div class="team-name">Alexandre De Freitas</div>
+<div class="team-role" data-i18n="team.alexandre.role">Softwareentwicklung</div>
+<p class="team-bio" data-i18n="team.alexandre.bio">Alexandre gehört zum Entwicklungsteam von Paktum und begleitet neue Funktionen von der ersten Idee bis zum fertigen Feature. Aus seinem Studium bringt er einen starken Hintergrund im Bereich Datenbanken mit und sorgt dafür, dass Paktum auch mit wachsenden Datenmengen schnell und zuverlässig bleibt. Außerdem kümmert er sich darum, dass unsere Software in allen vier Sprachen verfügbar ist.</p>
+<div class="team-links">
+<a class="team-link" href="mailto:alexandre.defreitas@paktum.ch" title="Email">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </a>
+<a class="team-link" href="https://www.linkedin.com/in/alexandre-de-freitas-pereira/" rel="noopener" target="_blank" title="LinkedIn">
+            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+          </a>
+</div>
+</div>
 <!-- Rollo die Rolle (AI) -->
 <div class="team-card ai-card">
 <div class="team-photo rollo-photo">
