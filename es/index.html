@@ -2760,8 +2760,8 @@ body.menu-open .lang-floating { display: none; }
                       <line id="tooltip-line" x1="186" y1="140" x2="280" y2="80" stroke="#970EFB" stroke-width="1.5" stroke-dasharray="2,2"/>
                       <rect id="tooltip-bg" x="260" y="60" width="110" height="40" fill="#0A0612" rx="6"/>
                       <text id="tooltip-id" x="315" y="76" text-anchor="middle" fill="white" font-family="forma-djr-display, sans-serif" font-size="10" font-weight="700">LED-1103</text>
-                      <text id="tooltip-status" x="315" y="88" text-anchor="middle" fill="#22c55e" font-family="forma-djr-display, sans-serif" font-size="6.5" font-weight="600">● AVAILABLE</text>
-                      <text id="tooltip-meta" x="315" y="96" text-anchor="middle" fill="#A89DB8" font-family="forma-djr-display, sans-serif" font-size="5.5">12 matchdays</text>
+                      <text id="tooltip-status" x="315" y="88" text-anchor="middle" fill="#22c55e" font-family="forma-djr-display, sans-serif" font-size="6.5" font-weight="600">● DISPONIBLE</text>
+                      <text id="tooltip-meta" x="315" y="96" text-anchor="middle" fill="#A89DB8" font-family="forma-djr-display, sans-serif" font-size="5.5">12 jornadas</text>
                     </g>
                     
                     <!-- Cursor (animated pointer) -->
@@ -2771,9 +2771,9 @@ body.menu-open .lang-floating { display: none; }
                   </svg>
                 </div>
 <div class="stadium-legend-bar">
-<span><span class="mockup-status-dot" style="background:#22c55e;"></span>Available <span class="count">142</span></span>
-<span><span class="mockup-status-dot" style="background:#f59e0b;"></span>Reserved <span class="count">8</span></span>
-<span><span class="mockup-status-dot" style="background:#ef4444;"></span>Booked <span class="count">68</span></span>
+<span><span class="mockup-status-dot" style="background:#22c55e;"></span>Disponible <span class="count">142</span></span>
+<span><span class="mockup-status-dot" style="background:#f59e0b;"></span>Reservado <span class="count">8</span></span>
+<span><span class="mockup-status-dot" style="background:#ef4444;"></span>Vendido <span class="count">68</span></span>
 </div>
 </div>
 </div>
@@ -3301,9 +3301,9 @@ const tooltipMeta = document.getElementById('tooltip-meta');
 
 // Color states: from-fill, from-stroke, to-fill, to-stroke, status-text, status-color
 const COLOR_STATES = {
-  available: { fill: '#A7F3D0', stroke: '#22c55e', label: '● AVAILABLE', color: '#22c55e' },
-  reserved: { fill: '#FED7AA', stroke: '#f59e0b', label: '● RESERVED', color: '#f59e0b' },
-  booked: { fill: '#FECACA', stroke: '#ef4444', label: '● BOOKED', color: '#ef4444' }
+  available: { fill: '#A7F3D0', stroke: '#22c55e', label: '● DISPONIBLE', color: '#22c55e' },
+  reserved: { fill: '#FED7AA', stroke: '#f59e0b', label: '● RESERVADO', color: '#f59e0b' },
+  booked: { fill: '#FECACA', stroke: '#ef4444', label: '● VENDIDO', color: '#ef4444' }
 };
 
 // Animation sequence: each step picks a spot, moves the cursor there, selects, changes state
@@ -3312,21 +3312,21 @@ const SEQUENCE = [
     spot: 'anim-spot-1', cursorX: 120, cursorY: 138, 
     ringX: 100, ringY: 125, ringW: 14, ringH: 22,
     tooltipX: 145, tooltipY: 95,
-    spotId: 'LED-1103', spotMeta: '12 matchdays',
+    spotId: 'LED-1103', spotMeta: '12 jornadas',
     fromState: 'available', toState: 'booked'
   },
   { 
     spot: 'anim-spot-2', cursorX: 90, cursorY: 138, 
     ringX: 80, ringY: 120, ringW: 14, ringH: 32,
     tooltipX: 130, tooltipY: 90,
-    spotId: 'BAND-2104', spotMeta: 'Season pack',
+    spotId: 'BAND-2104', spotMeta: 'Pack de temporada',
     fromState: 'booked', toState: 'available'
   },
   { 
     spot: 'anim-spot-3', cursorX: 290, cursorY: 44, 
     ringX: 270, ringY: 36, ringW: 38, ringH: 14,
     tooltipX: 200, tooltipY: 90,
-    spotId: 'TOP-3010', spotMeta: '8 matchdays',
+    spotId: 'TOP-3010', spotMeta: '8 jornadas',
     fromState: 'reserved', toState: 'booked'
   }
 ];
