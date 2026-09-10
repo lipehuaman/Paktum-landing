@@ -2738,19 +2738,20 @@ body.menu-open .lang-floating { display: none; }
 /* Minimalist stand-block "plan" for the rights & inventory module —
    not a literal stadium render, just enough shape (two stand rows around
    a pitch) to read as a venue map while blocks light up one at a time. */
-.pv-stadium-block { display: flex; flex-direction: column; gap: 22px; flex: 1; justify-content: center; }
-.pv-stadium { display: flex; flex-direction: column; gap: 14px; }
+.pv-stadium-block { display: flex; flex-direction: column; align-items: center; gap: 22px; flex: 1; justify-content: center; }
+.pv-stadium { display: flex; flex-direction: column; align-items: center; gap: 14px; }
 .pv-stand-row { display: flex; gap: 8px; justify-content: center; }
 .pv-stand { width: 44px; height: 24px; border-radius: 5px; }
 .pv-stand.c1 { background: var(--color-primary); }
 .pv-stand.c2 { background: #C65CFF; }
 .pv-stand.c3 { background: #6B0AB8; }
-/* A recognizable top-down pitch, not just a green rectangle: halfway
-   line + center circle (pseudo-elements) plus two goal boxes (real
-   child elements, since a selector only gets two pseudo-elements). */
+/* A recognizable top-down pitch, not just a green rectangle: real
+   ~105x68m proportions (not stretched full-width), halfway line +
+   center circle (pseudo-elements), two goal boxes (real child
+   elements, since a selector only gets two pseudo-elements). */
 .pv-pitch {
   position: relative;
-  height: 120px; border-radius: 14px; margin: 2px 0;
+  width: 260px; height: 170px; border-radius: 12px;
   background: repeating-linear-gradient(90deg, #DCEFE0 0 26px, #CFE8D5 26px 52px);
   border: 2px solid rgba(10, 6, 18, 0.08);
   overflow: hidden;
@@ -2760,12 +2761,12 @@ body.menu-open .lang-floating { display: none; }
   background: rgba(255, 255, 255, 0.75); transform: translateX(-1px);
 }
 .pv-pitch::after {
-  content: ''; position: absolute; top: 50%; left: 50%; width: 44px; height: 44px;
+  content: ''; position: absolute; top: 50%; left: 50%; width: 46px; height: 46px;
   border: 2px solid rgba(255, 255, 255, 0.75); border-radius: 50%;
   transform: translate(-50%, -50%);
 }
 .pv-pitch-box {
-  position: absolute; top: 50%; width: 16px; height: 52px;
+  position: absolute; top: 50%; width: 20px; height: 98px;
   border: 2px solid rgba(255, 255, 255, 0.75);
   transform: translateY(-50%);
 }
