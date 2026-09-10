@@ -2606,14 +2606,14 @@ body.menu-open .lang-floating { display: none; }
 /* ---- The screen itself ---- */
 .story-frame-panel .feature-visual {
   width: 100%;
-  max-width: 940px;
+  max-width: 880px;
   margin: 0 auto;
   position: relative;
-  aspect-ratio: 3536 / 2000;
+  min-height: 380px;
   background: linear-gradient(135deg, rgba(151, 14, 251, 0.14) 0%, rgba(31, 15, 61, 0.35) 100%);
   border: 1px solid var(--color-border-dark);
   border-radius: 24px;
-  padding: 10px;
+  padding: 28px;
   display: flex;
 }
 .story-frame-panel .mockup-frame { width: 100%; }
@@ -2621,30 +2621,6 @@ body.menu-open .lang-floating { display: none; }
    clipping it (mockup-frame clips overflow to keep its rounded corners) —
    reserve space up front so nothing jumps or crops. */
 .story-frame-panel .mockup-body { min-height: 320px; }
-
-/* Real product screenshots (every module except the LED planner, which
-   keeps its own built-in animated demo). A slow, subtle pan/zoom keeps
-   the screen feeling alive while the caption narrates. */
-.story-shot {
-  flex: 1;
-  min-width: 0;
-  min-height: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
-  border-radius: 16px;
-  display: block;
-  box-shadow: 0 20px 60px rgba(151, 14, 251, 0.25), 0 4px 12px rgba(10, 6, 18, 0.15);
-  animation: shotKenBurns 16s ease-in-out infinite alternate;
-}
-@keyframes shotKenBurns {
-  from { transform: scale(1); }
-  to { transform: scale(1.06); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .story-shot { animation: none; }
-}
 
 [data-step] {
   opacity: 0;
@@ -2655,7 +2631,7 @@ body.menu-open .lang-floating { display: none; }
 [data-show-until].is-hidden { display: none; }
 
 /* ============ Lightweight "preview" atoms shared across modules ============ */
-.pv-body { padding: 22px 24px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.pv-body { padding: 22px 24px; display: flex; flex-direction: column; justify-content: center; gap: 10px; flex: 1; }
 
 .pv-row {
   display: flex;
@@ -2758,6 +2734,47 @@ body.menu-open .lang-floating { display: none; }
 }
 .pv-stat-line b { font-family: var(--font-display); font-size: 15px; color: var(--color-text-primary); }
 .pv-stat-line span { font-size: 12px; color: var(--color-text-muted); }
+
+/* Minimalist stand-block "plan" for the rights & inventory module —
+   not a literal stadium render, just enough shape (two stand rows around
+   a pitch) to read as a venue map while blocks light up one at a time. */
+.pv-stadium-block { display: flex; flex-direction: column; gap: 22px; flex: 1; justify-content: center; }
+.pv-stadium { display: flex; flex-direction: column; gap: 14px; }
+.pv-stand-row { display: flex; gap: 8px; justify-content: center; }
+.pv-stand { width: 44px; height: 24px; border-radius: 5px; }
+.pv-stand.c1 { background: var(--color-primary); }
+.pv-stand.c2 { background: #C65CFF; }
+.pv-stand.c3 { background: #6B0AB8; }
+.pv-pitch {
+  height: 120px; border-radius: 14px; margin: 2px 0;
+  background: repeating-linear-gradient(90deg, #DCEFE0 0 26px, #CFE8D5 26px 52px);
+  border: 2px solid rgba(10, 6, 18, 0.08);
+}
+.pv-stadium-legend { display: flex; gap: 16px; justify-content: center; }
+.pv-stadium-legend span { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--color-text-secondary); font-weight: 500; }
+.pv-stadium-legend i { width: 8px; height: 8px; border-radius: 2px; display: block; }
+.pv-stadium-legend i.c1 { background: var(--color-primary); }
+.pv-stadium-legend i.c2 { background: #C65CFF; }
+.pv-stadium-legend i.c3 { background: #6B0AB8; }
+
+/* Minimalist Kanban for the contracts module — one card per stage,
+   revealed left to right so the pipeline reads as forward progress. */
+.pv-kanban { display: flex; gap: 10px; flex: 1; align-items: stretch; }
+.pv-kanban-col {
+  flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 8px;
+  background: #FCFBFD; border: 1px solid rgba(10, 6, 18, 0.05); border-radius: 12px; padding: 10px;
+}
+.pv-kanban-col-title {
+  font-family: var(--font-mono); font-size: 9.5px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-text-muted);
+}
+.pv-kanban-card {
+  background: white; border: 1px solid rgba(10, 6, 18, 0.08); border-radius: 8px;
+  padding: 8px 10px; box-shadow: 0 2px 6px rgba(10, 6, 18, 0.05);
+}
+.pv-kanban-card .pv-title { font-size: 11.5px; }
+.pv-kanban-card .pv-meta { font-size: 10px; }
+.pv-kanban-card.ok { border-color: rgba(34, 197, 94, 0.4); box-shadow: 0 2px 6px rgba(34, 197, 94, 0.12); }
 
 /* ---- Mobile: collapse scrollytelling to a simple stacked read ---- */
 @media (max-width: 640px) {
@@ -2948,7 +2965,42 @@ body.menu-open .lang-floating { display: none; }
 </div>
 <div class="story-frame-panel is-active" id="module-01" data-module-index="1">
 <div class="feature-visual">
-<img class="story-shot" src="/app-screens/rechte-inventar.jpg" alt="Paktum Positions-Editor: Stadionplan mit farbcodierten Werbeflächen und Belegungsstatus" loading="lazy"/>
+<div class="mockup-frame">
+<div class="mockup-body">
+<div class="mockup-header">
+<div>
+<div class="mockup-title">Positions-Editor</div>
+<div class="mockup-subtitle">Stadionplan · Nordkurve</div>
+</div>
+</div>
+<div class="pv-body">
+<div class="pv-stadium-block">
+<div class="pv-stadium">
+<div class="pv-stand-row">
+<span data-step="0" class="pv-stand c1"></span>
+<span data-step="1" class="pv-stand c2"></span>
+<span data-step="1" class="pv-stand c1"></span>
+<span data-step="2" class="pv-stand c3"></span>
+<span data-step="2" class="pv-stand c1"></span>
+</div>
+<div class="pv-pitch"></div>
+<div class="pv-stand-row">
+<span data-step="0" class="pv-stand c1"></span>
+<span data-step="2" class="pv-stand c2"></span>
+<span data-step="1" class="pv-stand c1"></span>
+<span data-step="2" class="pv-stand c1"></span>
+<span data-step="1" class="pv-stand c3"></span>
+</div>
+</div>
+<div class="pv-stadium-legend">
+<span><i class="c1"></i>Bande</span>
+<span><i class="c2"></i>Hospitality</span>
+<span><i class="c3"></i>LED</span>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -2971,7 +3023,33 @@ body.menu-open .lang-floating { display: none; }
 </div>
 <div class="story-frame-panel" id="module-02" data-module-index="2">
 <div class="feature-visual">
-<img class="story-shot" src="/app-screens/partner-crm.jpg" alt="Paktum Partnerprofil mit Kennzahlen, Stammdaten und verknüpften Verträgen" loading="lazy"/>
+<div class="mockup-frame">
+<div class="mockup-body">
+<div class="mockup-header">
+<div>
+<div class="mockup-title">Partner</div>
+<div class="mockup-subtitle">12 aktive Partnerschaften</div>
+</div>
+</div>
+<div class="pv-body">
+<div data-step="0" class="pv-row">
+<div class="pv-avatar">SS</div>
+<div class="pv-main"><div class="pv-title">Schweizer Schokoladenfabrik</div><div class="pv-meta">Hauptsponsor · seit 2022</div></div>
+<span class="pv-pill ok">Neu angelegt</span>
+</div>
+<div data-step="1" class="pv-row">
+<div class="pv-avatar">BA</div>
+<div class="pv-main"><div class="pv-title">Bergbahnen Adelboden</div><div class="pv-meta">✓ Kontakt &amp; Mail verknüpft</div></div>
+<span class="pv-pill neutral">CRM-Sync</span>
+</div>
+<div data-step="2" class="pv-row">
+<div class="pv-avatar">LI</div>
+<div class="pv-main"><div class="pv-title">Luzerner Immobilien AG</div><div class="pv-meta">Bandenpartner · seit 2021</div></div>
+<span class="pv-pill ok">Aktiv</span>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -2994,7 +3072,32 @@ body.menu-open .lang-floating { display: none; }
 </div>
 <div class="story-frame-panel" id="module-03" data-module-index="3">
 <div class="feature-visual">
-<img class="story-shot" src="/app-screens/vertraege.jpg" alt="Paktum Contract Kanban: Verträge nach Status von Erstellung bis Ablage" loading="lazy"/>
+<div class="mockup-frame">
+<div class="mockup-body">
+<div class="mockup-header">
+<div>
+<div class="mockup-title">Vertrag #0142</div>
+<div class="mockup-subtitle">Schweizer Schokoladenfabrik</div>
+</div>
+</div>
+<div class="pv-body">
+<div class="pv-kanban">
+<div class="pv-kanban-col">
+<div class="pv-kanban-col-title">Erstellung</div>
+<div data-step="0" class="pv-kanban-card"><div class="pv-title">Sponsoring-Vertrag</div><div class="pv-meta">Aus Vorlage erstellt</div></div>
+</div>
+<div class="pv-kanban-col">
+<div class="pv-kanban-col-title">Unterschrift</div>
+<div data-step="1" class="pv-kanban-card"><div class="pv-title">Sponsoring-Vertrag</div><div class="pv-meta">Rechte zugeordnet</div></div>
+</div>
+<div class="pv-kanban-col">
+<div class="pv-kanban-col-title">Aktiv</div>
+<div data-step="2" class="pv-kanban-card ok"><div class="pv-title">Sponsoring-Vertrag</div><div class="pv-meta">Dokument generiert</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -3017,7 +3120,38 @@ body.menu-open .lang-floating { display: none; }
 </div>
 <div class="story-frame-panel" id="module-04" data-module-index="4">
 <div class="feature-visual">
-<img class="story-shot" src="/app-screens/umsetzung.jpg" alt="Paktum Aufgabenliste mit Fälligkeiten, Verantwortlichen und Status je Partner" loading="lazy"/>
+<div class="mockup-frame">
+<div class="mockup-body">
+<div class="mockup-header">
+<div>
+<div class="mockup-title">Aufgaben</div>
+<div class="mockup-subtitle">Spieltag 12 · Vorbereitung</div>
+</div>
+</div>
+<div class="pv-body">
+<div data-show-until="0" class="pv-row">
+<div class="pv-check"></div>
+<div class="pv-task">Bandenlayout an Druckerei senden</div>
+<div class="pv-avatar">MK</div>
+</div>
+<div data-step="1" class="pv-row">
+<div class="pv-check done"></div>
+<div class="pv-task done">Bandenlayout an Druckerei senden</div>
+<div class="pv-avatar">MK</div>
+</div>
+<div data-step="1" class="pv-row">
+<div class="pv-check done"></div>
+<div class="pv-task done">Hospitality-Gästeliste abstimmen</div>
+<div class="pv-avatar">JW</div>
+</div>
+<div data-step="2" class="pv-chip-row">
+<span class="pv-chip"><span class="dot"></span>Outlook</span>
+<span class="pv-chip"><span class="dot"></span>Google</span>
+<span class="pv-chip"><span class="dot"></span>Apple</span>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -3120,7 +3254,33 @@ body.menu-open .lang-floating { display: none; }
 </div>
 <div class="story-frame-panel" id="module-06" data-module-index="6">
 <div class="feature-visual">
-<img class="story-shot" src="/app-screens/rechnungen.jpg" alt="Paktum Rechnungsübersicht eines Partners mit Status und Saison-Umsatz" loading="lazy"/>
+<div class="mockup-frame">
+<div class="mockup-body">
+<div class="mockup-header">
+<div>
+<div class="mockup-title">Rechnungen</div>
+<div class="mockup-subtitle">Automatisiert</div>
+</div>
+</div>
+<div class="pv-body">
+<div data-show-until="0" class="pv-row">
+<div class="pv-main"><div class="pv-title">Schweizer Schokoladenfabrik</div><div class="pv-meta">€12.400</div></div>
+<span class="pv-pill warn">Fällig</span>
+</div>
+<div data-step="1" class="pv-row">
+<div class="pv-main"><div class="pv-title">Schweizer Schokoladenfabrik</div><div class="pv-meta">€12.400</div></div>
+<span class="pv-pill ok">Bezahlt</span>
+</div>
+<div data-step="1" class="pv-row">
+<div class="pv-main"><div class="pv-title">Bergbahnen Adelboden</div><div class="pv-meta">€8.900</div></div>
+<span class="pv-pill warn">Fällig</span>
+</div>
+<div data-step="2" class="pv-chip-row">
+<span class="pv-chip"><span class="dot"></span>Sync zu eurer Buchhaltungssoftware</span>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -3143,7 +3303,33 @@ body.menu-open .lang-floating { display: none; }
 </div>
 <div class="story-frame-panel" id="module-07" data-module-index="7">
 <div class="feature-visual">
-<img class="story-shot" src="/app-screens/analytics.jpg" alt="Paktum Dashboard mit Umsatzprognosen, Vertragsstatus und Sponsoring-Summen" loading="lazy"/>
+<div class="mockup-frame">
+<div class="mockup-body">
+<div class="mockup-header">
+<div>
+<div class="mockup-title">Analytics</div>
+<div class="mockup-subtitle">Saison 2025/26</div>
+</div>
+</div>
+<div class="pv-body">
+<div data-step="0" class="pv-analytics-row">
+<div class="pv-bars">
+<i data-step="0" style="height:45%"></i>
+<i data-step="0" style="height:62%"></i>
+<i data-step="1" style="height:38%"></i>
+<i data-step="1" style="height:80%"></i>
+<i data-step="1" style="height:55%"></i>
+<i data-step="1" style="height:92%"></i>
+</div>
+<div class="pv-analytics-label"><b>€243k</b>Umsatzprognose</div>
+</div>
+<div data-step="2" class="pv-analytics-row">
+<div class="pv-donut"><span>86%</span></div>
+<div class="pv-analytics-label"><b>Auslastung</b>über alle Produkte</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
