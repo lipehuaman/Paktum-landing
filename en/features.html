@@ -2745,11 +2745,32 @@ body.menu-open .lang-floating { display: none; }
 .pv-stand.c1 { background: var(--color-primary); }
 .pv-stand.c2 { background: #C65CFF; }
 .pv-stand.c3 { background: #6B0AB8; }
+/* A recognizable top-down pitch, not just a green rectangle: halfway
+   line + center circle (pseudo-elements) plus two goal boxes (real
+   child elements, since a selector only gets two pseudo-elements). */
 .pv-pitch {
+  position: relative;
   height: 120px; border-radius: 14px; margin: 2px 0;
   background: repeating-linear-gradient(90deg, #DCEFE0 0 26px, #CFE8D5 26px 52px);
   border: 2px solid rgba(10, 6, 18, 0.08);
+  overflow: hidden;
 }
+.pv-pitch::before {
+  content: ''; position: absolute; top: 0; bottom: 0; left: 50%; width: 2px;
+  background: rgba(255, 255, 255, 0.75); transform: translateX(-1px);
+}
+.pv-pitch::after {
+  content: ''; position: absolute; top: 50%; left: 50%; width: 44px; height: 44px;
+  border: 2px solid rgba(255, 255, 255, 0.75); border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+.pv-pitch-box {
+  position: absolute; top: 50%; width: 16px; height: 52px;
+  border: 2px solid rgba(255, 255, 255, 0.75);
+  transform: translateY(-50%);
+}
+.pv-pitch-box.left { left: -2px; border-left: none; border-radius: 0 4px 4px 0; }
+.pv-pitch-box.right { right: -2px; border-right: none; border-radius: 4px 0 0 4px; }
 .pv-stadium-legend { display: flex; gap: 16px; justify-content: center; }
 .pv-stadium-legend span { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--color-text-secondary); font-weight: 500; }
 .pv-stadium-legend i { width: 8px; height: 8px; border-radius: 2px; display: block; }
@@ -2983,7 +3004,7 @@ body.menu-open .lang-floating { display: none; }
 <span data-step="2" class="pv-stand c3"></span>
 <span data-step="2" class="pv-stand c1"></span>
 </div>
-<div class="pv-pitch"></div>
+<div class="pv-pitch"><span class="pv-pitch-box left"></span><span class="pv-pitch-box right"></span></div>
 <div class="pv-stand-row">
 <span data-step="0" class="pv-stand c1"></span>
 <span data-step="2" class="pv-stand c2"></span>
@@ -2994,8 +3015,8 @@ body.menu-open .lang-floating { display: none; }
 </div>
 <div class="pv-stadium-legend">
 <span><i class="c1"></i>Board</span>
-<span><i class="c2"></i>Hospitality</span>
-<span><i class="c3"></i>LED</span>
+<span><i class="c2"></i>Cam Carpet</span>
+<span><i class="c3"></i>LED Board</span>
 </div>
 </div>
 </div>
@@ -3033,18 +3054,18 @@ body.menu-open .lang-floating { display: none; }
 </div>
 <div class="pv-body">
 <div data-step="0" class="pv-row">
-<div class="pv-avatar">SS</div>
-<div class="pv-main"><div class="pv-title">Swiss Chocolate Factory</div><div class="pv-meta">Main sponsor · since 2022</div></div>
+<div class="pv-avatar">WE</div>
+<div class="pv-main"><div class="pv-title">Westenergie AG</div><div class="pv-meta">Main sponsor · since 2022</div></div>
 <span class="pv-pill ok">Newly added</span>
 </div>
 <div data-step="1" class="pv-row">
-<div class="pv-avatar">BA</div>
-<div class="pv-main"><div class="pv-title">Adelboden Mountain Railways</div><div class="pv-meta">✓ Contact &amp; mail linked</div></div>
+<div class="pv-avatar">RB</div>
+<div class="pv-main"><div class="pv-title">Rheintal Bank AG</div><div class="pv-meta">✓ Contact &amp; mail linked</div></div>
 <span class="pv-pill neutral">CRM sync</span>
 </div>
 <div data-step="2" class="pv-row">
-<div class="pv-avatar">LI</div>
-<div class="pv-main"><div class="pv-title">Lucerne Properties AG</div><div class="pv-meta">Board partner · since 2021</div></div>
+<div class="pv-avatar">NA</div>
+<div class="pv-main"><div class="pv-title">Nordpark Automobile AG</div><div class="pv-meta">Board partner · since 2021</div></div>
 <span class="pv-pill ok">Active</span>
 </div>
 </div>
@@ -3077,7 +3098,7 @@ body.menu-open .lang-floating { display: none; }
 <div class="mockup-header">
 <div>
 <div class="mockup-title">Contract #0142</div>
-<div class="mockup-subtitle">Swiss Chocolate Factory</div>
+<div class="mockup-subtitle">Westenergie AG</div>
 </div>
 </div>
 <div class="pv-body">
@@ -3131,18 +3152,18 @@ body.menu-open .lang-floating { display: none; }
 <div class="pv-body">
 <div data-show-until="0" class="pv-row">
 <div class="pv-check"></div>
-<div class="pv-task">Send board layout to the printer</div>
-<div class="pv-avatar">MK</div>
+<div class="pv-task">Check perimeter board</div>
+<div class="pv-avatar">PL</div>
 </div>
 <div data-step="1" class="pv-row">
 <div class="pv-check done"></div>
-<div class="pv-task done">Send board layout to the printer</div>
-<div class="pv-avatar">MK</div>
+<div class="pv-task done">Check perimeter board</div>
+<div class="pv-avatar">PL</div>
 </div>
 <div data-step="1" class="pv-row">
 <div class="pv-check done"></div>
-<div class="pv-task done">Confirm hospitality guest list</div>
-<div class="pv-avatar">JW</div>
+<div class="pv-task done">Set up product display</div>
+<div class="pv-avatar">MK</div>
 </div>
 <div data-step="2" class="pv-chip-row">
 <span class="pv-chip"><span class="dot"></span>Outlook</span>
@@ -3264,15 +3285,15 @@ body.menu-open .lang-floating { display: none; }
 </div>
 <div class="pv-body">
 <div data-show-until="0" class="pv-row">
-<div class="pv-main"><div class="pv-title">Swiss Chocolate Factory</div><div class="pv-meta">€12,400</div></div>
+<div class="pv-main"><div class="pv-title">Westenergie AG</div><div class="pv-meta">INV-2026-00042 · €60,000</div></div>
 <span class="pv-pill warn">Due</span>
 </div>
 <div data-step="1" class="pv-row">
-<div class="pv-main"><div class="pv-title">Swiss Chocolate Factory</div><div class="pv-meta">€12,400</div></div>
+<div class="pv-main"><div class="pv-title">Westenergie AG</div><div class="pv-meta">INV-2026-00042 · €60,000</div></div>
 <span class="pv-pill ok">Paid</span>
 </div>
 <div data-step="1" class="pv-row">
-<div class="pv-main"><div class="pv-title">Adelboden Mountain Railways</div><div class="pv-meta">€8,900</div></div>
+<div class="pv-main"><div class="pv-title">Rheintal Bank AG</div><div class="pv-meta">INV-2026-00043 · €18,500</div></div>
 <span class="pv-pill warn">Due</span>
 </div>
 <div data-step="2" class="pv-chip-row">
