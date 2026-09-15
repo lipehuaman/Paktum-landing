@@ -1,0 +1,4007 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<!-- Primary meta tags -->
+<title>Features: From Rights Inventory to Invoicing · Paktum</title>
+<meta name="robots" content="noindex,nofollow"/>
+<meta content="Every module of the Paktum platform in detail: rights &amp; inventory, partner CRM, contracts, activation, LED planning, invoicing and analytics – all in one place." name="description"/>
+<link href="https://www.paktum.ch/en/features" rel="canonical"/>
+<!-- Open Graph / LinkedIn / Facebook -->
+<meta content="website" property="og:type"/>
+<meta content="https://www.paktum.ch/en/features" property="og:url"/>
+<meta content="Paktum Features: The Whole Platform at a Glance" property="og:title"/>
+<meta content="Rights &amp; inventory, partner CRM, contracts, activation, LED planning, invoicing and analytics – every module in detail." property="og:description"/>
+<meta content="https://www.paktum.ch/og-image.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="Paktum" property="og:site_name"/>
+<!-- Twitter Card -->
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Paktum Features: The Whole Platform at a Glance" name="twitter:title"/>
+<meta content="Rights &amp; inventory, partner CRM, contracts, activation, LED planning, invoicing and analytics – every module in detail." name="twitter:description"/>
+<meta content="https://www.paktum.ch/og-image.png" name="twitter:image"/>
+<!-- Favicon -->
+<link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
+<!-- Cookie consent (Usercentrics) - required for GDPR compliance in Europe -->
+<script src="https://web.cmp.usercentrics.eu/modules/autoblocker.js"></script>
+<script async="" data-settings-id="vroPjhUClfR6mc" id="usercentrics-cmp" src="https://web.cmp.usercentrics.eu/ui/loader.js"></script>
+<!-- Webmetic analytics -->
+<script async="" src="https://t.webmetic.de/iav.js?id=z3f444"></script>
+<link href="https://use.typekit.net/apb2slf.css" rel="stylesheet"/>
+<style>
+:root {
+  --color-primary: #970EFB;
+  --color-primary-soft: rgba(151, 14, 251, 0.1);
+  --color-bg-base: #F4F2EE;
+  --color-bg-surface: #FFFFFF;
+  --color-ink: #0A0612;
+  --color-ink-soft: #1F0F3D;
+  --color-text-primary: #0A0612;
+  --color-text-secondary: #635A6F;
+  --color-text-muted: #908AA0;
+  --color-text-inverse: #F4F2EE;
+  --color-text-inverse-muted: #A89DB8;
+  --color-border: rgba(10, 6, 18, 0.1);
+  --color-border-dark: rgba(244, 242, 238, 0.12);
+  --gradient-dark: linear-gradient(180deg, #1F0F3D 0%, #0A0612 100%);
+  --gradient-glow: radial-gradient(ellipse at top, rgba(151, 14, 251, 0.25) 0%, transparent 55%);
+  --font-display: 'forma-djr-display', 'forma-djr-text', 'Inter', 'Helvetica Neue', 'Arial', system-ui, sans-serif;
+  --font-mono: 'forma-djr-text', 'Inter', 'Helvetica Neue', 'Arial', system-ui, sans-serif;
+  --container: 1320px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-mono);
+  background: var(--color-bg-base);
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.4;
+  overflow-x: hidden;
+}
+
+.container { max-width: var(--container); margin: 0 auto; padding: 0 32px; }
+
+/* ============ NAVBAR ============ */
+.navbar {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 48px);
+  max-width: 1400px;
+  z-index: 100;
+  background: rgba(10, 6, 18, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 100px;
+  padding: 12px 16px 12px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  border: 1px solid var(--color-border-dark);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.nav-logo img { height: 28px; width: auto; display: block; }
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--color-text-inverse);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+.nav-links a:hover { opacity: 1; }
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-lang {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.nav-lang .lang-btn {
+  color: rgba(244, 242, 238, 0.5);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-lang .lang-btn:hover { color: white; }
+
+.nav-lang .lang-btn.active {
+  color: var(--color-primary);
+}
+
+.btn {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  padding: 14px 24px;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: 0;
+  text-decoration: none;
+}
+
+.btn-primary { background: var(--color-primary); color: white; }
+.btn-primary:hover { background: #AD2FFC; }
+.btn-ghost-dark { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.2); }
+.btn-ghost-dark:hover { border-color: white; background: rgba(255,255,255,0.05); }
+.btn-arrow::after { content: '↗'; font-size: 16px; }
+.btn-lg { padding: 18px 32px; font-size: 16px; }
+
+/* ============ HERO ============ */
+.hero {
+  background: var(--color-ink);
+  color: white;
+  position: relative;
+  padding: 160px 16px 32px;
+  border-radius: 0 0 48px 48px;
+  overflow: hidden;
+  margin: 0 16px;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -100px; left: -100px;
+  width: 800px; height: 800px;
+  background: var(--gradient-glow);
+  pointer-events: none;
+}
+
+.hero-grid {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 80px 16px 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero h1 {
+  font-size: clamp(40px, 6vw, 92px);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
+  margin-bottom: 40px;
+}
+
+.hero h1 .accent {
+  color: var(--color-primary);
+  font-style: italic;
+  font-weight: 600;
+}
+
+.hero-trust {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-text-inverse-muted);
+  margin-bottom: 56px;
+}
+
+.hero-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: end;
+  padding-top: 32px;
+  border-top: 1px solid var(--color-border-dark);
+}
+
+.hero-description {
+  font-size: 19px;
+  color: var(--color-text-inverse-muted);
+  max-width: 520px;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+
+.hero-description strong { color: white; font-weight: 500; }
+
+.hero-ctas { display: flex; gap: 12px; justify-content: flex-end; flex-wrap: wrap; }
+
+/* Marquee logos */
+.marquee {
+  background: var(--color-ink);
+  color: white;
+  margin: 16px 16px 0;
+  border-top: 1px solid var(--color-border-dark);
+  border-radius: 24px;
+  overflow: hidden;
+  padding: 32px 0;
+}
+
+.marquee-track {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  width: max-content;
+  animation: marqueeScroll 218s linear infinite;
+  will-change: transform;
+}
+
+.marquee-track .logo-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 120px;
+  padding-right: 120px;
+  flex-shrink: 0;
+}
+
+.marquee-logo {
+  height: 56px;
+  width: auto;
+  min-width: 80px;
+  max-width: 140px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.7;
+  transition: opacity 0.3s;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.marquee-logo:hover { opacity: 1; }
+
+/* Some logos need to keep their original colors */
+.marquee-logo.preserve-color {
+  filter: none;
+  opacity: 0.9;
+}
+
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.marquee:hover .marquee-track { animation-play-state: paused; }
+
+/* ============ PROBLEM ============ */
+.problem {
+  padding: 160px 16px;
+  position: relative;
+}
+
+.section-header {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 80px;
+  margin-bottom: 80px;
+  align-items: end;
+  max-width: var(--container);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-tag {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+}
+
+.section-title-xl {
+  font-size: clamp(40px, 5.5vw, 88px);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
+  margin-top: 16px;
+}
+
+.section-title-xl .accent { color: var(--color-primary); font-style: italic; }
+.section-title-xl .strike {
+  text-decoration: line-through;
+  text-decoration-thickness: 6px;
+  text-decoration-color: var(--color-primary);
+  opacity: 0.55;
+}
+
+.problem-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  max-width: var(--container);
+  margin: 0 auto;
+  border-radius: 32px;
+  overflow: hidden;
+  background: var(--color-border);
+}
+
+.problem-card {
+  padding: 56px 40px;
+  background: var(--color-bg-base);
+  position: relative;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: background 0.3s;
+}
+
+.problem-card:hover { background: white; }
+
+.problem-num {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.15em;
+  margin-bottom: 8px;
+}
+
+.problem-card h3 {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: 0;
+  margin-bottom: 16px;
+}
+
+.problem-card p {
+  font-size: 16px;
+  color: var(--color-text-secondary);
+  line-height: 1.55;
+  letter-spacing: 0;
+}
+
+.problem-card .visual-mark {
+  position: absolute;
+  top: 32px; right: 32px;
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+/* ============ BIG TYPE BRIDGE ============ */
+.bridge {
+  padding: 120px 16px;
+  text-align: center;
+}
+
+.bridge-text {
+  font-size: clamp(40px, 6vw, 92px);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.bridge-text .accent { color: var(--color-primary); }
+.bridge-text .underline {
+  text-decoration: underline;
+  text-decoration-thickness: 6px;
+  text-underline-offset: 8px;
+  text-decoration-color: var(--color-primary);
+}
+
+/* ============ FEATURES (ZIGZAG) ============ */
+.features {
+  background: var(--color-ink);
+  color: white;
+  margin: 0 16px;
+  border-radius: 48px;
+  padding: 120px 0 160px;
+  position: relative;
+  overflow: hidden;
+}
+
+.features::before {
+  content: '';
+  position: absolute;
+  top: -200px; right: -200px;
+  width: 700px; height: 700px;
+  background: var(--gradient-glow);
+  pointer-events: none;
+}
+
+.features .container { position: relative; z-index: 1; }
+
+.features .section-tag { color: var(--color-text-inverse-muted); }
+.features .section-title-xl { color: white; }
+
+/* Connecting path line */
+.features-path {
+  position: relative;
+  margin-top: 80px;
+  padding: 0;
+}
+
+.feature-block {
+  position: relative;
+  margin-bottom: 120px;
+  display: grid;
+  align-items: center;
+  gap: 64px;
+}
+
+.feature-block:last-child { margin-bottom: 0; }
+
+/* RIGHT alignment (first card) */
+.feature-block.right {
+  grid-template-columns: 1fr 1.2fr;
+  padding-left: 0;
+  padding-right: 8%;
+}
+
+/* LEFT alignment (second card) */
+.feature-block.left {
+  grid-template-columns: 1.2fr 1fr;
+  padding-left: 8%;
+  padding-right: 0;
+}
+.feature-block.left .feature-content { order: 2; }
+.feature-block.left .feature-visual { order: 1; }
+
+/* CENTER (third card, bigger emphasis) */
+.feature-block.right.last {
+  padding-right: 4%;
+}
+
+.feature-number-big {
+  font-family: var(--font-display);
+  font-size: 200px;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--color-primary);
+  line-height: 0.8;
+  letter-spacing: 0;
+  opacity: 0.15;
+  position: absolute;
+  pointer-events: none;
+}
+
+.feature-block.right .feature-number-big { top: -60px; right: -40px; left: auto; }
+.feature-block.left .feature-number-big { top: -60px; left: -40px; right: auto; }
+
+.feature-content { position: relative; z-index: 2; }
+
+.feature-num {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.feature-content h3 {
+  font-size: clamp(34px, 4.5vw, 60px);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.05;
+  margin-bottom: 16px;
+}
+
+.feature-content h3 .accent {
+  color: var(--color-primary);
+  font-style: italic;
+}
+
+.feature-subtitle {
+  font-size: 14px;
+  font-family: var(--font-mono);
+  color: var(--color-text-inverse-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 24px;
+}
+
+.feature-content > p {
+  font-size: 18px;
+  color: var(--color-text-inverse-muted);
+  line-height: 1.6;
+  margin-bottom: 32px;
+  max-width: 480px;
+  letter-spacing: 0.01em;
+}
+
+.feature-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.feature-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: white;
+  font-size: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--color-border-dark);
+  letter-spacing: 0;
+}
+
+.feature-list li:first-child { border-top: 1px solid var(--color-border-dark); }
+
+.feature-list li::before {
+  content: '→';
+  color: var(--color-primary);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* ============ MOCKUPS - ATTRACTIVE & ANIMATED ============ */
+.feature-visual {
+  position: relative;
+  z-index: 1;
+  aspect-ratio: 4/3;
+  background: linear-gradient(135deg, rgba(151, 14, 251, 0.1) 0%, rgba(31, 15, 61, 0.3) 100%);
+  border: 1px solid var(--color-border-dark);
+  border-radius: 24px;
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  padding: 28px;
+}
+
+.mockup-frame {
+  width: 100%;
+  background: white;
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 60px rgba(151, 14, 251, 0.25), 0 4px 12px rgba(10, 6, 18, 0.15);
+  color: var(--color-text-primary);
+}
+
+.mockup-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  position: relative;
+}
+
+.mockup-header {
+  padding: 18px 22px;
+  border-bottom: 1px solid rgba(10, 6, 18, 0.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.mockup-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #0A0612;
+  letter-spacing: 0;
+}
+
+.mockup-subtitle {
+  font-size: 12px;
+  color: #635A6F;
+  margin-top: 3px;
+}
+
+.mockup-controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.mockup-select {
+  background: white;
+  border: 1px solid rgba(10, 6, 18, 0.1);
+  border-radius: 8px;
+  padding: 7px 12px;
+  font-size: 12px;
+  color: #0A0612;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+}
+
+.mockup-btn {
+  background: var(--color-primary);
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: none;
+  font-family: var(--font-display);
+}
+
+.mockup-status-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* ============ MOCKUP 1: STADIUM PLAN ============ */
+.mockup-stadium-container {
+  flex: 1;
+  padding: 20px 22px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: #FCFBFD;
+  min-height: 0;
+}
+
+.stadium-svg-wrapper {
+  flex: 1;
+  position: relative;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #FAFAFA 0%, #F4F2EE 100%);
+  border: 1px solid rgba(10, 6, 18, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+}
+
+.stadium-svg {
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+}
+
+.stadium-legend-bar {
+  display: flex;
+  gap: 20px;
+  font-size: 12px;
+  color: #0A0612;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0 4px;
+  font-weight: 500;
+}
+
+.stadium-legend-bar span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.stadium-legend-bar .count {
+  color: #635A6F;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 400;
+}
+
+/* ============ MOCKUP 2: PRODUCTS TABLE ============ */
+.mockup-table-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.mockup-table-header {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1.2fr;
+  padding: 12px 22px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  background: #FAFAFA;
+  border-bottom: 1px solid rgba(10, 6, 18, 0.06);
+  font-weight: 600;
+}
+
+.mockup-table-row {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1.2fr;
+  padding: 14px 22px;
+  font-size: 13px;
+  color: #0A0612;
+  border-bottom: 1px solid rgba(10, 6, 18, 0.04);
+  align-items: center;
+}
+
+.mockup-table-row:last-child { border-bottom: none; }
+
+.mockup-table-row.highlighted { background: #FAF8FE; }
+
+/* ====== Animated alert popup for mockup 2 ====== */
+.mockup-alert {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%) translateX(20px);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px 20px;
+  background: white;
+  border: 1px solid var(--color-border);
+  border-left: 4px solid #F59E0B;
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(10, 6, 18, 0.18);
+  max-width: 280px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 10;
+  transition: border-left-color 0.3s ease;
+}
+
+.mockup-alert.alert-warning { border-left-color: #F59E0B; }
+.mockup-alert.alert-warning .mockup-alert-icon { color: #F59E0B; }
+
+.mockup-alert.alert-critical { border-left-color: #ef4444; }
+.mockup-alert.alert-critical .mockup-alert-icon { color: #ef4444; }
+
+.mockup-alert.alert-success { border-left-color: #22c55e; }
+.mockup-alert.alert-success .mockup-alert-icon { color: #22c55e; }
+
+.mockup-alert.alert-visible {
+  animation: alertPopShow 4s ease-in-out forwards;
+}
+
+.mockup-alert-icon {
+  font-size: 18px;
+  color: #F59E0B;
+  flex-shrink: 0;
+  line-height: 1;
+  transition: color 0.3s ease;
+}
+
+.mockup-alert-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.mockup-alert-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 4px;
+  letter-spacing: 0.01em;
+}
+
+.mockup-alert-text {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+}
+
+.mockup-alert-close {
+  font-size: 18px;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  line-height: 1;
+  margin-top: -2px;
+}
+
+@keyframes alertPopShow {
+  0% {
+    opacity: 0;
+    transform: translateY(-50%) translateX(20px) scale(0.95);
+  }
+  15%, 85% {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-50%) translateX(20px) scale(0.95);
+  }
+}
+
+.mockup-product-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.mockup-pin {
+  color: var(--color-primary);
+  font-size: 12px;
+}
+
+.mockup-progress-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.mockup-progress-top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  align-items: center;
+}
+
+.mockup-progress-percent {
+  color: #0A0612;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
+}
+.mockup-progress-count {
+  color: #635A6F;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
+.mockup-progress-bar {
+  width: 100%;
+  height: 5px;
+  background: rgba(10, 6, 18, 0.06);
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.mockup-progress-fill {
+  height: 100%;
+  border-radius: 100px;
+  transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mockup-progress-fill.green { background: linear-gradient(90deg, #16a34a, #22c55e); }
+.mockup-progress-fill.amber { background: linear-gradient(90deg, #d97706, #f59e0b); }
+.mockup-progress-fill.red { background: linear-gradient(90deg, #dc2626, #ef4444); }
+
+.mockup-group-tag {
+  font-size: 12px;
+  color: #635A6F;
+  font-weight: 500;
+}
+
+/* ============ MOCKUP 3: INVOICE DASHBOARD ============ */
+.mockup-dashboard {
+  flex: 1;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 0;
+  background: #FCFBFD;
+}
+
+.mockup-stat-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.mockup-stat-card {
+  background: white;
+  border: 1px solid rgba(10, 6, 18, 0.06);
+  border-radius: 12px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.mockup-stat-card.featured {
+  background: linear-gradient(135deg, #1F0F3D 0%, #0A0612 100%);
+  color: white;
+  border: none;
+}
+
+.mockup-stat-card.featured::before {
+  content: '';
+  position: absolute;
+  top: -50px; right: -50px;
+  width: 150px; height: 150px;
+  background: radial-gradient(circle, rgba(151, 14, 251, 0.4) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.mockup-stat-label {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-family: var(--font-mono);
+  font-weight: 600;
+}
+
+.mockup-stat-card.featured .mockup-stat-label { color: #A89DB8; }
+
+.mockup-stat-value {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--color-primary);
+  letter-spacing: 0;
+  font-style: italic;
+  line-height: 1;
+  margin-top: 4px;
+}
+
+.mockup-stat-card.featured .mockup-stat-value { color: white; }
+
+.mockup-stat-meta {
+  font-size: 11px;
+  color: #22c55e;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+  font-weight: 600;
+}
+
+.mockup-stat-card.featured .mockup-stat-meta { color: #4ADE80; }
+
+.mockup-invoice-table {
+  background: white;
+  border: 1px solid rgba(10, 6, 18, 0.06);
+  border-radius: 12px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.mockup-invoice-header {
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(10, 6, 18, 0.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mockup-invoice-header-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0A0612;
+  letter-spacing: 0;
+}
+
+.mockup-invoice-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.mockup-invoice-item {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 0.7fr;
+  align-items: center;
+  padding: 11px 16px;
+  border-bottom: 1px solid rgba(10, 6, 18, 0.04);
+  font-size: 12px;
+  gap: 8px;
+}
+
+.mockup-invoice-item:last-child { border-bottom: none; }
+
+.mockup-invoice-item:hover { background: #FAF8FE; }
+
+.mockup-invoice-id {
+  color: #0A0612;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mockup-invoice-id .mono {
+  font-family: var(--font-mono);
+  color: #635A6F;
+  font-size: 10px;
+  font-weight: 400;
+  margin-right: 6px;
+}
+
+.mockup-invoice-amount {
+  font-weight: 700;
+  color: #0A0612;
+  font-size: 14px;
+  letter-spacing: 0;
+  text-align: right;
+}
+
+.mockup-invoice-status {
+  padding: 4px 10px;
+  border-radius: 100px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-align: center;
+  justify-self: end;
+}
+
+.mockup-invoice-status.paid {
+  background: rgba(34, 197, 94, 0.14);
+  color: #15803d;
+}
+
+.mockup-invoice-status.sent {
+  background: rgba(151, 14, 251, 0.12);
+  color: #6B0AB8;
+}
+
+/* ====== Animated payment flow for mockup 3 ====== */
+.mockup-payment-flow {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  min-width: 110px;
+  justify-content: flex-end;
+}
+
+.mockup-payment-flow .mockup-invoice-status,
+.mockup-payment-flow .mockup-pay-btn {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  animation-duration: 7s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+.mockup-payment-flow .payment-due {
+  background: rgba(245, 158, 11, 0.15);
+  color: #d97706;
+  animation-name: payDueAnim;
+}
+
+.mockup-payment-flow .mockup-pay-btn {
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 100px;
+  padding: 6px 14px;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  animation-name: payBtnAnim;
+  box-shadow: 0 2px 8px rgba(151, 14, 251, 0.3);
+}
+
+.mockup-payment-flow .payment-paid {
+  animation-name: payPaidAnim;
+}
+
+@keyframes payDueAnim {
+  0%, 30% { opacity: 1; transform: translateY(-50%) scale(1); }
+  35%, 100% { opacity: 0; transform: translateY(-50%) scale(0.9); }
+}
+
+@keyframes payBtnAnim {
+  0%, 30% { opacity: 0; transform: translateY(-50%) scale(0.9); }
+  35%, 55% { opacity: 1; transform: translateY(-50%) scale(1); }
+  58% { opacity: 1; transform: translateY(-50%) scale(0.92); }
+  62%, 100% { opacity: 0; transform: translateY(-50%) scale(0.9); }
+}
+
+@keyframes payPaidAnim {
+  0%, 62% { opacity: 0; transform: translateY(-50%) scale(0.9); }
+  68%, 95% { opacity: 1; transform: translateY(-50%) scale(1); }
+  100% { opacity: 0; transform: translateY(-50%) scale(0.9); }
+}
+
+.live-counter {
+  position: relative;
+  display: inline-block;
+}
+
+.live-counter::after {
+  content: '↑';
+  position: absolute;
+  top: -2px;
+  right: -16px;
+  font-size: 14px;
+  color: #22c55e;
+  animation: arrowBounce 1.5s ease-in-out infinite;
+}
+
+@keyframes arrowBounce {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(-4px); opacity: 0.7; }
+}
+
+/* ============ MOCKUP 4: LED PLAYLIST PLANNER ============ */
+.mockup-led-planner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: #FCFBFD;
+  position: relative;
+}
+
+.led-summary-bar {
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid rgba(10, 6, 18, 0.06);
+  font-size: 10px;
+  color: #635A6F;
+}
+
+.led-summary-title {
+  color: #0A0612;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.led-summary-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+}
+
+.led-summary-live {
+  color: #15803d;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.led-summary-live::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.12);
+}
+
+.led-workspace {
+  flex: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 124px;
+  gap: 10px;
+  padding: 12px 14px 8px;
+  min-height: 0;
+}
+
+.led-timeline {
+  display: grid;
+  grid-template-columns: 26px repeat(3, minmax(0, 1fr));
+  gap: 5px;
+  min-width: 0;
+  min-height: 0;
+}
+
+.led-time-axis {
+  padding-top: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  color: #8B8295;
+  font-family: var(--font-mono);
+  font-size: 7px;
+  text-align: right;
+}
+
+.led-lane {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+  min-height: 0;
+}
+
+.led-lane-title {
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 2px solid rgba(151, 14, 251, 0.42);
+  color: #6B0AB8;
+  font-family: var(--font-mono);
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 0 0 auto;
+}
+
+.led-slot {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 22px;
+  padding: 4px 6px;
+  border-radius: 4px;
+  color: white;
+  font-size: 7px;
+  font-weight: 600;
+  line-height: 1.15;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.13);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.led-slot span,
+.led-slot small {
+  position: relative;
+  z-index: 1;
+  transition: opacity 0.3s ease;
+}
+
+.led-slot span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.led-slot small {
+  font-family: var(--font-mono);
+  font-size: 6px;
+  opacity: 0.75;
+  flex-shrink: 0;
+}
+
+.led-slot.orange { background: linear-gradient(135deg, #B85CFF, #D99BFF); }
+.led-slot.blue { background: linear-gradient(135deg, #3B0764, #6B0AB8); }
+
+/* empty state sits on top of the finished slot and cross-fades away on drop */
+.led-slot::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: #FCFBFD;
+  border: 1px dashed rgba(151, 14, 251, 0.45);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease, background 0.25s ease, border-color 0.25s ease;
+}
+
+.led-slot::after {
+  content: '+';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #970EFB;
+  font-size: 12px;
+  font-weight: 500;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.led-slot.is-empty::before,
+.led-slot.is-empty::after { opacity: 1; }
+
+.led-slot.is-empty span,
+.led-slot.is-empty small { opacity: 0; }
+
+.led-slot.is-empty.is-target::before {
+  background: rgba(151, 14, 251, 0.1);
+  border-style: solid;
+  border-color: #970EFB;
+}
+
+.led-drag-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 19;
+  height: 22px;
+  padding: 4px 6px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  color: white;
+  background: linear-gradient(135deg, #B85CFF, #D99BFF);
+  box-shadow: 0 4px 10px rgba(151, 14, 251, 0.26);
+  font-size: 7px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: transform var(--led-move, 700ms) cubic-bezier(0.4, 0, 0.2, 1),
+              width var(--led-move, 700ms) cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.2s ease,
+              opacity 0.18s ease;
+}
+
+.led-drag-card.blue { background: linear-gradient(135deg, #3B0764, #6B0AB8); }
+
+.led-drag-card span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.led-drag-card small {
+  font-family: var(--font-mono);
+  font-size: 6px;
+  opacity: 0.78;
+}
+
+.led-drag-card.is-visible { opacity: 1; }
+.led-drag-card.is-lifted { box-shadow: 0 10px 22px rgba(151, 14, 251, 0.42); }
+
+.led-slot.is-target {
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 2px #970EFB, 0 5px 12px rgba(151, 14, 251, 0.25);
+}
+
+.led-slot.is-placed {
+  animation: ledPlaced 0.55s ease both;
+}
+
+@keyframes ledPlaced {
+  0% { transform: scale(0.92); opacity: 0.55; }
+  60% { transform: scale(1.04); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.led-phase {
+  flex: 0 0 auto;
+  min-height: 18px;
+  border: 1px dashed rgba(151, 14, 251, 0.32);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6B0AB8;
+  font-family: var(--font-mono);
+  font-size: 6px;
+  font-weight: 700;
+  background: rgba(151, 14, 251, 0.04);
+}
+
+.led-bookings {
+  border-left: 1px solid rgba(10, 6, 18, 0.06);
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.led-bookings-title {
+  font-size: 9px;
+  font-weight: 700;
+  color: #0A0612;
+  margin-bottom: 1px;
+}
+
+.led-booking-card {
+  padding: 6px 7px;
+  background: white;
+  border: 1px solid rgba(10, 6, 18, 0.09);
+  border-radius: 7px;
+  transition: border-color 0.25s ease, transform 0.18s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+}
+
+.led-booking-card.is-active {
+  border-color: #970EFB;
+  transform: translateX(-2px);
+  box-shadow: 0 5px 12px rgba(151, 14, 251, 0.14);
+}
+
+/* the moment the pointer presses down on a booking */
+.led-booking-card.is-grabbed {
+  transform: scale(0.96);
+  border-color: #970EFB;
+  box-shadow: inset 0 1px 3px rgba(151, 14, 251, 0.2);
+}
+
+/* the booking has been picked up - what stays behind is just a gap */
+.led-booking-card.is-dragging {
+  opacity: 0.4;
+  transform: none;
+  border-style: dashed;
+  box-shadow: none;
+}
+
+.led-booking-name {
+  font-size: 7px;
+  line-height: 1.2;
+  color: #0A0612;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.led-booking-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  color: #8B8295;
+  font-family: var(--font-mono);
+  font-size: 6px;
+}
+
+.led-booking-status {
+  color: #15803d;
+  background: rgba(34, 197, 94, 0.1);
+  border-radius: 100px;
+  padding: 2px 4px;
+  font-weight: 700;
+}
+
+.led-progress {
+  height: 22px;
+  margin: 0 14px 10px 40px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #635A6F;
+  font-size: 7px;
+}
+
+.led-progress-track {
+  flex: 1;
+  height: 4px;
+  border-radius: 100px;
+  background: rgba(10, 6, 18, 0.07);
+  overflow: hidden;
+}
+
+.led-progress-fill {
+  width: 86%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #970EFB, #C65CFF);
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.led-cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  width: 16px;
+  height: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transform-origin: 2px 2px;
+  transition: transform var(--led-move, 700ms) cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
+  filter: drop-shadow(0 2px 2px rgba(10, 6, 18, 0.2));
+}
+
+.led-cursor.is-visible { opacity: 1; }
+.led-click-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 18;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid #970EFB;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.led-click-ring.is-on { animation: ledClickRing 0.5s ease-out; }
+
+@keyframes ledClickRing {
+  0% { opacity: 0.7; transform: scale(0.35); }
+  100% { opacity: 0; transform: scale(1.5); }
+}
+
+/* the "Bereit" badge only shows up once the plan is complete (JS-driven runs only) */
+.mockup-led-planner.is-animated .led-summary-live {
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+.mockup-led-planner.is-animated .led-summary-live.is-on { opacity: 1; }
+
+@media (max-width: 640px) {
+  .led-workspace {
+    grid-template-columns: 1fr;
+    padding: 8px 10px 4px;
+    overflow: hidden;
+  }
+  .led-bookings { display: none; }
+  .led-summary-bar { padding: 8px 10px; }
+  .led-summary-meta > span:first-child { display: none; }
+  .led-progress { height: 18px; margin: 0 10px 6px 34px; }
+  .led-timeline { gap: 4px; min-height: 0; }
+  .led-lane { gap: 2px; }
+  .led-lane-title { height: 16px; }
+  .led-phase { min-height: 13px; }
+  .led-slot { min-height: 15px; padding: 2px 4px; font-size: 6px; }
+  .led-slot small { display: none; }
+  .led-slot::after { font-size: 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .led-cursor, .led-drag-card, .led-click-ring { display: none; }
+  .led-slot, .led-booking-card { transition: none; animation: none; }
+}
+
+/* ============ STATS — BIG BOLD ============ */
+.stats {
+  padding: 160px 16px;
+}
+
+.stats-container {
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+.stats-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: end;
+  margin-bottom: 80px;
+}
+
+.stats-intro p {
+  font-size: 18px;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  letter-spacing: 0;
+  max-width: 480px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  background: var(--color-border);
+  border-radius: 32px;
+  overflow: hidden;
+}
+
+.stat-card {
+  background: var(--color-bg-base);
+  padding: 64px 48px;
+  position: relative;
+  min-height: 360px;
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-card .stat-num {
+  font-size: clamp(80px, 12vw, 180px);
+  font-weight: 700;
+  line-height: 0.85;
+  letter-spacing: 0;
+  color: var(--color-primary);
+  font-style: italic;
+  margin-bottom: 56px;
+}
+
+.stat-card .stat-num .unit {
+  font-size: 0.35em;
+  font-style: normal;
+  color: var(--color-text-primary);
+  margin-left: 4px;
+  vertical-align: 0.4em;
+  font-weight: 600;
+}
+
+.stat-card .stat-content {
+  margin-top: auto;
+}
+
+.stat-card .stat-label {
+  font-size: 18px;
+  color: var(--color-text-primary);
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0;
+  max-width: 280px;
+  margin-bottom: 24px;
+}
+
+.stat-card .stat-meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ============ FAQ ============ */
+.faq {
+  padding: 160px 16px;
+  background: var(--color-bg-surface);
+  margin: 0 16px;
+  border-radius: 48px;
+}
+
+.faq-container {
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+.faq-list {
+  margin-top: 64px;
+  border-top: 1px solid var(--color-border);
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.faq-question {
+  padding: 32px 0;
+  font-size: 28px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  letter-spacing: 0;
+  line-height: 1.2;
+}
+
+.faq-question::after {
+  content: '+';
+  font-size: 32px;
+  color: var(--color-primary);
+  font-weight: 400;
+  transition: transform 0.3s;
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: var(--color-primary-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.faq-item.open .faq-question::after { transform: rotate(45deg); }
+
+.faq-answer {
+  padding: 0 0 32px;
+  color: var(--color-text-secondary);
+  font-size: 17px;
+  line-height: 1.6;
+  display: none;
+  max-width: 720px;
+}
+
+.faq-item.open .faq-answer { display: block; }
+
+/* ============ FINAL CTA ============ */
+.final-cta {
+  margin: 0 16px 16px;
+  background: var(--color-ink);
+  color: white;
+  border-radius: 48px;
+  padding: 120px 64px;
+  position: relative;
+  overflow: hidden;
+}
+
+.final-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at top, rgba(151, 14, 251, 0.3) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.final-cta-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 80px;
+  align-items: end;
+  max-width: var(--container);
+  margin: 0 auto;
+  position: relative;
+}
+
+.final-cta h2 {
+  font-size: clamp(40px, 6vw, 92px);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+.final-cta h2 .accent { color: var(--color-primary); font-style: italic; }
+
+.final-cta .ctas {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.final-cta p {
+  font-size: 17px;
+  color: var(--color-text-inverse-muted);
+  line-height: 1.5;
+  margin-bottom: 16px;
+  max-width: 380px;
+}
+
+/* ============ FOOTER ============ */
+footer {
+  background: var(--color-bg-base);
+  padding: 64px 16px 32px;
+}
+
+.footer-container {
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+.footer-cols {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 64px;
+  padding-top: 48px;
+  border-top: 1px solid var(--color-border);
+  margin-bottom: 48px;
+}
+
+.footer-col h5 {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-bottom: 24px;
+}
+
+.footer-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-col a {
+  color: var(--color-text-primary);
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0;
+  transition: color 0.2s;
+}
+
+.footer-col a:hover { color: var(--color-primary); }
+
+.footer-brand img { height: 32px; width: auto; margin-bottom: 16px; }
+
+.footer-brand p {
+  font-size: 15px;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  max-width: 320px;
+}
+
+.footer-bottom {
+  padding-top: 32px;
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.swiss-made {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.swiss-made img {
+  height: 54px;
+  width: auto;
+  display: block;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+
+.swiss-made:hover img { opacity: 1; }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 1100px) {
+  .feature-block.right, .feature-block.left {
+    grid-template-columns: 1fr;
+    padding-left: 0;
+    padding-right: 0;
+    gap: 32px;
+  }
+  .feature-block.left .feature-content,
+  .feature-block.left .feature-visual { order: initial; }
+  .feature-block { margin-bottom: 80px; padding-top: 40px; }
+  .feature-block.right .feature-number-big,
+  .feature-block.left .feature-number-big {
+    top: 0;
+    left: -10px;
+    right: auto;
+    font-size: 140px;
+  }
+}
+
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .hero-bottom, .stats-intro, .section-header, .final-cta-grid { grid-template-columns: 1fr; gap: 32px; }
+  .hero-ctas { justify-content: flex-start; }
+  .problem-grid, .stats-grid, .footer-cols { grid-template-columns: 1fr; }
+  .final-cta, .faq { padding: 64px 32px; }
+  .feature-block.right .feature-number-big,
+  .feature-block.left .feature-number-big {
+    font-size: 110px;
+  }
+}
+
+/* ============ MOBILE ============ */
+@media (max-width: 640px) {
+  /* Container & spacing */
+  .container { padding: 0 12px; }
+  
+  /* Navbar - more compact */
+  .navbar {
+    top: 12px;
+    width: calc(100% - 24px);
+    padding: 8px 8px 8px 16px;
+  }
+  .navbar .btn-primary {
+    font-size: 13px;
+    padding: 10px 16px;
+  }
+  .nav-actions {
+    gap: 12px;
+  }
+  .nav-lang {
+    font-size: 11px;
+    gap: 4px;
+  }
+  
+  /* Hero */
+  .hero {
+    margin: 0;
+    padding: 120px 16px 24px;
+    border-radius: 0 0 32px 32px;
+  }
+  .hero-grid {
+    padding: 24px 0 16px;
+  }
+  .hero-trust {
+    font-size: 13px;
+    margin-bottom: 32px;
+  }
+  .hero-bottom {
+    padding-top: 24px;
+    gap: 24px;
+  }
+  .hero-description {
+    font-size: 16px;
+  }
+  .hero-ctas {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+  .hero-ctas .btn {
+    justify-content: center;
+    width: 100%;
+  }
+  .btn-lg {
+    padding: 16px 24px;
+    font-size: 15px;
+  }
+  
+  /* Marquee */
+  .marquee { margin: 12px 12px 0; padding: 24px 0; border-radius: 16px; }
+  .marquee-logo { height: 36px; max-width: 100px; }
+  .marquee-track .logo-group { gap: 48px; padding-right: 48px; }
+  
+  /* Section header (problem, stats, etc) */
+  .section-header {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+  
+  /* Problem section */
+  .problem { padding: 80px 12px; }
+  .problem-grid {
+    grid-template-columns: 1fr;
+    border-radius: 24px;
+  }
+  .problem-card {
+    padding: 32px 24px;
+    min-height: auto;
+  }
+  .problem-card h3 { font-size: 28px; }
+  .problem-card .visual-mark {
+    width: 40px;
+    height: 40px;
+    top: 24px;
+    right: 24px;
+    font-size: 18px;
+  }
+  
+  /* Bridge */
+  .bridge { padding: 64px 12px; }
+  
+  /* Features - the big one */
+  .features {
+    margin: 0 12px;
+    border-radius: 32px;
+    padding: 80px 0 100px;
+  }
+  .features-path {
+    margin-top: 56px;
+  }
+  .feature-block {
+    margin-bottom: 64px;
+    gap: 28px;
+  }
+  .feature-number-big {
+    display: none;
+  }
+  .feature-content h3 {
+    font-size: 36px;
+  }
+  .feature-content > p {
+    font-size: 15px;
+  }
+  .feature-subtitle {
+    font-size: 12px;
+  }
+  
+  /* Mockups - mobile sizing */
+  .feature-visual {
+    aspect-ratio: 4/3.5;
+    padding: 16px;
+    border-radius: 16px;
+  }
+  .mockup-frame {
+    border-radius: 12px;
+  }
+  .mockup-header {
+    padding: 12px 14px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .mockup-title { font-size: 14px; }
+  .mockup-subtitle { font-size: 10px; }
+  .mockup-controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .mockup-select, .mockup-btn {
+    font-size: 10px;
+    padding: 6px 10px;
+  }
+  
+  /* Stadium mockup - more visible on mobile */
+  .mockup-stadium-container {
+    padding: 12px;
+    gap: 10px;
+  }
+  .stadium-svg-wrapper { padding: 8px; }
+  .stadium-legend-bar {
+    font-size: 10px;
+    gap: 10px;
+  }
+  
+  /* Products table mockup */
+  .mockup-table-header,
+  .mockup-table-row {
+    grid-template-columns: 1.4fr 1.2fr;
+    padding: 10px 14px;
+    font-size: 11px;
+  }
+  .mockup-table-header > div:nth-child(2),
+  .mockup-table-row > div:nth-child(2) {
+    display: none;
+  }
+  .mockup-progress-percent { font-size: 12px; }
+  .mockup-progress-count { font-size: 9px; }
+  
+  /* Invoice dashboard */
+  .mockup-dashboard {
+    padding: 14px;
+    gap: 10px;
+  }
+  .mockup-stat-card {
+    padding: 12px 14px;
+  }
+  .mockup-stat-value {
+    font-size: 24px;
+  }
+  .mockup-stat-label { font-size: 9px; }
+  .mockup-invoice-item {
+    grid-template-columns: 1.2fr 0.8fr 0.7fr;
+    padding: 9px 12px;
+    font-size: 11px;
+    gap: 6px;
+  }
+  .mockup-invoice-amount { font-size: 12px; }
+  .mockup-invoice-status {
+    font-size: 8px;
+    padding: 3px 7px;
+  }
+  
+  /* Stats */
+  .stats { padding: 80px 12px; }
+  .stats-grid {
+    grid-template-columns: 1fr;
+    border-radius: 24px;
+  }
+  .stat-card {
+    padding: 40px 24px;
+    min-height: auto;
+  }
+  
+  /* FAQ */
+  .faq {
+    margin: 0 12px;
+    border-radius: 32px;
+    padding: 64px 0;
+  }
+  .faq .container { padding: 0 24px; }
+  .faq-question {
+    font-size: 18px;
+    padding: 20px 0;
+    gap: 16px;
+  }
+  .faq-question::after {
+    width: 36px;
+    height: 36px;
+    font-size: 24px;
+  }
+  .faq-answer { font-size: 14px; padding-bottom: 24px; }
+  
+  /* Final CTA */
+  .final-cta {
+    margin: 0 12px 12px;
+    padding: 64px 24px;
+    border-radius: 32px;
+  }
+  .final-cta .ctas {
+    width: 100%;
+  }
+  .final-cta .ctas .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  /* Footer */
+  footer { padding: 48px 12px 100px; }
+  .footer-cols {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .footer-brand { grid-column: 1 / -1; }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+}
+
+/* ============ GLOBAL READABILITY: paragraphs and descriptive text ============ */
+.hero-description,
+.hero-trust,
+.problem-card p,
+.feature-content > p,
+.feature-list li,
+.feature-subtitle,
+.stat-card .stat-label,
+.stat-card .stat-meta,
+.stats-intro p,
+.faq-question,
+.faq-answer,
+.final-cta p,
+.footer-brand p,
+.footer-col a,
+.problem-num,
+.feature-num,
+.section-tag,
+.section-title-xl,
+.hero h1,
+.bridge-text,
+.final-cta h2 {
+  letter-spacing: 0.01em;
+}
+
+/* Slightly more spacing for ALL CAPS small text (more legible) */
+.section-tag,
+.problem-num,
+.feature-num,
+.feature-subtitle,
+.stat-card .stat-meta,
+.hero-trust {
+  letter-spacing: 0.12em;
+}
+
+/* German long-word handling - only on small screens */
+.hero-description,
+.problem-card p,
+.feature-content > p,
+.feature-list li,
+.tier-volume,
+.stat-card .stat-label {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+@media (max-width: 768px) {
+  .hero h1,
+  .section-title-xl,
+  .bridge-text,
+  .final-cta h2,
+  .feature-content h3,
+  .problem-card h3 {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+  }
+}
+
+/* ============ MOBILE HAMBURGER MENU + FLOATING LANG TOGGLE ============ */
+.hamburger-btn {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  width: 40px;
+  height: 40px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  margin-left: 4px;
+}
+.hamburger-btn span {
+  width: 22px;
+  height: 2px;
+  background: white;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  display: block;
+}
+.hamburger-btn.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger-btn.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger-btn.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile menu overlay */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(10, 6, 18, 0.97);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 99;
+  padding: 100px 32px 40px;
+  flex-direction: column;
+  overflow-y: auto;
+}
+.mobile-menu.open {
+  display: flex;
+}
+.mobile-menu ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0;
+  margin: 0;
+}
+.mobile-menu li {
+  border-bottom: 1px solid rgba(244, 242, 238, 0.1);
+}
+.mobile-menu li:last-child {
+  border-bottom: none;
+}
+.mobile-menu a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  padding: 24px 0;
+  transition: color 0.2s;
+}
+.mobile-menu a:hover,
+.mobile-menu a.active {
+  color: var(--color-primary);
+}
+.mobile-menu-cta {
+  margin-top: 40px;
+}
+.mobile-menu-cta .btn {
+  width: 100%;
+  justify-content: center;
+  padding: 18px 24px;
+  font-size: 16px;
+}
+
+/* Floating lang toggle - mobile only */
+.lang-floating {
+  display: none;
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  z-index: 101;
+  background: rgba(10, 6, 18, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(244, 242, 238, 0.15);
+  border-radius: 100px;
+  padding: 8px 14px;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  box-shadow: 0 8px 24px rgba(10, 6, 18, 0.25);
+}
+.lang-floating .lang-btn {
+  color: rgba(244, 242, 238, 0.5);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.lang-floating .lang-btn:hover {
+  color: white;
+}
+.lang-floating .lang-btn.active {
+  color: var(--color-primary);
+}
+
+@media (max-width: 900px) {
+  .nav-links {
+    display: none;
+  }
+  .nav-actions .nav-lang {
+    display: none !important;
+  }
+  .nav-actions .btn-primary {
+    display: none;
+  }
+  .hamburger-btn {
+    display: flex;
+  }
+  .lang-floating {
+    display: flex;
+  }
+  /* Cuando el menú está abierto, ocultar el toggle flotante */
+  body.menu-open .lang-floating {
+    display: none;
+  }
+  body.menu-open {
+    overflow: hidden;
+  }
+}
+
+      /* Hibrido: titulares en Display, cuerpo y navbar en Text */
+      h1, h2, h3, .section-title-xl, .bridge-text, .stat-card .stat-num, .faq-question { font-family: var(--font-display); }
+/* ===== Language dropdown selector ===== */
+.nav-lang { position: relative; display: flex; align-items: center; }
+.lang-trigger { display: inline-flex; align-items: center; gap: 6px; background: transparent; border: none; cursor: pointer; color: rgba(244,242,238,0.7); font-family: var(--font-mono); font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 8px; border-radius: 100px; transition: color 0.2s; }
+.lang-trigger:hover { color: #fff; }
+.lang-trigger .lang-globe { width: 15px; height: 15px; opacity: 0.7; flex-shrink: 0; }
+.lang-trigger .lang-caret { width: 9px; height: 9px; opacity: 0.6; flex-shrink: 0; transition: transform 0.2s, color 0.2s; }
+.nav-lang.open .lang-trigger .lang-caret, .lang-floating.open .lang-trigger .lang-caret { transform: rotate(180deg); color: var(--color-primary); opacity: 1; }
+.lang-menu { position: absolute; top: calc(100% + 8px); right: 0; min-width: 140px; background: #15101F; border: 1px solid rgba(244,242,238,0.12); border-radius: 12px; padding: 4px; display: none; flex-direction: column; box-shadow: 0 12px 32px rgba(10,6,18,0.4); z-index: 200; }
+.nav-lang.open .lang-menu, .lang-floating.open .lang-menu { display: flex; }
+.lang-menu .lang-btn { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 9px 12px; border-radius: 8px; color: rgba(244,242,238,0.7); text-decoration: none; font-family: inherit; font-size: 13px; font-weight: 400; letter-spacing: 0; text-transform: none; transition: background 0.15s, color 0.15s; }
+.lang-menu .lang-btn:hover { background: rgba(255,255,255,0.06); color: #fff; }
+.lang-menu .lang-btn.active { color: var(--color-primary); font-weight: 500; background: rgba(151,14,251,0.12); }
+.lang-menu .lang-check { width: 14px; height: 14px; opacity: 0; flex-shrink: 0; }
+.lang-menu .lang-btn.active .lang-check { opacity: 1; }
+.lang-floating { position: fixed; bottom: 16px; right: 16px; z-index: 101; display: none; padding: 0; background: transparent; border: none; box-shadow: none; }
+.lang-floating .lang-trigger { background: rgba(10,6,18,0.92); border: 1px solid rgba(244,242,238,0.15); box-shadow: 0 8px 24px rgba(10,6,18,0.25); padding: 8px 14px; }
+.lang-floating .lang-menu { top: auto; bottom: calc(100% + 8px); right: 0; }
+@media (max-width: 900px) { .lang-floating { display: flex; } }
+body.menu-open .lang-floating { display: none; }
+
+/* ============================================================
+   FEATURES PAGE — page-specific additions (v2, scrollytelling)
+   (base design system + shared components above are copied
+   verbatim from index.html for full visual consistency)
+   ============================================================ */
+
+/* ---- Hero (same scale as other page heroes: pricing/home) ---- */
+.features-hero {
+  padding: 200px 16px 96px;
+  text-align: center;
+  position: relative;
+  background:
+    radial-gradient(ellipse at top, var(--color-primary-soft) 0%, transparent 55%),
+    var(--color-bg-base);
+}
+.features-hero-inner { max-width: 900px; margin: 0 auto; position: relative; }
+.features-hero .section-tag { justify-content: center; margin-bottom: 20px; }
+.features-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 6vw, 92px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
+  margin-bottom: 28px;
+}
+.features-hero h1 .accent { color: var(--color-primary); font-style: italic; }
+.features-hero p {
+  font-size: 19px;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  max-width: 54ch;
+  margin: 0 auto;
+}
+
+/* ---- Module story section ----
+   No overflow:hidden here on purpose: sticky children need an
+   ancestor chain without clipped overflow. The glow is a plain
+   background gradient (which respects border-radius on its own),
+   not an absolutely-positioned pseudo-element that would need
+   overflow:hidden to be clipped. */
+.module-story {
+  background:
+    radial-gradient(900px 600px at 85% -10%, rgba(151, 14, 251, 0.25), transparent 60%),
+    var(--color-ink);
+  color: white;
+  margin: 0 16px;
+  border-radius: 48px;
+  padding: 120px 0 140px;
+  position: relative;
+}
+.module-story .section-tag { color: var(--color-text-inverse-muted); }
+.module-story .section-title-xl { color: white; }
+
+/* ---- Product tour stage: one pinned "screen" that advances from
+   function to function as the section scrolls past. The track gives
+   the page scroll distance to move through; the stage pins inside it
+   for that whole distance (native CSS sticky, no scroll-jacking). ---- */
+.story-track {
+  position: relative;
+  margin-top: 64px;
+  height: calc(7 * 100vh);
+}
+
+.story-stage {
+  position: sticky;
+  top: 110px;
+  height: calc(100vh - 150px);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.story-stage.is-visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .story-stage { opacity: 1; transform: none; transition: none; }
+}
+
+/* Top menu: every function, always visible above the screen */
+.story-menu {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 28px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.story-menu::-webkit-scrollbar { display: none; }
+.story-menu a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 100px;
+  color: var(--color-text-inverse-muted);
+  text-decoration: none;
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+.story-menu a .num { opacity: 0.55; }
+.story-menu a:hover { color: white; background: rgba(255, 255, 255, 0.06); }
+.story-menu a.active { color: white; background: rgba(151, 14, 251, 0.2); }
+.story-menu a.active .num { color: var(--color-primary); opacity: 1; }
+
+/* Screen + caption row: fills the rest of the pinned stage. All 7
+   captions share the "cap" grid area and all 7 screens share "frame" —
+   CSS Grid lets same-area siblings overlap natively, so switching the
+   active module is just an opacity/transform toggle, no absolute
+   positioning to keep in sync. */
+.story-stage-row {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  grid-template-areas: "cap frame";
+  gap: 48px;
+  align-items: center;
+}
+@media (max-width: 1300px) {
+  .story-stage-row { grid-template-columns: 280px 1fr; gap: 32px; }
+}
+
+.story-caption-panel {
+  grid-area: cap;
+  max-height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  pointer-events: none;
+}
+.story-caption-panel.is-active { opacity: 1; transform: none; pointer-events: auto; }
+
+.story-frame-panel {
+  grid-area: frame;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: scale(0.98);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+  pointer-events: none;
+}
+.story-frame-panel.is-active { opacity: 1; transform: none; pointer-events: auto; }
+
+@media (prefers-reduced-motion: reduce) {
+  .story-caption-panel, .story-frame-panel { transition: none; }
+}
+
+.story-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: 16px;
+}
+.story-caption-panel h3 {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 2.2vw, 32px);
+  font-weight: 700;
+  line-height: 1.12;
+  margin-bottom: 14px;
+}
+.story-caption-panel h3 .accent { color: var(--color-primary); font-style: italic; }
+.story-subtitle {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-inverse-muted);
+  margin-bottom: 20px;
+}
+.story-intro {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-text-inverse-muted);
+  margin-bottom: 4px;
+}
+
+/* The "now playing" line: cross-fades in sync with whichever beat the
+   screen is currently showing — same applyStep() call drives both, so
+   there's no separate sync mechanism to fall out of phase. */
+.story-steps { margin: 20px 0; min-height: 26px; }
+.story-step { display: none; }
+.story-step.is-active { display: block; }
+.story-step p {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: white;
+}
+.story-step .step-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-primary);
+  letter-spacing: 0.06em;
+  margin-right: 8px;
+}
+/* Modules with no scroll-steps (e.g. the LED planner, which has its
+   own built-in animated demo) use this shorter single-beat variant. */
+.story-steps.single .story-step { display: block; }
+
+.story-summary { margin-top: 4px; }
+
+/* ---- The screen itself ---- */
+.story-frame-panel .feature-visual {
+  width: 100%;
+  max-width: 880px;
+  margin: 0 auto;
+  position: relative;
+  min-height: 380px;
+  background: linear-gradient(135deg, rgba(151, 14, 251, 0.14) 0%, rgba(31, 15, 61, 0.35) 100%);
+  border: 1px solid var(--color-border-dark);
+  border-radius: 24px;
+  padding: 28px;
+  display: flex;
+}
+.story-frame-panel .mockup-frame { width: 100%; }
+/* The card grows to fit whichever module has the most content instead of
+   clipping it (mockup-frame clips overflow to keep its rounded corners) —
+   reserve space up front so nothing jumps or crops. */
+.story-frame-panel .mockup-body { min-height: 320px; }
+
+[data-step] {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+[data-step].is-shown { opacity: 1; transform: none; }
+[data-show-until].is-hidden { display: none; }
+
+/* ============ Lightweight "preview" atoms shared across modules ============ */
+.pv-body { padding: 22px 24px; display: flex; flex-direction: column; justify-content: center; gap: 10px; flex: 1; }
+
+.pv-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid rgba(10, 6, 18, 0.06);
+  border-radius: 12px;
+  background: #FCFBFD;
+}
+.pv-avatar {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-weight: 700; font-size: 12px;
+  flex-shrink: 0;
+}
+.pv-main { flex: 1; min-width: 0; }
+.pv-title { font-size: 13px; font-weight: 600; color: var(--color-text-primary); }
+.pv-meta { font-size: 11px; color: var(--color-text-muted); margin-top: 2px; }
+
+.pv-pill {
+  font-family: var(--font-mono); font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.04em;
+  padding: 4px 9px; border-radius: 100px; flex-shrink: 0;
+}
+.pv-pill.ok { background: #DCFCE7; color: #15803d; }
+.pv-pill.warn { background: #FEF3C7; color: #b45309; }
+.pv-pill.neutral { background: #F1EEF7; color: #635A6F; }
+
+.pv-check {
+  width: 18px; height: 18px; border-radius: 6px;
+  border: 1.5px solid rgba(10, 6, 18, 0.15);
+  flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+}
+.pv-check.done { background: var(--color-primary); border-color: var(--color-primary); }
+.pv-check.done::after { content: '✓'; color: white; font-size: 11px; font-weight: 700; }
+.pv-task { flex: 1; font-size: 13px; color: var(--color-text-primary); }
+.pv-task.done { text-decoration: line-through; color: var(--color-text-muted); }
+
+.pv-chip-row { display: flex; gap: 8px; margin-top: 2px; flex-wrap: wrap; }
+.pv-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 600; color: var(--color-text-secondary);
+  padding: 6px 10px; border: 1px solid rgba(10, 6, 18, 0.08); border-radius: 100px;
+}
+.pv-chip .dot { width: 6px; height: 6px; border-radius: 50%; background: #22c55e; }
+
+.pv-doc {
+  display: flex; align-items: center; gap: 12px;
+  padding: 16px; border-radius: 12px;
+  background: linear-gradient(135deg, rgba(151, 14, 251, 0.06), rgba(151, 14, 251, 0.02));
+  border: 1px dashed rgba(151, 14, 251, 0.3);
+}
+.pv-doc-icon { font-size: 22px; flex-shrink: 0; }
+
+.pv-cta-editor {
+  flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
+  background-image:
+    linear-gradient(rgba(10, 6, 18, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(10, 6, 18, 0.05) 1px, transparent 1px);
+  background-size: 22px 22px;
+  border-radius: 12px;
+  padding: 24px;
+  min-height: 180px;
+}
+.pv-add-btn {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: var(--color-primary); color: white;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; box-shadow: 0 8px 20px rgba(151, 14, 251, 0.35);
+  flex-shrink: 0;
+}
+.pv-cta-editor span { font-size: 12.5px; color: var(--color-text-secondary); font-weight: 500; }
+
+.pv-bars { display: flex; align-items: flex-end; gap: 6px; height: 72px; flex: 1; }
+.pv-bars i {
+  flex: 1; font-style: normal;
+  background: linear-gradient(180deg, var(--color-primary), #6B0AB8);
+  border-radius: 4px 4px 0 0;
+  transform-origin: bottom; transform: scaleY(0);
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+[data-step].is-shown .pv-bars i { transform: scaleY(1); }
+.pv-analytics-row { display: flex; gap: 22px; align-items: center; }
+.pv-donut {
+  width: 76px; height: 76px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; position: relative;
+  background: conic-gradient(var(--color-primary) 0% 86%, rgba(151, 14, 251, 0.12) 86% 100%);
+}
+.pv-donut::before { content: ''; position: absolute; inset: 10px; background: white; border-radius: 50%; }
+.pv-donut span { position: relative; font-family: var(--font-display); font-weight: 700; font-size: 14px; }
+.pv-analytics-label { font-size: 12px; color: var(--color-text-muted); }
+.pv-analytics-label b { display: block; font-size: 13px; color: var(--color-text-primary); font-weight: 600; margin-bottom: 2px; }
+
+.pv-stat-line {
+  display: flex; align-items: baseline; gap: 8px;
+  padding: 4px 2px;
+}
+.pv-stat-line b { font-family: var(--font-display); font-size: 15px; color: var(--color-text-primary); }
+.pv-stat-line span { font-size: 12px; color: var(--color-text-muted); }
+
+/* Minimalist stand-block "plan" for the rights & inventory module —
+   not a literal stadium render, just enough shape (two stand rows around
+   a pitch) to read as a venue map while blocks light up one at a time. */
+.pv-stadium-block { display: flex; flex-direction: column; align-items: center; gap: 22px; flex: 1; justify-content: center; }
+.pv-stadium { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.pv-stand-row { display: flex; gap: 8px; justify-content: center; }
+.pv-stand { width: 44px; height: 24px; border-radius: 5px; }
+.pv-stand.c1 { background: var(--color-primary); }
+.pv-stand.c2 { background: #C65CFF; }
+.pv-stand.c3 { background: #6B0AB8; }
+/* A recognizable top-down pitch, not just a green rectangle: real
+   ~105x68m proportions (not stretched full-width), halfway line +
+   center circle (pseudo-elements), two goal boxes (real child
+   elements, since a selector only gets two pseudo-elements). */
+.pv-pitch {
+  position: relative;
+  width: 260px; height: 170px; border-radius: 12px;
+  background: repeating-linear-gradient(90deg, #DCEFE0 0 26px, #CFE8D5 26px 52px);
+  border: 2px solid rgba(10, 6, 18, 0.08);
+  overflow: hidden;
+}
+.pv-pitch::before {
+  content: ''; position: absolute; top: 0; bottom: 0; left: 50%; width: 2px;
+  background: rgba(255, 255, 255, 0.75); transform: translateX(-1px);
+}
+.pv-pitch::after {
+  content: ''; position: absolute; top: 50%; left: 50%; width: 46px; height: 46px;
+  border: 2px solid rgba(255, 255, 255, 0.75); border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+.pv-pitch-box {
+  position: absolute; top: 50%; width: 20px; height: 98px;
+  border: 2px solid rgba(255, 255, 255, 0.75);
+  transform: translateY(-50%);
+}
+.pv-pitch-box.left { left: -2px; border-left: none; border-radius: 0 4px 4px 0; }
+.pv-pitch-box.right { right: -2px; border-right: none; border-radius: 4px 0 0 4px; }
+.pv-stadium-legend { display: flex; gap: 16px; justify-content: center; }
+.pv-stadium-legend span { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--color-text-secondary); font-weight: 500; }
+.pv-stadium-legend i { width: 8px; height: 8px; border-radius: 2px; display: block; }
+.pv-stadium-legend i.c1 { background: var(--color-primary); }
+.pv-stadium-legend i.c2 { background: #C65CFF; }
+.pv-stadium-legend i.c3 { background: #6B0AB8; }
+
+/* Minimalist Kanban for the contracts module — one card per stage,
+   revealed left to right so the pipeline reads as forward progress. */
+.pv-kanban { display: flex; gap: 10px; flex: 1; align-items: stretch; }
+.pv-kanban-col {
+  flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 8px;
+  background: #FCFBFD; border: 1px solid rgba(10, 6, 18, 0.05); border-radius: 12px; padding: 10px;
+}
+.pv-kanban-col-title {
+  font-family: var(--font-mono); font-size: 9.5px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-text-muted);
+}
+.pv-kanban-card {
+  background: white; border: 1px solid rgba(10, 6, 18, 0.08); border-radius: 8px;
+  padding: 8px 10px; box-shadow: 0 2px 6px rgba(10, 6, 18, 0.05);
+}
+.pv-kanban-card .pv-title { font-size: 11.5px; }
+.pv-kanban-card .pv-meta { font-size: 10px; }
+.pv-kanban-card.ok { border-color: rgba(34, 197, 94, 0.4); box-shadow: 0 2px 6px rgba(34, 197, 94, 0.12); }
+
+/* ---- Mobile: collapse scrollytelling to a simple stacked read ---- */
+@media (max-width: 640px) {
+  .features-hero { padding: 140px 16px 56px; }
+  .module-story { margin: 0 12px; border-radius: 32px; padding: 80px 0 100px; }
+}
+
+/* ---- Mobile / short viewports: collapse the pinned scrub-stage into a
+   simple stacked read — the same 14 panels, just laid out in source
+   order instead of pinned + cross-faded. Each panel's mockup still
+   autoplays (triggered on scroll-into-view instead of by the master
+   controller) — see the product-tour script. Placed at the end of the
+   stylesheet so it wins over the base rules above despite matching
+   specificity. ---- */
+@media (max-width: 1100px), (max-height: 640px) {
+  .story-track { height: auto; margin-top: 40px; }
+  .story-stage {
+    position: static;
+    height: auto;
+    display: block;
+    opacity: 1;
+    transform: none;
+  }
+  .story-menu { overflow-x: auto; margin-bottom: 32px; }
+  .story-menu a { padding: 8px 14px; font-size: 12.5px; }
+  .story-stage-row { display: block; }
+  .story-caption-panel,
+  .story-frame-panel {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+    max-height: none;
+    overflow: visible;
+  }
+  .story-caption-panel { margin-bottom: 20px; }
+  .story-frame-panel { margin-bottom: 72px; }
+  .story-frame-panel:last-of-type { margin-bottom: 0; }
+}
+</style>
+<link rel="alternate" hreflang="de" href="https://www.paktum.ch/features">
+<link rel="alternate" hreflang="en" href="https://www.paktum.ch/en/features">
+<link rel="alternate" hreflang="es" href="https://www.paktum.ch/es/features">
+<link rel="alternate" hreflang="x-default" href="https://www.paktum.ch/features">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Paktum",
+  "legalName": "KLTechnologies GmbH",
+  "url": "https://www.paktum.ch",
+  "logo": "https://www.paktum.ch/og-image.png",
+  "description": "The Swiss software for sponsorship management: partner management, rights and contract management, and invoicing in one platform.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Luzern",
+    "addressCountry": "CH"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Paktum",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "url": "https://www.paktum.ch/en/features",
+  "description": "Platform for sponsorship management: rights and inventory, partner CRM, contracts, activation, LED planning, invoicing and analytics.",
+  "inLanguage": "en",
+  "featureList": [
+    "Rights and inventory management",
+    "Partner CRM",
+    "Contract and document management",
+    "Activation and calendar",
+    "LED playlist planning",
+    "Invoicing and controlling",
+    "Analytics and reporting"
+  ],
+  "publisher": {
+    "@type": "Organization",
+    "name": "KLTechnologies GmbH"
+  }
+}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Paktum", "item": "https://www.paktum.ch"}, {"@type": "ListItem", "position": 2, "name": "Features", "item": "https://www.paktum.ch/en/features"}]}
+</script>
+</head>
+<body>
+<!-- ============ NAVBAR ============ -->
+<nav class="navbar">
+<a class="nav-logo" href="/en">
+<img alt="Paktum" src="/SVG%20Logos/Recurso%206.svg"/>
+</a>
+<ul class="nav-links">
+<li><a data-i18n="nav.product" href="/en#product">Product</a></li>
+<li><a class="active" data-i18n="nav.features" href="/en/features">Features</a></li>
+<li><a data-i18n="nav.value" href="/en#stats">Value</a></li>
+<li><a data-i18n="nav.references" href="/en/references">References</a></li>
+<li><a data-i18n="nav.pricing" href="/en/pricing">Pricing</a></li>
+<li><a data-i18n="nav.about" href="/en/about">About Us</a></li>
+<li><a data-i18n="nav.blog" href="/blog/en">Blog</a></li>
+</ul>
+<div class="nav-actions">
+<div class="nav-lang">
+<button aria-expanded="false" aria-haspopup="true" aria-label="Sprache wählen" class="lang-trigger" type="button"><svg class="lang-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 16 0 18M12 3c-2.5 2.5-2.5 16 0 18"/></svg><span class="lang-current">EN</span><svg class="lang-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+<div class="lang-menu">
+<a class="lang-btn" data-lang="de" href="/features"><span>Deutsch</span><svg class="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg></a>
+<a class="lang-btn active" data-lang="en" href="/en/features"><span>English</span><svg class="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg></a>
+<a class="lang-btn" data-lang="es" href="/es/features"><span>Español</span><svg class="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg></a>
+</div>
+</div>
+<a class="btn btn-primary" data-i18n="nav.cta" href="/en/book-a-demo">Book a demo</a>
+<button aria-expanded="false" aria-label="Toggle menu" class="hamburger-btn">
+<span></span>
+<span></span>
+<span></span>
+</button>
+</div>
+</nav>
+<!-- Mobile menu overlay -->
+<div class="mobile-menu">
+<ul>
+<li><a data-i18n="nav.product" href="/en">Product</a></li>
+<li><a class="active" data-i18n="nav.features" href="/en/features">Features</a></li>
+<li><a data-i18n="nav.value" href="/en#stats">Value</a></li>
+<li><a data-i18n="nav.references" href="/en/references">References</a></li>
+<li><a data-i18n="nav.pricing" href="/en/pricing">Pricing</a></li>
+<li><a data-i18n="nav.about" href="/en/about">About Us</a></li>
+<li><a data-i18n="nav.blog" href="/blog/en">Blog</a></li>
+</ul>
+<div class="mobile-menu-cta">
+<a class="btn btn-primary" data-i18n="nav.cta" href="/en/book-a-demo">Book a demo</a>
+</div>
+</div>
+<!-- Floating lang toggle (mobile only) -->
+<div class="lang-floating">
+<button aria-expanded="false" aria-haspopup="true" aria-label="Sprache wählen" class="lang-trigger" type="button"><svg class="lang-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 16 0 18M12 3c-2.5 2.5-2.5 16 0 18"/></svg><span class="lang-current">EN</span><svg class="lang-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
+<div class="lang-menu">
+<a class="lang-btn" data-lang="de" href="/features"><span>Deutsch</span><svg class="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg></a>
+<a class="lang-btn active" data-lang="en" href="/en/features"><span>English</span><svg class="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg></a>
+<a class="lang-btn" data-lang="es" href="/es/features"><span>Español</span><svg class="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg></a>
+</div>
+</div>
+<!-- ============ FEATURES HERO ============ -->
+<section class="features-hero">
+<div class="features-hero-inner">
+<div class="section-tag">Product Tour</div>
+<h1>A tool for <span class="accent">every step</span><br/>of your sponsoring.</h1>
+<p>From the first product in the catalog to the paid invoice: seven modules that cover every part of your sponsoring management – for every role on the team.</p>
+</div>
+</section>
+<section class="module-story" id="module-tour">
+<div class="container">
+<div class="section-header">
+<div class="section-tag">The Modules in Detail</div>
+<h2 class="section-title-xl">Seven Modules. <span class="accent">One Platform.</span></h2>
+</div>
+<div class="story-track">
+<div class="story-stage">
+<nav class="story-menu" aria-label="Modules">
+<a data-jump="module-01" href="#module-01"><span class="num">01</span> Rights &amp; Inventory</a>
+<a data-jump="module-02" href="#module-02"><span class="num">02</span> Partner CRM</a>
+<a data-jump="module-03" href="#module-03"><span class="num">03</span> Contracts</a>
+<a data-jump="module-04" href="#module-04"><span class="num">04</span> Activation</a>
+<a data-jump="module-05" href="#module-05"><span class="num">05</span> LED Planning</a>
+<a data-jump="module-06" href="#module-06"><span class="num">06</span> Invoicing</a>
+<a data-jump="module-07" href="#module-07"><span class="num">07</span> Analytics</a>
+</nav>
+<div class="story-stage-row">
+
+<!-- Module 01: Rights & Inventory -->
+<div class="story-caption-panel is-active" data-module-index="1">
+<div class="story-eyebrow">Module 01</div>
+<h3>Every space,<br/>one <span class="accent">product</span>.</h3>
+<div class="story-subtitle">Rights &amp; Inventory Management</div>
+<p class="story-intro">Every marketable right lives in one central product catalog – from the single-sided board to the naming-rights space. Instead of spreadsheets and scattered plans, you see at a glance what's free, reserved or sold. New spaces are created right in the editor: stadium plan, jersey or hospitality area – drawn, named and ready to sell instantly.</p>
+<div class="story-steps">
+<div class="story-step"><p><span class="step-num">Step 1</span>Draw a new advertising space directly onto the stadium plan.</p></div>
+<div class="story-step"><p><span class="step-num">Step 2</span>Set the quota, unit and price – as a season or call-off package.</p></div>
+<div class="story-step"><p><span class="step-num">Step 3</span>Utilization per product runs in real time from that moment on.</p></div>
+</div>
+<ul class="feature-list story-summary">
+<li>Season and call-off quotas with quantity, unit and price</li>
+<li>Visual position editors for stadium, jersey and hospitality</li>
+<li>Playlists for LED boards straight from inventory</li>
+</ul>
+</div>
+<div class="story-frame-panel is-active" id="module-01" data-module-index="1">
+<div class="feature-visual">
+<div class="mockup-frame">
+<div class="mockup-body">
+<div class="mockup-header">
+<div>
+<div class="mockup-title">Position Editor</div>
+<div class="mockup-subtitle">Stadium plan · North stand</div>
+</div>
+</div>
+<div class="pv-body">
+<div class="pv-stadium-block">
+<div class="pv-stadium">
+<div class="pv-stand-row">
+<span data-step="0" class="pv-stand c1"></span>
+<span data-step="1" class="pv-stand c2"></span>
+<span data-step="1" class="pv-stand c1"></span>
+<span data-step="2" class="pv-stand c3"></span>
+<span data-step="2" class="pv-stand c1"></span>
+</div>
+<div class="pv-pitch"><span class="pv-pitch-box left"></span><span class="pv-pitch-box right"></span></div>
+<div class="pv-stand-row">
+<span data-step="0" class="pv-stand c1"></span>
+<span data-step="2" class="pv-stand c2"></span>
+<span data-step="1" class="pv-stand c1"></span>
+<span data-step="2" class="pv-stand c1"></span>
+<span data-step="1" class="pv-stand c3"></span>
+</div>
+</div>
+<div class="pv-stadium-legend">
+<span><i class="c1"></i>Board</span>
+<span><i class="c2"></i>Cam Carpet</span>
+<span><i class="c3"></i>LED Board</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Module 02: Partner CRM -->
+<div class="story-caption-panel" data-module-index="2">
+<div class="story-eyebrow">Module 02</div>
+<h3>Every partner.<br/>One <span class="accent">history</span>.</h3>
+<div class="story-subtitle">Partner CRM</div>
+<p class="story-intro">Partners live in the built-in CRM – or are pulled in via an interface from your existing system. Contact persons, communication and documents are linked directly to the partner account. So everyone on the team sees the full history instantly, with no need to dig through a colleague's inbox.</p>
+<div class="story-steps">
+<div class="story-step"><p><span class="step-num">Step 1</span>A new partner – added natively or synced from your CRM.</p></div>
+<div class="story-step"><p><span class="step-num">Step 2</span>Contact persons and email history hang right off the account.</p></div>
+<div class="story-step"><p><span class="step-num">Step 3</span>Booked rights and contract value at a glance.</p></div>
+</div>
+<ul class="feature-list story-summary">
+<li>Native CRM or a connection to your existing system</li>
+<li>Contact persons with a linked mail account</li>
+<li>Document archive per partner</li>
+</ul>
+</div>
+<div class="story-frame-panel" id="module-02" data-module-index="2">
+<div class="feature-visual">
+<div class="mockup-frame">
+<div class="mockup-body">
+<div class="mockup-header">
+<div>
+<div class="mockup-title">Partners</div>
+<div class="mockup-subtitle">12 active partnerships</div>
+</div>
+</div>
+<div class="pv-body">
+<div data-step="0" class="pv-row">
+<div class="pv-avatar">WE</div>
+<div class="pv-main"><div class="pv-title">Westenergie AG</div><div class="pv-meta">Main sponsor · since 2022</div></div>
+<span class="pv-pill ok">Newly added</span>
+</div>
+<div data-step="1" class="pv-row">
+<div class="pv-avatar">RB</div>
+<div class="pv-main"><div class="pv-title">Rheintal Bank AG</div><div class="pv-meta">✓ Contact &amp; mail linked</div></div>
+<span class="pv-pill neutral">CRM sync</span>
+</div>
+<div data-step="2" class="pv-row">
+<div class="pv-avatar">NA</div>
+<div class="pv-main"><div class="pv-title">Nordpark Automobile AG</div><div class="pv-meta">Board partner · since 2021</div></div>
+<span class="pv-pill ok">Active</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Module 03: Contracts & Documents -->
+<div class="story-caption-panel" data-module-index="3">
+<div class="story-eyebrow">Module 03</div>
+<h3>Contracts and documents<br/>in <span class="accent">seconds</span>.</h3>
+<div class="story-subtitle">Contract &amp; Document Management</div>
+<p class="story-intro">A contract bundles league conditions, activation tasks and the booked rights, including stadium positions. Based on your own templates, Paktum generates the finished contract document automatically – barter deals and in-kind benefits included, the things that usually slip through the cracks.</p>
+<div class="story-steps">
+<div class="story-step"><p><span class="step-num">Step 1</span>The starting point is your own template, not a blank page.</p></div>
+<div class="story-step"><p><span class="step-num">Step 2</span>Rights and stadium positions get assigned to the contract.</p></div>
+<div class="story-step"><p><span class="step-num">Step 3</span>Paktum generates the contract document – ready to send.</p></div>
+</div>
+<ul class="feature-list story-summary">
+<li>Automatic document generation from your templates</li>
+<li>League conditions and forecasts per contract</li>
+<li>Direct link to activation tasks</li>
+</ul>
+</div>
+<div class="story-frame-panel" id="module-03" data-module-index="3">
+<div class="feature-visual">
+<div class="mockup-frame">
+<div class="mockup-body">
+<div class="mockup-header">
+<div>
+<div class="mockup-title">Contract #0142</div>
+<div class="mockup-subtitle">Westenergie AG</div>
+</div>
+</div>
+<div class="pv-body">
+<div class="pv-kanban">
+<div class="pv-kanban-col">
+<div class="pv-kanban-col-title">Drafting</div>
+<div data-step="0" class="pv-kanban-card"><div class="pv-title">Sponsorship contract</div><div class="pv-meta">Created from template</div></div>
+</div>
+<div class="pv-kanban-col">
+<div class="pv-kanban-col-title">Signature</div>
+<div data-step="1" class="pv-kanban-card"><div class="pv-title">Sponsorship contract</div><div class="pv-meta">Rights assigned</div></div>
+</div>
+<div class="pv-kanban-col">
+<div class="pv-kanban-col-title">Active</div>
+<div data-step="2" class="pv-kanban-card ok"><div class="pv-title">Sponsorship contract</div><div class="pv-meta">Document generated</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Module 04: Activation & Calendar -->
+<div class="story-caption-panel" data-module-index="4">
+<div class="story-eyebrow">Module 04</div>
+<h3>Every task.<br/>One <span class="accent">deadline</span>.</h3>
+<div class="story-subtitle">Activation &amp; Calendar</div>
+<p class="story-intro">Every activation task has a due date, an owner and a clear reference – to a contract, a partner or a matchday. Nothing gets lost in a spreadsheet anymore, and nobody has to ask twice who's responsible for what.</p>
+<div class="story-steps">
+<div class="story-step"><p><span class="step-num">Step 1</span>Every task has an owner, a deadline and a reference.</p></div>
+<div class="story-step"><p><span class="step-num">Step 2</span>Status is visible live for the whole team.</p></div>
+<div class="story-step"><p><span class="step-num">Step 3</span>Subscribable as a calendar in Outlook, Google or Apple.</p></div>
+</div>
+<ul class="feature-list story-summary">
+<li>Tasks with deadline, owner and reference</li>
+<li>List and calendar view side by side</li>
+<li>Calendar subscription for Outlook, Google and Apple</li>
+</ul>
+</div>
+<div class="story-frame-panel" id="module-04" data-module-index="4">
+<div class="feature-visual">
+<div class="mockup-frame">
+<div class="mockup-body">
+<div class="mockup-header">
+<div>
+<div class="mockup-title">Tasks</div>
+<div class="mockup-subtitle">Matchday 12 · Preparation</div>
+</div>
+</div>
+<div class="pv-body">
+<div data-show-until="0" class="pv-row">
+<div class="pv-check"></div>
+<div class="pv-task">Check perimeter board</div>
+<div class="pv-avatar">PL</div>
+</div>
+<div data-step="1" class="pv-row">
+<div class="pv-check done"></div>
+<div class="pv-task done">Check perimeter board</div>
+<div class="pv-avatar">PL</div>
+</div>
+<div data-step="1" class="pv-row">
+<div class="pv-check done"></div>
+<div class="pv-task done">Set up product display</div>
+<div class="pv-avatar">MK</div>
+</div>
+<div data-step="2" class="pv-chip-row">
+<span class="pv-chip"><span class="dot"></span>Outlook</span>
+<span class="pv-chip"><span class="dot"></span>Google</span>
+<span class="pv-chip"><span class="dot"></span>Apple</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Module 05: LED Playlist Planner (relocated from the homepage; keeps its own built-in animated demo, so it runs as a single beat rather than a scroll-stepped one) -->
+<div class="story-caption-panel" data-module-index="5">
+<div class="story-eyebrow">Module 05</div>
+<h3>Every LED surface,<br/>perfectly <span class="accent">timed</span>.</h3>
+<div class="story-subtitle">LED Planning · Venue Setup</div>
+<p class="story-intro">Configure LED surfaces, sections and game phases once – Paktum assembles precise, conflict-free playlists for every matchday from that. Full rotation or single sequences, double bookings simply can't happen.</p>
+<div class="story-steps single">
+<div class="story-step"><p>Watch how booked sequences turn into a playlist automatically.</p></div>
+</div>
+<ul class="feature-list story-summary">
+<li>Custom LED surfaces and layouts per venue</li>
+<li>Second-accurate playlists for every game phase</li>
+<li>Assign booked sponsoring partners directly</li>
+</ul>
+</div>
+<div class="story-frame-panel" id="module-05" data-module-index="5">
+<div class="feature-visual">
+<div class="mockup-frame">
+<div class="mockup-body">
+<div class="mockup-header">
+<div>
+<div class="mockup-title">LED Playlist</div>
+<div class="mockup-subtitle">Matchday · Arena layout</div>
+</div>
+<div class="mockup-controls">
+<div class="mockup-select">17 timeslots ▾</div>
+<button class="mockup-btn">Export</button>
+</div>
+</div>
+<div class="mockup-led-planner" data-led-planner>
+<div class="led-summary-bar">
+<span class="led-summary-title">LED Arena · Matchday 12</span>
+<span class="led-summary-meta"><span data-led-duration>43:30 min planned</span><span class="led-summary-live">Ready</span></span>
+</div>
+<div class="led-workspace">
+<div class="led-timeline">
+<div class="led-time-axis"><span>18:55</span><span>19:15</span><span>20:15</span><span>20:45</span></div>
+<div class="led-lane">
+<div class="led-lane-title">MAIN STAND</div>
+<div class="led-phase">PRE-MATCH</div>
+<div class="led-slot blue" data-led-row="1" data-led-lane="1" data-led-preset><span>Main Sponsor</span><small>00:45</small></div>
+<div class="led-slot orange" data-led-row="2" data-led-lane="1"><span>Climate Partner</span><small>00:20</small></div>
+<div class="led-phase">HALF-TIME</div>
+<div class="led-slot orange" data-led-row="3" data-led-lane="1"><span>Mobility Partner</span><small>00:30</small></div>
+<div class="led-slot blue" data-led-row="4" data-led-lane="1"><span>Main Sponsor</span><small>00:45</small></div>
+</div>
+<div class="led-lane">
+<div class="led-lane-title">OPPOSITE STAND</div>
+<div class="led-phase">PRE-MATCH</div>
+<div class="led-slot blue" data-led-row="1" data-led-lane="2" data-led-preset><span>Main Sponsor</span><small>00:45</small></div>
+<div class="led-slot orange" data-led-row="2" data-led-lane="2"><span>Climate Partner</span><small>00:20</small></div>
+<div class="led-phase">HALF-TIME</div>
+<div class="led-slot orange" data-led-row="3" data-led-lane="2"><span>Mobility Partner</span><small>00:30</small></div>
+<div class="led-slot blue" data-led-row="4" data-led-lane="2"><span>Main Sponsor</span><small>00:45</small></div>
+</div>
+<div class="led-lane">
+<div class="led-lane-title">GOAL LINE</div>
+<div class="led-phase">PRE-MATCH</div>
+<div class="led-slot blue" data-led-row="1" data-led-lane="3" data-led-preset><span>Main Sponsor</span><small>00:45</small></div>
+<div class="led-slot orange" data-led-row="2" data-led-lane="3"><span>Climate Partner</span><small>00:20</small></div>
+<div class="led-phase">HALF-TIME</div>
+<div class="led-slot orange" data-led-row="3" data-led-lane="3"><span>Mobility Partner</span><small>00:30</small></div>
+<div class="led-slot blue" data-led-row="4" data-led-lane="3"><span>Main Sponsor</span><small>00:45</small></div>
+</div>
+</div>
+<aside class="led-bookings">
+<div class="led-bookings-title">Bookings</div>
+<div class="led-booking-card" data-led-source="main"><div class="led-booking-name">Main Sponsor</div><div class="led-booking-meta"><span>00:45</span><span class="led-booking-status">LED</span></div></div>
+<div class="led-booking-card" data-led-source="climate"><div class="led-booking-name">Climate Partner</div><div class="led-booking-meta"><span>00:20</span><span class="led-booking-status">LED</span></div></div>
+<div class="led-booking-card" data-led-source="mobility"><div class="led-booking-name">Mobility Partner</div><div class="led-booking-meta"><span>00:30</span><span class="led-booking-status">LED</span></div></div>
+</aside>
+</div>
+<div class="led-progress"><span data-led-progress>Utilization 86%</span><div class="led-progress-track"><div class="led-progress-fill"></div></div></div>
+<svg class="led-cursor" viewBox="0 0 16 20" aria-hidden="true"><path d="M1 1v14l4-4 3.5 7 3-1.5-3.5-6H14z" fill="#0A0612" stroke="white" stroke-width="1.4" stroke-linejoin="round"/></svg>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Module 06: Invoicing & Controlling -->
+<div class="story-caption-panel" data-module-index="6">
+<div class="story-eyebrow">Module 06</div>
+<h3>Invoicing,<br/>all by <span class="accent">itself</span>.</h3>
+<div class="story-subtitle">Invoicing &amp; Controlling Module</div>
+<p class="story-intro">Invoices are generated automatically on their due date – directly from Paktum or via an interface to your accounting software. Controlling and forecasts run in real time alongside, with nobody doing the math by hand.</p>
+<div class="story-steps">
+<div class="story-step"><p><span class="step-num">Step 1</span>The invoice is created automatically on its due date.</p></div>
+<div class="story-step"><p><span class="step-num">Step 2</span>Payment status and reminders take care of themselves.</p></div>
+<div class="story-step"><p><span class="step-num">Step 3</span>Everything syncs with your accounting software.</p></div>
+</div>
+<ul class="feature-list story-summary">
+<li>Automatic invoicing on the due date</li>
+<li>Interface to common accounting software</li>
+<li>Real-time controlling and forecasts</li>
+</ul>
+</div>
+<div class="story-frame-panel" id="module-06" data-module-index="6">
+<div class="feature-visual">
+<div class="mockup-frame">
+<div class="mockup-body">
+<div class="mockup-header">
+<div>
+<div class="mockup-title">Invoices</div>
+<div class="mockup-subtitle">Automated</div>
+</div>
+</div>
+<div class="pv-body">
+<div data-show-until="0" class="pv-row">
+<div class="pv-main"><div class="pv-title">Westenergie AG</div><div class="pv-meta">INV-2026-00042 · €60,000</div></div>
+<span class="pv-pill warn">Due</span>
+</div>
+<div data-step="1" class="pv-row">
+<div class="pv-main"><div class="pv-title">Westenergie AG</div><div class="pv-meta">INV-2026-00042 · €60,000</div></div>
+<span class="pv-pill ok">Paid</span>
+</div>
+<div data-step="1" class="pv-row">
+<div class="pv-main"><div class="pv-title">Rheintal Bank AG</div><div class="pv-meta">INV-2026-00043 · €18,500</div></div>
+<span class="pv-pill warn">Due</span>
+</div>
+<div data-step="2" class="pv-chip-row">
+<span class="pv-chip"><span class="dot"></span>Synced to your accounting software</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Module 07: Analytics -->
+<div class="story-caption-panel" data-module-index="7">
+<div class="story-eyebrow">Module 07</div>
+<h3>Numbers that<br/>speak for <span class="accent">themselves</span>.</h3>
+<div class="story-subtitle">Analytics &amp; Reporting</div>
+<p class="story-intro">An overview of finances, cash flow and product utilization – for the board just as much as for matchday operations. Every role sees exactly the data that matters to them, instead of an export nobody actually reads.</p>
+<div class="story-steps">
+<div class="story-step"><p><span class="step-num">Step 1</span>Revenue forecasts and cash flow at a glance.</p></div>
+<div class="story-step"><p><span class="step-num">Step 2</span>Utilization per product and season in real time.</p></div>
+<div class="story-step"><p><span class="step-num">Step 3</span>Role-based reports – for the board and for controlling.</p></div>
+</div>
+<ul class="feature-list story-summary">
+<li>Revenue forecasts and cash-flow overview</li>
+<li>Utilization per product and season</li>
+<li>Role-based access to key figures</li>
+</ul>
+</div>
+<div class="story-frame-panel" id="module-07" data-module-index="7">
+<div class="feature-visual">
+<div class="mockup-frame">
+<div class="mockup-body">
+<div class="mockup-header">
+<div>
+<div class="mockup-title">Analytics</div>
+<div class="mockup-subtitle">Season 2025/26</div>
+</div>
+</div>
+<div class="pv-body">
+<div data-step="0" class="pv-analytics-row">
+<div class="pv-bars">
+<i data-step="0" style="height:45%"></i>
+<i data-step="0" style="height:62%"></i>
+<i data-step="1" style="height:38%"></i>
+<i data-step="1" style="height:80%"></i>
+<i data-step="1" style="height:55%"></i>
+<i data-step="1" style="height:92%"></i>
+</div>
+<div class="pv-analytics-label"><b>€243k</b>Revenue forecast</div>
+</div>
+<div data-step="2" class="pv-analytics-row">
+<div class="pv-donut"><span>86%</span></div>
+<div class="pv-analytics-label"><b>Utilization</b>across all products</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+<!-- ============ FINAL CTA ============ -->
+<section class="final-cta" id="demo">
+<div class="final-cta-grid">
+<h2>Ready to see <span class="accent">everything</span>?</h2>
+<div class="ctas">
+<p>Book a 30-minute demo and we'll walk you through every module live on your own data.</p>
+<a class="btn btn-primary btn-lg btn-arrow" href="/book-a-demo">Book a demo</a>
+<a class="btn btn-ghost-dark btn-lg" href="/pricing">See pricing</a>
+</div>
+</div>
+</section>
+<!-- ============ FOOTER ============ -->
+<footer>
+<div class="footer-container">
+<div class="footer-cols">
+<div class="footer-brand">
+<img alt="Paktum" src="/SVG%20Logos/Recurso%205.svg"/>
+<p data-i18n="footer.tagline">The Swiss Knife for your sponsoring. A product of KLTechnologies GmbH, based in Luzern, Switzerland.</p>
+</div>
+<div class="footer-col">
+<h5 data-i18n="footer.col1.title">Product</h5>
+<ul>
+<li><a data-i18n="footer.col1.l1" href="/en/features">Features</a></li>
+<li><a data-i18n="footer.col1.l2" href="/en/pricing">Pricing</a></li>
+<li><a data-i18n="footer.col1.l3" href="/blog/en">Blog</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h5 data-i18n="footer.col2.title">Legal</h5>
+<ul>
+<li><a data-i18n="footer.col2.l1" href="/en/impressum">Imprint</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<span>© 2026 KLTechnologies GmbH</span>
+<div class="swiss-made" title="Swiss Made">
+<img alt="Swiss Made" src="/SVG%20Logos/Swiss_Made.svg"/>
+</div>
+</div>
+</div>
+</footer>
+<script>
+// Set synchronously so the LED planner's own IntersectionObserver (below)
+// always sees a defined value, even on its very first callback.
+window.storyPinnedMode = !window.matchMedia('(max-width: 1100px), (max-height: 640px)').matches;
+
+// LED playlist animation - three gestures on the matchday grid:
+// place a single slot, fill the rest of the row by clicking, then move a
+// booking that was already scheduled to a different time
+document.querySelectorAll('[data-led-planner]').forEach((planner) => {
+  const slots = Array.from(planner.querySelectorAll('[data-led-row]'));
+  const ledCursor = planner.querySelector('.led-cursor');
+  const progressFill = planner.querySelector('.led-progress-fill');
+  const progressLabel = planner.querySelector('[data-led-progress]');
+  const durationLabel = planner.querySelector('[data-led-duration]');
+  const readyBadge = planner.querySelector('.led-summary-live');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!slots.length || !ledCursor || reduceMotion) return;
+
+  function slotAt(row, lane) {
+    return planner.querySelector('[data-led-row="' + row + '"][data-led-lane="' + lane + '"]');
+  }
+
+  function bookingFor(key) {
+    return planner.querySelector('[data-led-source="' + key + '"]');
+  }
+
+  const SCRIPT = [
+    // 1 - drag a booking onto a single slot
+    { type: 'place', booking: 'climate', drop: [2, 1] },
+    // 2 - drag it in, then click the two remaining slots of the same row
+    { type: 'place', booking: 'mobility', drop: [3, 1], clicks: [[3, 2], [3, 3]] },
+    // 3 - pick up a slot that was already scheduled and drag it to another time
+    { type: 'move', from: [1, 3], drop: [4, 3] }
+  ];
+
+  const steps = SCRIPT.filter((step) => {
+    const drop = slotAt(step.drop[0], step.drop[1]);
+    const source = step.type === 'move' ? slotAt(step.from[0], step.from[1]) : bookingFor(step.booking);
+    return drop && source;
+  });
+  if (!steps.length) return;
+
+  // the labels keep their translated wording, only their numbers move
+  const progressText = progressLabel ? progressLabel.textContent : '';
+  const progressMatch = progressText.match(/\d+/);
+  const progressMax = progressMatch ? Number(progressMatch[0]) : 0;
+  const durationText = durationLabel ? durationLabel.textContent : '';
+  const durationMatch = durationText.match(/(\d+):(\d+)/);
+  const durationMax = durationMatch ? Number(durationMatch[1]) * 60 + Number(durationMatch[2]) : 0;
+
+  const dragCard = document.createElement('div');
+  const dragLabel = document.createElement('span');
+  const dragDuration = document.createElement('small');
+  dragCard.className = 'led-drag-card';
+  dragCard.append(dragLabel, dragDuration);
+  const clickRing = document.createElement('div');
+  clickRing.className = 'led-click-ring';
+  planner.append(dragCard, clickRing);
+  planner.classList.add('is-animated');
+
+  const REACH = 520;    // cursor travels over to what it is about to grab
+  const PRESS = 180;    // presses down on it
+  const LIFT = 140;     // the block comes off
+  const DRAG = 720;     // and gets dragged onto the slot
+  const HOP = 420;      // cursor moves on to the next slot of the row
+  const CLICK = 130;    // mouse down, then up
+  const GAP = 520;      // breather before the next gesture
+
+  const timers = new Set();
+  let stepIndex = 0;
+  let filledCount = 0;
+  let running = false;
+  let cursorX = 0;
+  let cursorY = 0;
+  let cursorPressed = false;
+  let cardX = 0;
+  let cardY = 0;
+  let cardHeight = 22;
+  let cardLifted = false;
+
+  function schedule(callback, delay) {
+    const timer = window.setTimeout(() => {
+      timers.delete(timer);
+      if (running) callback();
+    }, delay);
+    timers.add(timer);
+  }
+
+  function clearTimers() {
+    timers.forEach(window.clearTimeout);
+    timers.clear();
+  }
+
+  function offsetIn(element) {
+    const plannerRect = planner.getBoundingClientRect();
+    const elementRect = element.getBoundingClientRect();
+    return {
+      left: elementRect.left - plannerRect.left,
+      top: elementRect.top - plannerRect.top,
+      width: elementRect.width,
+      height: elementRect.height
+    };
+  }
+
+  function applyCursor() {
+    ledCursor.style.transform = 'translate(' + cursorX + 'px, ' + cursorY + 'px) scale(' + (cursorPressed ? 0.82 : 1) + ')';
+  }
+
+  function moveCursor(element, duration) {
+    const box = offsetIn(element);
+    cursorX = box.left + box.width / 2 - 3;
+    cursorY = box.top + box.height / 2 - 2;
+    ledCursor.style.setProperty('--led-move', duration + 'ms');
+    applyCursor();
+  }
+
+  function pressCursor(isDown) {
+    cursorPressed = isDown;
+    ledCursor.style.setProperty('--led-move', '120ms');
+    applyCursor();
+  }
+
+  function applyCard() {
+    dragCard.style.transform = 'translate(' + cardX + 'px, ' + cardY + 'px) scale(' + (cardLifted ? 1.05 : 1) + ')';
+  }
+
+  function moveCard(element, width, duration) {
+    const box = offsetIn(element);
+    cardX = box.left + (box.width - width) / 2;
+    cardY = box.top + box.height / 2 - cardHeight / 2;
+    dragCard.style.width = width + 'px';
+    dragCard.style.setProperty('--led-move', duration + 'ms');
+    applyCard();
+  }
+
+  function ripple(element) {
+    const box = offsetIn(element);
+    clickRing.style.left = (box.left + box.width / 2 - 11) + 'px';
+    clickRing.style.top = (box.top + box.height / 2 - 11) + 'px';
+    clickRing.classList.remove('is-on');
+    void clickRing.offsetWidth;
+    clickRing.classList.add('is-on');
+  }
+
+  function updateMeters() {
+    const ratio = filledCount / slots.length;
+    if (progressFill) progressFill.style.width = (progressMax * ratio) + '%';
+    if (progressLabel && progressMax) {
+      progressLabel.textContent = progressText.replace(/\d+/, String(Math.round(progressMax * ratio)));
+    }
+    if (durationLabel && durationMax) {
+      const total = Math.round(durationMax * ratio);
+      const seconds = total % 60;
+      durationLabel.textContent = durationText.replace(/\d+:\d+/, Math.floor(total / 60) + ':' + (seconds < 10 ? '0' : '') + seconds);
+    }
+  }
+
+  function fillSlot(slot) {
+    slot.classList.remove('is-empty', 'is-target');
+    slot.classList.add('is-placed');
+    filledCount += 1;
+    updateMeters();
+    schedule(() => slot.classList.remove('is-placed'), 600);
+  }
+
+  function emptySlot(slot) {
+    slot.classList.remove('is-placed', 'is-target');
+    slot.classList.add('is-empty');
+    filledCount -= 1;
+    updateMeters();
+  }
+
+  function resetPlanner() {
+    clearTimers();
+    stepIndex = 0;
+    filledCount = 0;
+    cursorPressed = false;
+    cardLifted = false;
+    planner.querySelectorAll('[data-led-source]').forEach((booking) => {
+      booking.classList.remove('is-active', 'is-grabbed', 'is-dragging');
+    });
+    slots.forEach((slot) => {
+      slot.classList.remove('is-target', 'is-placed');
+      if (slot.hasAttribute('data-led-preset')) {
+        slot.classList.remove('is-empty');
+        filledCount += 1;
+      } else {
+        slot.classList.add('is-empty');
+      }
+    });
+    dragCard.classList.remove('is-visible', 'is-lifted');
+    clickRing.classList.remove('is-on');
+    ledCursor.classList.remove('is-visible');
+    if (readyBadge) readyBadge.classList.remove('is-on');
+    updateMeters();
+  }
+
+  function nextStep() {
+    stepIndex += 1;
+    if (stepIndex < steps.length) {
+      runStep();
+      return;
+    }
+    // done - hold the finished plan for a moment, then start over
+    ledCursor.classList.remove('is-visible');
+    if (readyBadge) readyBadge.classList.add('is-on');
+    schedule(() => {
+      resetPlanner();
+      schedule(runStep, 700);
+    }, 2200);
+  }
+
+  // fills the slot the drag lands on, then the ones the cursor clicks afterwards
+  function runClicks(step, at) {
+    const clicks = step.clicks || [];
+    let offset = at;
+    clicks.forEach((coords) => {
+      const slot = slotAt(coords[0], coords[1]);
+      if (!slot) return;
+      const hopAt = offset + GAP / 2;
+      schedule(() => {
+        slot.classList.add('is-target');
+        moveCursor(slot, HOP);
+      }, hopAt);
+      schedule(() => pressCursor(true), hopAt + HOP);
+      schedule(() => {
+        pressCursor(false);
+        ripple(slot);
+        fillSlot(slot);
+      }, hopAt + HOP + CLICK);
+      offset = hopAt + HOP + CLICK;
+    });
+    return offset;
+  }
+
+  function runStep() {
+    if (!running) return;
+    const step = steps[stepIndex];
+    const dropSlot = slotAt(step.drop[0], step.drop[1]);
+    const isMove = step.type === 'move';
+    const source = isMove ? slotAt(step.from[0], step.from[1]) : bookingFor(step.booking);
+
+    // the bookings panel is hidden on small screens - show the result without the gesture
+    if (!isMove && !source.getClientRects().length) {
+      fillSlot(dropSlot);
+      let offset = 0;
+      (step.clicks || []).forEach((coords) => {
+        const slot = slotAt(coords[0], coords[1]);
+        offset += 220;
+        if (slot) schedule(() => fillSlot(slot), offset);
+      });
+      schedule(nextStep, offset + 700);
+      return;
+    }
+
+    const pressAt = REACH;
+    const liftAt = pressAt + PRESS;
+    const dragAt = liftAt + LIFT;
+    const dropAt = dragAt + DRAG;
+
+    if (!isMove) source.classList.add('is-active');
+    ledCursor.classList.add('is-visible');
+    moveCursor(source, REACH);
+
+    schedule(() => {
+      pressCursor(true);
+      if (isMove) source.classList.add('is-target');
+      else source.classList.add('is-grabbed');
+    }, pressAt);
+
+    schedule(() => {
+      // the block leaves its origin and follows the cursor from here on
+      const name = isMove ? source.querySelector('span') : source.querySelector('.led-booking-name');
+      const time = isMove ? source.querySelector('small') : source.querySelector('.led-booking-meta > span');
+      dragLabel.textContent = name ? name.textContent : '';
+      dragDuration.textContent = time ? time.textContent : '';
+      dragCard.classList.toggle('blue', dropSlot.classList.contains('blue'));
+      cardHeight = Math.round(dropSlot.getBoundingClientRect().height);
+      dragCard.style.height = cardHeight + 'px';
+      dragCard.style.transition = 'none';
+      cardLifted = false;
+      moveCard(source, source.getBoundingClientRect().width, 0);
+      void dragCard.offsetWidth;
+      dragCard.style.transition = '';
+      dragCard.style.setProperty('--led-move', LIFT + 'ms');
+      cardLifted = true;
+      applyCard();
+      dragCard.classList.add('is-visible', 'is-lifted');
+      if (isMove) emptySlot(source);
+      else source.classList.add('is-dragging');
+    }, liftAt);
+
+    schedule(() => {
+      dropSlot.classList.add('is-target');
+      moveCursor(dropSlot, DRAG);
+      moveCard(dropSlot, dropSlot.getBoundingClientRect().width, DRAG);
+    }, dragAt);
+
+    schedule(() => {
+      pressCursor(false);
+      cardLifted = false;
+      dragCard.classList.remove('is-visible', 'is-lifted');
+      source.classList.remove('is-active', 'is-grabbed', 'is-dragging', 'is-target');
+      fillSlot(dropSlot);
+    }, dropAt);
+
+    schedule(nextStep, runClicks(step, dropAt) + GAP);
+  }
+
+  resetPlanner();
+
+  function activate() {
+    if (running) return;
+    running = true;
+    resetPlanner();
+    schedule(runStep, 400);
+  }
+  function deactivate() {
+    if (!running) return;
+    running = false;
+    resetPlanner();
+  }
+  planner._storyActivate = activate;
+  planner._storyDeactivate = deactivate;
+
+  // Self-drive only when the pinned product-tour stage isn't in charge
+  // (mobile / short-viewport fallback) — otherwise the master controller
+  // further down this script calls activate()/deactivate() directly.
+  const ledObserver = new IntersectionObserver((entries) => {
+    if (window.storyPinnedMode) return;
+    const isVisible = entries[0].isIntersecting;
+    if (isVisible) activate(); else deactivate();
+  }, { threshold: 0.25 });
+
+  ledObserver.observe(planner);
+});
+// ============ i18n SYSTEM ============
+// Language dropdown open/close (text is baked per URL; switching language uses real links)
+document.querySelectorAll('.lang-trigger').forEach(function(trigger){
+  trigger.addEventListener('click', function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    var container = trigger.closest('.nav-lang, .lang-floating');
+    var willOpen = !container.classList.contains('open');
+    document.querySelectorAll('.nav-lang, .lang-floating').forEach(function(c){ c.classList.remove('open'); });
+    document.querySelectorAll('.lang-trigger').forEach(function(t){ t.setAttribute('aria-expanded','false'); });
+    if (willOpen) { container.classList.add('open'); trigger.setAttribute('aria-expanded','true'); }
+  });
+});
+document.addEventListener('click', function(){
+  document.querySelectorAll('.nav-lang, .lang-floating').forEach(function(c){ c.classList.remove('open'); });
+  document.querySelectorAll('.lang-trigger').forEach(function(t){ t.setAttribute('aria-expanded','false'); });
+});
+
+// ============ MOBILE HAMBURGER MENU ============
+(function() {
+  const hamburger = document.querySelector('.hamburger-btn');
+  const mobileMenu = document.querySelector('.mobile-menu');
+  if (!hamburger || !mobileMenu) return;
+  
+  function toggleMenu() {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    document.body.classList.toggle('menu-open', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  }
+  
+  hamburger.addEventListener('click', toggleMenu);
+  
+  // Close menu when clicking on a link
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      if (mobileMenu.classList.contains('open')) {
+        toggleMenu();
+      }
+    });
+  });
+})();
+
+
+// ============ FEATURES PAGE: product tour stage ============
+// One pinned "screen" that advances from function to function as the
+// section scrolls past. Desktop: a scroll-fraction controller picks the
+// active module and drives a per-module autoplay loop. Mobile / short
+// viewports / prefers-reduced-motion: no pin, panels stack normally and
+// each one's autoplay triggers on scroll-into-view instead (see the CSS
+// fallback for max-width:1100px, max-height:640px).
+(function () {
+  var track = document.querySelector('.story-track');
+  var stage = document.querySelector('.story-stage');
+  var captionPanels = Array.from(document.querySelectorAll('.story-caption-panel'));
+  var framePanels = Array.from(document.querySelectorAll('.story-frame-panel'));
+  var menuLinks = Array.from(document.querySelectorAll('.story-menu a'));
+  var COUNT = framePanels.length;
+  if (!track || !stage || !COUNT) return;
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ---- Per-module autoplay: cycles a module's existing 3 data-step
+  // beats on a timer, and keeps the matching "now playing" caption
+  // (.story-step in the caption panel) in sync — one function drives
+  // both, so there's no separate sync mechanism to fall out of phase.
+  // The LED planner (module 05) already has its own built-in animated
+  // demo, so it's wired to that instead of a generated timer. ----
+  function createStepAutoplay(framePanel, captionPanel) {
+    var led = framePanel.querySelector('[data-led-planner]');
+    if (led) {
+      return {
+        activate: led._storyActivate || function () {},
+        deactivate: led._storyDeactivate || function () {}
+      };
+    }
+
+    var stateEls = Array.from(framePanel.querySelectorAll('[data-step]'));
+    var untilEls = Array.from(framePanel.querySelectorAll('[data-show-until]'));
+    var captionEls = captionPanel ? Array.from(captionPanel.querySelectorAll('.story-step')) : [];
+    if (!stateEls.length && !untilEls.length && !captionEls.length) return { activate: function () {}, deactivate: function () {} };
+
+    var durations = [2000, 2000, 1200];
+    var timer = null;
+    var current = 0;
+
+    function applyStep(idx) {
+      current = idx;
+      stateEls.forEach(function (el) {
+        el.classList.toggle('is-shown', idx >= parseInt(el.getAttribute('data-step'), 10));
+      });
+      untilEls.forEach(function (el) {
+        el.classList.toggle('is-hidden', idx > parseInt(el.getAttribute('data-show-until'), 10));
+      });
+      captionEls.forEach(function (el, i) { el.classList.toggle('is-active', i === idx); });
+    }
+
+    if (reduceMotion) {
+      applyStep(durations.length - 1);
+      return { activate: function () {}, deactivate: function () {} };
+    }
+
+    // Re-armable countdown to the next beat — scheduleNext(idx) always
+    // counts from idx's own dwell time, so advanceTo() can restart the
+    // clock after a scroll-driven jump instead of firing on stale timing.
+    function scheduleNext(fromIdx) {
+      if (timer) { window.clearTimeout(timer); timer = null; }
+      timer = window.setTimeout(function () {
+        var next = (fromIdx + 1) % durations.length;
+        applyStep(next);
+        scheduleNext(next);
+      }, durations[fromIdx]);
+    }
+
+    return {
+      activate: function () {
+        applyStep(0);
+        scheduleNext(0);
+      },
+      deactivate: function () {
+        if (timer) { window.clearTimeout(timer); timer = null; }
+        applyStep(0);
+      },
+      // Lets scrolling fast-forward the beat this module is on, in
+      // addition to it advancing on its own timer. Only ever moves
+      // forward (scrolling back within the module doesn't rewind it —
+      // the autoplay loop will bring it back around on its own), and
+      // restarts the dwell-time countdown from the new beat so autoplay
+      // keeps looping normally from wherever scroll left it.
+      advanceTo: function (localProgress) {
+        var target = Math.min(durations.length - 1, Math.floor(localProgress * durations.length));
+        if (target > current) {
+          applyStep(target);
+          scheduleNext(target);
+        }
+      }
+    };
+  }
+
+  var autoplays = framePanels.map(function (panel, i) {
+    return createStepAutoplay(panel, captionPanels[i]);
+  });
+
+  var activeIndex = -1;
+  function setActive(idx) {
+    if (idx === activeIndex) return;
+    if (activeIndex >= 0 && autoplays[activeIndex]) autoplays[activeIndex].deactivate();
+    activeIndex = idx;
+    framePanels.forEach(function (p, i) {
+      var on = i === idx;
+      p.classList.toggle('is-active', on);
+      p.toggleAttribute('inert', !on);
+      p.setAttribute('aria-hidden', on ? 'false' : 'true');
+    });
+    captionPanels.forEach(function (p, i) {
+      var on = i === idx;
+      p.classList.toggle('is-active', on);
+      p.toggleAttribute('inert', !on);
+      p.setAttribute('aria-hidden', on ? 'false' : 'true');
+    });
+    menuLinks.forEach(function (l, i) {
+      var on = i === idx;
+      l.classList.toggle('active', on);
+      l.setAttribute('aria-current', on ? 'true' : 'false');
+    });
+    if (idx >= 0 && autoplays[idx]) autoplays[idx].activate();
+  }
+
+  // ---- Desktop: the stage is pinned by native CSS sticky; a scroll
+  // fraction across .story-track picks which module is active. Gated by
+  // an IntersectionObserver on the track so nothing runs while it's
+  // off-screen (and so this stays "mostly IntersectionObserver", with
+  // the scroll listener only for the genuinely continuous part). ----
+  var trackTop = 0, scrollRange = 0, armed = false, rafId = null, pinnedMode = true;
+
+  function measure() {
+    var rect = track.getBoundingClientRect();
+    trackTop = rect.top + window.scrollY;
+    scrollRange = track.offsetHeight - stage.offsetHeight;
+  }
+
+  function onScroll() {
+    if (!pinnedMode || !armed || rafId) return;
+    rafId = requestAnimationFrame(function () {
+      rafId = null;
+      if (scrollRange <= 0) { setActive(0); return; }
+      var progress = Math.min(1, Math.max(0, (window.scrollY - trackTop) / scrollRange));
+      var scaled = progress * COUNT;
+      var idx = Math.min(COUNT - 1, Math.floor(scaled));
+      setActive(idx);
+      // How far scrolled into the active module's own slice of the track
+      // (0 at its start, 1 at its end) — lets scroll position fast-forward
+      // that module's beats on top of them already advancing on a timer.
+      var localProgress = Math.min(1, Math.max(0, scaled - idx));
+      if (autoplays[idx] && autoplays[idx].advanceTo) autoplays[idx].advanceTo(localProgress);
+    });
+  }
+
+  var armObserver = new IntersectionObserver(function (entries) {
+    armed = entries[0].isIntersecting;
+    if (armed) {
+      stage.classList.add('is-visible');
+      measure();
+      onScroll();
+    } else if (pinnedMode) {
+      setActive(-1);
+    }
+  }, { threshold: 0 });
+  armObserver.observe(track);
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('load', measure);
+
+  var resizeTimer = null;
+  window.addEventListener('resize', function () {
+    window.clearTimeout(resizeTimer);
+    resizeTimer = window.setTimeout(function () { measure(); onScroll(); }, 150);
+  }, { passive: true });
+
+  menuLinks.forEach(function (link, i) {
+    link.addEventListener('click', function (e) {
+      if (!pinnedMode) return; // let the native anchor jump happen in fallback mode
+      e.preventDefault();
+      measure();
+      var target = trackTop + (scrollRange > 0 ? (i / COUNT) * scrollRange : 0) + 2;
+      window.scrollTo({ top: target, behavior: 'smooth' });
+    });
+  });
+
+  // ---- Mobile / short-viewport fallback: no pin, each panel's autoplay
+  // triggers on its own scroll-into-view instead of the master index. ----
+  var mobileObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      var idx = framePanels.indexOf(entry.target);
+      if (idx === -1) return;
+      var api = autoplays[idx];
+      if (!api) return;
+      if (entry.isIntersecting) api.activate(); else api.deactivate();
+    });
+  }, { threshold: 0.3 });
+
+  var fallbackQuery = window.matchMedia('(max-width: 1100px), (max-height: 640px)');
+  function applyMode(isFallback) {
+    pinnedMode = !isFallback;
+    window.storyPinnedMode = pinnedMode;
+    if (isFallback) {
+      setActive(-1);
+      captionPanels.forEach(function (p) { p.removeAttribute('inert'); p.setAttribute('aria-hidden', 'false'); });
+      framePanels.forEach(function (p) {
+        p.removeAttribute('inert');
+        p.setAttribute('aria-hidden', 'false');
+        mobileObserver.observe(p);
+      });
+      menuLinks.forEach(function (l) { l.classList.remove('active'); l.removeAttribute('aria-current'); });
+    } else {
+      framePanels.forEach(function (p) { mobileObserver.unobserve(p); });
+      measure();
+      onScroll();
+    }
+  }
+  applyMode(fallbackQuery.matches);
+  fallbackQuery.addEventListener('change', function (e) { applyMode(e.matches); });
+})();
+</script>
+<script src="/lang-preference.js" defer></script>
+</body>
+</html>
