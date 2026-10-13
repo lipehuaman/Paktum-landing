@@ -68,8 +68,17 @@
       position = normalize(position + delta * .024);
     }
     render();
+    updateHover();
     if (movement || canPlay()) frame = requestAnimationFrame(tick);
     else previousTime = null;
+  }
+  // Hover is resolved geometrically: the cloned cards are inert, so they never receive mouse events.
+  let mouse = null;
+  function updateHover() {
+    hovered = mouse !== null && [...track.children].some(card => {
+      const rect = card.getBoundingClientRect();
+      return mouse.x >= rect.left && mouse.x <= rect.right && mouse.y >= rect.top && mouse.y <= rect.bottom;
+    });
   }
   function syncPlayback() {
     pause.disabled = reducedMotion.matches;
@@ -95,9 +104,15 @@
   section.querySelector('[data-voice-prev]').addEventListener('click', () => advance(-1));
   section.querySelector('[data-voice-next]').addEventListener('click', () => advance(1));
   pause.addEventListener('click', () => { paused = !paused; syncPlayback(); });
-  section.addEventListener('mouseenter', () => { hovered = true; syncPlayback(); });
-  section.addEventListener('mouseleave', () => { hovered = false; syncPlayback(); });
-  section.addEventListener('focusin', () => { focused = true; syncPlayback(); });
+  windowEl.addEventListener('pointermove', event => {
+    if (event.pointerType !== 'mouse') return;
+    mouse = { x: event.clientX, y: event.clientY };
+    updateHover();
+    syncPlayback();
+  });
+  windowEl.addEventListener('pointerleave', () => { mouse = null; hovered = false; syncPlayback(); });
+  // Only keyboard focus pauses; a mouse click on the arrows should not leave the carousel stopped.
+  section.addEventListener('focusin', event => { focused = event.target.matches(':focus-visible'); syncPlayback(); });
   section.addEventListener('focusout', event => {
     if (!section.contains(event.relatedTarget)) { focused = false; syncPlayback(); }
   });

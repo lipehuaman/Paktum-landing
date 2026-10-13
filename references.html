@@ -848,85 +848,6 @@ body.menu-open .lang-floating { display: none; }
 
 .ref-section{padding:44px 0 16px}
 
-/* Map band — dark canvas with purple glow */
-.map-band{position:relative;overflow:hidden;margin:0 16px;
- background:radial-gradient(ellipse 80% 60% at 50% 0%, rgba(151,14,251,.30) 0%, transparent 60%), var(--color-ink);
- border:1px solid rgba(151,14,251,.22);border-radius:48px;padding:76px 0 64px}
-.map-band .band-head{position:relative;z-index:1;max-width:var(--container);margin:0 auto;padding:0 32px;text-align:center}
-.map-band h2{font-family:var(--font-display);font-size:clamp(24px,3vw,34px);font-weight:700;line-height:1.15;color:#F4F2EE}
-.map-band .map-sub{margin-top:8px;font-size:14px;color:rgba(244,242,238,.58)}
-.map-card{position:relative;z-index:1;max-width:1120px;margin:20px auto 0;padding:0 40px}
-.map-card::before{content:'';position:absolute;left:50%;top:47%;transform:translate(-50%,-50%);
- width:70%;height:74%;border-radius:50%;pointer-events:none;z-index:0;filter:blur(48px);
- background:radial-gradient(ellipse at center, rgba(151,14,251,.20) 0%, rgba(151,14,251,.06) 45%, transparent 72%)}
-/* Height-driven size: the map never grows past ~62vh, so map + first logo row
-   always share the viewport. 1.3667 = viewBox aspect (820/600). */
-.dach-map{position:relative;z-index:1;width:100%;max-width:calc(62vh * 1.3667);height:auto;
- margin-inline:auto;display:block;overflow:hidden;border-radius:16px;background:transparent;
- -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 10%,#000 90%,transparent 100%),
-  linear-gradient(180deg,transparent 0,#000 4%,#000 96%,transparent 100%);
- -webkit-mask-composite:source-in;
- mask-image:linear-gradient(90deg,transparent 0,#000 10%,#000 90%,transparent 100%),
-  linear-gradient(180deg,transparent 0,#000 4%,#000 96%,transparent 100%);
- mask-composite:intersect}
-.map-other path{fill:rgba(244,242,238,.045);stroke:rgba(244,242,238,.09);stroke-width:1;pointer-events:none}
-.map-dach path{fill:rgba(151,14,251,.16);stroke:var(--color-primary);stroke-width:2.2;
- stroke-linejoin:round;transition:fill .22s ease}
-.map-dach path:hover{fill:rgba(151,14,251,.32)}
-.map-dot{cursor:pointer;outline:none}
-.dot-halo{fill:var(--color-primary);opacity:.18;transition:opacity .2s}
-.dot-core{fill:#B98CFF;transition:r .2s,fill .2s}
-.map-dot:hover .dot-halo,.map-dot:focus-visible .dot-halo,.map-dot.is-active .dot-halo{opacity:.4}
-.map-dot:hover .dot-core,.map-dot:focus-visible .dot-core,.map-dot.is-active .dot-core{r:8;fill:#fff}
-.map-dot:focus-visible .dot-halo{opacity:.55}
-
-/* --cols drives everything: exactly N cards per row, and an incomplete last row
-   centres itself (grid 1fr columns would leave it hanging on the left). */
-.ref-logos{position:relative;z-index:1;max-width:1240px;margin:26px auto 0;padding:0 40px;
- display:flex;flex-wrap:wrap;justify-content:center;gap:var(--gap);--gap:10px;--cols:9}
-.logo-card{flex:0 0 calc((100% - (var(--cols) - 1) * var(--gap)) / var(--cols));
- display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;
- background:#fff;border:1px solid rgba(244,242,238,.08);border-radius:15px;padding:13px 7px;
- cursor:pointer;text-align:center;-webkit-appearance:none;appearance:none;
- transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
-.logo-card img{height:34px;max-width:94%;width:auto;object-fit:contain}
-.logo-card span{font-size:10.5px;font-weight:600;line-height:1.2;color:var(--color-ink)}
-.logo-card:hover,.logo-card:focus-visible{transform:translateY(-5px);
- box-shadow:0 18px 44px rgba(0,0,0,.4);border-color:var(--color-primary);outline:none}
-
-/* Duo card: two partners shown as one client, spanning two slots of the grid. */
-.logo-card--duo{flex:0 0 calc(((100% - (var(--cols) - 1) * var(--gap)) / var(--cols)) * 2 + var(--gap))}
-.duo-logos{display:flex;align-items:center;justify-content:center;gap:12px;width:100%}
-.duo-logos img{height:34px;max-width:38%;width:auto;object-fit:contain}
-.duo-x{font-family:var(--font-display);font-size:13px;font-weight:700;line-height:1;
- color:rgba(10,6,18,.30)}
-
-/* Tarjeta glass morado oscuro */
-.map-tip{position:absolute;z-index:6;width:262px;padding:16px 18px;border-radius:18px;
- background:rgba(31,15,61,.62);
- -webkit-backdrop-filter:blur(20px) saturate(165%);backdrop-filter:blur(20px) saturate(165%);
- border:1px solid rgba(151,14,251,.42);
- box-shadow:0 18px 46px rgba(10,6,18,.34), inset 0 1px 0 rgba(255,255,255,.14);
- opacity:0;visibility:hidden;transform:translateY(6px);pointer-events:none;
- transition:opacity .18s ease, transform .18s ease, visibility .18s}
-.map-tip.is-visible{opacity:1;visibility:visible;transform:translateY(0)}
-.tip-head{display:flex;align-items:center;gap:12px}
-.tip-logo{flex:0 0 46px;height:46px;background:#fff;border-radius:11px;padding:6px;
- display:flex;align-items:center;justify-content:center}
-.tip-logo img{max-height:34px;max-width:34px;width:auto;object-fit:contain;filter:none;opacity:1}
-.tip-logos{display:flex;align-items:center;gap:8px}
-.tip-x,.tip-logo--2{display:none}
-.tip-head.is-duo .tip-x{display:block;font-family:var(--font-display);font-size:12px;font-weight:700;
- line-height:1;color:rgba(244,242,238,.5)}
-.tip-head.is-duo .tip-logo--2{display:flex}
-.tip-head.is-duo .tip-logo{flex:0 0 38px;height:38px;padding:5px;border-radius:9px}
-.tip-head.is-duo .tip-logo img{max-height:28px;max-width:28px}
-.tip-head.is-duo .tip-name{font-size:14px}
-.tip-name{font-family:var(--font-display);font-size:15px;font-weight:700;line-height:1.18;color:#fff}
-.tip-place{margin-top:3px;font-size:12px;color:rgba(244,242,238,.66)}
-.tip-cat{margin-top:2px;font-size:12px;font-weight:600;color:#D3A0FF}
-.tip-desc{margin-top:11px;font-size:13px;line-height:1.45;color:rgba(244,242,238,.80)}
-
 /* CTA — inverted to light, mirroring the dark map band */
 .ref-cta{position:relative;overflow:hidden;background:var(--color-bg-surface);color:var(--color-ink);
  border:1px solid var(--color-border);box-shadow:0 30px 80px rgba(10,6,18,.06);
@@ -937,21 +858,14 @@ body.menu-open .lang-floating { display: none; }
 .ref-cta h2{font-size:clamp(40px,6vw,76px);font-weight:700;line-height:1.02;letter-spacing:-.02em;color:var(--color-ink)}
 .ref-cta p{margin:16px auto 28px;color:var(--color-text-secondary);max-width:48ch}
 
-@media (max-width:1199px){
-  .ref-logos{--cols:7}
-}
-@media (max-width:1023px){
-  .ref-logos{--cols:5}
-}
+
+
 @media (max-width:900px){
   /* lead can no longer hold one line here — give it a comfortable measure back */
   .ref-hero .ref-lead{font-size:17px;max-width:56ch}
   .ref-stat{padding:22px 34px}
 }
-@media (max-width:900px){
-  .map-card,.ref-logos{max-width:100%}
-  .ref-logos{--cols:4}
-}
+
 @media (max-width:640px){
   .ref-hero{padding-top:118px}
   /* drop the forced two-line break: at this size it leaves an orphan word */
@@ -962,21 +876,10 @@ body.menu-open .lang-floating { display: none; }
   .ref-stat b{font-size:clamp(34px,10vw,48px)}
   .ref-stat span{font-size:10px;letter-spacing:.04em}
   .ref-hero .ref-lead{font-size:16px;max-width:38ch}
-  .map-band{margin:0 10px;border-radius:28px;padding:44px 0 40px}
-  .map-card{padding:0 14px}
-  .ref-logos{padding:0 14px;margin-top:28px;--cols:2}
-  .logo-card{flex-direction:row;justify-content:flex-start;text-align:left;
-   padding:11px 12px;gap:10px;border-radius:14px}
-  .logo-card img{flex:0 0 44px;height:34px;max-width:44px}
-  .logo-card--duo .duo-logos{flex:0 0 auto;width:auto;gap:8px}
-  .logo-card--duo .duo-logos img{flex:0 0 auto;height:30px;max-width:40px}
-  .logo-card span{font-size:10.5px;line-height:1.22}
   .ref-cta{margin:32px 10px 10px;border-radius:28px;padding:72px 20px}
-  .map-tip{width:214px;padding:13px 14px}
-  .tip-desc{font-size:12.5px}
 }
 @media (prefers-reduced-motion:reduce){
-  .map-tip,.map-dach path,.dot-halo,.dot-core,.logo-card{transition:none}
+
 }
 </style>
 <link rel="alternate" hreflang="de" href="https://www.paktum.ch/references">
@@ -988,11 +891,14 @@ body.menu-open .lang-floating { display: none; }
 {"@context": "https://schema.org", "@type": "CollectionPage", "name": "Referenzen: Vereine, Verbände und Ligen · Paktum", "description": "Vereine, Verbände und Ligen in der Schweiz und Deutschland verwalten ihr Sponsoring mit Paktum.", "url": "https://www.paktum.ch/references", "inLanguage": "de", "isPartOf": {"@type": "WebSite", "name": "Paktum", "url": "https://www.paktum.ch"}}
 </script>
 <script type="application/ld+json">
-{"@context": "https://schema.org", "@type": "ItemList", "name": "Referenzen: Unsere Kunden · Paktum", "numberOfItems": 36, "itemListElement": [{"@type": "ListItem", "position": 1, "item": {"@type": "SportsOrganization", "name": "FC Zürich", "logo": "https://www.paktum.ch/SVG%20Logos/FC_Zuerich.svg.webp", "address": {"@type": "PostalAddress", "addressLocality": "Zürich", "addressCountry": "CH"}}}, {"@type": "ListItem", "position": 2, "item": {"@type": "SportsOrganization", "name": "BSV Bern", "logo": "https://www.paktum.ch/SVG%20Logos/BSV_Bern.svg", "address": {"@type": "PostalAddress", "addressLocality": "Bern", "addressCountry": "CH"}}}, {"@type": "ListItem", "position": 3, "item": {"@type": "SportsOrganization", "name": "TVB Stuttgart", "logo": "https://www.paktum.ch/SVG%20Logos/TVB_Stuttgart.webp", "address": {"@type": "PostalAddress", "addressLocality": "Stuttgart", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 4, "item": {"@type": "SportsOrganization", "name": "SSV Ulm 1846 Fussball", "logo": "https://www.paktum.ch/SVG%20Logos/SSV_Ulm_1846_Fussball.svg.webp", "address": {"@type": "PostalAddress", "addressLocality": "Ulm", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 5, "item": {"@type": "SportsOrganization", "name": "VfL Lübeck-Schwartau", "logo": "https://www.paktum.ch/SVG%20Logos/VfL_Luebeck-Schwartau.svg", "address": {"@type": "PostalAddress", "addressLocality": "Bad Schwartau", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 6, "item": {"@type": "SportsOrganization", "name": "Eisbären Bremerhaven", "logo": "https://www.paktum.ch/SVG%20Logos/EisbarenBremerhaven.webp", "address": {"@type": "PostalAddress", "addressLocality": "Bremerhaven", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 7, "item": {"@type": "SportsOrganization", "name": "Bremer Fussball-Verband", "logo": "https://www.paktum.ch/SVG%20Logos/Bremer_Fussball-Verband.svg", "address": {"@type": "PostalAddress", "addressLocality": "Bremen", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 8, "item": {"@type": "SportsOrganization", "name": "Saarländischer Fussball-Verband", "logo": "https://www.paktum.ch/SVG%20Logos/Saarlaendischer_Fussball-Verband.webp", "address": {"@type": "PostalAddress", "addressLocality": "Saarbrücken", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 9, "item": {"@type": "SportsOrganization", "name": "Galopprennbahn München", "logo": "https://www.paktum.ch/SVG%20Logos/GalopprennbahnMunchen.webp", "address": {"@type": "PostalAddress", "addressLocality": "München", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 10, "item": {"@type": "SportsOrganization", "name": "DEL2", "logo": "https://www.paktum.ch/SVG%20Logos/DEL2.svg.webp", "address": {"@type": "PostalAddress", "addressLocality": "Neuss", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 11, "item": {"@type": "SportsOrganization", "name": "Volleyball Bundesliga", "logo": "https://www.paktum.ch/SVG%20Logos/Volleyball%20Bundesliga.webp", "address": {"@type": "PostalAddress", "addressLocality": "Berlin", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 12, "item": {"@type": "SportsOrganization", "name": "Infront Germany", "logo": "https://www.paktum.ch/SVG%20Logos/Infront_Germany.webp", "address": {"@type": "PostalAddress", "addressLocality": "Frankfurt am Main", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 13, "item": {"@type": "SportsOrganization", "name": "SV Grün-Weiß Schwerin", "logo": "https://www.paktum.ch/SVG%20Logos/SV_Gruen-Weiss_Schwerin.webp", "address": {"@type": "PostalAddress", "addressLocality": "Schwerin", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 14, "item": {"@type": "SportsOrganization", "name": "Stiftung Leistungssport Hamburg", "logo": "https://www.paktum.ch/SVG%20Logos/Stiftung_Leistungssport_Hamburg.webp", "address": {"@type": "PostalAddress", "addressLocality": "Hamburg", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 15, "item": {"@type": "SportsOrganization", "name": "Hamburger Fussball-Verband", "logo": "https://www.paktum.ch/SVG%20Logos/Hamburger_Fussball-Verband.svg.webp", "address": {"@type": "PostalAddress", "addressLocality": "Hamburg", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 16, "item": {"@type": "SportsOrganization", "name": "SSV Jeddeloh II", "logo": "https://www.paktum.ch/SVG%20Logos/SSV_Jeddeloh.svg.webp", "address": {"@type": "PostalAddress", "addressLocality": "Edewecht", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 17, "item": {"@type": "SportsOrganization", "name": "SV Wacker Burghausen", "logo": "https://www.paktum.ch/SVG%20Logos/Wacker_Burghausen.svg.webp", "address": {"@type": "PostalAddress", "addressLocality": "Burghausen", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 18, "item": {"@type": "SportsOrganization", "name": "TSV SCHOTT Mainz", "logo": "https://www.paktum.ch/SVG%20Logos/TSV_Schott_Mainz.webp", "address": {"@type": "PostalAddress", "addressLocality": "Mainz", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 19, "item": {"@type": "SportsOrganization", "name": "PS Karlsruhe Lions", "logo": "https://www.paktum.ch/SVG%20Logos/PSK_Lions.svg.webp", "address": {"@type": "PostalAddress", "addressLocality": "Karlsruhe", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 20, "item": {"@type": "SportsOrganization", "name": "Hakro Merlins Crailsheim", "logo": "https://www.paktum.ch/SVG%20Logos/Hakro_Merlins_Crailsheim.webp", "address": {"@type": "PostalAddress", "addressLocality": "Crailsheim", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 21, "item": {"@type": "SportsOrganization", "name": "TSV Bayer Dormagen", "logo": "https://www.paktum.ch/SVG%20Logos/TSV_Bayer_Dormagen.svg.webp", "address": {"@type": "PostalAddress", "addressLocality": "Dormagen", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 22, "item": {"@type": "SportsOrganization", "name": "VC Gotha", "logo": "https://www.paktum.ch/SVG%20Logos/VC_Gotha.webp", "address": {"@type": "PostalAddress", "addressLocality": "Gotha", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 23, "item": {"@type": "SportsOrganization", "name": "SC Fortuna Köln", "logo": "https://www.paktum.ch/SVG%20Logos/SC_Fortuna_Koeln.svg.webp", "address": {"@type": "PostalAddress", "addressLocality": "Köln", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 24, "item": {"@type": "SportsOrganization", "name": "Bietigheim Steelers", "logo": "https://www.paktum.ch/SVG%20Logos/Bietigheim_Steelers.svg.webp", "address": {"@type": "PostalAddress", "addressLocality": "Bietigheim-Bissingen", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 25, "item": {"@type": "SportsOrganization", "name": "Dortmunder Rennverein", "logo": "https://www.paktum.ch/SVG%20Logos/Dortmunder_Rennverein.webp", "address": {"@type": "PostalAddress", "addressLocality": "Dortmund", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 26, "item": {"@type": "SportsOrganization", "name": "TSB Schwäbisch Gmünd", "logo": "https://www.paktum.ch/SVG%20Logos/TSB_Jets.webp", "address": {"@type": "PostalAddress", "addressLocality": "Schwäbisch Gmünd", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 27, "item": {"@type": "SportsOrganization", "name": "1. Göppinger SV", "logo": "https://www.paktum.ch/SVG%20Logos/Goeppinger_SV.svg.webp", "address": {"@type": "PostalAddress", "addressLocality": "Göppingen", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 28, "item": {"@type": "SportsOrganization", "name": "Düsseldorfer EG", "logo": "https://www.paktum.ch/SVG%20Logos/Duesseldorfer_EG.webp", "address": {"@type": "PostalAddress", "addressLocality": "Düsseldorf", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 29, "item": {"@type": "SportsOrganization", "name": "EHC Freiburg", "logo": "https://www.paktum.ch/SVG%20Logos/EHC_Freiburg.webp", "address": {"@type": "PostalAddress", "addressLocality": "Freiburg", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 30, "item": {"@type": "SportsOrganization", "name": "SVG Lüneburg", "logo": "https://www.paktum.ch/SVG%20Logos/SVG_Lueneburg.webp", "address": {"@type": "PostalAddress", "addressLocality": "Lüneburg", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 31, "item": {"@type": "SportsOrganization", "name": "HC Empor Rostock", "logo": "https://www.paktum.ch/SVG%20Logos/HC_Empor_Rostock.webp", "address": {"@type": "PostalAddress", "addressLocality": "Rostock", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 32, "item": {"@type": "SportsOrganization", "name": "TV Rottenburg", "logo": "https://www.paktum.ch/SVG%20Logos/TV_Rottenburg.svg", "address": {"@type": "PostalAddress", "addressLocality": "Rottenburg", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 33, "item": {"@type": "SportsOrganization", "name": "UBC Münster", "logo": "https://www.paktum.ch/SVG%20Logos/UBC_Muenster.webp", "address": {"@type": "PostalAddress", "addressLocality": "Münster", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 34, "item": {"@type": "SportsOrganization", "name": "Hamburger SV", "logo": "https://www.paktum.ch/SVG%20Logos/Hamburger_SV.webp", "address": {"@type": "PostalAddress", "addressLocality": "Hamburg", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 35, "item": {"@type": "SportsOrganization", "name": "Sächsischer Fussball-Verband", "logo": "https://www.paktum.ch/SVG%20Logos/Saechsischer_Fussball-Verband.webp", "address": {"@type": "PostalAddress", "addressLocality": "Leipzig", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 36, "item": {"@type": "SportsOrganization", "name": "TV Bissendorf-Holte", "logo": "https://www.paktum.ch/SVG%20Logos/TV_Bissendorf-Holte.webp", "address": {"@type": "PostalAddress", "addressLocality": "Bissendorf", "addressCountry": "DE"}}}]}
+{"@context": "https://schema.org", "@type": "ItemList", "name": "Referenzen: Unsere Kunden · Paktum", "numberOfItems": 38, "itemListElement": [{"@type": "ListItem", "position": 1, "item": {"@type": "SportsOrganization", "name": "FC Zürich", "logo": "https://www.paktum.ch/SVG%20Logos/FC_Zuerich.svg.webp", "address": {"@type": "PostalAddress", "addressLocality": "Zürich", "addressCountry": "CH"}}}, {"@type": "ListItem", "position": 2, "item": {"@type": "SportsOrganization", "name": "BSV Bern", "logo": "https://www.paktum.ch/SVG%20Logos/BSV_Bern.svg", "address": {"@type": "PostalAddress", "addressLocality": "Bern", "addressCountry": "CH"}}}, {"@type": "ListItem", "position": 3, "item": {"@type": "SportsOrganization", "name": "TVB Stuttgart", "logo": "https://www.paktum.ch/SVG%20Logos/TVB_Stuttgart.webp", "address": {"@type": "PostalAddress", "addressLocality": "Stuttgart", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 4, "item": {"@type": "SportsOrganization", "name": "SSV Ulm 1846 Fussball", "logo": "https://www.paktum.ch/SVG%20Logos/SSV_Ulm_1846_Fussball.svg.webp", "address": {"@type": "PostalAddress", "addressLocality": "Ulm", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 5, "item": {"@type": "SportsOrganization", "name": "VfL Lübeck-Schwartau", "logo": "https://www.paktum.ch/SVG%20Logos/VfL_Luebeck-Schwartau.svg", "address": {"@type": "PostalAddress", "addressLocality": "Bad Schwartau", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 6, "item": {"@type": "SportsOrganization", "name": "Eisbären Bremerhaven", "logo": "https://www.paktum.ch/SVG%20Logos/EisbarenBremerhaven.webp", "address": {"@type": "PostalAddress", "addressLocality": "Bremerhaven", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 7, "item": {"@type": "SportsOrganization", "name": "Bremer Fussball-Verband", "logo": "https://www.paktum.ch/SVG%20Logos/Bremer_Fussball-Verband.svg", "address": {"@type": "PostalAddress", "addressLocality": "Bremen", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 8, "item": {"@type": "SportsOrganization", "name": "Saarländischer Fussball-Verband", "logo": "https://www.paktum.ch/SVG%20Logos/Saarlaendischer_Fussball-Verband.webp", "address": {"@type": "PostalAddress", "addressLocality": "Saarbrücken", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 9, "item": {"@type": "SportsOrganization", "name": "Galopprennbahn München", "logo": "https://www.paktum.ch/SVG%20Logos/GalopprennbahnMunchen.webp", "address": {"@type": "PostalAddress", "addressLocality": "München", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 10, "item": {"@type": "SportsOrganization", "name": "DEL2", "logo": "https://www.paktum.ch/SVG%20Logos/DEL2.svg.webp", "address": {"@type": "PostalAddress", "addressLocality": "Neuss", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 11, "item": {"@type": "SportsOrganization", "name": "Volleyball Bundesliga", "logo": "https://www.paktum.ch/SVG%20Logos/Volleyball%20Bundesliga.webp", "address": {"@type": "PostalAddress", "addressLocality": "Berlin", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 12, "item": {"@type": "SportsOrganization", "name": "Infront Germany", "logo": "https://www.paktum.ch/SVG%20Logos/Infront_Germany.webp", "address": {"@type": "PostalAddress", "addressLocality": "Frankfurt am Main", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 13, "item": {"@type": "SportsOrganization", "name": "SV Grün-Weiß Schwerin", "logo": "https://www.paktum.ch/SVG%20Logos/SV_Gruen-Weiss_Schwerin.webp", "address": {"@type": "PostalAddress", "addressLocality": "Schwerin", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 14, "item": {"@type": "SportsOrganization", "name": "Stiftung Leistungssport Hamburg", "logo": "https://www.paktum.ch/SVG%20Logos/Stiftung_Leistungssport_Hamburg.webp", "address": {"@type": "PostalAddress", "addressLocality": "Hamburg", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 15, "item": {"@type": "SportsOrganization", "name": "Hamburger Fussball-Verband", "logo": "https://www.paktum.ch/SVG%20Logos/Hamburger_Fussball-Verband.svg.webp", "address": {"@type": "PostalAddress", "addressLocality": "Hamburg", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 16, "item": {"@type": "SportsOrganization", "name": "SSV Jeddeloh II", "logo": "https://www.paktum.ch/SVG%20Logos/SSV_Jeddeloh.svg.webp", "address": {"@type": "PostalAddress", "addressLocality": "Edewecht", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 17, "item": {"@type": "SportsOrganization", "name": "SV Wacker Burghausen", "logo": "https://www.paktum.ch/SVG%20Logos/Wacker_Burghausen.svg.webp", "address": {"@type": "PostalAddress", "addressLocality": "Burghausen", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 18, "item": {"@type": "SportsOrganization", "name": "TSV SCHOTT Mainz", "logo": "https://www.paktum.ch/SVG%20Logos/TSV_Schott_Mainz.webp", "address": {"@type": "PostalAddress", "addressLocality": "Mainz", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 19, "item": {"@type": "SportsOrganization", "name": "PS Karlsruhe Lions", "logo": "https://www.paktum.ch/SVG%20Logos/PSK_Lions.svg.webp", "address": {"@type": "PostalAddress", "addressLocality": "Karlsruhe", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 20, "item": {"@type": "SportsOrganization", "name": "Hakro Merlins Crailsheim", "logo": "https://www.paktum.ch/SVG%20Logos/Hakro_Merlins_Crailsheim.webp", "address": {"@type": "PostalAddress", "addressLocality": "Crailsheim", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 21, "item": {"@type": "SportsOrganization", "name": "TSV Bayer Dormagen", "logo": "https://www.paktum.ch/SVG%20Logos/TSV_Bayer_Dormagen.svg.webp", "address": {"@type": "PostalAddress", "addressLocality": "Dormagen", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 22, "item": {"@type": "SportsOrganization", "name": "VC Gotha", "logo": "https://www.paktum.ch/SVG%20Logos/VC_Gotha.webp", "address": {"@type": "PostalAddress", "addressLocality": "Gotha", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 23, "item": {"@type": "SportsOrganization", "name": "SC Fortuna Köln", "logo": "https://www.paktum.ch/SVG%20Logos/SC_Fortuna_Koeln.svg.webp", "address": {"@type": "PostalAddress", "addressLocality": "Köln", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 24, "item": {"@type": "SportsOrganization", "name": "Bietigheim Steelers", "logo": "https://www.paktum.ch/SVG%20Logos/Bietigheim_Steelers.svg.webp", "address": {"@type": "PostalAddress", "addressLocality": "Bietigheim-Bissingen", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 25, "item": {"@type": "SportsOrganization", "name": "Dortmunder Rennverein", "logo": "https://www.paktum.ch/SVG%20Logos/Dortmunder_Rennverein.webp", "address": {"@type": "PostalAddress", "addressLocality": "Dortmund", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 26, "item": {"@type": "SportsOrganization", "name": "TSB Schwäbisch Gmünd", "logo": "https://www.paktum.ch/SVG%20Logos/TSB_Jets.webp", "address": {"@type": "PostalAddress", "addressLocality": "Schwäbisch Gmünd", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 27, "item": {"@type": "SportsOrganization", "name": "1. Göppinger SV", "logo": "https://www.paktum.ch/SVG%20Logos/Goeppinger_SV.svg.webp", "address": {"@type": "PostalAddress", "addressLocality": "Göppingen", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 28, "item": {"@type": "SportsOrganization", "name": "Düsseldorfer EG", "logo": "https://www.paktum.ch/SVG%20Logos/Duesseldorfer_EG.webp", "address": {"@type": "PostalAddress", "addressLocality": "Düsseldorf", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 29, "item": {"@type": "SportsOrganization", "name": "EHC Freiburg", "logo": "https://www.paktum.ch/SVG%20Logos/EHC_Freiburg.webp", "address": {"@type": "PostalAddress", "addressLocality": "Freiburg", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 30, "item": {"@type": "SportsOrganization", "name": "SVG Lüneburg", "logo": "https://www.paktum.ch/SVG%20Logos/SVG_Lueneburg.webp", "address": {"@type": "PostalAddress", "addressLocality": "Lüneburg", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 31, "item": {"@type": "SportsOrganization", "name": "HC Empor Rostock", "logo": "https://www.paktum.ch/SVG%20Logos/HC_Empor_Rostock.webp", "address": {"@type": "PostalAddress", "addressLocality": "Rostock", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 32, "item": {"@type": "SportsOrganization", "name": "TV Rottenburg", "logo": "https://www.paktum.ch/SVG%20Logos/TV_Rottenburg.svg", "address": {"@type": "PostalAddress", "addressLocality": "Rottenburg", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 33, "item": {"@type": "SportsOrganization", "name": "UBC Münster", "logo": "https://www.paktum.ch/SVG%20Logos/UBC_Muenster.webp", "address": {"@type": "PostalAddress", "addressLocality": "Münster", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 34, "item": {"@type": "SportsOrganization", "name": "Hamburger SV", "logo": "https://www.paktum.ch/SVG%20Logos/Hamburger_SV.webp", "address": {"@type": "PostalAddress", "addressLocality": "Hamburg", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 35, "item": {"@type": "SportsOrganization", "name": "Sächsischer Fussball-Verband", "logo": "https://www.paktum.ch/SVG%20Logos/Saechsischer_Fussball-Verband.webp", "address": {"@type": "PostalAddress", "addressLocality": "Leipzig", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 36, "item": {"@type": "SportsOrganization", "name": "TV Bissendorf-Holte", "logo": "https://www.paktum.ch/SVG%20Logos/TV_Bissendorf-Holte.webp", "address": {"@type": "PostalAddress", "addressLocality": "Bissendorf", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 37, "item": {"@type": "SportsOrganization", "name": "Berliner Fussball-Verband", "logo": "https://www.paktum.ch/SVG%20Logos/Berliner_Fussball-Verband.webp", "address": {"@type": "PostalAddress", "addressLocality": "Berlin", "addressCountry": "DE"}}}, {"@type": "ListItem", "position": 38, "item": {"@type": "SportsOrganization", "name": "TuS 82 Opladen", "logo": "https://www.paktum.ch/SVG%20Logos/TuS_82_Opladen.webp", "address": {"@type": "PostalAddress", "addressLocality": "Leverkusen", "addressCountry": "DE"}}}]}
 </script>
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Paktum", "item": "https://www.paktum.ch"}, {"@type": "ListItem", "position": 2, "name": "Referenzen", "item": "https://www.paktum.ch/references"}]}
 </script>
+<link href="/consumer-voices.css" rel="stylesheet"/>
+<link href="/references-map.css" rel="stylesheet"/>
+<script src="/consumer-voices.js" defer></script>
 </head>
 <body>
 <!-- ============ NAVBAR ============ -->
@@ -1057,7 +963,7 @@ body.menu-open .lang-floating { display: none; }
 <h1>Vereine, Verbände und Ligen, <br/>die mit <span class="accent">Paktum</span> arbeiten.</h1>
 <p class="ref-lead">Vom Schweizer Fussballclub bis zur deutschen Bundesliga: Diese Organisationen verwalten ihr Sponsoring mit Paktum.</p>
 <div class="ref-stats">
-<div class="ref-stat"><b>36</b><span>Organisationen</span></div>
+<div class="ref-stat"><b>38</b><span>Organisationen</span></div>
 <div class="ref-stat"><b>6</b><span>Sportarten</span></div>
 <div class="ref-stat"><b>2</b><span>Länder</span></div>
 </div>
@@ -1067,10 +973,13 @@ body.menu-open .lang-floating { display: none; }
 <div class="map-band">
 <div class="band-head">
 <h2>Wo unsere Kunden zu Hause sind</h2>
-<p class="map-sub">Fahre über einen Punkt, um die Organisation zu sehen.</p>
+<p class="map-sub">Wähle eine Organisation und entdecke ihren Standort.</p>
 </div>
+<div class="ref-explorer">
+<button class="ref-map-toggle" type="button" aria-expanded="false" aria-controls="refMapPanel" data-show="Karte anzeigen" data-hide="Karte ausblenden">Karte anzeigen</button>
+<div class="ref-map-panel" id="refMapPanel">
 <div class="map-card" id="refMapCard">
-<svg class="dach-map" viewBox="20.5 70 817 598" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="mapTitle">
+<svg class="dach-map" viewBox="104 70 650 598" xmlns="http://www.w3.org/2000/svg" role="group" aria-labelledby="mapTitle">
   <title id="mapTitle">Standorte unserer Kunden in der Schweiz, Deutschland und Österreich</title>
   <g class="map-other">
     <path d="M768.7,877.7 L772.0,866.3 L769.4,863.7 L769.0,858.9 L772.3,850.9 L775.1,849.2 L775.7,839.4 L769.2,836.7 L765.8,837.2 L764.9,832.0 L767.2,824.6 L762.1,820.6 L777.7,799.1 L781.0,796.9 L784.0,805.8 L795.9,801.9 L800.1,804.6 L803.3,813.5 L812.2,816.0 L815.4,819.3 L819.6,831.6 L815.0,842.4 L815.7,847.7 L812.5,853.1 L817.0,858.8 L814.0,862.6 L815.1,866.7 L818.6,874.2 L821.6,874.5 L824.3,883.0 L827.7,883.5 L829.2,881.9 L835.0,883.8 L835.0,888.8 L838.0,894.6 L837.5,900.0 L833.7,904.3 L826.8,906.3 L821.7,922.3 L812.1,923.5 L806.4,927.3 L810.5,935.8 L809.2,937.2 L805.3,936.2 L806.5,939.9 L802.2,943.9 L792.3,941.9 L792.3,933.3 L787.0,925.1 L769.4,916.2 L762.4,906.9 L764.7,906.3 L768.0,911.3 L770.5,910.2 L769.5,900.0 L763.2,895.9 L767.7,885.2 L772.3,883.2 L771.9,880.2 L768.7,877.7 Z"/>
@@ -1196,24 +1105,15 @@ body.menu-open .lang-floating { display: none; }
     <g class="map-dot" data-club="hsv" tabindex="0"><circle class="dot-halo" cx="349.8" cy="189.7" r="14"/><circle class="dot-core" cx="349.8" cy="189.7" r="5"/><title>Hamburger SV – Hamburg</title></g>
     <g class="map-dot" data-club="sfv-sachsen" tabindex="0"><circle class="dot-halo" cx="467.6" cy="327.8" r="14"/><circle class="dot-core" cx="467.6" cy="327.8" r="5"/><title>Sächsischer Fussball-Verband – Leipzig</title></g>
     <g class="map-dot" data-club="tv-bissendorf" tabindex="0"><circle class="dot-halo" cx="286.0" cy="276.4" r="14"/><circle class="dot-core" cx="286.0" cy="276.4" r="5"/><title>TV Bissendorf-Holte – Bissendorf</title></g>
+    <g class="map-dot" data-club="berliner-fv" tabindex="0"><circle class="dot-halo" cx="524.4" cy="258.4" r="14"/><circle class="dot-core" cx="524.4" cy="258.4" r="5"/><title>Berliner Fussball-Verband – Berlin</title></g>
+    <g class="map-dot" data-club="tus-opladen" tabindex="0"><circle class="dot-halo" cx="248.0" cy="355.0" r="14"/><circle class="dot-core" cx="248.0" cy="355.0" r="5"/><title>TuS 82 Opladen – Leverkusen</title></g>
   </g>
 </svg>
-<div class="map-tip" id="refMapTip" role="tooltip" aria-hidden="true">
-<div class="tip-head">
-<div class="tip-logos">
-<div class="tip-logo"><img alt="" id="tipLogo" src=""/></div>
-<span class="tip-x" aria-hidden="true">×</span>
-<div class="tip-logo tip-logo--2"><img alt="" id="tipLogo2" src=""/></div>
 </div>
-<div>
-<div class="tip-name" id="tipName"></div>
-<div class="tip-place" id="tipPlace"></div>
-<div class="tip-cat" id="tipCat"></div>
+<div class="ref-map-selection" aria-live="polite"></div>
 </div>
-</div>
-<p class="tip-desc" id="tipDesc"></p>
-</div>
-</div>
+<div class="ref-directory">
+<div class="ref-directory-head"><h3>Organisationen</h3><span>A–Z</span></div>
 <div class="ref-logos" id="refLogos">
 <button class="logo-card" data-club="fcz" type="button" aria-label="FC Zürich"><img alt="FC Zürich" src="/SVG%20Logos/FC_Zuerich.svg.webp"/><span>FC Zürich</span></button>
 <button class="logo-card" data-club="bsv-bern" type="button" aria-label="BSV Bern"><img alt="BSV Bern" src="/SVG%20Logos/BSV_Bern.svg"/><span>BSV Bern</span></button>
@@ -1250,7 +1150,60 @@ body.menu-open .lang-floating { display: none; }
 <button class="logo-card" data-club="hsv" type="button" aria-label="Hamburger SV"><img alt="Hamburger SV" src="/SVG%20Logos/Hamburger_SV.webp"/><span>Hamburger SV</span></button>
 <button class="logo-card" data-club="sfv-sachsen" type="button" aria-label="Sächsischer Fussball-Verband"><img alt="Sächsischer Fussball-Verband" src="/SVG%20Logos/Saechsischer_Fussball-Verband.webp"/><span>Sächsischer FV</span></button>
 <button class="logo-card" data-club="tv-bissendorf" type="button" aria-label="TV Bissendorf-Holte"><img alt="TV Bissendorf-Holte" src="/SVG%20Logos/TV_Bissendorf-Holte.webp"/><span>TV Bissendorf-Holte</span></button>
+<button class="logo-card" data-club="berliner-fv" type="button" aria-label="Berliner Fussball-Verband"><img alt="Berliner Fussball-Verband" src="/SVG%20Logos/Berliner_Fussball-Verband.webp"/><span>Berliner FV</span></button>
+<button class="logo-card" data-club="tus-opladen" type="button" aria-label="TuS 82 Opladen"><img alt="TuS 82 Opladen" src="/SVG%20Logos/TuS_82_Opladen.webp"/><span>TuS 82 Opladen</span></button>
 </div>
+<nav class="ref-pagination" aria-label="Organisationen durchsuchen" hidden>
+<span class="ref-page-status" role="status" aria-live="polite"></span>
+<div class="ref-page-actions">
+<button type="button" data-direction="previous" aria-label="Vorherige Seite" title="Vorherige Seite"><span aria-hidden="true">←</span></button>
+<button type="button" data-direction="next" aria-label="Nächste Seite" title="Nächste Seite"><span aria-hidden="true">→</span></button>
+</div>
+</nav>
+</div>
+</div>
+</div>
+</section>
+<!-- ============ CUSTOMER VOICES ============ -->
+<section class="voices" id="voices" aria-labelledby="voices-title" aria-roledescription="Karussell">
+<div class="voices-inner">
+<div class="section-header">
+<p class="eyebrow">Kundenstimmen</p>
+<h2 class="section-title-xl" id="voices-title">Viele Clubs.<br/>Ein <span class="accent">Teamgefühl.</span></h2>
+</div>
+</div>
+<div class="voices-window"><div class="voices-track">
+<figure class="voice-card" id="voice-1" role="group" aria-roledescription="Kundenstimme" aria-label="1 / 4">
+<div class="voice-card-top"><span class="voice-logo"><img alt="" src="/SVG%20Logos/SSV_Ulm_1846_Fussball.svg.webp" loading="lazy"/></span><div><span class="voice-club">SSV Ulm 1846</span><span class="voice-sport">Fussball</span></div></div>
+<blockquote lang="de"><p>Mit Paktum schaffen wir eine zentrale, transparente Grundlage für die Steuerung unserer Vermarktungsaktivitäten und Partnerschaften. Wir reduzieren manuelle Prozesse, vermeiden Doppelarbeiten und entlasten unsere Verwaltung durch die automatisierte Rechnungserstellung mit direkter Schnittstelle zur Buchhaltung. Gleichzeitig verbessern wir die Abstimmung mit unserer externen Vermarktungsagentur, schaffen klare Verantwortlichkeiten und gewinnen <em>mehr Effizienz, Transparenz und Kontrolle</em> über unsere Vermarktungserlöse.</p></blockquote>
+<figcaption><img class="voice-photo" alt="" src="/SVG%20Logos/Thomas_Rohmer.webp" width="48" height="48" loading="lazy"/><span><span class="voice-person">Thomas Rohmer</span><span class="voice-role">Leiter Geschäftsstelle</span></span></figcaption>
+</figure>
+<figure class="voice-card" id="voice-2" role="group" aria-roledescription="Kundenstimme" aria-label="2 / 4">
+<div class="voice-card-top"><span class="voice-logo"><img alt="" src="/SVG%20Logos/Volleyball%20Bundesliga.webp" loading="lazy"/></span><div><span class="voice-club">Volleyball Bundesliga</span><span class="voice-sport">Liga · Volleyball</span></div></div>
+<blockquote lang="de"><p><em>Klare Prozesse, die sich unseren Bedürfnissen anpassen:</em> Mit Paktum sieht jedes Teammitglied sofort, was für es relevant ist. Aufgaben landen nicht mehr in Slack, Teams oder Mail, sondern werden direkt auf der Plattform erledigt.</p></blockquote>
+<figcaption><img class="voice-photo" alt="" src="/SVG%20Logos/Nicolas_Nersinger.webp" width="48" height="48" loading="lazy"/><span><span class="voice-person">Nicolas Nersinger</span><span class="voice-role">Manager Vertrieb und Partnermanagement</span></span></figcaption>
+</figure>
+<figure class="voice-card" id="voice-3" role="group" aria-roledescription="Kundenstimme" aria-label="3 / 4">
+<div class="voice-card-top"><span class="voice-logo"><img alt="" src="/SVG%20Logos/SC_Fortuna_Koeln.svg.webp" loading="lazy"/></span><div><span class="voice-club">SC Fortuna Köln</span><span class="voice-sport">Fussball</span></div></div>
+<blockquote lang="de"><p>Mit Paktum gehen wir bei Fortuna Köln den nächsten wichtigen Schritt in der Professionalisierung unserer Vermarktung. Die zentrale Verwaltung unserer Sponsoringverträge, Partnerleistungen und Werbeflächen schafft mehr Struktur, Transparenz und Effizienz in unseren täglichen Abläufen. So können wir interne Prozesse optimieren, wertvolle Zeit sparen und uns noch stärker auf das Wesentliche konzentrieren: <em>die persönliche Betreuung und Weiterentwicklung unserer Partnerschaften.</em></p></blockquote>
+<figcaption><img class="voice-photo" alt="" src="/SVG%20Logos/Vincent_Niess.webp" width="48" height="48" loading="lazy"/><span><span class="voice-person">Vincent Niess</span><span class="voice-role">Partnermanagement</span></span></figcaption>
+</figure>
+<figure class="voice-card" id="voice-4" role="group" aria-roledescription="Kundenstimme" aria-label="4 / 4">
+<div class="voice-card-top"><span class="voice-logo"><img alt="" src="/SVG%20Logos/Saarlaendischer_Fussball-Verband.webp" loading="lazy"/></span><div><span class="voice-club">Saarländischer Fussball-Verband</span><span class="voice-sport">Verband</span></div></div>
+<blockquote lang="de"><p>Besonders hilfreich ist für mich die zentrale Übersicht über unsere Sponsoren, Vereinbarungen und Leistungen. Mit Paktum <em>sparen wir Zeit,</em> weil Informationen an einem Ort verfügbar sind und wir weniger in verschiedenen Listen und Unterlagen suchen müssen. Unsere Sponsorenverwaltung beim Saarländischen Fussballverband ist dadurch übersichtlicher und nachvollziehbarer geworden. Wir sehen schneller, was vereinbart ist und welche Aufgaben noch anstehen.</p></blockquote>
+<figcaption><img class="voice-photo" alt="" src="/SVG%20Logos/Christian_Hertel.webp" width="48" height="48" loading="lazy"/><span><span class="voice-person">Christian Hertel</span><span class="voice-role">Abteilungsleiter Marketing &amp; Events</span></span></figcaption>
+</figure>
+</div></div>
+<div class="voices-inner">
+<div class="voices-footer">
+<div class="voices-controls">
+<span class="voices-count" aria-hidden="true"><span data-voice-current>01</span> / 04</span>
+<button class="voice-control" type="button" data-voice-pause data-pause-label="Automatischen Wechsel pausieren" data-play-label="Automatischen Wechsel starten" aria-label="Automatischen Wechsel pausieren"><svg data-pause-icon viewBox="0 0 16 16" aria-hidden="true"><path d="M4 3h3v10H4zm5 0h3v10H9z"/></svg><svg data-play-icon viewBox="0 0 16 16" aria-hidden="true" hidden><path d="m5 2 9 6-9 6z"/></svg></button>
+<button class="voice-control" type="button" data-voice-prev aria-label="Vorherige Stimme"><span aria-hidden="true">←</span></button>
+<button class="voice-control" type="button" data-voice-next aria-label="Nächste Stimme"><span aria-hidden="true">→</span></button>
+</div>
+</div>
+<p class="voices-status" aria-live="polite" aria-atomic="true"></p>
 </div>
 </section>
 <section class="ref-cta">
@@ -1334,66 +1287,7 @@ document.addEventListener('click', function(){
 
 </script>
 
-<script>
-(function(){
-  var DATA = {"fcz": {"name": "FC Zürich", "cat": "Fussball", "desc": "Fussballclub aus Zürich, gegründet 1896.", "place": "Zürich, Schweiz", "logo": "/SVG%20Logos/FC_Zuerich.svg.webp"}, "bsv-bern": {"name": "BSV Bern", "cat": "Handball", "desc": "Handballclub aus der Stadt Bern.", "place": "Bern, Schweiz", "logo": "/SVG%20Logos/BSV_Bern.svg"}, "tvb-stuttgart": {"name": "TVB Stuttgart", "cat": "Handball", "desc": "Handballclub aus Stuttgart.", "place": "Stuttgart, Deutschland", "logo": "/SVG%20Logos/TVB_Stuttgart.webp"}, "ssv-ulm-infront": {"name": "SSV Ulm 1846 × Infront Germany", "cat": "Fussball · Sportmarketing", "desc": "SSV Ulm 1846 Fussball und die Sportmarketing-Agentur Infront Germany – gemeinsam als Kunde in Ulm.", "place": "Ulm, Deutschland", "logo": "/SVG%20Logos/SSV_Ulm_1846_Fussball.svg.webp", "logo2": "/SVG%20Logos/Infront_Germany.webp"}, "vfl-luebeck": {"name": "VfL Lübeck-Schwartau", "cat": "Handball", "desc": "Handballclub aus Bad Schwartau bei Lübeck.", "place": "Bad Schwartau, Deutschland", "logo": "/SVG%20Logos/VfL_Luebeck-Schwartau.svg"}, "eisbaeren": {"name": "Eisbären Bremerhaven", "cat": "Basketball", "desc": "Basketballclub aus Bremerhaven.", "place": "Bremerhaven, Deutschland", "logo": "/SVG%20Logos/EisbarenBremerhaven.webp"}, "bremer-fv": {"name": "Bremer Fussball-Verband", "cat": "Verband", "desc": "Landesverband für Fussball im Land Bremen.", "place": "Bremen, Deutschland", "logo": "/SVG%20Logos/Bremer_Fussball-Verband.svg"}, "saar-fv": {"name": "Saarländischer Fussball-Verband", "cat": "Verband", "desc": "Landesverband für Fussball im Saarland.", "place": "Saarbrücken, Deutschland", "logo": "/SVG%20Logos/Saarlaendischer_Fussball-Verband.webp"}, "galopp-muenchen": {"name": "Galopprennbahn München", "cat": "Pferdesport", "desc": "Galopprennbahn in München-Riem.", "place": "München, Deutschland", "logo": "/SVG%20Logos/GalopprennbahnMunchen.webp"}, "del2": {"name": "DEL2", "cat": "Liga · Eishockey", "desc": "Zweithöchste Spielklasse im deutschen Eishockey.", "place": "Neuss, Deutschland", "logo": "/SVG%20Logos/DEL2.svg.webp"}, "vbl": {"name": "Volleyball Bundesliga", "cat": "Liga · Volleyball", "desc": "Dachorganisation der deutschen Volleyball-Bundesligen.", "place": "Berlin, Deutschland", "logo": "/SVG%20Logos/Volleyball%20Bundesliga.webp"}, "gw-schwerin": {"name": "SV Grün-Weiß Schwerin", "cat": "Sportverein", "desc": "Mehrspartenverein aus Schwerin, u. a. Handball und Basketball.", "place": "Schwerin, Deutschland", "logo": "/SVG%20Logos/SV_Gruen-Weiss_Schwerin.webp"}, "sls-hamburg": {"name": "Stiftung Leistungssport Hamburg", "cat": "Stiftung", "desc": "Stiftung zur Förderung des Leistungssports in Hamburg.", "place": "Hamburg, Deutschland", "logo": "/SVG%20Logos/Stiftung_Leistungssport_Hamburg.webp"}, "hfv": {"name": "Hamburger Fussball-Verband", "cat": "Verband", "desc": "Landesverband für Fussball in Hamburg.", "place": "Hamburg, Deutschland", "logo": "/SVG%20Logos/Hamburger_Fussball-Verband.svg.webp"}, "ssv-jeddeloh": {"name": "SSV Jeddeloh II", "cat": "Fussball", "desc": "Fussballclub aus Jeddeloh II in der Gemeinde Edewecht.", "place": "Edewecht, Deutschland", "logo": "/SVG%20Logos/SSV_Jeddeloh.svg.webp"}, "wacker-burghausen": {"name": "SV Wacker Burghausen", "cat": "Fussball", "desc": "Fussballclub aus Burghausen in Oberbayern.", "place": "Burghausen, Deutschland", "logo": "/SVG%20Logos/Wacker_Burghausen.svg.webp"}, "schott-mainz": {"name": "TSV SCHOTT Mainz", "cat": "Fussball", "desc": "Sportverein aus Mainz mit Schwerpunkt Fussball.", "place": "Mainz, Deutschland", "logo": "/SVG%20Logos/TSV_Schott_Mainz.webp"}, "psk-lions": {"name": "PS Karlsruhe Lions", "cat": "Basketball", "desc": "Basketballclub aus Karlsruhe.", "place": "Karlsruhe, Deutschland", "logo": "/SVG%20Logos/PSK_Lions.svg.webp"}, "merlins": {"name": "Hakro Merlins Crailsheim", "cat": "Basketball", "desc": "Basketballclub aus Crailsheim in Baden-Württemberg.", "place": "Crailsheim, Deutschland", "logo": "/SVG%20Logos/Hakro_Merlins_Crailsheim.webp"}, "bayer-dormagen": {"name": "TSV Bayer Dormagen", "cat": "Handball", "desc": "Handballclub aus Dormagen am Rhein.", "place": "Dormagen, Deutschland", "logo": "/SVG%20Logos/TSV_Bayer_Dormagen.svg.webp"}, "vc-gotha": {"name": "VC Gotha", "cat": "Volleyball", "desc": "Volleyballclub aus Gotha in Thüringen.", "place": "Gotha, Deutschland", "logo": "/SVG%20Logos/VC_Gotha.webp"}, "fortuna-koeln": {"name": "SC Fortuna Köln", "cat": "Fussball", "desc": "Fussballclub aus dem Süden von Köln.", "place": "Köln, Deutschland", "logo": "/SVG%20Logos/SC_Fortuna_Koeln.svg.webp"}, "bietigheim-steelers": {"name": "Bietigheim Steelers", "cat": "Eishockey", "desc": "Eishockeyclub aus Bietigheim-Bissingen.", "place": "Bietigheim-Bissingen, Deutschland", "logo": "/SVG%20Logos/Bietigheim_Steelers.svg.webp"}, "dortmunder-rennverein": {"name": "Dortmunder Rennverein", "cat": "Pferdesport", "desc": "Betreiber der Galopprennbahn Dortmund-Wambel.", "place": "Dortmund, Deutschland", "logo": "/SVG%20Logos/Dortmunder_Rennverein.webp"}, "duesseldorfer-eg": {"name": "Düsseldorfer EG", "cat": "Eishockey", "desc": "Eishockeyclub aus Düsseldorf, gegründet 1935.", "place": "Düsseldorf, Deutschland", "logo": "/SVG%20Logos/Duesseldorfer_EG.webp"}, "tsb-gmuend": {"name": "TSB Schwäbisch Gmünd", "cat": "Sportverein", "desc": "Turn- und Sportbund aus Schwäbisch Gmünd, u. a. Handball.", "place": "Schwäbisch Gmünd, Deutschland", "logo": "/SVG%20Logos/TSB_Jets.webp"}, "goeppinger-sv": {"name": "1. Göppinger SV", "cat": "Fussball", "desc": "Fussballclub aus Göppingen in Baden-Württemberg.", "place": "Göppingen, Deutschland", "logo": "/SVG%20Logos/Goeppinger_SV.svg.webp"}, "ehc-freiburg": {"name": "EHC Freiburg", "cat": "Eishockey", "desc": "Eishockeyclub aus Freiburg im Breisgau.", "place": "Freiburg, Deutschland", "logo": "/SVG%20Logos/EHC_Freiburg.webp"}, "svg-lueneburg": {"name": "SVG Lüneburg", "cat": "Volleyball", "desc": "Volleyballclub aus Lüneburg in Niedersachsen.", "place": "Lüneburg, Deutschland", "logo": "/SVG%20Logos/SVG_Lueneburg.webp"}, "empor-rostock": {"name": "HC Empor Rostock", "cat": "Handball", "desc": "Handballclub aus Rostock an der Ostsee.", "place": "Rostock, Deutschland", "logo": "/SVG%20Logos/HC_Empor_Rostock.webp"}, "tv-rottenburg": {"name": "TV Rottenburg", "cat": "Volleyball", "desc": "Volleyballclub aus Rottenburg am Neckar.", "place": "Rottenburg, Deutschland", "logo": "/SVG%20Logos/TV_Rottenburg.svg"}, "ubc-muenster": {"name": "UBC Münster", "cat": "Basketball", "desc": "Basketballclub aus Münster in Westfalen.", "place": "Münster, Deutschland", "logo": "/SVG%20Logos/UBC_Muenster.webp"}, "hsv": {"name": "Hamburger SV", "cat": "Fussball", "desc": "Fussballclub aus Hamburg, gegründet 1887.", "place": "Hamburg, Deutschland", "logo": "/SVG%20Logos/Hamburger_SV.webp"}, "sfv-sachsen": {"name": "Sächsischer Fussball-Verband", "cat": "Verband", "desc": "Landesverband für Fussball in Sachsen.", "place": "Leipzig, Deutschland", "logo": "/SVG%20Logos/Saechsischer_Fussball-Verband.webp"}, "tv-bissendorf": {"name": "TV Bissendorf-Holte", "cat": "Volleyball", "desc": "Volleyballclub aus Bissendorf bei Osnabrück.", "place": "Bissendorf, Deutschland", "logo": "/SVG%20Logos/TV_Bissendorf-Holte.webp"}};
-  var card = document.getElementById('refMapCard');
-  var tip  = document.getElementById('refMapTip');
-  if(!card || !tip) return;
-  var dots = card.querySelectorAll('.map-dot');
-  var tLogo = document.getElementById('tipLogo'), tName = document.getElementById('tipName');
-  var tLogo2 = document.getElementById('tipLogo2'), tHead = tip.querySelector('.tip-head');
-  var tPlace = document.getElementById('tipPlace'), tCat = document.getElementById('tipCat');
-  var tDesc = document.getElementById('tipDesc');
-
-  function show(dot){
-    var d = DATA[dot.getAttribute('data-club')]; if(!d) return;
-    tLogo.src = d.logo; tLogo.alt = d.name;
-    // duo entries carry a second logo — two partners shown as one client
-    if(d.logo2){ tLogo2.src = d.logo2; tLogo2.alt = d.name; }
-    tHead.classList.toggle('is-duo', !!d.logo2);
-    tName.textContent = d.name;
-    tPlace.textContent = d.place;
-    tCat.textContent = d.cat;
-    tDesc.textContent = d.desc;
-    tip.classList.add('is-visible');
-    tip.setAttribute('aria-hidden','false');
-    var cr = card.getBoundingClientRect(), dr = dot.getBoundingClientRect();
-    var cx = dr.left - cr.left + dr.width/2, cy = dr.top - cr.top;
-    var w = tip.offsetWidth, h = tip.offsetHeight;
-    var left = Math.max(10, Math.min(cx - w/2, cr.width - w - 10));
-    var top  = cy - h - 16;
-    if (top < 10) top = cy + dr.height + 16;
-    tip.style.left = left + 'px';
-    tip.style.top  = top + 'px';
-  }
-  function hide(){ tip.classList.remove('is-visible'); tip.setAttribute('aria-hidden','true'); }
-
-  var dotByClub = {};
-  Array.prototype.forEach.call(dots, function(d){ dotByClub[d.getAttribute('data-club')] = d; });
-
-  function activate(dot){ if(!dot) return; dot.classList.add('is-active'); show(dot); }
-  function deactivate(dot){ if(dot) dot.classList.remove('is-active'); hide(); }
-
-  Array.prototype.forEach.call(dots, function(d){
-    d.addEventListener('mouseenter', function(){ activate(d); });
-    d.addEventListener('focus', function(){ activate(d); });
-    d.addEventListener('mouseleave', function(){ deactivate(d); });
-    d.addEventListener('blur', function(){ deactivate(d); });
-    d.addEventListener('keydown', function(e){ if(e.key==='Escape') deactivate(d); });
-  });
-
-  var logos = document.querySelectorAll('#refLogos .logo-card');
-  Array.prototype.forEach.call(logos, function(l){
-    var dot = dotByClub[l.getAttribute('data-club')];
-    l.addEventListener('mouseenter', function(){ activate(dot); });
-    l.addEventListener('focus', function(){ activate(dot); });
-    l.addEventListener('mouseleave', function(){ deactivate(dot); });
-    l.addEventListener('blur', function(){ deactivate(dot); });
-  });
-  window.addEventListener('scroll', hide, {passive:true});
-})();
-</script>
+<script src="/references-map.js" defer></script>
 
 <script src="/lang-preference.js" defer></script>
 </body>
