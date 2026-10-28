@@ -5,6 +5,7 @@
 - [Home](https://www.paktum.ch/): Überblick über Paktum und die Plattform
 - [Features](https://www.paktum.ch/features): Alle Module im Detail – Home mit KI-Assistent Rollo, Produktkatalog, Position Editor, Partner-CRM, Verträge, Umsetzung, LED-Planung, Rechnungen und Analytics
 - [Pricing](https://www.paktum.ch/pricing): Preise nach Sponsoring-Volumen
+- [References](https://www.paktum.ch/references): Vereine, Verbände und Ligen aus der Schweiz und Deutschland, die ihr Sponsoring mit Paktum verwalten – mit Kundenstimmen
 - [About](https://www.paktum.ch/about): Team und Unternehmen
 - [Blog](https://www.paktum.ch/blog): Insights rund um Sponsoring-Management
 

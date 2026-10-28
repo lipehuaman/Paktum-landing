@@ -82,6 +82,33 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.paktum.ch/references</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.paktum.ch/references"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.paktum.ch/en/references"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.paktum.ch/es/references"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.paktum.ch/references"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.paktum.ch/en/references</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.paktum.ch/references"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.paktum.ch/en/references"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.paktum.ch/es/references"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.paktum.ch/references"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.paktum.ch/es/references</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.paktum.ch/references"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.paktum.ch/en/references"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.paktum.ch/es/references"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.paktum.ch/references"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.paktum.ch/about</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.paktum.ch/about"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.paktum.ch/en/about"/>
