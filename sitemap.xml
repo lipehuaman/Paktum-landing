@@ -28,6 +28,33 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://www.paktum.ch/features</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.paktum.ch/features"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.paktum.ch/en/features"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.paktum.ch/es/features"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.paktum.ch/features"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.paktum.ch/en/features</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.paktum.ch/features"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.paktum.ch/en/features"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.paktum.ch/es/features"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.paktum.ch/features"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.paktum.ch/es/features</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.paktum.ch/features"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.paktum.ch/en/features"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.paktum.ch/es/features"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.paktum.ch/features"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://www.paktum.ch/pricing</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.paktum.ch/pricing"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.paktum.ch/en/pricing"/>

@@ -811,6 +811,29 @@ footer {
       h1, h2, h3, .section-title-xl, .bridge-text, .stat-card .stat-num, .faq-question { font-family: var(--font-display); }
     </style>
 <style>
+/* ===== Features dropdown (navbar) + features sub-list (mobile menu) ===== */
+.nav-links .nav-dropdown { position: relative; }
+.nav-links .nav-dropdown > a { display: inline-flex; align-items: center; gap: 6px; }
+.nav-caret { width: 10px; height: 10px; opacity: 0.6; transition: transform 0.2s, color 0.2s, opacity 0.2s; }
+.nav-dropdown:hover .nav-caret, .nav-dropdown:focus-within .nav-caret { transform: rotate(180deg); color: var(--color-primary); opacity: 1; }
+/* padding-top bridges the gap between link and panel so hover isn't lost on the way down */
+.nav-dropdown-menu { position: absolute; top: 100%; left: 50%; padding-top: 22px; transform: translate(-50%, 6px); opacity: 0; visibility: hidden; transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s; z-index: 200; }
+.nav-dropdown:hover .nav-dropdown-menu, .nav-dropdown:focus-within .nav-dropdown-menu { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+.nav-dropdown-panel { width: 600px; display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: #15101F; border: 1px solid rgba(244,242,238,0.12); border-radius: 16px; padding: 8px; box-shadow: 0 16px 40px rgba(10,6,18,0.45); }
+.nav-links .nav-dropdown-panel a { opacity: 1; letter-spacing: 0; }
+.nav-dropdown-item { display: flex; align-items: flex-start; gap: 12px; padding: 10px 12px; border-radius: 10px; transition: background 0.15s; }
+.nav-dropdown-item:hover, .nav-dropdown-item:focus-visible { background: rgba(255,255,255,0.06); }
+.nav-dropdown-item .num { font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--color-primary); padding-top: 2px; }
+.nav-dropdown-item b { display: block; font-size: 14px; font-weight: 600; color: #fff; }
+.nav-dropdown-item small { display: block; margin-top: 2px; font-size: 12px; font-weight: 400; line-height: 1.35; color: rgba(244,242,238,0.55); }
+.nav-links .nav-dropdown-all { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; margin-top: 4px; padding: 12px; border-top: 1px solid rgba(244,242,238,0.08); border-radius: 0 0 10px 10px; font-size: 13px; color: var(--color-primary); transition: background 0.15s; }
+.nav-dropdown-all:hover, .nav-dropdown-all:focus-visible { background: rgba(151,14,251,0.12); }
+.mobile-menu .mobile-submenu { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; margin: -12px 0 20px; }
+.mobile-menu .mobile-submenu li { border-bottom: none; }
+.mobile-menu .mobile-submenu a { font-size: 15px; font-weight: 500; padding: 9px 0; color: rgba(244,242,238,0.7); }
+.mobile-menu .mobile-submenu .num { font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--color-primary); margin-right: 6px; }
+@media (max-width: 340px) { .mobile-menu .mobile-submenu { grid-template-columns: 1fr; } }
+
 /* ===== Language dropdown selector ===== */
 .nav-lang { position: relative; display: flex; align-items: center; }
 .lang-trigger { display: inline-flex; align-items: center; gap: 6px; background: transparent; border: none; cursor: pointer; color: rgba(244,242,238,0.7); font-family: var(--font-mono); font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 8px; border-radius: 100px; transition: color 0.2s; }
@@ -830,6 +853,18 @@ footer {
 .lang-floating .lang-menu { top: auto; bottom: calc(100% + 8px); right: 0; }
 @media (max-width: 900px) { .lang-floating { display: flex; } }
 body.menu-open .lang-floating { display: none; }
+/* Tablets / small laptops: the full navbar doesn't fit below ~1100px in any
+   language (the CTA wrapped onto 2-3 lines), so switch to the hamburger menu. */
+@media (max-width: 1280px) { .nav-links { gap: 24px; } }
+@media (max-width: 1100px) {
+  .nav-links { display: none; }
+  .nav-actions .nav-lang { display: none !important; }
+  .nav-actions .btn-primary { display: none; }
+  .hamburger-btn { display: flex; }
+  .lang-floating { display: flex; }
+  body.menu-open .lang-floating { display: none; }
+  body.menu-open { overflow: hidden; }
+}
 </style>
 <link rel="alternate" hreflang="de" href="https://www.paktum.ch/about">
 <link rel="alternate" hreflang="en" href="https://www.paktum.ch/en/about">
@@ -876,7 +911,23 @@ body.menu-open .lang-floating { display: none; }
 </a>
 <ul class="nav-links">
 <li><a data-i18n="nav.product" href="/es#product">Producto</a></li>
-<li><a data-i18n="nav.features" href="/es#features">Funciones</a></li>
+<li class="nav-dropdown">
+<a data-i18n="nav.features" href="/es#features" aria-haspopup="true">Funciones<svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a>
+<div class="nav-dropdown-menu">
+<div class="nav-dropdown-panel">
+<a class="nav-dropdown-item" href="/es/features#home"><span class="num">01</span><span><b>Home</b><small>Todo lo importante de un vistazo</small></span></a>
+<a class="nav-dropdown-item" href="/es/features#product-catalog"><span class="num">02</span><span><b>Catálogo</b><small>Derechos, inventario y cupos</small></span></a>
+<a class="nav-dropdown-item" href="/es/features#position-editor"><span class="num">03</span><span><b>Position Editor</b><small>Plano del estadio y posiciones publicitarias</small></span></a>
+<a class="nav-dropdown-item" href="/es/features#partner-crm"><span class="num">04</span><span><b>CRM de partners</b><small>Pipeline, ficha de partner y comunicación</small></span></a>
+<a class="nav-dropdown-item" href="/es/features#contracts"><span class="num">05</span><span><b>Contratos</b><small>Condiciones, documentos y prestaciones en especie</small></span></a>
+<a class="nav-dropdown-item" href="/es/features#activation"><span class="num">06</span><span><b>Ejecución</b><small>Tareas de ejecución y calendario</small></span></a>
+<a class="nav-dropdown-item" href="/es/features#led-planner"><span class="num">07</span><span><b>Planificación LED</b><small>Playlists a partir de secuencias reservadas</small></span></a>
+<a class="nav-dropdown-item" href="/es/features#invoicing"><span class="num">08</span><span><b>Facturación</b><small>Facturación automática y controlling</small></span></a>
+<a class="nav-dropdown-item" href="/es/features#analytics"><span class="num">09</span><span><b>Analítica</b><small>Finanzas, cash flow y ocupación</small></span></a>
+<a class="nav-dropdown-all" href="/es/features">Ver todas las funciones<span aria-hidden="true">→</span></a>
+</div>
+</div>
+</li>
 <li><a data-i18n="nav.value" href="/es#stats">Valor</a></li>
 <li><a data-i18n="nav.references" href="/es/references">Referencias</a></li>
 <li><a data-i18n="nav.pricing" href="/es/pricing">Precios</a></li>
@@ -904,7 +955,19 @@ body.menu-open .lang-floating { display: none; }
 <div class="mobile-menu">
 <ul>
 <li><a data-i18n="nav.product" href="/es">Producto</a></li>
-<li><a data-i18n="nav.features" href="/es#features">Funciones</a></li>
+<li><a data-i18n="nav.features" href="/es#features">Funciones</a>
+<ul class="mobile-submenu">
+<li><a href="/es/features#home"><span class="num">01</span>Home</a></li>
+<li><a href="/es/features#product-catalog"><span class="num">02</span>Catálogo</a></li>
+<li><a href="/es/features#position-editor"><span class="num">03</span>Position Editor</a></li>
+<li><a href="/es/features#partner-crm"><span class="num">04</span>CRM de partners</a></li>
+<li><a href="/es/features#contracts"><span class="num">05</span>Contratos</a></li>
+<li><a href="/es/features#activation"><span class="num">06</span>Ejecución</a></li>
+<li><a href="/es/features#led-planner"><span class="num">07</span>Planificación LED</a></li>
+<li><a href="/es/features#invoicing"><span class="num">08</span>Facturación</a></li>
+<li><a href="/es/features#analytics"><span class="num">09</span>Analítica</a></li>
+</ul>
+</li>
 <li><a data-i18n="nav.value" href="/es#stats">Valor</a></li>
 <li><a data-i18n="nav.references" href="/es/references">Referencias</a></li>
 <li><a data-i18n="nav.pricing" href="/es/pricing">Precios</a></li>

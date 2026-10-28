@@ -6,7 +6,6 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <!-- Primary meta tags -->
 <title>Features: From Rights Inventory to Invoicing · Paktum</title>
-<meta name="robots" content="noindex,nofollow"/>
 <meta content="Every module of the Paktum platform in detail: rights &amp; inventory, partner CRM, contracts, activation, LED planning, invoicing and analytics – all in one place." name="description"/>
 <link href="https://www.paktum.ch/en/features" rel="canonical"/>
 <!-- Open Graph / LinkedIn / Facebook -->
@@ -2367,6 +2366,29 @@ footer {
 
       /* Hibrido: titulares en Display, cuerpo y navbar en Text */
       h1, h2, h3, .section-title-xl, .bridge-text, .stat-card .stat-num, .faq-question { font-family: var(--font-display); }
+/* ===== Features dropdown (navbar) + features sub-list (mobile menu) ===== */
+.nav-links .nav-dropdown { position: relative; }
+.nav-links .nav-dropdown > a { display: inline-flex; align-items: center; gap: 6px; }
+.nav-caret { width: 10px; height: 10px; opacity: 0.6; transition: transform 0.2s, color 0.2s, opacity 0.2s; }
+.nav-dropdown:hover .nav-caret, .nav-dropdown:focus-within .nav-caret { transform: rotate(180deg); color: var(--color-primary); opacity: 1; }
+/* padding-top bridges the gap between link and panel so hover isn't lost on the way down */
+.nav-dropdown-menu { position: absolute; top: 100%; left: 50%; padding-top: 22px; transform: translate(-50%, 6px); opacity: 0; visibility: hidden; transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s; z-index: 200; }
+.nav-dropdown:hover .nav-dropdown-menu, .nav-dropdown:focus-within .nav-dropdown-menu { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+.nav-dropdown-panel { width: 600px; display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: #15101F; border: 1px solid rgba(244,242,238,0.12); border-radius: 16px; padding: 8px; box-shadow: 0 16px 40px rgba(10,6,18,0.45); }
+.nav-links .nav-dropdown-panel a { opacity: 1; letter-spacing: 0; }
+.nav-dropdown-item { display: flex; align-items: flex-start; gap: 12px; padding: 10px 12px; border-radius: 10px; transition: background 0.15s; }
+.nav-dropdown-item:hover, .nav-dropdown-item:focus-visible { background: rgba(255,255,255,0.06); }
+.nav-dropdown-item .num { font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--color-primary); padding-top: 2px; }
+.nav-dropdown-item b { display: block; font-size: 14px; font-weight: 600; color: #fff; }
+.nav-dropdown-item small { display: block; margin-top: 2px; font-size: 12px; font-weight: 400; line-height: 1.35; color: rgba(244,242,238,0.55); }
+.nav-links .nav-dropdown-all { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; margin-top: 4px; padding: 12px; border-top: 1px solid rgba(244,242,238,0.08); border-radius: 0 0 10px 10px; font-size: 13px; color: var(--color-primary); transition: background 0.15s; }
+.nav-dropdown-all:hover, .nav-dropdown-all:focus-visible { background: rgba(151,14,251,0.12); }
+.mobile-menu .mobile-submenu { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; margin: -12px 0 20px; }
+.mobile-menu .mobile-submenu li { border-bottom: none; }
+.mobile-menu .mobile-submenu a { font-size: 15px; font-weight: 500; padding: 9px 0; color: rgba(244,242,238,0.7); }
+.mobile-menu .mobile-submenu .num { font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--color-primary); margin-right: 6px; }
+@media (max-width: 340px) { .mobile-menu .mobile-submenu { grid-template-columns: 1fr; } }
+
 /* ===== Language dropdown selector ===== */
 .nav-lang { position: relative; display: flex; align-items: center; }
 .lang-trigger { display: inline-flex; align-items: center; gap: 6px; background: transparent; border: none; cursor: pointer; color: rgba(244,242,238,0.7); font-family: var(--font-mono); font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 8px; border-radius: 100px; transition: color 0.2s; }
@@ -2386,6 +2408,18 @@ footer {
 .lang-floating .lang-menu { top: auto; bottom: calc(100% + 8px); right: 0; }
 @media (max-width: 900px) { .lang-floating { display: flex; } }
 body.menu-open .lang-floating { display: none; }
+/* Tablets / small laptops: the full navbar doesn't fit below ~1100px in any
+   language (the CTA wrapped onto 2-3 lines), so switch to the hamburger menu. */
+@media (max-width: 1280px) { .nav-links { gap: 24px; } }
+@media (max-width: 1100px) {
+  .nav-links { display: none; }
+  .nav-actions .nav-lang { display: none !important; }
+  .nav-actions .btn-primary { display: none; }
+  .hamburger-btn { display: flex; }
+  .lang-floating { display: flex; }
+  body.menu-open .lang-floating { display: none; }
+  body.menu-open { overflow: hidden; }
+}
 
 /* ============================================================
    FEATURES PAGE — page-specific additions (v2, scrollytelling)
@@ -2447,7 +2481,7 @@ body.menu-open .lang-floating { display: none; }
 .story-track {
   position: relative;
   margin-top: 64px;
-  height: calc(7 * 100vh);
+  height: calc(9 * 100vh);
 }
 
 .story-stage {
@@ -2480,7 +2514,7 @@ body.menu-open .lang-floating { display: none; }
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 16px;
+  padding: 10px 14px;
   border-radius: 100px;
   color: var(--color-text-inverse-muted);
   text-decoration: none;
@@ -2495,8 +2529,8 @@ body.menu-open .lang-floating { display: none; }
 .story-menu a.active { color: white; background: rgba(151, 14, 251, 0.2); }
 .story-menu a.active .num { color: var(--color-primary); opacity: 1; }
 
-/* Screen + caption row: fills the rest of the pinned stage. All 7
-   captions share the "cap" grid area and all 7 screens share "frame" —
+/* Screen + caption row: fills the rest of the pinned stage. All 9
+   captions share the "cap" grid area and all 9 screens share "frame" —
    CSS Grid lets same-area siblings overlap natively, so switching the
    active module is just an opacity/transform toggle, no absolute
    positioning to keep in sync. */
@@ -2520,6 +2554,9 @@ body.menu-open .lang-floating { display: none; }
   display: flex;
   flex-direction: column;
   justify-content: center;
+  /* "safe": when a caption is taller than the stage, start at the top
+     instead of clipping the eyebrow above the fold */
+  justify-content: safe center;
   opacity: 0;
   transform: translateY(12px);
   transition: opacity 0.5s ease, transform 0.5s ease;
@@ -2576,227 +2613,48 @@ body.menu-open .lang-floating { display: none; }
   margin-bottom: 4px;
 }
 
-/* The "now playing" line: cross-fades in sync with whichever beat the
-   screen is currently showing — same applyStep() call drives both, so
-   there's no separate sync mechanism to fall out of phase. */
-.story-steps { margin: 20px 0; min-height: 26px; }
-.story-step { display: none; }
-.story-step.is-active { display: block; }
-.story-step p {
-  font-family: var(--font-display);
-  font-size: 15px;
-  font-weight: 500;
-  line-height: 1.4;
-  color: white;
-}
-.story-step .step-num {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--color-primary);
-  letter-spacing: 0.06em;
-  margin-right: 8px;
-}
-/* Modules with no scroll-steps (e.g. the LED planner, which has its
-   own built-in animated demo) use this shorter single-beat variant. */
-.story-steps.single .story-step { display: block; }
-
 .story-summary { margin-top: 4px; }
 
-/* ---- The screen itself ---- */
+/* ---- The screen itself: one product video per module ---- */
 .story-frame-panel .feature-visual {
   width: 100%;
-  max-width: 880px;
+  /* Never taller than the pinned stage leaves room for (menu + paddings) */
+  max-width: min(880px, calc((100vh - 300px) * 16 / 9));
   margin: 0 auto;
   position: relative;
-  min-height: 380px;
   background: linear-gradient(135deg, rgba(151, 14, 251, 0.14) 0%, rgba(31, 15, 61, 0.35) 100%);
   border: 1px solid var(--color-border-dark);
   border-radius: 24px;
-  padding: 28px;
-  display: flex;
+  padding: 10px;
+  aspect-ratio: auto;
+  display: block;
 }
-.story-frame-panel .mockup-frame { width: 100%; }
-/* The card grows to fit whichever module has the most content instead of
-   clipping it (mockup-frame clips overflow to keep its rounded corners) —
-   reserve space up front so nothing jumps or crops. */
-.story-frame-panel .mockup-body { min-height: 320px; }
+.feature-video video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  border-radius: 16px;
+  background: #120a1e;
+  object-fit: cover;
+}
 
-[data-step] {
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.45s ease, transform 0.45s ease;
+/* ---- Short laptop screens (e.g. 1280x720, 1366x768): tighten the caption
+   so it fits the pinned stage instead of scrolling inside its own box ---- */
+@media (min-width: 1101px) and (max-height: 860px) {
+  .story-menu { margin-bottom: 16px; }
+  .story-menu a { padding: 8px 12px; }
+  .story-eyebrow { margin-bottom: 10px; font-size: 12px; }
+  .story-caption-panel h3 { font-size: 24px; margin-bottom: 10px; }
+  .story-subtitle { margin-bottom: 12px; font-size: 12px; }
+  .story-intro { font-size: 13.5px; line-height: 1.5; margin-bottom: 12px; }
+  .story-caption-panel .feature-list li { font-size: 14px; padding: 9px 0; }
 }
-[data-step].is-shown { opacity: 1; transform: none; }
-[data-show-until].is-hidden { display: none; }
-
-/* ============ Lightweight "preview" atoms shared across modules ============ */
-.pv-body { padding: 22px 24px; display: flex; flex-direction: column; justify-content: center; gap: 10px; flex: 1; }
-
-.pv-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 14px;
-  border: 1px solid rgba(10, 6, 18, 0.06);
-  border-radius: 12px;
-  background: #FCFBFD;
+@media (min-width: 1101px) and (max-height: 740px) {
+  .story-stage { top: 96px; height: calc(100vh - 116px); }
+  .story-intro { font-size: 13px; line-height: 1.45; }
+  .story-caption-panel .feature-list li { font-size: 13px; padding: 7px 0; }
 }
-.pv-avatar {
-  width: 32px; height: 32px; border-radius: 50%;
-  background: var(--color-primary-soft);
-  color: var(--color-primary);
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--font-display); font-weight: 700; font-size: 12px;
-  flex-shrink: 0;
-}
-.pv-main { flex: 1; min-width: 0; }
-.pv-title { font-size: 13px; font-weight: 600; color: var(--color-text-primary); }
-.pv-meta { font-size: 11px; color: var(--color-text-muted); margin-top: 2px; }
-
-.pv-pill {
-  font-family: var(--font-mono); font-size: 10px; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 0.04em;
-  padding: 4px 9px; border-radius: 100px; flex-shrink: 0;
-}
-.pv-pill.ok { background: #DCFCE7; color: #15803d; }
-.pv-pill.warn { background: #FEF3C7; color: #b45309; }
-.pv-pill.neutral { background: #F1EEF7; color: #635A6F; }
-
-.pv-check {
-  width: 18px; height: 18px; border-radius: 6px;
-  border: 1.5px solid rgba(10, 6, 18, 0.15);
-  flex-shrink: 0; display: flex; align-items: center; justify-content: center;
-}
-.pv-check.done { background: var(--color-primary); border-color: var(--color-primary); }
-.pv-check.done::after { content: '✓'; color: white; font-size: 11px; font-weight: 700; }
-.pv-task { flex: 1; font-size: 13px; color: var(--color-text-primary); }
-.pv-task.done { text-decoration: line-through; color: var(--color-text-muted); }
-
-.pv-chip-row { display: flex; gap: 8px; margin-top: 2px; flex-wrap: wrap; }
-.pv-chip {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-size: 11px; font-weight: 600; color: var(--color-text-secondary);
-  padding: 6px 10px; border: 1px solid rgba(10, 6, 18, 0.08); border-radius: 100px;
-}
-.pv-chip .dot { width: 6px; height: 6px; border-radius: 50%; background: #22c55e; }
-
-.pv-doc {
-  display: flex; align-items: center; gap: 12px;
-  padding: 16px; border-radius: 12px;
-  background: linear-gradient(135deg, rgba(151, 14, 251, 0.06), rgba(151, 14, 251, 0.02));
-  border: 1px dashed rgba(151, 14, 251, 0.3);
-}
-.pv-doc-icon { font-size: 22px; flex-shrink: 0; }
-
-.pv-cta-editor {
-  flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
-  background-image:
-    linear-gradient(rgba(10, 6, 18, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(10, 6, 18, 0.05) 1px, transparent 1px);
-  background-size: 22px 22px;
-  border-radius: 12px;
-  padding: 24px;
-  min-height: 180px;
-}
-.pv-add-btn {
-  width: 48px; height: 48px; border-radius: 50%;
-  background: var(--color-primary); color: white;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 22px; box-shadow: 0 8px 20px rgba(151, 14, 251, 0.35);
-  flex-shrink: 0;
-}
-.pv-cta-editor span { font-size: 12.5px; color: var(--color-text-secondary); font-weight: 500; }
-
-.pv-bars { display: flex; align-items: flex-end; gap: 6px; height: 72px; flex: 1; }
-.pv-bars i {
-  flex: 1; font-style: normal;
-  background: linear-gradient(180deg, var(--color-primary), #6B0AB8);
-  border-radius: 4px 4px 0 0;
-  transform-origin: bottom; transform: scaleY(0);
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-[data-step].is-shown .pv-bars i { transform: scaleY(1); }
-.pv-analytics-row { display: flex; gap: 22px; align-items: center; }
-.pv-donut {
-  width: 76px; height: 76px; border-radius: 50%; flex-shrink: 0;
-  display: flex; align-items: center; justify-content: center; position: relative;
-  background: conic-gradient(var(--color-primary) 0% 86%, rgba(151, 14, 251, 0.12) 86% 100%);
-}
-.pv-donut::before { content: ''; position: absolute; inset: 10px; background: white; border-radius: 50%; }
-.pv-donut span { position: relative; font-family: var(--font-display); font-weight: 700; font-size: 14px; }
-.pv-analytics-label { font-size: 12px; color: var(--color-text-muted); }
-.pv-analytics-label b { display: block; font-size: 13px; color: var(--color-text-primary); font-weight: 600; margin-bottom: 2px; }
-
-.pv-stat-line {
-  display: flex; align-items: baseline; gap: 8px;
-  padding: 4px 2px;
-}
-.pv-stat-line b { font-family: var(--font-display); font-size: 15px; color: var(--color-text-primary); }
-.pv-stat-line span { font-size: 12px; color: var(--color-text-muted); }
-
-/* Minimalist stand-block "plan" for the rights & inventory module —
-   not a literal stadium render, just enough shape (two stand rows around
-   a pitch) to read as a venue map while blocks light up one at a time. */
-.pv-stadium-block { display: flex; flex-direction: column; align-items: center; gap: 22px; flex: 1; justify-content: center; }
-.pv-stadium { display: flex; flex-direction: column; align-items: center; gap: 14px; }
-.pv-stand-row { display: flex; gap: 8px; justify-content: center; }
-.pv-stand { width: 44px; height: 24px; border-radius: 5px; }
-.pv-stand.c1 { background: var(--color-primary); }
-.pv-stand.c2 { background: #C65CFF; }
-.pv-stand.c3 { background: #6B0AB8; }
-/* A recognizable top-down pitch, not just a green rectangle: real
-   ~105x68m proportions (not stretched full-width), halfway line +
-   center circle (pseudo-elements), two goal boxes (real child
-   elements, since a selector only gets two pseudo-elements). */
-.pv-pitch {
-  position: relative;
-  width: 260px; height: 170px; border-radius: 12px;
-  background: repeating-linear-gradient(90deg, #DCEFE0 0 26px, #CFE8D5 26px 52px);
-  border: 2px solid rgba(10, 6, 18, 0.08);
-  overflow: hidden;
-}
-.pv-pitch::before {
-  content: ''; position: absolute; top: 0; bottom: 0; left: 50%; width: 2px;
-  background: rgba(255, 255, 255, 0.75); transform: translateX(-1px);
-}
-.pv-pitch::after {
-  content: ''; position: absolute; top: 50%; left: 50%; width: 46px; height: 46px;
-  border: 2px solid rgba(255, 255, 255, 0.75); border-radius: 50%;
-  transform: translate(-50%, -50%);
-}
-.pv-pitch-box {
-  position: absolute; top: 50%; width: 20px; height: 98px;
-  border: 2px solid rgba(255, 255, 255, 0.75);
-  transform: translateY(-50%);
-}
-.pv-pitch-box.left { left: -2px; border-left: none; border-radius: 0 4px 4px 0; }
-.pv-pitch-box.right { right: -2px; border-right: none; border-radius: 4px 0 0 4px; }
-.pv-stadium-legend { display: flex; gap: 16px; justify-content: center; }
-.pv-stadium-legend span { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--color-text-secondary); font-weight: 500; }
-.pv-stadium-legend i { width: 8px; height: 8px; border-radius: 2px; display: block; }
-.pv-stadium-legend i.c1 { background: var(--color-primary); }
-.pv-stadium-legend i.c2 { background: #C65CFF; }
-.pv-stadium-legend i.c3 { background: #6B0AB8; }
-
-/* Minimalist Kanban for the contracts module — one card per stage,
-   revealed left to right so the pipeline reads as forward progress. */
-.pv-kanban { display: flex; gap: 10px; flex: 1; align-items: stretch; }
-.pv-kanban-col {
-  flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 8px;
-  background: #FCFBFD; border: 1px solid rgba(10, 6, 18, 0.05); border-radius: 12px; padding: 10px;
-}
-.pv-kanban-col-title {
-  font-family: var(--font-mono); font-size: 9.5px; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-text-muted);
-}
-.pv-kanban-card {
-  background: white; border: 1px solid rgba(10, 6, 18, 0.08); border-radius: 8px;
-  padding: 8px 10px; box-shadow: 0 2px 6px rgba(10, 6, 18, 0.05);
-}
-.pv-kanban-card .pv-title { font-size: 11.5px; }
-.pv-kanban-card .pv-meta { font-size: 10px; }
-.pv-kanban-card.ok { border-color: rgba(34, 197, 94, 0.4); box-shadow: 0 2px 6px rgba(34, 197, 94, 0.12); }
 
 /* ---- Mobile: collapse scrollytelling to a simple stacked read ---- */
 @media (max-width: 640px) {
@@ -2831,9 +2689,11 @@ body.menu-open .lang-floating { display: none; }
     max-height: none;
     overflow: visible;
   }
-  .story-caption-panel { margin-bottom: 20px; }
+  .story-caption-panel { margin-bottom: 20px; scroll-margin-top: 110px; }
   .story-frame-panel { margin-bottom: 72px; }
   .story-frame-panel:last-of-type { margin-bottom: 0; }
+  .story-frame-panel .feature-visual { max-width: 880px; padding: 6px; border-radius: 16px; }
+  .feature-video video { border-radius: 11px; }
 }
 </style>
 <link rel="alternate" hreflang="de" href="https://www.paktum.ch/features">
@@ -2893,7 +2753,23 @@ body.menu-open .lang-floating { display: none; }
 </a>
 <ul class="nav-links">
 <li><a data-i18n="nav.product" href="/en#product">Product</a></li>
-<li><a class="active" data-i18n="nav.features" href="/en/features">Features</a></li>
+<li class="nav-dropdown">
+<a class="active" data-i18n="nav.features" href="/en/features" aria-haspopup="true">Features<svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a>
+<div class="nav-dropdown-menu">
+<div class="nav-dropdown-panel">
+<a class="nav-dropdown-item" href="/en/features#home"><span class="num">01</span><span><b>Home</b><small>Everything that matters at a glance</small></span></a>
+<a class="nav-dropdown-item" href="/en/features#product-catalog"><span class="num">02</span><span><b>Product Catalog</b><small>Rights, inventory and quotas</small></span></a>
+<a class="nav-dropdown-item" href="/en/features#position-editor"><span class="num">03</span><span><b>Position Editor</b><small>Stadium plan and advertising positions</small></span></a>
+<a class="nav-dropdown-item" href="/en/features#partner-crm"><span class="num">04</span><span><b>Partner CRM</b><small>Pipeline, partner records and communication</small></span></a>
+<a class="nav-dropdown-item" href="/en/features#contracts"><span class="num">05</span><span><b>Contracts</b><small>Conditions, documents and in-kind benefits</small></span></a>
+<a class="nav-dropdown-item" href="/en/features#activation"><span class="num">06</span><span><b>Activation</b><small>Implementation tasks and calendar</small></span></a>
+<a class="nav-dropdown-item" href="/en/features#led-planner"><span class="num">07</span><span><b>LED Planning</b><small>Playlists from booked sequences</small></span></a>
+<a class="nav-dropdown-item" href="/en/features#invoicing"><span class="num">08</span><span><b>Invoicing</b><small>Automatic invoicing and controlling</small></span></a>
+<a class="nav-dropdown-item" href="/en/features#analytics"><span class="num">09</span><span><b>Analytics</b><small>Finances, cash flow and utilization</small></span></a>
+<a class="nav-dropdown-all" href="/en/features">See all features<span aria-hidden="true">→</span></a>
+</div>
+</div>
+</li>
 <li><a data-i18n="nav.value" href="/en#stats">Value</a></li>
 <li><a data-i18n="nav.references" href="/en/references">References</a></li>
 <li><a data-i18n="nav.pricing" href="/en/pricing">Pricing</a></li>
@@ -2921,7 +2797,19 @@ body.menu-open .lang-floating { display: none; }
 <div class="mobile-menu">
 <ul>
 <li><a data-i18n="nav.product" href="/en">Product</a></li>
-<li><a class="active" data-i18n="nav.features" href="/en/features">Features</a></li>
+<li><a class="active" data-i18n="nav.features" href="/en/features">Features</a>
+<ul class="mobile-submenu">
+<li><a href="/en/features#home"><span class="num">01</span>Home</a></li>
+<li><a href="/en/features#product-catalog"><span class="num">02</span>Product Catalog</a></li>
+<li><a href="/en/features#position-editor"><span class="num">03</span>Position Editor</a></li>
+<li><a href="/en/features#partner-crm"><span class="num">04</span>Partner CRM</a></li>
+<li><a href="/en/features#contracts"><span class="num">05</span>Contracts</a></li>
+<li><a href="/en/features#activation"><span class="num">06</span>Activation</a></li>
+<li><a href="/en/features#led-planner"><span class="num">07</span>LED Planning</a></li>
+<li><a href="/en/features#invoicing"><span class="num">08</span>Invoicing</a></li>
+<li><a href="/en/features#analytics"><span class="num">09</span>Analytics</a></li>
+</ul>
+</li>
 <li><a data-i18n="nav.value" href="/en#stats">Value</a></li>
 <li><a data-i18n="nav.references" href="/en/references">References</a></li>
 <li><a data-i18n="nav.pricing" href="/en/pricing">Pricing</a></li>
@@ -2946,416 +2834,193 @@ body.menu-open .lang-floating { display: none; }
 <div class="features-hero-inner">
 <div class="section-tag">Product Tour</div>
 <h1>A tool for <span class="accent">every step</span><br/>of your sponsoring.</h1>
-<p>From the first product in the catalog to the paid invoice: seven modules that cover every part of your sponsoring management – for every role on the team.</p>
+<p>From the first product in the catalog to the paid invoice: nine modules that cover every part of your sponsoring management – for every role on the team.</p>
 </div>
 </section>
 <section class="module-story" id="module-tour">
 <div class="container">
 <div class="section-header">
 <div class="section-tag">The Modules in Detail</div>
-<h2 class="section-title-xl">Seven Modules. <span class="accent">One Platform.</span></h2>
+<h2 class="section-title-xl">Nine Modules. <span class="accent">One Platform.</span></h2>
 </div>
 <div class="story-track">
 <div class="story-stage">
 <nav class="story-menu" aria-label="Modules">
-<a data-jump="module-01" href="#module-01"><span class="num">01</span> Rights &amp; Inventory</a>
-<a data-jump="module-02" href="#module-02"><span class="num">02</span> Partner CRM</a>
-<a data-jump="module-03" href="#module-03"><span class="num">03</span> Contracts</a>
-<a data-jump="module-04" href="#module-04"><span class="num">04</span> Activation</a>
-<a data-jump="module-05" href="#module-05"><span class="num">05</span> LED Planning</a>
-<a data-jump="module-06" href="#module-06"><span class="num">06</span> Invoicing</a>
-<a data-jump="module-07" href="#module-07"><span class="num">07</span> Analytics</a>
+<a data-jump="home" href="#home"><span class="num">01</span> Home</a>
+<a data-jump="product-catalog" href="#product-catalog"><span class="num">02</span> Product Catalog</a>
+<a data-jump="position-editor" href="#position-editor"><span class="num">03</span> Position Editor</a>
+<a data-jump="partner-crm" href="#partner-crm"><span class="num">04</span> Partner CRM</a>
+<a data-jump="contracts" href="#contracts"><span class="num">05</span> Contracts</a>
+<a data-jump="activation" href="#activation"><span class="num">06</span> Activation</a>
+<a data-jump="led-planner" href="#led-planner"><span class="num">07</span> LED Planning</a>
+<a data-jump="invoicing" href="#invoicing"><span class="num">08</span> Invoicing</a>
+<a data-jump="analytics" href="#analytics"><span class="num">09</span> Analytics</a>
 </nav>
 <div class="story-stage-row">
 
-<!-- Module 01: Rights & Inventory -->
-<div class="story-caption-panel is-active" data-module-index="1">
+<!-- Module 01: Home -->
+<div class="story-caption-panel is-active" id="home" data-module-index="1">
 <div class="story-eyebrow">Module 01</div>
-<h3>Every space,<br/>one <span class="accent">product</span>.</h3>
-<div class="story-subtitle">Rights &amp; Inventory Management</div>
-<p class="story-intro">Every marketable right lives in one central product catalog – from the single-sided board to the naming-rights space. Instead of spreadsheets and scattered plans, you see at a glance what's free, reserved or sold. New spaces are created right in the editor: stadium plan, jersey or hospitality area – drawn, named and ready to sell instantly.</p>
-<div class="story-steps">
-<div class="story-step"><p><span class="step-num">Step 1</span>Draw a new advertising space directly onto the stadium plan.</p></div>
-<div class="story-step"><p><span class="step-num">Step 2</span>Set the quota, unit and price – as a season or call-off package.</p></div>
-<div class="story-step"><p><span class="step-num">Step 3</span>Utilization per product runs in real time from that moment on.</p></div>
-</div>
+<h3>Everything that matters.<br/>At a <span class="accent">glance</span>.</h3>
+<div class="story-subtitle">Home &amp; AI Assistant Rollo</div>
+<p class="story-intro">The home view shows you right away where your sponsoring stands: total sponsoring, deal forecast, partners and booked-out inventory. New contracts appear right below – with price, invoice progress and end date. And Rollo, your AI assistant, checks data quality in the background and shows you exactly what's missing.</p>
 <ul class="feature-list story-summary">
-<li>Season and call-off quotas with quantity, unit and price</li>
-<li>Visual position editors for stadium, jersey and hospitality</li>
-<li>Playlists for LED boards straight from inventory</li>
+<li>Season KPIs for sponsoring, forecast and inventory</li>
+<li>New contracts with invoice progress and end date</li>
+<li>Rollo spots data gaps and suggests the fix</li>
 </ul>
 </div>
-<div class="story-frame-panel is-active" id="module-01" data-module-index="1">
-<div class="feature-visual">
-<div class="mockup-frame">
-<div class="mockup-body">
-<div class="mockup-header">
-<div>
-<div class="mockup-title">Position Editor</div>
-<div class="mockup-subtitle">Stadium plan · North stand</div>
-</div>
-</div>
-<div class="pv-body">
-<div class="pv-stadium-block">
-<div class="pv-stadium">
-<div class="pv-stand-row">
-<span data-step="0" class="pv-stand c1"></span>
-<span data-step="1" class="pv-stand c2"></span>
-<span data-step="1" class="pv-stand c1"></span>
-<span data-step="2" class="pv-stand c3"></span>
-<span data-step="2" class="pv-stand c1"></span>
-</div>
-<div class="pv-pitch"><span class="pv-pitch-box left"></span><span class="pv-pitch-box right"></span></div>
-<div class="pv-stand-row">
-<span data-step="0" class="pv-stand c1"></span>
-<span data-step="2" class="pv-stand c2"></span>
-<span data-step="1" class="pv-stand c1"></span>
-<span data-step="2" class="pv-stand c1"></span>
-<span data-step="1" class="pv-stand c3"></span>
-</div>
-</div>
-<div class="pv-stadium-legend">
-<span><i class="c1"></i>Board</span>
-<span><i class="c2"></i>Cam Carpet</span>
-<span><i class="c3"></i>LED Board</span>
-</div>
-</div>
-</div>
-</div>
-</div>
+<div class="story-frame-panel is-active" data-module-index="1">
+<div class="feature-visual feature-video">
+<video data-feature-video muted loop playsinline preload="none" poster="/videos/features/01-home-en.jpg" aria-label="Product video: Home"><source src="/videos/features/01-home-en.mp4" type="video/mp4"/></video>
 </div>
 </div>
 
-<!-- Module 02: Partner CRM -->
-<div class="story-caption-panel" data-module-index="2">
+<!-- Module 02: Product Catalog -->
+<div class="story-caption-panel" id="product-catalog" data-module-index="2">
 <div class="story-eyebrow">Module 02</div>
+<h3>Every space,<br/>one <span class="accent">product</span>.</h3>
+<div class="story-subtitle">Rights &amp; Inventory Management</div>
+<p class="story-intro">Every marketable right lives in one central product catalog – from the single-sided board to the naming-rights space. Instead of spreadsheets and scattered plans, you see at a glance what's free, reserved or sold. Product groups bundle similar rights, and game day quotas are tied straight to the fixture list.</p>
+<ul class="feature-list story-summary">
+<li>Season and call-off quotas with quantity, unit and price</li>
+<li>Product groups with utilization per season and game day</li>
+<li>Game day quotas tied to the fixture list</li>
+</ul>
+</div>
+<div class="story-frame-panel" data-module-index="2">
+<div class="feature-visual feature-video">
+<video data-feature-video muted loop playsinline preload="none" poster="/videos/features/02-catalog-en.jpg" aria-label="Product video: Product Catalog"><source src="/videos/features/02-catalog-en.mp4" type="video/mp4"/></video>
+</div>
+</div>
+
+<!-- Module 03: Position Editor -->
+<div class="story-caption-panel" id="position-editor" data-module-index="3">
+<div class="story-eyebrow">Module 03</div>
+<h3>Every position.<br/>Right on the <span class="accent">stadium plan</span>.</h3>
+<div class="story-subtitle">Position Editor</div>
+<p class="story-intro">The stadium plan shows every advertising position – by product or by booking status, for any booking date and game day. New spaces are created right in the editor: stadium plan, jersey or hospitality area – drawn, assigned to a product and ready to sell instantly.</p>
+<ul class="feature-list story-summary">
+<li>Stadium plan by product or booking status</li>
+<li>Visual editors for stadium, jersey and hospitality</li>
+<li>Draw new positions and assign them to a product</li>
+</ul>
+</div>
+<div class="story-frame-panel" data-module-index="3">
+<div class="feature-visual feature-video">
+<video data-feature-video muted loop playsinline preload="none" poster="/videos/features/03-editor-en.jpg" aria-label="Product video: Position Editor"><source src="/videos/features/03-editor-en.mp4" type="video/mp4"/></video>
+</div>
+</div>
+
+<!-- Module 04: Partner CRM -->
+<div class="story-caption-panel" id="partner-crm" data-module-index="4">
+<div class="story-eyebrow">Module 04</div>
 <h3>Every partner.<br/>One <span class="accent">history</span>.</h3>
 <div class="story-subtitle">Partner CRM</div>
 <p class="story-intro">Partners live in the built-in CRM – or are pulled in via an interface from your existing system. Contact persons, communication and documents are linked directly to the partner account. So everyone on the team sees the full history instantly, with no need to dig through a colleague's inbox.</p>
-<div class="story-steps">
-<div class="story-step"><p><span class="step-num">Step 1</span>A new partner – added natively or synced from your CRM.</p></div>
-<div class="story-step"><p><span class="step-num">Step 2</span>Contact persons and email history hang right off the account.</p></div>
-<div class="story-step"><p><span class="step-num">Step 3</span>Booked rights and contract value at a glance.</p></div>
-</div>
 <ul class="feature-list story-summary">
 <li>Native CRM or a connection to your existing system</li>
 <li>Contact persons with a linked mail account</li>
 <li>Document archive per partner</li>
 </ul>
 </div>
-<div class="story-frame-panel" id="module-02" data-module-index="2">
-<div class="feature-visual">
-<div class="mockup-frame">
-<div class="mockup-body">
-<div class="mockup-header">
-<div>
-<div class="mockup-title">Partners</div>
-<div class="mockup-subtitle">12 active partnerships</div>
-</div>
-</div>
-<div class="pv-body">
-<div data-step="0" class="pv-row">
-<div class="pv-avatar">WE</div>
-<div class="pv-main"><div class="pv-title">Westenergie AG</div><div class="pv-meta">Main sponsor · since 2022</div></div>
-<span class="pv-pill ok">Newly added</span>
-</div>
-<div data-step="1" class="pv-row">
-<div class="pv-avatar">RB</div>
-<div class="pv-main"><div class="pv-title">Rheintal Bank AG</div><div class="pv-meta">✓ Contact &amp; mail linked</div></div>
-<span class="pv-pill neutral">CRM sync</span>
-</div>
-<div data-step="2" class="pv-row">
-<div class="pv-avatar">NA</div>
-<div class="pv-main"><div class="pv-title">Nordpark Automobile AG</div><div class="pv-meta">Board partner · since 2021</div></div>
-<span class="pv-pill ok">Active</span>
-</div>
-</div>
-</div>
-</div>
+<div class="story-frame-panel" data-module-index="4">
+<div class="feature-visual feature-video">
+<video data-feature-video muted loop playsinline preload="none" poster="/videos/features/04-partners-en.jpg" aria-label="Product video: Partner CRM"><source src="/videos/features/04-partners-en.mp4" type="video/mp4"/></video>
 </div>
 </div>
 
-<!-- Module 03: Contracts & Documents -->
-<div class="story-caption-panel" data-module-index="3">
-<div class="story-eyebrow">Module 03</div>
+<!-- Module 05: Contracts -->
+<div class="story-caption-panel" id="contracts" data-module-index="5">
+<div class="story-eyebrow">Module 05</div>
 <h3>Contracts and documents<br/>in <span class="accent">seconds</span>.</h3>
 <div class="story-subtitle">Contract &amp; Document Management</div>
 <p class="story-intro">A contract bundles league conditions, activation tasks and the booked rights, including stadium positions. Based on your own templates, Paktum generates the finished contract document automatically – barter deals and in-kind benefits included, the things that usually slip through the cracks.</p>
-<div class="story-steps">
-<div class="story-step"><p><span class="step-num">Step 1</span>The starting point is your own template, not a blank page.</p></div>
-<div class="story-step"><p><span class="step-num">Step 2</span>Rights and stadium positions get assigned to the contract.</p></div>
-<div class="story-step"><p><span class="step-num">Step 3</span>Paktum generates the contract document – ready to send.</p></div>
-</div>
 <ul class="feature-list story-summary">
 <li>Automatic document generation from your templates</li>
 <li>League conditions and forecasts per contract</li>
 <li>Direct link to activation tasks</li>
 </ul>
 </div>
-<div class="story-frame-panel" id="module-03" data-module-index="3">
-<div class="feature-visual">
-<div class="mockup-frame">
-<div class="mockup-body">
-<div class="mockup-header">
-<div>
-<div class="mockup-title">Contract #0142</div>
-<div class="mockup-subtitle">Westenergie AG</div>
-</div>
-</div>
-<div class="pv-body">
-<div class="pv-kanban">
-<div class="pv-kanban-col">
-<div class="pv-kanban-col-title">Drafting</div>
-<div data-step="0" class="pv-kanban-card"><div class="pv-title">Sponsorship contract</div><div class="pv-meta">Created from template</div></div>
-</div>
-<div class="pv-kanban-col">
-<div class="pv-kanban-col-title">Signature</div>
-<div data-step="1" class="pv-kanban-card"><div class="pv-title">Sponsorship contract</div><div class="pv-meta">Rights assigned</div></div>
-</div>
-<div class="pv-kanban-col">
-<div class="pv-kanban-col-title">Active</div>
-<div data-step="2" class="pv-kanban-card ok"><div class="pv-title">Sponsorship contract</div><div class="pv-meta">Document generated</div></div>
-</div>
-</div>
-</div>
-</div>
-</div>
+<div class="story-frame-panel" data-module-index="5">
+<div class="feature-visual feature-video">
+<video data-feature-video muted loop playsinline preload="none" poster="/videos/features/05-contracts-en.jpg" aria-label="Product video: Contracts"><source src="/videos/features/05-contracts-en.mp4" type="video/mp4"/></video>
 </div>
 </div>
 
-<!-- Module 04: Activation & Calendar -->
-<div class="story-caption-panel" data-module-index="4">
-<div class="story-eyebrow">Module 04</div>
+<!-- Module 06: Activation -->
+<div class="story-caption-panel" id="activation" data-module-index="6">
+<div class="story-eyebrow">Module 06</div>
 <h3>Every task.<br/>One <span class="accent">deadline</span>.</h3>
 <div class="story-subtitle">Activation &amp; Calendar</div>
 <p class="story-intro">Every activation task has a due date, an owner and a clear reference – to a contract, a partner or a matchday. Nothing gets lost in a spreadsheet anymore, and nobody has to ask twice who's responsible for what.</p>
-<div class="story-steps">
-<div class="story-step"><p><span class="step-num">Step 1</span>Every task has an owner, a deadline and a reference.</p></div>
-<div class="story-step"><p><span class="step-num">Step 2</span>Status is visible live for the whole team.</p></div>
-<div class="story-step"><p><span class="step-num">Step 3</span>Subscribable as a calendar in Outlook, Google or Apple.</p></div>
-</div>
 <ul class="feature-list story-summary">
 <li>Tasks with deadline, owner and reference</li>
 <li>List and calendar view side by side</li>
 <li>Calendar subscription for Outlook, Google and Apple</li>
 </ul>
 </div>
-<div class="story-frame-panel" id="module-04" data-module-index="4">
-<div class="feature-visual">
-<div class="mockup-frame">
-<div class="mockup-body">
-<div class="mockup-header">
-<div>
-<div class="mockup-title">Tasks</div>
-<div class="mockup-subtitle">Matchday 12 · Preparation</div>
-</div>
-</div>
-<div class="pv-body">
-<div data-show-until="0" class="pv-row">
-<div class="pv-check"></div>
-<div class="pv-task">Check perimeter board</div>
-<div class="pv-avatar">PL</div>
-</div>
-<div data-step="1" class="pv-row">
-<div class="pv-check done"></div>
-<div class="pv-task done">Check perimeter board</div>
-<div class="pv-avatar">PL</div>
-</div>
-<div data-step="1" class="pv-row">
-<div class="pv-check done"></div>
-<div class="pv-task done">Set up product display</div>
-<div class="pv-avatar">MK</div>
-</div>
-<div data-step="2" class="pv-chip-row">
-<span class="pv-chip"><span class="dot"></span>Outlook</span>
-<span class="pv-chip"><span class="dot"></span>Google</span>
-<span class="pv-chip"><span class="dot"></span>Apple</span>
-</div>
-</div>
-</div>
-</div>
+<div class="story-frame-panel" data-module-index="6">
+<div class="feature-visual feature-video">
+<video data-feature-video muted loop playsinline preload="none" poster="/videos/features/06-activation-en.jpg" aria-label="Product video: Activation"><source src="/videos/features/06-activation-en.mp4" type="video/mp4"/></video>
 </div>
 </div>
 
-<!-- Module 05: LED Playlist Planner (relocated from the homepage; keeps its own built-in animated demo, so it runs as a single beat rather than a scroll-stepped one) -->
-<div class="story-caption-panel" data-module-index="5">
-<div class="story-eyebrow">Module 05</div>
+<!-- Module 07: LED Planning -->
+<div class="story-caption-panel" id="led-planner" data-module-index="7">
+<div class="story-eyebrow">Module 07</div>
 <h3>Every LED surface,<br/>perfectly <span class="accent">timed</span>.</h3>
 <div class="story-subtitle">LED Planning · Venue Setup</div>
 <p class="story-intro">Configure LED surfaces, sections and game phases once – Paktum assembles precise, conflict-free playlists for every matchday from that. Full rotation or single sequences, double bookings simply can't happen.</p>
-<div class="story-steps single">
-<div class="story-step"><p>Watch how booked sequences turn into a playlist automatically.</p></div>
-</div>
 <ul class="feature-list story-summary">
 <li>Custom LED surfaces and layouts per venue</li>
 <li>Second-accurate playlists for every game phase</li>
 <li>Assign booked sponsoring partners directly</li>
 </ul>
 </div>
-<div class="story-frame-panel" id="module-05" data-module-index="5">
-<div class="feature-visual">
-<div class="mockup-frame">
-<div class="mockup-body">
-<div class="mockup-header">
-<div>
-<div class="mockup-title">LED Playlist</div>
-<div class="mockup-subtitle">Matchday · Arena layout</div>
-</div>
-<div class="mockup-controls">
-<div class="mockup-select">17 timeslots ▾</div>
-<button class="mockup-btn">Export</button>
-</div>
-</div>
-<div class="mockup-led-planner" data-led-planner>
-<div class="led-summary-bar">
-<span class="led-summary-title">LED Arena · Matchday 12</span>
-<span class="led-summary-meta"><span data-led-duration>43:30 min planned</span><span class="led-summary-live">Ready</span></span>
-</div>
-<div class="led-workspace">
-<div class="led-timeline">
-<div class="led-time-axis"><span>18:55</span><span>19:15</span><span>20:15</span><span>20:45</span></div>
-<div class="led-lane">
-<div class="led-lane-title">MAIN STAND</div>
-<div class="led-phase">PRE-MATCH</div>
-<div class="led-slot blue" data-led-row="1" data-led-lane="1" data-led-preset><span>Main Sponsor</span><small>00:45</small></div>
-<div class="led-slot orange" data-led-row="2" data-led-lane="1"><span>Climate Partner</span><small>00:20</small></div>
-<div class="led-phase">HALF-TIME</div>
-<div class="led-slot orange" data-led-row="3" data-led-lane="1"><span>Mobility Partner</span><small>00:30</small></div>
-<div class="led-slot blue" data-led-row="4" data-led-lane="1"><span>Main Sponsor</span><small>00:45</small></div>
-</div>
-<div class="led-lane">
-<div class="led-lane-title">OPPOSITE STAND</div>
-<div class="led-phase">PRE-MATCH</div>
-<div class="led-slot blue" data-led-row="1" data-led-lane="2" data-led-preset><span>Main Sponsor</span><small>00:45</small></div>
-<div class="led-slot orange" data-led-row="2" data-led-lane="2"><span>Climate Partner</span><small>00:20</small></div>
-<div class="led-phase">HALF-TIME</div>
-<div class="led-slot orange" data-led-row="3" data-led-lane="2"><span>Mobility Partner</span><small>00:30</small></div>
-<div class="led-slot blue" data-led-row="4" data-led-lane="2"><span>Main Sponsor</span><small>00:45</small></div>
-</div>
-<div class="led-lane">
-<div class="led-lane-title">GOAL LINE</div>
-<div class="led-phase">PRE-MATCH</div>
-<div class="led-slot blue" data-led-row="1" data-led-lane="3" data-led-preset><span>Main Sponsor</span><small>00:45</small></div>
-<div class="led-slot orange" data-led-row="2" data-led-lane="3"><span>Climate Partner</span><small>00:20</small></div>
-<div class="led-phase">HALF-TIME</div>
-<div class="led-slot orange" data-led-row="3" data-led-lane="3"><span>Mobility Partner</span><small>00:30</small></div>
-<div class="led-slot blue" data-led-row="4" data-led-lane="3"><span>Main Sponsor</span><small>00:45</small></div>
-</div>
-</div>
-<aside class="led-bookings">
-<div class="led-bookings-title">Bookings</div>
-<div class="led-booking-card" data-led-source="main"><div class="led-booking-name">Main Sponsor</div><div class="led-booking-meta"><span>00:45</span><span class="led-booking-status">LED</span></div></div>
-<div class="led-booking-card" data-led-source="climate"><div class="led-booking-name">Climate Partner</div><div class="led-booking-meta"><span>00:20</span><span class="led-booking-status">LED</span></div></div>
-<div class="led-booking-card" data-led-source="mobility"><div class="led-booking-name">Mobility Partner</div><div class="led-booking-meta"><span>00:30</span><span class="led-booking-status">LED</span></div></div>
-</aside>
-</div>
-<div class="led-progress"><span data-led-progress>Utilization 86%</span><div class="led-progress-track"><div class="led-progress-fill"></div></div></div>
-<svg class="led-cursor" viewBox="0 0 16 20" aria-hidden="true"><path d="M1 1v14l4-4 3.5 7 3-1.5-3.5-6H14z" fill="#0A0612" stroke="white" stroke-width="1.4" stroke-linejoin="round"/></svg>
-</div>
-</div>
-</div>
+<div class="story-frame-panel" data-module-index="7">
+<div class="feature-visual feature-video">
+<video data-feature-video muted loop playsinline preload="none" poster="/videos/features/07-led-en.jpg" aria-label="Product video: LED Planning"><source src="/videos/features/07-led-en.mp4" type="video/mp4"/></video>
 </div>
 </div>
 
-<!-- Module 06: Invoicing & Controlling -->
-<div class="story-caption-panel" data-module-index="6">
-<div class="story-eyebrow">Module 06</div>
+<!-- Module 08: Invoicing -->
+<div class="story-caption-panel" id="invoicing" data-module-index="8">
+<div class="story-eyebrow">Module 08</div>
 <h3>Invoicing,<br/>all by <span class="accent">itself</span>.</h3>
 <div class="story-subtitle">Invoicing &amp; Controlling Module</div>
 <p class="story-intro">Invoices are generated automatically on their due date – directly from Paktum or via an interface to your accounting software. Controlling and forecasts run in real time alongside, with nobody doing the math by hand.</p>
-<div class="story-steps">
-<div class="story-step"><p><span class="step-num">Step 1</span>The invoice is created automatically on its due date.</p></div>
-<div class="story-step"><p><span class="step-num">Step 2</span>Payment status and reminders take care of themselves.</p></div>
-<div class="story-step"><p><span class="step-num">Step 3</span>Everything syncs with your accounting software.</p></div>
-</div>
 <ul class="feature-list story-summary">
 <li>Automatic invoicing on the due date</li>
 <li>Interface to common accounting software</li>
 <li>Real-time controlling and forecasts</li>
 </ul>
 </div>
-<div class="story-frame-panel" id="module-06" data-module-index="6">
-<div class="feature-visual">
-<div class="mockup-frame">
-<div class="mockup-body">
-<div class="mockup-header">
-<div>
-<div class="mockup-title">Invoices</div>
-<div class="mockup-subtitle">Automated</div>
-</div>
-</div>
-<div class="pv-body">
-<div data-show-until="0" class="pv-row">
-<div class="pv-main"><div class="pv-title">Westenergie AG</div><div class="pv-meta">INV-2026-00042 · €60,000</div></div>
-<span class="pv-pill warn">Due</span>
-</div>
-<div data-step="1" class="pv-row">
-<div class="pv-main"><div class="pv-title">Westenergie AG</div><div class="pv-meta">INV-2026-00042 · €60,000</div></div>
-<span class="pv-pill ok">Paid</span>
-</div>
-<div data-step="1" class="pv-row">
-<div class="pv-main"><div class="pv-title">Rheintal Bank AG</div><div class="pv-meta">INV-2026-00043 · €18,500</div></div>
-<span class="pv-pill warn">Due</span>
-</div>
-<div data-step="2" class="pv-chip-row">
-<span class="pv-chip"><span class="dot"></span>Synced to your accounting software</span>
-</div>
-</div>
-</div>
-</div>
+<div class="story-frame-panel" data-module-index="8">
+<div class="feature-visual feature-video">
+<video data-feature-video muted loop playsinline preload="none" poster="/videos/features/08-invoices-en.jpg" aria-label="Product video: Invoicing"><source src="/videos/features/08-invoices-en.mp4" type="video/mp4"/></video>
 </div>
 </div>
 
-<!-- Module 07: Analytics -->
-<div class="story-caption-panel" data-module-index="7">
-<div class="story-eyebrow">Module 07</div>
+<!-- Module 09: Analytics -->
+<div class="story-caption-panel" id="analytics" data-module-index="9">
+<div class="story-eyebrow">Module 09</div>
 <h3>Numbers that<br/>speak for <span class="accent">themselves</span>.</h3>
 <div class="story-subtitle">Analytics &amp; Reporting</div>
 <p class="story-intro">An overview of finances, cash flow and product utilization – for the board just as much as for matchday operations. Every role sees exactly the data that matters to them, instead of an export nobody actually reads.</p>
-<div class="story-steps">
-<div class="story-step"><p><span class="step-num">Step 1</span>Revenue forecasts and cash flow at a glance.</p></div>
-<div class="story-step"><p><span class="step-num">Step 2</span>Utilization per product and season in real time.</p></div>
-<div class="story-step"><p><span class="step-num">Step 3</span>Role-based reports – for the board and for controlling.</p></div>
-</div>
 <ul class="feature-list story-summary">
 <li>Revenue forecasts and cash-flow overview</li>
 <li>Utilization per product and season</li>
 <li>Role-based access to key figures</li>
 </ul>
 </div>
-<div class="story-frame-panel" id="module-07" data-module-index="7">
-<div class="feature-visual">
-<div class="mockup-frame">
-<div class="mockup-body">
-<div class="mockup-header">
-<div>
-<div class="mockup-title">Analytics</div>
-<div class="mockup-subtitle">Season 2025/26</div>
-</div>
-</div>
-<div class="pv-body">
-<div data-step="0" class="pv-analytics-row">
-<div class="pv-bars">
-<i data-step="0" style="height:45%"></i>
-<i data-step="0" style="height:62%"></i>
-<i data-step="1" style="height:38%"></i>
-<i data-step="1" style="height:80%"></i>
-<i data-step="1" style="height:55%"></i>
-<i data-step="1" style="height:92%"></i>
-</div>
-<div class="pv-analytics-label"><b>€243k</b>Revenue forecast</div>
-</div>
-<div data-step="2" class="pv-analytics-row">
-<div class="pv-donut"><span>86%</span></div>
-<div class="pv-analytics-label"><b>Utilization</b>across all products</div>
-</div>
-</div>
-</div>
-</div>
-</div>
+<div class="story-frame-panel" data-module-index="9">
+<div class="feature-visual feature-video">
+<video data-feature-video muted loop playsinline preload="none" poster="/videos/features/09-analytics-en.jpg" aria-label="Product video: Analytics"><source src="/videos/features/09-analytics-en.mp4" type="video/mp4"/></video>
 </div>
 </div>
 
+</div>
 </div>
 </div>
 </div>
@@ -3403,341 +3068,6 @@ body.menu-open .lang-floating { display: none; }
 </div>
 </footer>
 <script>
-// Set synchronously so the LED planner's own IntersectionObserver (below)
-// always sees a defined value, even on its very first callback.
-window.storyPinnedMode = !window.matchMedia('(max-width: 1100px), (max-height: 640px)').matches;
-
-// LED playlist animation - three gestures on the matchday grid:
-// place a single slot, fill the rest of the row by clicking, then move a
-// booking that was already scheduled to a different time
-document.querySelectorAll('[data-led-planner]').forEach((planner) => {
-  const slots = Array.from(planner.querySelectorAll('[data-led-row]'));
-  const ledCursor = planner.querySelector('.led-cursor');
-  const progressFill = planner.querySelector('.led-progress-fill');
-  const progressLabel = planner.querySelector('[data-led-progress]');
-  const durationLabel = planner.querySelector('[data-led-duration]');
-  const readyBadge = planner.querySelector('.led-summary-live');
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (!slots.length || !ledCursor || reduceMotion) return;
-
-  function slotAt(row, lane) {
-    return planner.querySelector('[data-led-row="' + row + '"][data-led-lane="' + lane + '"]');
-  }
-
-  function bookingFor(key) {
-    return planner.querySelector('[data-led-source="' + key + '"]');
-  }
-
-  const SCRIPT = [
-    // 1 - drag a booking onto a single slot
-    { type: 'place', booking: 'climate', drop: [2, 1] },
-    // 2 - drag it in, then click the two remaining slots of the same row
-    { type: 'place', booking: 'mobility', drop: [3, 1], clicks: [[3, 2], [3, 3]] },
-    // 3 - pick up a slot that was already scheduled and drag it to another time
-    { type: 'move', from: [1, 3], drop: [4, 3] }
-  ];
-
-  const steps = SCRIPT.filter((step) => {
-    const drop = slotAt(step.drop[0], step.drop[1]);
-    const source = step.type === 'move' ? slotAt(step.from[0], step.from[1]) : bookingFor(step.booking);
-    return drop && source;
-  });
-  if (!steps.length) return;
-
-  // the labels keep their translated wording, only their numbers move
-  const progressText = progressLabel ? progressLabel.textContent : '';
-  const progressMatch = progressText.match(/\d+/);
-  const progressMax = progressMatch ? Number(progressMatch[0]) : 0;
-  const durationText = durationLabel ? durationLabel.textContent : '';
-  const durationMatch = durationText.match(/(\d+):(\d+)/);
-  const durationMax = durationMatch ? Number(durationMatch[1]) * 60 + Number(durationMatch[2]) : 0;
-
-  const dragCard = document.createElement('div');
-  const dragLabel = document.createElement('span');
-  const dragDuration = document.createElement('small');
-  dragCard.className = 'led-drag-card';
-  dragCard.append(dragLabel, dragDuration);
-  const clickRing = document.createElement('div');
-  clickRing.className = 'led-click-ring';
-  planner.append(dragCard, clickRing);
-  planner.classList.add('is-animated');
-
-  const REACH = 520;    // cursor travels over to what it is about to grab
-  const PRESS = 180;    // presses down on it
-  const LIFT = 140;     // the block comes off
-  const DRAG = 720;     // and gets dragged onto the slot
-  const HOP = 420;      // cursor moves on to the next slot of the row
-  const CLICK = 130;    // mouse down, then up
-  const GAP = 520;      // breather before the next gesture
-
-  const timers = new Set();
-  let stepIndex = 0;
-  let filledCount = 0;
-  let running = false;
-  let cursorX = 0;
-  let cursorY = 0;
-  let cursorPressed = false;
-  let cardX = 0;
-  let cardY = 0;
-  let cardHeight = 22;
-  let cardLifted = false;
-
-  function schedule(callback, delay) {
-    const timer = window.setTimeout(() => {
-      timers.delete(timer);
-      if (running) callback();
-    }, delay);
-    timers.add(timer);
-  }
-
-  function clearTimers() {
-    timers.forEach(window.clearTimeout);
-    timers.clear();
-  }
-
-  function offsetIn(element) {
-    const plannerRect = planner.getBoundingClientRect();
-    const elementRect = element.getBoundingClientRect();
-    return {
-      left: elementRect.left - plannerRect.left,
-      top: elementRect.top - plannerRect.top,
-      width: elementRect.width,
-      height: elementRect.height
-    };
-  }
-
-  function applyCursor() {
-    ledCursor.style.transform = 'translate(' + cursorX + 'px, ' + cursorY + 'px) scale(' + (cursorPressed ? 0.82 : 1) + ')';
-  }
-
-  function moveCursor(element, duration) {
-    const box = offsetIn(element);
-    cursorX = box.left + box.width / 2 - 3;
-    cursorY = box.top + box.height / 2 - 2;
-    ledCursor.style.setProperty('--led-move', duration + 'ms');
-    applyCursor();
-  }
-
-  function pressCursor(isDown) {
-    cursorPressed = isDown;
-    ledCursor.style.setProperty('--led-move', '120ms');
-    applyCursor();
-  }
-
-  function applyCard() {
-    dragCard.style.transform = 'translate(' + cardX + 'px, ' + cardY + 'px) scale(' + (cardLifted ? 1.05 : 1) + ')';
-  }
-
-  function moveCard(element, width, duration) {
-    const box = offsetIn(element);
-    cardX = box.left + (box.width - width) / 2;
-    cardY = box.top + box.height / 2 - cardHeight / 2;
-    dragCard.style.width = width + 'px';
-    dragCard.style.setProperty('--led-move', duration + 'ms');
-    applyCard();
-  }
-
-  function ripple(element) {
-    const box = offsetIn(element);
-    clickRing.style.left = (box.left + box.width / 2 - 11) + 'px';
-    clickRing.style.top = (box.top + box.height / 2 - 11) + 'px';
-    clickRing.classList.remove('is-on');
-    void clickRing.offsetWidth;
-    clickRing.classList.add('is-on');
-  }
-
-  function updateMeters() {
-    const ratio = filledCount / slots.length;
-    if (progressFill) progressFill.style.width = (progressMax * ratio) + '%';
-    if (progressLabel && progressMax) {
-      progressLabel.textContent = progressText.replace(/\d+/, String(Math.round(progressMax * ratio)));
-    }
-    if (durationLabel && durationMax) {
-      const total = Math.round(durationMax * ratio);
-      const seconds = total % 60;
-      durationLabel.textContent = durationText.replace(/\d+:\d+/, Math.floor(total / 60) + ':' + (seconds < 10 ? '0' : '') + seconds);
-    }
-  }
-
-  function fillSlot(slot) {
-    slot.classList.remove('is-empty', 'is-target');
-    slot.classList.add('is-placed');
-    filledCount += 1;
-    updateMeters();
-    schedule(() => slot.classList.remove('is-placed'), 600);
-  }
-
-  function emptySlot(slot) {
-    slot.classList.remove('is-placed', 'is-target');
-    slot.classList.add('is-empty');
-    filledCount -= 1;
-    updateMeters();
-  }
-
-  function resetPlanner() {
-    clearTimers();
-    stepIndex = 0;
-    filledCount = 0;
-    cursorPressed = false;
-    cardLifted = false;
-    planner.querySelectorAll('[data-led-source]').forEach((booking) => {
-      booking.classList.remove('is-active', 'is-grabbed', 'is-dragging');
-    });
-    slots.forEach((slot) => {
-      slot.classList.remove('is-target', 'is-placed');
-      if (slot.hasAttribute('data-led-preset')) {
-        slot.classList.remove('is-empty');
-        filledCount += 1;
-      } else {
-        slot.classList.add('is-empty');
-      }
-    });
-    dragCard.classList.remove('is-visible', 'is-lifted');
-    clickRing.classList.remove('is-on');
-    ledCursor.classList.remove('is-visible');
-    if (readyBadge) readyBadge.classList.remove('is-on');
-    updateMeters();
-  }
-
-  function nextStep() {
-    stepIndex += 1;
-    if (stepIndex < steps.length) {
-      runStep();
-      return;
-    }
-    // done - hold the finished plan for a moment, then start over
-    ledCursor.classList.remove('is-visible');
-    if (readyBadge) readyBadge.classList.add('is-on');
-    schedule(() => {
-      resetPlanner();
-      schedule(runStep, 700);
-    }, 2200);
-  }
-
-  // fills the slot the drag lands on, then the ones the cursor clicks afterwards
-  function runClicks(step, at) {
-    const clicks = step.clicks || [];
-    let offset = at;
-    clicks.forEach((coords) => {
-      const slot = slotAt(coords[0], coords[1]);
-      if (!slot) return;
-      const hopAt = offset + GAP / 2;
-      schedule(() => {
-        slot.classList.add('is-target');
-        moveCursor(slot, HOP);
-      }, hopAt);
-      schedule(() => pressCursor(true), hopAt + HOP);
-      schedule(() => {
-        pressCursor(false);
-        ripple(slot);
-        fillSlot(slot);
-      }, hopAt + HOP + CLICK);
-      offset = hopAt + HOP + CLICK;
-    });
-    return offset;
-  }
-
-  function runStep() {
-    if (!running) return;
-    const step = steps[stepIndex];
-    const dropSlot = slotAt(step.drop[0], step.drop[1]);
-    const isMove = step.type === 'move';
-    const source = isMove ? slotAt(step.from[0], step.from[1]) : bookingFor(step.booking);
-
-    // the bookings panel is hidden on small screens - show the result without the gesture
-    if (!isMove && !source.getClientRects().length) {
-      fillSlot(dropSlot);
-      let offset = 0;
-      (step.clicks || []).forEach((coords) => {
-        const slot = slotAt(coords[0], coords[1]);
-        offset += 220;
-        if (slot) schedule(() => fillSlot(slot), offset);
-      });
-      schedule(nextStep, offset + 700);
-      return;
-    }
-
-    const pressAt = REACH;
-    const liftAt = pressAt + PRESS;
-    const dragAt = liftAt + LIFT;
-    const dropAt = dragAt + DRAG;
-
-    if (!isMove) source.classList.add('is-active');
-    ledCursor.classList.add('is-visible');
-    moveCursor(source, REACH);
-
-    schedule(() => {
-      pressCursor(true);
-      if (isMove) source.classList.add('is-target');
-      else source.classList.add('is-grabbed');
-    }, pressAt);
-
-    schedule(() => {
-      // the block leaves its origin and follows the cursor from here on
-      const name = isMove ? source.querySelector('span') : source.querySelector('.led-booking-name');
-      const time = isMove ? source.querySelector('small') : source.querySelector('.led-booking-meta > span');
-      dragLabel.textContent = name ? name.textContent : '';
-      dragDuration.textContent = time ? time.textContent : '';
-      dragCard.classList.toggle('blue', dropSlot.classList.contains('blue'));
-      cardHeight = Math.round(dropSlot.getBoundingClientRect().height);
-      dragCard.style.height = cardHeight + 'px';
-      dragCard.style.transition = 'none';
-      cardLifted = false;
-      moveCard(source, source.getBoundingClientRect().width, 0);
-      void dragCard.offsetWidth;
-      dragCard.style.transition = '';
-      dragCard.style.setProperty('--led-move', LIFT + 'ms');
-      cardLifted = true;
-      applyCard();
-      dragCard.classList.add('is-visible', 'is-lifted');
-      if (isMove) emptySlot(source);
-      else source.classList.add('is-dragging');
-    }, liftAt);
-
-    schedule(() => {
-      dropSlot.classList.add('is-target');
-      moveCursor(dropSlot, DRAG);
-      moveCard(dropSlot, dropSlot.getBoundingClientRect().width, DRAG);
-    }, dragAt);
-
-    schedule(() => {
-      pressCursor(false);
-      cardLifted = false;
-      dragCard.classList.remove('is-visible', 'is-lifted');
-      source.classList.remove('is-active', 'is-grabbed', 'is-dragging', 'is-target');
-      fillSlot(dropSlot);
-    }, dropAt);
-
-    schedule(nextStep, runClicks(step, dropAt) + GAP);
-  }
-
-  resetPlanner();
-
-  function activate() {
-    if (running) return;
-    running = true;
-    resetPlanner();
-    schedule(runStep, 400);
-  }
-  function deactivate() {
-    if (!running) return;
-    running = false;
-    resetPlanner();
-  }
-  planner._storyActivate = activate;
-  planner._storyDeactivate = deactivate;
-
-  // Self-drive only when the pinned product-tour stage isn't in charge
-  // (mobile / short-viewport fallback) — otherwise the master controller
-  // further down this script calls activate()/deactivate() directly.
-  const ledObserver = new IntersectionObserver((entries) => {
-    if (window.storyPinnedMode) return;
-    const isVisible = entries[0].isIntersecting;
-    if (isVisible) activate(); else deactivate();
-  }, { threshold: 0.25 });
-
-  ledObserver.observe(planner);
-});
 // ============ i18n SYSTEM ============
 // Language dropdown open/close (text is baked per URL; switching language uses real links)
 document.querySelectorAll('.lang-trigger').forEach(function(trigger){
@@ -3785,100 +3115,51 @@ document.addEventListener('click', function(){
 // ============ FEATURES PAGE: product tour stage ============
 // One pinned "screen" that advances from function to function as the
 // section scrolls past. Desktop: a scroll-fraction controller picks the
-// active module and drives a per-module autoplay loop. Mobile / short
-// viewports / prefers-reduced-motion: no pin, panels stack normally and
-// each one's autoplay triggers on scroll-into-view instead (see the CSS
-// fallback for max-width:1100px, max-height:640px).
+// active module and plays that module's product video. Mobile / short
+// viewports: no pin, panels stack normally and each video plays on
+// scroll-into-view instead (see the CSS fallback for max-width:1100px,
+// max-height:640px). prefers-reduced-motion: no autoplay, native controls.
 (function () {
   var track = document.querySelector('.story-track');
   var stage = document.querySelector('.story-stage');
   var captionPanels = Array.from(document.querySelectorAll('.story-caption-panel'));
   var framePanels = Array.from(document.querySelectorAll('.story-frame-panel'));
+  var menu = document.querySelector('.story-menu');
   var menuLinks = Array.from(document.querySelectorAll('.story-menu a'));
   var COUNT = framePanels.length;
   if (!track || !stage || !COUNT) return;
 
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // ---- Per-module autoplay: cycles a module's existing 3 data-step
-  // beats on a timer, and keeps the matching "now playing" caption
-  // (.story-step in the caption panel) in sync — one function drives
-  // both, so there's no separate sync mechanism to fall out of phase.
-  // The LED planner (module 05) already has its own built-in animated
-  // demo, so it's wired to that instead of a generated timer. ----
-  function createStepAutoplay(framePanel, captionPanel) {
-    var led = framePanel.querySelector('[data-led-planner]');
-    if (led) {
-      return {
-        activate: led._storyActivate || function () {},
-        deactivate: led._storyDeactivate || function () {}
-      };
-    }
-
-    var stateEls = Array.from(framePanel.querySelectorAll('[data-step]'));
-    var untilEls = Array.from(framePanel.querySelectorAll('[data-show-until]'));
-    var captionEls = captionPanel ? Array.from(captionPanel.querySelectorAll('.story-step')) : [];
-    if (!stateEls.length && !untilEls.length && !captionEls.length) return { activate: function () {}, deactivate: function () {} };
-
-    var durations = [2000, 2000, 1200];
-    var timer = null;
-    var current = 0;
-
-    function applyStep(idx) {
-      current = idx;
-      stateEls.forEach(function (el) {
-        el.classList.toggle('is-shown', idx >= parseInt(el.getAttribute('data-step'), 10));
-      });
-      untilEls.forEach(function (el) {
-        el.classList.toggle('is-hidden', idx > parseInt(el.getAttribute('data-show-until'), 10));
-      });
-      captionEls.forEach(function (el, i) { el.classList.toggle('is-active', i === idx); });
-    }
+  // ---- Per-module video: plays from the start while its module is
+  // active, pauses otherwise. Videos ship preload="none" (only a poster),
+  // so the page only downloads the ones a visitor actually reaches; the
+  // next module's video starts buffering as soon as this one plays. ----
+  function createVideoPlayer(framePanel, nextPanel) {
+    var video = framePanel.querySelector('[data-feature-video]');
+    var nextVideo = nextPanel ? nextPanel.querySelector('[data-feature-video]') : null;
+    if (!video) return { activate: function () {}, deactivate: function () {} };
 
     if (reduceMotion) {
-      applyStep(durations.length - 1);
-      return { activate: function () {}, deactivate: function () {} };
-    }
-
-    // Re-armable countdown to the next beat — scheduleNext(idx) always
-    // counts from idx's own dwell time, so advanceTo() can restart the
-    // clock after a scroll-driven jump instead of firing on stale timing.
-    function scheduleNext(fromIdx) {
-      if (timer) { window.clearTimeout(timer); timer = null; }
-      timer = window.setTimeout(function () {
-        var next = (fromIdx + 1) % durations.length;
-        applyStep(next);
-        scheduleNext(next);
-      }, durations[fromIdx]);
+      video.removeAttribute('loop');
+      video.setAttribute('controls', '');
+      return { activate: function () {}, deactivate: function () { video.pause(); } };
     }
 
     return {
       activate: function () {
-        applyStep(0);
-        scheduleNext(0);
+        video.preload = 'auto';
+        try { video.currentTime = 0; } catch (e) { /* metadata not loaded yet */ }
+        var playing = video.play();
+        if (playing && playing.catch) playing.catch(function () {});
+        if (nextVideo && nextVideo.preload === 'none') nextVideo.preload = 'metadata';
       },
-      deactivate: function () {
-        if (timer) { window.clearTimeout(timer); timer = null; }
-        applyStep(0);
-      },
-      // Lets scrolling fast-forward the beat this module is on, in
-      // addition to it advancing on its own timer. Only ever moves
-      // forward (scrolling back within the module doesn't rewind it —
-      // the autoplay loop will bring it back around on its own), and
-      // restarts the dwell-time countdown from the new beat so autoplay
-      // keeps looping normally from wherever scroll left it.
-      advanceTo: function (localProgress) {
-        var target = Math.min(durations.length - 1, Math.floor(localProgress * durations.length));
-        if (target > current) {
-          applyStep(target);
-          scheduleNext(target);
-        }
-      }
+      deactivate: function () { video.pause(); }
     };
   }
 
   var autoplays = framePanels.map(function (panel, i) {
-    return createStepAutoplay(panel, captionPanels[i]);
+    return createVideoPlayer(panel, framePanels[i + 1]);
   });
 
   var activeIndex = -1;
@@ -3902,6 +3183,7 @@ document.addEventListener('click', function(){
       var on = i === idx;
       l.classList.toggle('active', on);
       l.setAttribute('aria-current', on ? 'true' : 'false');
+      if (on && menu) menu.scrollTo({ left: l.offsetLeft - (menu.clientWidth - l.offsetWidth) / 2, behavior: 'smooth' });
     });
     if (idx >= 0 && autoplays[idx]) autoplays[idx].activate();
   }
@@ -3925,14 +3207,8 @@ document.addEventListener('click', function(){
       rafId = null;
       if (scrollRange <= 0) { setActive(0); return; }
       var progress = Math.min(1, Math.max(0, (window.scrollY - trackTop) / scrollRange));
-      var scaled = progress * COUNT;
-      var idx = Math.min(COUNT - 1, Math.floor(scaled));
+      var idx = Math.min(COUNT - 1, Math.floor(progress * COUNT));
       setActive(idx);
-      // How far scrolled into the active module's own slice of the track
-      // (0 at its start, 1 at its end) — lets scroll position fast-forward
-      // that module's beats on top of them already advancing on a timer.
-      var localProgress = Math.min(1, Math.max(0, scaled - idx));
-      if (autoplays[idx] && autoplays[idx].advanceTo) autoplays[idx].advanceTo(localProgress);
     });
   }
 
@@ -3957,14 +3233,44 @@ document.addEventListener('click', function(){
     resizeTimer = window.setTimeout(function () { measure(); onScroll(); }, 150);
   }, { passive: true });
 
-  menuLinks.forEach(function (link, i) {
-    link.addEventListener('click', function (e) {
-      if (!pinnedMode) return; // let the native anchor jump happen in fallback mode
-      e.preventDefault();
-      measure();
-      var target = trackTop + (scrollRange > 0 ? (i / COUNT) * scrollRange : 0) + 2;
-      window.scrollTo({ top: target, behavior: 'smooth' });
-    });
+  // Scroll the pinned track to module i (the panels themselves are
+  // stacked inside the sticky stage, so a native anchor jump can't
+  // reach them). Shared by the in-page menu and #slug deep links from
+  // the navbar's features dropdown.
+  function jumpTo(i, behavior) {
+    measure();
+    // A quarter into the module's slice, so a late layout shift (font
+    // swap, etc.) can't tip the landing spot into the previous module.
+    var target = trackTop + (scrollRange > 0 ? ((i + 0.25) / COUNT) * scrollRange : 0);
+    window.scrollTo({ top: target, behavior: behavior || 'smooth' });
+  }
+
+  // In-page menu and navbar dropdown links both point at #slug anchors
+  // on this page; in pinned mode route them through jumpTo instead of
+  // the native jump (fallback mode keeps the native anchor jump).
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest && e.target.closest('a[href*="#"]');
+    if (!pinnedMode || !link || link.pathname !== location.pathname) return;
+    var i = captionPanels.indexOf(document.getElementById(decodeURIComponent(link.hash.slice(1))));
+    if (i === -1) return;
+    e.preventDefault();
+    history.replaceState(null, '', link.hash);
+    jumpTo(i);
+  });
+
+  function jumpToHash(behavior) {
+    if (!location.hash) return;
+    var target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    var i = captionPanels.indexOf(target);
+    if (i === -1) return;
+    if (pinnedMode) jumpTo(i, behavior);
+    // Fallback mode uses the native anchor jump, but that happens before the
+    // web fonts swap in and reflow the modules above — redo it once on load.
+    else if (behavior === 'auto') target.scrollIntoView({ block: 'start' });
+  }
+  window.addEventListener('hashchange', function () { jumpToHash('smooth'); });
+  window.addEventListener('load', function () {
+    (document.fonts ? document.fonts.ready : Promise.resolve()).then(function () { jumpToHash('auto'); });
   });
 
   // ---- Mobile / short-viewport fallback: no pin, each panel's autoplay
@@ -3982,7 +3288,6 @@ document.addEventListener('click', function(){
   var fallbackQuery = window.matchMedia('(max-width: 1100px), (max-height: 640px)');
   function applyMode(isFallback) {
     pinnedMode = !isFallback;
-    window.storyPinnedMode = pinnedMode;
     if (isFallback) {
       setActive(-1);
       captionPanels.forEach(function (p) { p.removeAttribute('inert'); p.setAttribute('aria-hidden', 'false'); });

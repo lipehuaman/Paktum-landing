@@ -800,6 +800,29 @@ footer {
       h1, h2, h3, .section-title-xl, .bridge-text, .stat-card .stat-num, .faq-question { font-family: var(--font-display); }
     </style>
 <style>
+/* ===== Features dropdown (navbar) + features sub-list (mobile menu) ===== */
+.nav-links .nav-dropdown { position: relative; }
+.nav-links .nav-dropdown > a { display: inline-flex; align-items: center; gap: 6px; }
+.nav-caret { width: 10px; height: 10px; opacity: 0.6; transition: transform 0.2s, color 0.2s, opacity 0.2s; }
+.nav-dropdown:hover .nav-caret, .nav-dropdown:focus-within .nav-caret { transform: rotate(180deg); color: var(--color-primary); opacity: 1; }
+/* padding-top bridges the gap between link and panel so hover isn't lost on the way down */
+.nav-dropdown-menu { position: absolute; top: 100%; left: 50%; padding-top: 22px; transform: translate(-50%, 6px); opacity: 0; visibility: hidden; transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s; z-index: 200; }
+.nav-dropdown:hover .nav-dropdown-menu, .nav-dropdown:focus-within .nav-dropdown-menu { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+.nav-dropdown-panel { width: 600px; display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: #15101F; border: 1px solid rgba(244,242,238,0.12); border-radius: 16px; padding: 8px; box-shadow: 0 16px 40px rgba(10,6,18,0.45); }
+.nav-links .nav-dropdown-panel a { opacity: 1; letter-spacing: 0; }
+.nav-dropdown-item { display: flex; align-items: flex-start; gap: 12px; padding: 10px 12px; border-radius: 10px; transition: background 0.15s; }
+.nav-dropdown-item:hover, .nav-dropdown-item:focus-visible { background: rgba(255,255,255,0.06); }
+.nav-dropdown-item .num { font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--color-primary); padding-top: 2px; }
+.nav-dropdown-item b { display: block; font-size: 14px; font-weight: 600; color: #fff; }
+.nav-dropdown-item small { display: block; margin-top: 2px; font-size: 12px; font-weight: 400; line-height: 1.35; color: rgba(244,242,238,0.55); }
+.nav-links .nav-dropdown-all { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; margin-top: 4px; padding: 12px; border-top: 1px solid rgba(244,242,238,0.08); border-radius: 0 0 10px 10px; font-size: 13px; color: var(--color-primary); transition: background 0.15s; }
+.nav-dropdown-all:hover, .nav-dropdown-all:focus-visible { background: rgba(151,14,251,0.12); }
+.mobile-menu .mobile-submenu { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; margin: -12px 0 20px; }
+.mobile-menu .mobile-submenu li { border-bottom: none; }
+.mobile-menu .mobile-submenu a { font-size: 15px; font-weight: 500; padding: 9px 0; color: rgba(244,242,238,0.7); }
+.mobile-menu .mobile-submenu .num { font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--color-primary); margin-right: 6px; }
+@media (max-width: 340px) { .mobile-menu .mobile-submenu { grid-template-columns: 1fr; } }
+
 /* ===== Language dropdown selector ===== */
 .nav-lang { position: relative; display: flex; align-items: center; }
 .lang-trigger { display: inline-flex; align-items: center; gap: 6px; background: transparent; border: none; cursor: pointer; color: rgba(244,242,238,0.7); font-family: var(--font-mono); font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 8px; border-radius: 100px; transition: color 0.2s; }
@@ -819,6 +842,18 @@ footer {
 .lang-floating .lang-menu { top: auto; bottom: calc(100% + 8px); right: 0; }
 @media (max-width: 900px) { .lang-floating { display: flex; } }
 body.menu-open .lang-floating { display: none; }
+/* Tablets / small laptops: the full navbar doesn't fit below ~1100px in any
+   language (the CTA wrapped onto 2-3 lines), so switch to the hamburger menu. */
+@media (max-width: 1280px) { .nav-links { gap: 24px; } }
+@media (max-width: 1100px) {
+  .nav-links { display: none; }
+  .nav-actions .nav-lang { display: none !important; }
+  .nav-actions .btn-primary { display: none; }
+  .hamburger-btn { display: flex; }
+  .lang-floating { display: flex; }
+  body.menu-open .lang-floating { display: none; }
+  body.menu-open { overflow: hidden; }
+}
 
 /* ============ REFERENZEN / REFERENCES ============ */
 .ref-hero{padding:150px 0 8px;text-align:center}
@@ -908,7 +943,23 @@ body.menu-open .lang-floating { display: none; }
 </a>
 <ul class="nav-links">
 <li><a data-i18n="nav.product" href="/en#product">Product</a></li>
-<li><a data-i18n="nav.features" href="/en#features">Features</a></li>
+<li class="nav-dropdown">
+<a data-i18n="nav.features" href="/en#features" aria-haspopup="true">Features<svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a>
+<div class="nav-dropdown-menu">
+<div class="nav-dropdown-panel">
+<a class="nav-dropdown-item" href="/en/features#home"><span class="num">01</span><span><b>Home</b><small>Everything that matters at a glance</small></span></a>
+<a class="nav-dropdown-item" href="/en/features#product-catalog"><span class="num">02</span><span><b>Product Catalog</b><small>Rights, inventory and quotas</small></span></a>
+<a class="nav-dropdown-item" href="/en/features#position-editor"><span class="num">03</span><span><b>Position Editor</b><small>Stadium plan and advertising positions</small></span></a>
+<a class="nav-dropdown-item" href="/en/features#partner-crm"><span class="num">04</span><span><b>Partner CRM</b><small>Pipeline, partner records and communication</small></span></a>
+<a class="nav-dropdown-item" href="/en/features#contracts"><span class="num">05</span><span><b>Contracts</b><small>Conditions, documents and in-kind benefits</small></span></a>
+<a class="nav-dropdown-item" href="/en/features#activation"><span class="num">06</span><span><b>Activation</b><small>Implementation tasks and calendar</small></span></a>
+<a class="nav-dropdown-item" href="/en/features#led-planner"><span class="num">07</span><span><b>LED Planning</b><small>Playlists from booked sequences</small></span></a>
+<a class="nav-dropdown-item" href="/en/features#invoicing"><span class="num">08</span><span><b>Invoicing</b><small>Automatic invoicing and controlling</small></span></a>
+<a class="nav-dropdown-item" href="/en/features#analytics"><span class="num">09</span><span><b>Analytics</b><small>Finances, cash flow and utilization</small></span></a>
+<a class="nav-dropdown-all" href="/en/features">See all features<span aria-hidden="true">→</span></a>
+</div>
+</div>
+</li>
 <li><a data-i18n="nav.value" href="/en#stats">Value</a></li>
 <li><a class="active" data-i18n="nav.references" href="/en/references">References</a></li>
 <li><a data-i18n="nav.pricing" href="/en/pricing">Pricing</a></li>
@@ -919,9 +970,9 @@ body.menu-open .lang-floating { display: none; }
 <div class="nav-lang">
 <button aria-expanded="false" aria-haspopup="true" aria-label="Sprache wählen" class="lang-trigger" type="button"><svg class="lang-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 16 0 18M12 3c-2.5 2.5-2.5 16 0 18"/></svg><span class="lang-current">EN</span><svg class="lang-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
 <div class="lang-menu">
-<a class="lang-btn" data-lang="de" href="/about"><span>Deutsch</span><svg class="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg></a>
-<a class="lang-btn active" data-lang="en" href="/en/about"><span>English</span><svg class="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg></a>
-<a class="lang-btn" data-lang="es" href="/es/about"><span>Español</span><svg class="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg></a>
+<a class="lang-btn" data-lang="de" href="/references"><span>Deutsch</span><svg class="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg></a>
+<a class="lang-btn active" data-lang="en" href="/en/references"><span>English</span><svg class="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg></a>
+<a class="lang-btn" data-lang="es" href="/es/references"><span>Español</span><svg class="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg></a>
 </div>
 </div>
 <a class="btn btn-primary" data-i18n="nav.cta" href="/en/book-a-demo">Book a demo</a>
@@ -936,7 +987,19 @@ body.menu-open .lang-floating { display: none; }
 <div class="mobile-menu">
 <ul>
 <li><a data-i18n="nav.product" href="/en">Product</a></li>
-<li><a data-i18n="nav.features" href="/en#features">Features</a></li>
+<li><a data-i18n="nav.features" href="/en#features">Features</a>
+<ul class="mobile-submenu">
+<li><a href="/en/features#home"><span class="num">01</span>Home</a></li>
+<li><a href="/en/features#product-catalog"><span class="num">02</span>Product Catalog</a></li>
+<li><a href="/en/features#position-editor"><span class="num">03</span>Position Editor</a></li>
+<li><a href="/en/features#partner-crm"><span class="num">04</span>Partner CRM</a></li>
+<li><a href="/en/features#contracts"><span class="num">05</span>Contracts</a></li>
+<li><a href="/en/features#activation"><span class="num">06</span>Activation</a></li>
+<li><a href="/en/features#led-planner"><span class="num">07</span>LED Planning</a></li>
+<li><a href="/en/features#invoicing"><span class="num">08</span>Invoicing</a></li>
+<li><a href="/en/features#analytics"><span class="num">09</span>Analytics</a></li>
+</ul>
+</li>
 <li><a data-i18n="nav.value" href="/en#stats">Value</a></li>
 <li><a class="active" data-i18n="nav.references" href="/en/references">References</a></li>
 <li><a data-i18n="nav.pricing" href="/en/pricing">Pricing</a></li>
@@ -951,9 +1014,9 @@ body.menu-open .lang-floating { display: none; }
 <div class="lang-floating">
 <button aria-expanded="false" aria-haspopup="true" aria-label="Sprache wählen" class="lang-trigger" type="button"><svg class="lang-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 16 0 18M12 3c-2.5 2.5-2.5 16 0 18"/></svg><span class="lang-current">EN</span><svg class="lang-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
 <div class="lang-menu">
-<a class="lang-btn" data-lang="de" href="/about"><span>Deutsch</span><svg class="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg></a>
-<a class="lang-btn active" data-lang="en" href="/en/about"><span>English</span><svg class="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg></a>
-<a class="lang-btn" data-lang="es" href="/es/about"><span>Español</span><svg class="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg></a>
+<a class="lang-btn" data-lang="de" href="/references"><span>Deutsch</span><svg class="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg></a>
+<a class="lang-btn active" data-lang="en" href="/en/references"><span>English</span><svg class="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg></a>
+<a class="lang-btn" data-lang="es" href="/es/references"><span>Español</span><svg class="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg></a>
 </div>
 </div>
 <!-- ============ REFERENZEN ============ -->
@@ -972,11 +1035,63 @@ body.menu-open .lang-floating { display: none; }
 <section class="ref-section">
 <div class="map-band">
 <div class="band-head">
+<p class="ref-network-count">The Paktum network</p>
 <h2>Where our clients are based</h2>
-<p class="map-sub">Select an organisation to explore its location.</p>
+<div class="ref-info-slot">
+<p class="map-sub"><span class="ref-pointer-copy">Move your pointer to explore our network. Click a badge or a location.</span><span class="ref-touch-copy">Swipe through our network. Tap a badge or a location to explore.</span></p>
+<div class="ref-info" id="refInfo" role="dialog" aria-modal="false" aria-labelledby="refInfoName" aria-describedby="refInfoLocation" hidden>
+<button class="ref-info-close" type="button" aria-label="Close information"><span aria-hidden="true">×</span></button>
+<div class="ref-info-logo" aria-hidden="true"></div>
+<p class="ref-info-eyebrow">Part of the Paktum network</p>
+<h4 class="ref-info-name" id="refInfoName"></h4>
+<dl class="ref-info-meta"><dt>Location</dt><dd class="ref-info-location" id="refInfoLocation"></dd></dl>
+</div>
+</div>
 </div>
 <div class="ref-explorer">
-<button class="ref-map-toggle" type="button" aria-expanded="false" aria-controls="refMapPanel" data-show="Show map" data-hide="Hide map">Show map</button>
+<div class="ref-directory">
+<p class="ref-keyboard-help" id="refKeyboardHelp">Use arrow keys to explore. Enter opens details; Escape closes them. Home and End go to the first and last organisation.</p>
+<div class="ref-stage">
+<div class="ref-badge-viewport" role="group" aria-label="Explore organisations" aria-describedby="refKeyboardHelp">
+<div class="ref-logos" id="refLogos">
+<button class="logo-card" data-club="fcz" type="button" aria-label="FC Zürich"><img alt="FC Zürich" src="/SVG%20Logos/FC_Zuerich.svg.webp"/><span>FC Zürich</span></button>
+<button class="logo-card" data-club="bsv-bern" type="button" aria-label="BSV Bern"><img alt="BSV Bern" src="/SVG%20Logos/BSV_Bern.svg"/><span>BSV Bern</span></button>
+<button class="logo-card" data-club="tvb-stuttgart" type="button" aria-label="TVB Stuttgart"><img alt="TVB Stuttgart" src="/SVG%20Logos/TVB_Stuttgart.webp"/><span>TVB Stuttgart</span></button>
+<button class="logo-card" data-club="vfl-luebeck" type="button" aria-label="VfL Lübeck-Schwartau"><img alt="VfL Lübeck-Schwartau" src="/SVG%20Logos/VfL_Luebeck-Schwartau.svg"/><span>VfL Lübeck-Schwartau</span></button>
+<button class="logo-card" data-club="eisbaeren" type="button" aria-label="Eisbären Bremerhaven"><img alt="Eisbären Bremerhaven" src="/SVG%20Logos/EisbarenBremerhaven.webp"/><span>Eisbären Bremerhaven</span></button>
+<button class="logo-card" data-club="bremer-fv" type="button" aria-label="Bremer Fussball-Verband"><img alt="Bremer Fussball-Verband" src="/SVG%20Logos/Bremer_Fussball-Verband.svg"/><span>Bremer Fussball-Verband</span></button>
+<button class="logo-card" data-club="saar-fv" type="button" aria-label="Saarländischer Fussball-Verband"><img alt="Saarländischer Fussball-Verband" src="/SVG%20Logos/Saarlaendischer_Fussball-Verband.webp"/><span>Saarländischer FV</span></button>
+<button class="logo-card" data-club="galopp-muenchen" type="button" aria-label="Galopprennbahn München"><img alt="Galopprennbahn München" src="/SVG%20Logos/GalopprennbahnMunchen.webp"/><span>Galopprennbahn München</span></button>
+<button class="logo-card" data-club="del2" type="button" aria-label="DEL2"><img alt="DEL2" src="/SVG%20Logos/DEL2.svg.webp"/><span>DEL2</span></button>
+<button class="logo-card" data-club="vbl" type="button" aria-label="Volleyball Bundesliga"><img alt="Volleyball Bundesliga" src="/SVG%20Logos/Volleyball%20Bundesliga.webp"/><span>Volleyball Bundesliga</span></button>
+<button class="logo-card" data-club="gw-schwerin" type="button" aria-label="SV Grün-Weiß Schwerin"><img alt="SV Grün-Weiß Schwerin" src="/SVG%20Logos/SV_Gruen-Weiss_Schwerin.webp"/><span>Grün-Weiß Schwerin</span></button>
+<button class="logo-card" data-club="sls-hamburg" type="button" aria-label="Stiftung Leistungssport Hamburg"><img alt="Stiftung Leistungssport Hamburg" src="/SVG%20Logos/Stiftung_Leistungssport_Hamburg.webp"/><span>Stiftung Leistungssport</span></button>
+<button class="logo-card" data-club="hfv" type="button" aria-label="Hamburger Fussball-Verband"><img alt="Hamburger Fussball-Verband" src="/SVG%20Logos/Hamburger_Fussball-Verband.svg.webp"/><span>Hamburger FV</span></button>
+<button class="logo-card" data-club="ssv-jeddeloh" type="button" aria-label="SSV Jeddeloh II"><img alt="SSV Jeddeloh II" src="/SVG%20Logos/SSV_Jeddeloh.svg.webp"/><span>SSV Jeddeloh II</span></button>
+<button class="logo-card" data-club="wacker-burghausen" type="button" aria-label="SV Wacker Burghausen"><img alt="SV Wacker Burghausen" src="/SVG%20Logos/Wacker_Burghausen.svg.webp"/><span>Wacker Burghausen</span></button>
+<button class="logo-card" data-club="schott-mainz" type="button" aria-label="TSV SCHOTT Mainz"><img alt="TSV SCHOTT Mainz" src="/SVG%20Logos/TSV_Schott_Mainz.webp"/><span>TSV SCHOTT Mainz</span></button>
+<button class="logo-card" data-club="psk-lions" type="button" aria-label="PS Karlsruhe Lions"><img alt="PS Karlsruhe Lions" src="/SVG%20Logos/PSK_Lions.svg.webp"/><span>PS Karlsruhe Lions</span></button>
+<button class="logo-card" data-club="merlins" type="button" aria-label="Hakro Merlins Crailsheim"><img alt="Hakro Merlins Crailsheim" src="/SVG%20Logos/Hakro_Merlins_Crailsheim.webp"/><span>Hakro Merlins</span></button>
+<button class="logo-card logo-card--duo" data-club="ssv-ulm-infront" type="button" aria-label="SSV Ulm 1846 × Infront Germany"><span class="duo-logos"><img alt="SSV Ulm 1846 Fussball" src="/SVG%20Logos/SSV_Ulm_1846_Fussball.svg.webp"/><span class="duo-x" aria-hidden="true">×</span><img alt="Infront Germany" src="/SVG%20Logos/Infront_Germany.webp"/></span><span>SSV Ulm 1846 × Infront</span></button>
+<button class="logo-card" data-club="bayer-dormagen" type="button" aria-label="TSV Bayer Dormagen"><img alt="TSV Bayer Dormagen" src="/SVG%20Logos/TSV_Bayer_Dormagen.svg.webp"/><span>TSV Bayer Dormagen</span></button>
+<button class="logo-card" data-club="vc-gotha" type="button" aria-label="VC Gotha"><img alt="VC Gotha" src="/SVG%20Logos/VC_Gotha.webp"/><span>VC Gotha</span></button>
+<button class="logo-card" data-club="fortuna-koeln" type="button" aria-label="SC Fortuna Köln"><img alt="SC Fortuna Köln" src="/SVG%20Logos/SC_Fortuna_Koeln.svg.webp"/><span>Fortuna Köln</span></button>
+<button class="logo-card" data-club="bietigheim-steelers" type="button" aria-label="Bietigheim Steelers"><img alt="Bietigheim Steelers" src="/SVG%20Logos/Bietigheim_Steelers.svg.webp"/><span>Bietigheim Steelers</span></button>
+<button class="logo-card" data-club="dortmunder-rennverein" type="button" aria-label="Dortmunder Rennverein"><img alt="Dortmunder Rennverein" src="/SVG%20Logos/Dortmunder_Rennverein.webp"/><span>Dortmunder Rennverein</span></button>
+<button class="logo-card" data-club="duesseldorfer-eg" type="button" aria-label="Düsseldorfer EG"><img alt="Düsseldorfer EG" src="/SVG%20Logos/Duesseldorfer_EG.webp"/><span>Düsseldorfer EG</span></button>
+<button class="logo-card" data-club="tsb-gmuend" type="button" aria-label="TSB Schwäbisch Gmünd"><img alt="TSB Schwäbisch Gmünd" src="/SVG%20Logos/TSB_Jets.webp"/><span>TSB Schwäbisch Gmünd</span></button>
+<button class="logo-card" data-club="goeppinger-sv" type="button" aria-label="1. Göppinger SV"><img alt="1. Göppinger SV" src="/SVG%20Logos/Goeppinger_SV.svg.webp"/><span>1. Göppinger SV</span></button>
+<button class="logo-card" data-club="ehc-freiburg" type="button" aria-label="EHC Freiburg"><img alt="EHC Freiburg" src="/SVG%20Logos/EHC_Freiburg.webp"/><span>EHC Freiburg</span></button>
+<button class="logo-card" data-club="svg-lueneburg" type="button" aria-label="SVG Lüneburg"><img alt="SVG Lüneburg" src="/SVG%20Logos/SVG_Lueneburg.webp"/><span>SVG Lüneburg</span></button>
+<button class="logo-card" data-club="empor-rostock" type="button" aria-label="HC Empor Rostock"><img alt="HC Empor Rostock" src="/SVG%20Logos/HC_Empor_Rostock.webp"/><span>HC Empor Rostock</span></button>
+<button class="logo-card" data-club="tv-rottenburg" type="button" aria-label="TV Rottenburg"><img alt="TV Rottenburg" src="/SVG%20Logos/TV_Rottenburg.svg"/><span>TV Rottenburg</span></button>
+<button class="logo-card" data-club="ubc-muenster" type="button" aria-label="UBC Münster"><img alt="UBC Münster" src="/SVG%20Logos/UBC_Muenster.webp"/><span>UBC Münster</span></button>
+<button class="logo-card" data-club="hsv" type="button" aria-label="Hamburger SV e.V."><img alt="Hamburger SV e.V." src="/SVG%20Logos/Hamburger_SV.webp"/><span>Hamburger SV e.V.</span></button>
+<button class="logo-card" data-club="sfv-sachsen" type="button" aria-label="Sächsischer Fussball-Verband"><img alt="Sächsischer Fussball-Verband" src="/SVG%20Logos/Saechsischer_Fussball-Verband.webp"/><span>Sächsischer FV</span></button>
+<button class="logo-card" data-club="tv-bissendorf" type="button" aria-label="TV Bissendorf-Holte"><img alt="TV Bissendorf-Holte" src="/SVG%20Logos/TV_Bissendorf-Holte.webp"/><span>TV Bissendorf-Holte</span></button>
+<button class="logo-card" data-club="tus-opladen" type="button" aria-label="TuS 82 Opladen"><img alt="TuS 82 Opladen" src="/SVG%20Logos/TuS_82_Opladen.webp"/><span>TuS 82 Opladen</span></button>
+</div>
+</div>
 <div class="ref-map-panel" id="refMapPanel">
 <div class="map-card" id="refMapCard">
 <svg class="dach-map" viewBox="104 70 650 598" xmlns="http://www.w3.org/2000/svg" role="group" aria-labelledby="mapTitle">
@@ -1109,61 +1224,24 @@ body.menu-open .lang-floating { display: none; }
   </g>
 </svg>
 </div>
-<div class="ref-map-selection" aria-live="polite"></div>
 </div>
-<div class="ref-directory">
-<div class="ref-directory-head"><h3>Organisations</h3><span>A–Z</span></div>
-<div class="ref-logos" id="refLogos">
-<button class="logo-card" data-club="fcz" type="button" aria-label="FC Zürich"><img alt="FC Zürich" src="/SVG%20Logos/FC_Zuerich.svg.webp"/><span>FC Zürich</span></button>
-<button class="logo-card" data-club="bsv-bern" type="button" aria-label="BSV Bern"><img alt="BSV Bern" src="/SVG%20Logos/BSV_Bern.svg"/><span>BSV Bern</span></button>
-<button class="logo-card" data-club="tvb-stuttgart" type="button" aria-label="TVB Stuttgart"><img alt="TVB Stuttgart" src="/SVG%20Logos/TVB_Stuttgart.webp"/><span>TVB Stuttgart</span></button>
-<button class="logo-card" data-club="vfl-luebeck" type="button" aria-label="VfL Lübeck-Schwartau"><img alt="VfL Lübeck-Schwartau" src="/SVG%20Logos/VfL_Luebeck-Schwartau.svg"/><span>VfL Lübeck-Schwartau</span></button>
-<button class="logo-card" data-club="eisbaeren" type="button" aria-label="Eisbären Bremerhaven"><img alt="Eisbären Bremerhaven" src="/SVG%20Logos/EisbarenBremerhaven.webp"/><span>Eisbären Bremerhaven</span></button>
-<button class="logo-card" data-club="bremer-fv" type="button" aria-label="Bremer Fussball-Verband"><img alt="Bremer Fussball-Verband" src="/SVG%20Logos/Bremer_Fussball-Verband.svg"/><span>Bremer Fussball-Verband</span></button>
-<button class="logo-card" data-club="saar-fv" type="button" aria-label="Saarländischer Fussball-Verband"><img alt="Saarländischer Fussball-Verband" src="/SVG%20Logos/Saarlaendischer_Fussball-Verband.webp"/><span>Saarländischer FV</span></button>
-<button class="logo-card" data-club="galopp-muenchen" type="button" aria-label="Galopprennbahn München"><img alt="Galopprennbahn München" src="/SVG%20Logos/GalopprennbahnMunchen.webp"/><span>Galopprennbahn München</span></button>
-<button class="logo-card" data-club="del2" type="button" aria-label="DEL2"><img alt="DEL2" src="/SVG%20Logos/DEL2.svg.webp"/><span>DEL2</span></button>
-<button class="logo-card" data-club="vbl" type="button" aria-label="Volleyball Bundesliga"><img alt="Volleyball Bundesliga" src="/SVG%20Logos/Volleyball%20Bundesliga.webp"/><span>Volleyball Bundesliga</span></button>
-<button class="logo-card" data-club="gw-schwerin" type="button" aria-label="SV Grün-Weiß Schwerin"><img alt="SV Grün-Weiß Schwerin" src="/SVG%20Logos/SV_Gruen-Weiss_Schwerin.webp"/><span>Grün-Weiß Schwerin</span></button>
-<button class="logo-card" data-club="sls-hamburg" type="button" aria-label="Stiftung Leistungssport Hamburg"><img alt="Stiftung Leistungssport Hamburg" src="/SVG%20Logos/Stiftung_Leistungssport_Hamburg.webp"/><span>Stiftung Leistungssport</span></button>
-<button class="logo-card" data-club="hfv" type="button" aria-label="Hamburger Fussball-Verband"><img alt="Hamburger Fussball-Verband" src="/SVG%20Logos/Hamburger_Fussball-Verband.svg.webp"/><span>Hamburger FV</span></button>
-<button class="logo-card" data-club="ssv-jeddeloh" type="button" aria-label="SSV Jeddeloh II"><img alt="SSV Jeddeloh II" src="/SVG%20Logos/SSV_Jeddeloh.svg.webp"/><span>SSV Jeddeloh II</span></button>
-<button class="logo-card" data-club="wacker-burghausen" type="button" aria-label="SV Wacker Burghausen"><img alt="SV Wacker Burghausen" src="/SVG%20Logos/Wacker_Burghausen.svg.webp"/><span>Wacker Burghausen</span></button>
-<button class="logo-card" data-club="schott-mainz" type="button" aria-label="TSV SCHOTT Mainz"><img alt="TSV SCHOTT Mainz" src="/SVG%20Logos/TSV_Schott_Mainz.webp"/><span>TSV SCHOTT Mainz</span></button>
-<button class="logo-card" data-club="psk-lions" type="button" aria-label="PS Karlsruhe Lions"><img alt="PS Karlsruhe Lions" src="/SVG%20Logos/PSK_Lions.svg.webp"/><span>PS Karlsruhe Lions</span></button>
-<button class="logo-card" data-club="merlins" type="button" aria-label="Hakro Merlins Crailsheim"><img alt="Hakro Merlins Crailsheim" src="/SVG%20Logos/Hakro_Merlins_Crailsheim.webp"/><span>Hakro Merlins</span></button>
-<button class="logo-card logo-card--duo" data-club="ssv-ulm-infront" type="button" aria-label="SSV Ulm 1846 × Infront Germany"><span class="duo-logos"><img alt="SSV Ulm 1846 Fussball" src="/SVG%20Logos/SSV_Ulm_1846_Fussball.svg.webp"/><span class="duo-x" aria-hidden="true">×</span><img alt="Infront Germany" src="/SVG%20Logos/Infront_Germany.webp"/></span><span>SSV Ulm 1846 × Infront</span></button>
-<button class="logo-card" data-club="bayer-dormagen" type="button" aria-label="TSV Bayer Dormagen"><img alt="TSV Bayer Dormagen" src="/SVG%20Logos/TSV_Bayer_Dormagen.svg.webp"/><span>TSV Bayer Dormagen</span></button>
-<button class="logo-card" data-club="vc-gotha" type="button" aria-label="VC Gotha"><img alt="VC Gotha" src="/SVG%20Logos/VC_Gotha.webp"/><span>VC Gotha</span></button>
-<button class="logo-card" data-club="fortuna-koeln" type="button" aria-label="SC Fortuna Köln"><img alt="SC Fortuna Köln" src="/SVG%20Logos/SC_Fortuna_Koeln.svg.webp"/><span>Fortuna Köln</span></button>
-<button class="logo-card" data-club="bietigheim-steelers" type="button" aria-label="Bietigheim Steelers"><img alt="Bietigheim Steelers" src="/SVG%20Logos/Bietigheim_Steelers.svg.webp"/><span>Bietigheim Steelers</span></button>
-<button class="logo-card" data-club="dortmunder-rennverein" type="button" aria-label="Dortmunder Rennverein"><img alt="Dortmunder Rennverein" src="/SVG%20Logos/Dortmunder_Rennverein.webp"/><span>Dortmunder Rennverein</span></button>
-<button class="logo-card" data-club="duesseldorfer-eg" type="button" aria-label="Düsseldorfer EG"><img alt="Düsseldorfer EG" src="/SVG%20Logos/Duesseldorfer_EG.webp"/><span>Düsseldorfer EG</span></button>
-<button class="logo-card" data-club="tsb-gmuend" type="button" aria-label="TSB Schwäbisch Gmünd"><img alt="TSB Schwäbisch Gmünd" src="/SVG%20Logos/TSB_Jets.webp"/><span>TSB Schwäbisch Gmünd</span></button>
-<button class="logo-card" data-club="goeppinger-sv" type="button" aria-label="1. Göppinger SV"><img alt="1. Göppinger SV" src="/SVG%20Logos/Goeppinger_SV.svg.webp"/><span>1. Göppinger SV</span></button>
-<button class="logo-card" data-club="ehc-freiburg" type="button" aria-label="EHC Freiburg"><img alt="EHC Freiburg" src="/SVG%20Logos/EHC_Freiburg.webp"/><span>EHC Freiburg</span></button>
-<button class="logo-card" data-club="svg-lueneburg" type="button" aria-label="SVG Lüneburg"><img alt="SVG Lüneburg" src="/SVG%20Logos/SVG_Lueneburg.webp"/><span>SVG Lüneburg</span></button>
-<button class="logo-card" data-club="empor-rostock" type="button" aria-label="HC Empor Rostock"><img alt="HC Empor Rostock" src="/SVG%20Logos/HC_Empor_Rostock.webp"/><span>HC Empor Rostock</span></button>
-<button class="logo-card" data-club="tv-rottenburg" type="button" aria-label="TV Rottenburg"><img alt="TV Rottenburg" src="/SVG%20Logos/TV_Rottenburg.svg"/><span>TV Rottenburg</span></button>
-<button class="logo-card" data-club="ubc-muenster" type="button" aria-label="UBC Münster"><img alt="UBC Münster" src="/SVG%20Logos/UBC_Muenster.webp"/><span>UBC Münster</span></button>
-<button class="logo-card" data-club="hsv" type="button" aria-label="Hamburger SV e.V."><img alt="Hamburger SV e.V." src="/SVG%20Logos/Hamburger_SV.webp"/><span>Hamburger SV e.V.</span></button>
-<button class="logo-card" data-club="sfv-sachsen" type="button" aria-label="Sächsischer Fussball-Verband"><img alt="Sächsischer Fussball-Verband" src="/SVG%20Logos/Saechsischer_Fussball-Verband.webp"/><span>Sächsischer FV</span></button>
-<button class="logo-card" data-club="tv-bissendorf" type="button" aria-label="TV Bissendorf-Holte"><img alt="TV Bissendorf-Holte" src="/SVG%20Logos/TV_Bissendorf-Holte.webp"/><span>TV Bissendorf-Holte</span></button>
-<button class="logo-card" data-club="tus-opladen" type="button" aria-label="TuS 82 Opladen"><img alt="TuS 82 Opladen" src="/SVG%20Logos/TuS_82_Opladen.webp"/><span>TuS 82 Opladen</span></button>
 </div>
-<nav class="ref-pagination" aria-label="Browse organisations" hidden>
-<span class="ref-page-status" role="status" aria-live="polite"></span>
-<div class="ref-page-actions">
-<button type="button" data-direction="previous" aria-label="Previous page" title="Previous page"><span aria-hidden="true">←</span></button>
-<button type="button" data-direction="next" aria-label="Next page" title="Next page"><span aria-hidden="true">→</span></button>
+<div class="ref-badge-controls">
+<div class="ref-map-selection" aria-live="polite" data-prompt="Select a badge or a location.">Select a badge or a location.</div>
+<p class="ref-badge-hint">Move your pointer or drag · Click for details</p>
+<div class="ref-badge-actions">
+<span class="ref-badge-status" aria-live="polite" aria-atomic="true"></span>
+<button type="button" data-direction="previous" data-group-label="Previous group" aria-label="Previous organisation" title="Previous organisation"><span aria-hidden="true">←</span></button>
+<button type="button" data-direction="next" data-group-label="Next group" aria-label="Next organisation" title="Next organisation"><span aria-hidden="true">→</span></button>
 </div>
-</nav>
+<button class="ref-reset" type="button"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 8a6 6 0 1 1 0 5M4 3v5h5"/></svg>Reset view</button>
+</div>
 </div>
 </div>
 </div>
 </section>
 <!-- ============ CUSTOMER VOICES ============ -->
-<section class="voices" id="voices" aria-labelledby="voices-title" aria-roledescription="carousel">
+<section class="voices" id="voices" data-more-label="Read more" data-close-label="Close" aria-labelledby="voices-title" aria-roledescription="carousel">
 <div class="voices-inner">
 <div class="section-header">
 <p class="eyebrow">Customer voices</p>
@@ -1171,36 +1249,61 @@ body.menu-open .lang-floating { display: none; }
 </div>
 </div>
 <div class="voices-window"><div class="voices-track">
-<figure class="voice-card" id="voice-1" role="group" aria-roledescription="Customer voice" aria-label="1 / 5">
+<figure class="voice-card" id="voice-1" role="group" aria-roledescription="Customer voice" aria-label="1 / 10">
 <div class="voice-card-top"><span class="voice-logo"><img alt="" src="/SVG%20Logos/SSV_Ulm_1846_Fussball.svg.webp" loading="lazy"/></span><div><span class="voice-club">SSV Ulm 1846</span><span class="voice-sport">Football</span></div></div>
 <blockquote lang="en"><p>With Paktum, we have a central, transparent foundation for managing our marketing activities and partnerships. We reduce manual processes, avoid duplicate work and take the load off our administration through automated invoicing with a direct interface to our accounting. At the same time, we improve coordination with our external marketing agency, create clear responsibilities and gain <em>more efficiency, transparency and control</em> over our marketing revenue.</p></blockquote>
 <figcaption><img class="voice-photo" alt="" src="/SVG%20Logos/Thomas_Rohmer.webp" width="48" height="48" loading="lazy"/><span><span class="voice-person">Thomas Rohmer</span><span class="voice-role">Head of Club Administration</span></span></figcaption>
 </figure>
-<figure class="voice-card" id="voice-2" role="group" aria-roledescription="Customer voice" aria-label="2 / 5">
+<figure class="voice-card" id="voice-2" role="group" aria-roledescription="Customer voice" aria-label="2 / 10">
 <div class="voice-card-top"><span class="voice-logo"><img alt="" src="/SVG%20Logos/Volleyball%20Bundesliga.webp" loading="lazy"/></span><div><span class="voice-club">Volleyball Bundesliga</span><span class="voice-sport">League · Volleyball</span></div></div>
 <blockquote lang="en"><p><em>Clear processes that adapt to our needs:</em> with Paktum, every team member sees straight away what is relevant to them. Tasks no longer end up in Slack, Teams or email – they get done directly on the platform.</p></blockquote>
 <figcaption><img class="voice-photo" alt="" src="/SVG%20Logos/Nicolas_Nersinger.webp" width="48" height="48" loading="lazy"/><span><span class="voice-person">Nicolas Nersinger</span><span class="voice-role">Manager Sales & Partner Management</span></span></figcaption>
 </figure>
-<figure class="voice-card" id="voice-3" role="group" aria-roledescription="Customer voice" aria-label="3 / 5">
+<figure class="voice-card" id="voice-3" role="group" aria-roledescription="Customer voice" aria-label="3 / 10">
 <div class="voice-card-top"><span class="voice-logo"><img alt="" src="/SVG%20Logos/SC_Fortuna_Koeln.svg.webp" loading="lazy"/></span><div><span class="voice-club">SC Fortuna Köln</span><span class="voice-sport">Football</span></div></div>
 <blockquote lang="en"><p>With Paktum, Fortuna Köln is taking the next important step in professionalising our marketing. Centrally managing our sponsorship contracts, partner deliverables and advertising spaces brings more structure, transparency and efficiency to our day-to-day work. This lets us optimise internal processes, save valuable time and focus even more on what really matters: <em>looking after our partners personally and developing our partnerships further.</em></p></blockquote>
 <figcaption><img class="voice-photo" alt="" src="/SVG%20Logos/Vincent_Niess.webp" width="48" height="48" loading="lazy"/><span><span class="voice-person">Vincent Niess</span><span class="voice-role">Partner Management</span></span></figcaption>
 </figure>
-<figure class="voice-card" id="voice-4" role="group" aria-roledescription="Customer voice" aria-label="4 / 5">
+<figure class="voice-card" id="voice-4" role="group" aria-roledescription="Customer voice" aria-label="4 / 10">
 <div class="voice-card-top"><span class="voice-logo"><img alt="" src="/SVG%20Logos/Saarlaendischer_Fussball-Verband.webp" loading="lazy"/></span><div><span class="voice-club">Saarländischer Fussball-Verband</span><span class="voice-sport">Federation</span></div></div>
 <blockquote lang="en"><p>What I find especially helpful is the central overview of our sponsors, agreements and deliverables. With Paktum <em>we save time,</em> because information is available in one place and we spend less time searching through different lists and documents. As a result, sponsor management at the Saarland Football Association has become clearer and easier to follow. We see more quickly what has been agreed and which tasks are still outstanding.</p></blockquote>
 <figcaption><img class="voice-photo" alt="" src="/SVG%20Logos/Christian_Hertel.webp" width="48" height="48" loading="lazy"/><span><span class="voice-person">Christian Hertel</span><span class="voice-role">Head of Marketing &amp; Events</span></span></figcaption>
 </figure>
-<figure class="voice-card" id="voice-5" role="group" aria-roledescription="Customer voice" aria-label="5 / 5">
+<figure class="voice-card" id="voice-5" role="group" aria-roledescription="Customer voice" aria-label="5 / 10">
 <div class="voice-card-top"><span class="voice-logo"><img alt="" src="/SVG%20Logos/DEL2.svg.webp" loading="lazy"/></span><div><span class="voice-club">DEL2</span><span class="voice-sport">League · Ice hockey</span></div></div>
 <blockquote lang="en"><p>As a league, we look after partners with very different rights packages. Paktum maps this variety cleanly, and the automations are highly efficient because <em>documents and invoices are generated directly from the contract data.</em> For us at league level, with a small team, this functionality is extremely helpful and ensures professional, structured handling.</p></blockquote>
 <figcaption><img class="voice-photo" alt="" src="/SVG%20Logos/Rene_Rudorisch.webp" width="48" height="48" loading="lazy"/><span><span class="voice-person">René Rudorisch</span><span class="voice-role">Managing Director</span></span></figcaption>
+</figure>
+<figure class="voice-card" id="voice-6" role="group" aria-roledescription="Customer voice" aria-label="6 / 10">
+<div class="voice-card-top"><span class="voice-logo"><img alt="" src="/SVG%20Logos/PSK_Lions.svg.webp" loading="lazy"/></span><div><span class="voice-club">PS Karlsruhe Lions</span><span class="voice-sport">Basketball</span></div></div>
+<blockquote lang="en"><p>At the PSK LIONS, we had often thought about how to manage our partnerships more efficiently and with a clearer focus, so that they create real added value for us and for our partners. When we started talking to Paktum and the idea behind the solution became clear, the decision was made quickly – and we are still very happy with it today.</p><p>Since this summer, we have been using Paktum to manage and keep track of all our sponsorship deliverables. Nothing gets lost, whether on game days or over the course of the season, and we always have every deliverable in view at short notice. We also save time and work much more efficiently on invoice planning and, going forward, on automated invoicing. Instead of lots of separate Excel lists, we now work with <em>one clear, all-in-one solution.</em></p><p>The CRM function was especially important to us: it lets us follow up on contacts and build reliable forecasts. We are very satisfied and look forward to the further development that Paktum keeps driving forward.</p></blockquote>
+<figcaption><img class="voice-photo" alt="" src="/SVG%20Logos/Fabian_Huber.webp" width="48" height="48" loading="lazy"/><span><span class="voice-person">Fabian Huber</span><span class="voice-role">Marketing</span></span></figcaption>
+</figure>
+<figure class="voice-card" id="voice-7" role="group" aria-roledescription="Customer voice" aria-label="7 / 10">
+<div class="voice-card-top"><span class="voice-logo"><img alt="" src="/SVG%20Logos/Bremer_Fussball-Verband.svg" loading="lazy"/></span><div><span class="voice-club">Bremer Fussball-Verband</span><span class="voice-sport">Federation</span></div></div>
+<blockquote lang="en"><p>With Paktum, we have our LED perimeter board management, our partner contacts and our contracts in one central place. Instead of piecing together information from different Excel spreadsheets, we see <em>at a glance which advertising spaces are booked or still available</em> and what has been agreed with each partner. This saves us noticeable time and makes looking after our sponsors much more efficient.</p></blockquote>
+<figcaption><span class="voice-photo voice-initials" aria-hidden="true">GG</span><span><span class="voice-person">Gero Groenhoff</span><span class="voice-role">Deputy Managing Director</span></span></figcaption>
+</figure>
+<figure class="voice-card" id="voice-8" role="group" aria-roledescription="Customer voice" aria-label="8 / 10">
+<div class="voice-card-top"><span class="voice-logo"><img alt="" src="/SVG%20Logos/VfL_Luebeck-Schwartau.svg" loading="lazy"/></span><div><span class="voice-club">VfL Lübeck-Schwartau</span><span class="voice-sport">Handball</span></div></div>
+<blockquote lang="en"><p>Our sponsorship at VfL Lübeck-Schwartau used to run on countless Excel lists. Today, with Paktum, we have <em>all partners, contracts and sponsorship rights in one central place.</em> We save noticeable time, always know which deliverables are outstanding or fulfilled, and can develop our partnerships in a targeted way. For our day-to-day sponsorship management, that is real progress.</p></blockquote>
+<figcaption><img class="voice-photo" alt="" src="/SVG%20Logos/Martin_Murawski.webp" width="48" height="48" loading="lazy"/><span><span class="voice-person">Martin Murawski</span><span class="voice-role">Managing Director</span></span></figcaption>
+</figure>
+<figure class="voice-card" id="voice-9" role="group" aria-roledescription="Customer voice" aria-label="9 / 10">
+<div class="voice-card-top"><span class="voice-logo"><img alt="" src="/SVG%20Logos/EHC_Freiburg.webp" loading="lazy"/></span><div><span class="voice-club">EHC Freiburg</span><span class="voice-sport">Ice hockey</span></div></div>
+<blockquote lang="en"><p>Paktum makes our day-to-day sponsorship work enormously easier. What is especially valuable to us is that all information about our sponsors is bundled in one central place. That way, everyone involved can see at any time what has already been discussed or implemented and which next steps are coming up. This creates <em>more transparency and better internal coordination</em> and saves us an enormous amount of time in our daily work.</p></blockquote>
+<figcaption><img class="voice-photo" alt="" src="/SVG%20Logos/Janis_Wagner.webp" width="48" height="48" loading="lazy"/><span><span class="voice-person">Janis Wagner</span><span class="voice-role">Commercial Director</span></span></figcaption>
+</figure>
+<figure class="voice-card" id="voice-10" role="group" aria-roledescription="Customer voice" aria-label="10 / 10">
+<div class="voice-card-top"><span class="voice-logo"><img alt="" src="/SVG%20Logos/Bietigheim_Steelers.svg.webp" loading="lazy"/></span><div><span class="voice-club">Bietigheim Steelers</span><span class="voice-sport">Ice hockey</span></div></div>
+<blockquote lang="en"><p>Paktum saves us time above all when checking for unsold inventory and viewing sponsorship statistics. Invoicing runs <em>much faster and more reliably</em> with Paktum, and we have more time to focus on acquiring new sponsors.</p></blockquote>
+<figcaption><img class="voice-photo" alt="" src="/SVG%20Logos/Gregor_Rustige.webp" width="48" height="48" loading="lazy"/><span><span class="voice-person">Gregor Rustige</span><span class="voice-role">Managing Director</span></span></figcaption>
 </figure>
 </div></div>
 <div class="voices-inner">
 <div class="voices-footer">
 <div class="voices-controls">
-<span class="voices-count" aria-hidden="true"><span data-voice-current>01</span> / 05</span>
+<span class="voices-count" aria-hidden="true"><span data-voice-current>01</span> / 10</span>
 <button class="voice-control" type="button" data-voice-pause data-pause-label="Pause automatic rotation" data-play-label="Start automatic rotation" aria-label="Pause automatic rotation"><svg data-pause-icon viewBox="0 0 16 16" aria-hidden="true"><path d="M4 3h3v10H4zm5 0h3v10H9z"/></svg><svg data-play-icon viewBox="0 0 16 16" aria-hidden="true" hidden><path d="m5 2 9 6-9 6z"/></svg></button>
 <button class="voice-control" type="button" data-voice-prev aria-label="Previous voice"><span aria-hidden="true">←</span></button>
 <button class="voice-control" type="button" data-voice-next aria-label="Next voice"><span aria-hidden="true">→</span></button>

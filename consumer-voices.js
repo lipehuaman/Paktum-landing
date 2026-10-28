@@ -18,6 +18,48 @@
   let paused = false;
   let pointerStart = null;
   let movement = null;
+  let dragged = false;
+  let modalOpen = false;
+
+  // Long testimonials show only their first paragraph in the card, so they
+  // don't stretch every card in the row; "read more" opens the full text in
+  // a floating dialog. Runs before the loop copies are made so they get it too.
+  const dialog = document.createElement('dialog');
+  dialog.className = 'voice-modal';
+  const closeButton = document.createElement('button');
+  closeButton.type = 'button';
+  closeButton.className = 'voice-modal-close';
+  closeButton.setAttribute('aria-label', section.dataset.closeLabel || 'Close');
+  closeButton.innerHTML = '<span aria-hidden="true">×</span>';
+  closeButton.addEventListener('click', () => dialog.close());
+  cards.forEach((card, index) => {
+    if (card.querySelectorAll('blockquote p').length < 2) return;
+    card.classList.add('has-more');
+    const more = document.createElement('button');
+    more.type = 'button';
+    more.className = 'voice-more';
+    more.dataset.voiceMore = index;
+    more.setAttribute('aria-haspopup', 'dialog');
+    more.innerHTML = `${section.dataset.moreLabel || 'Read more'}<span aria-hidden="true">→</span>`;
+    card.querySelector('blockquote').after(more);
+  });
+  function openVoice(index) {
+    const card = cards[index].cloneNode(true);
+    card.removeAttribute('id');
+    card.removeAttribute('aria-label');
+    card.removeAttribute('aria-roledescription');
+    card.classList.remove('has-more');
+    card.querySelector('.voice-more')?.remove();
+    dialog.replaceChildren(card, closeButton);
+    dialog.setAttribute('aria-label', cards[index].querySelector('.voice-club').textContent);
+    document.body.append(dialog);
+    dialog.showModal();
+    modalOpen = true;
+    syncPlayback();
+  }
+  dialog.addEventListener('close', () => { modalOpen = false; syncPlayback(); });
+  // A click on the backdrop lands on the dialog element itself
+  dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
 
   // Copies on both sides keep the same club sequence visible across the loop seam.
   function copies() {
@@ -53,7 +95,7 @@
     render();
   }
   function canPlay() {
-    return visible && !hovered && !focused && !paused && !document.hidden && !reducedMotion.matches && pointerStart === null;
+    return visible && !hovered && !focused && !paused && !modalOpen && !document.hidden && !reducedMotion.matches && pointerStart === null;
   }
   function tick(time) {
     frame = null;
@@ -124,6 +166,7 @@
   windowEl.addEventListener('pointerdown', event => {
     if (!event.isPrimary || event.button !== 0) return;
     pointerStart = { x: event.clientX, y: event.clientY };
+    dragged = false;
     windowEl.setPointerCapture(event.pointerId);
     syncPlayback();
   });
@@ -132,8 +175,22 @@
     const dx = event.clientX - pointerStart.x;
     const dy = event.clientY - pointerStart.y;
     pointerStart = null;
+    dragged = Math.hypot(dx, dy) > 8;
     if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) advance(dx < 0 ? 1 : -1);
     syncPlayback();
+  });
+  // Pointer capture (for swiping) retargets clicks to the window, and the loop
+  // copies are inert, so "read more" is hit-tested geometrically — the same way
+  // hover is. Keyboard activation still targets the button directly.
+  windowEl.addEventListener('click', event => {
+    let more = event.target.closest('.voice-more');
+    if (!more && event.detail !== 0 && !dragged) {
+      more = [...track.querySelectorAll('.voice-more')].find(button => {
+        const rect = button.getBoundingClientRect();
+        return event.clientX >= rect.left && event.clientX <= rect.right && event.clientY >= rect.top && event.clientY <= rect.bottom;
+      });
+    }
+    if (more) openVoice(Number(more.dataset.voiceMore));
   });
   windowEl.addEventListener('pointercancel', () => { pointerStart = null; syncPlayback(); });
   document.addEventListener('visibilitychange', syncPlayback);
