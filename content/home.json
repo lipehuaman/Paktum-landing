@@ -1,0 +1,872 @@
+{
+  "de": {
+    "title": "Paktum: Sponsoring-Management-Software für Sportvereine & Agenturen",
+    "description": "Das Schweizer Taschenmesser für deine Sponsoringverwaltung. Partner, Rechte, Verträge und Rechnungen auf einer Plattform. Für Clubs, Agenturen, Ligen und Verbände.",
+    "nav": [
+      "Funktionen",
+      "Referenzen",
+      "Preise",
+      "Blog",
+      "Über uns"
+    ],
+    "demo": "Demo buchen",
+    "skip": "Zum Inhalt",
+    "menuOpen": "Menü öffnen",
+    "menuClose": "Menü schließen",
+    "language": "Sprache wählen",
+    "exploreModules": "Module entdecken",
+    "eyebrow": "Für den Sport. Aus der Schweiz.",
+    "hero": "Das Schweizer Taschenmesser für deine <span class=\"accent\">Sponsoring&shy;verwaltung.</span>",
+    "heroDescription": "Partner, Rechte, Verträge und Rechnungen. <strong>Alles auf einer Plattform</strong>, damit mehr Zeit für deine Partnerschaften bleibt.",
+    "tour": "Produkttour ansehen",
+    "heroNote": "30 Minuten. Dein Team, deine Fragen, deine Möglichkeiten.",
+    "productTitle": "Rechte & Inventar · Position Editor",
+    "trust": "Im Einsatz bei Clubs, Agenturen, Ligen und Verbänden",
+    "allReferences": "Alle Referenzen entdecken",
+    "problemEyebrow": "Im Alltag",
+    "problemTitle": "Mehr Partnerschaft.<br/>Weniger <span class=\"accent\">Excel-Chaos.</span>",
+    "problems": [
+      [
+        "Inventar im Blick",
+        "Sehen, welche Rechte verfügbar sind und was bereits verkauft ist."
+      ],
+      [
+        "Weniger Handarbeit",
+        "Vertragsdaten einmal erfassen und für Dokumente und Rechnungen nutzen."
+      ],
+      [
+        "Ein gemeinsamer Stand",
+        "Partner, Vereinbarungen und Aufgaben an einem Ort statt in einzelnen Listen."
+      ]
+    ],
+    "overviewEyebrow": "Die Plattform",
+    "overviewTitle": "Der ganze Ablauf.<br/><span class=\"accent\">Ein gemeinsamer Ort.</span>",
+    "overviewDescription": "Von der ersten Partnerschaft bis zur letzten Rechnung: Entdecke die Werkzeuge für dein Team.",
+    "allFeatures": "Alle Funktionen",
+    "tourLength": "72 Sekunden",
+    "modules": [
+      [
+        "Home",
+        "Kennzahlen, Verträge und Aufgaben auf einen Blick."
+      ],
+      [
+        "Produktkatalog",
+        "Rechte, Produkte und Kontingente zentral verwalten."
+      ],
+      [
+        "Position Editor",
+        "Werbeflächen direkt auf dem Stadionplan belegen."
+      ],
+      [
+        "Partner-CRM",
+        "Kontakte, Pipeline und Kommunikation zusammenführen."
+      ],
+      [
+        "Verträge",
+        "Dokumente aus deinen eigenen Vorlagen erstellen."
+      ],
+      [
+        "Umsetzung",
+        "Vereinbarte Leistungen und Termine im Blick behalten."
+      ],
+      [
+        "LED-Planung",
+        "Gebuchte Sequenzen zu Playlists zusammenstellen."
+      ],
+      [
+        "Rechnungen",
+        "Rechnungen aus den hinterlegten Vertragsdaten erstellen."
+      ],
+      [
+        "Analytics",
+        "Umsatz, Cashflow und Auslastung verstehen."
+      ],
+      [
+        "KI & Rollo",
+        "Erfahre, wie Rollo bei der Arbeit mit Vertragsdaten hilft."
+      ]
+    ],
+    "voicesEyebrow": "Unsere Kunden",
+    "voicesTitle": "Andere Teams.<br/>Die gleichen <span class=\"accent\">Herausforderungen.</span>",
+    "voicesLink": "Mehr Kundenstimmen",
+    "quotes": [
+      {
+        "club": "Volleyball Bundesliga",
+        "quote": "Klare Prozesse, die sich unseren Bedürfnissen anpassen: Mit Paktum sieht jedes Teammitglied sofort, was für es relevant ist.",
+        "person": "Nicolas Nersinger",
+        "role": "Manager Vertrieb und Partnermanagement",
+        "portrait": "Nicolas_Nersinger.webp",
+        "logo": "Volleyball Bundesliga.webp",
+        "source": "references#voices"
+      },
+      {
+        "club": "DEL2",
+        "quote": "Die Automatisierungen sind sehr effizient, weil Dokumente und Rechnungen direkt aus den Vertragsdaten entstehen.",
+        "person": "René Rudorisch",
+        "role": "Geschäftsführer",
+        "portrait": "Rene_Rudorisch.webp",
+        "logo": "DEL2.svg.webp",
+        "source": "references#voices"
+      },
+      {
+        "club": "FC Zürich",
+        "quote": "Mit Paktum haben wir alle Rechte und Leistungen jederzeit im Blick.",
+        "person": "Marc R. Aebli",
+        "role": "Geschäftsführer",
+        "portrait": "FC_Zuerich.svg.webp",
+        "logo": "FC_Zuerich.svg.webp",
+        "source": "blog/fc-zuerich-verwaltet-seine-partnerschaften-mit-paktum"
+      }
+    ],
+    "quoteSource": "Auszüge aus veröffentlichten Kundenstimmen. Vollständige Stimmen und Kontext in den Quellen.",
+    "resultsEyebrow": "Ergebnisse aus der Praxis",
+    "resultsTitle": "Weniger Aufwand.<br/>Mehr <span class=\"accent\">Überblick.</span>",
+    "resultsContext": "Anonymisierte Fallstudie eines Clubs der 2. Bundesliga. Saison 2023/24.",
+    "resultsLink": "Fallstudie und Hintergründe",
+    "stats": [
+      [
+        "40",
+        "min",
+        "Weniger Aufwand pro Vertrag",
+        "Vertragserstellung"
+      ],
+      [
+        "30",
+        "%",
+        "Kürzerer Vertriebsprozess",
+        "Sales-Team"
+      ],
+      [
+        "85",
+        "%",
+        "Weniger Aufwand bei Rechnungen",
+        "Buchhaltung"
+      ]
+    ],
+    "resourcesEyebrow": "Aus dem Paktum Blog",
+    "resourcesTitle": "Gute Partnerschaften beginnen<br/>mit <span class=\"accent\">guten Einblicken.</span>",
+    "allArticles": "Zum Blog",
+    "readArticle": "Artikel lesen",
+    "articles": [
+      [
+        "Praxisleitfaden",
+        "Raus aus Excel. Schritt für Schritt.",
+        "Wie Clubs und Agenturen ihre Sponsoringdaten in ein gemeinsames System bringen.",
+        "sponsorenverwaltung-statt-excel-die-6-schritte-migration-fuer-clubs-agenturen"
+      ],
+      [
+        "Kundengeschichte",
+        "So arbeitet FC Zürich mit Paktum.",
+        "Partner, Rechteinventar und LED-Planung auf einer Plattform.",
+        "fc-zuerich-verwaltet-seine-partnerschaften-mit-paktum"
+      ],
+      [
+        "KI & Rollo",
+        "Wenn aus Verträgen Daten werden.",
+        "Rollo im Einsatz beim SSV Jeddeloh II: vom PDF zu strukturierten Vertragsdaten.",
+        "ssv-jeddeloh-ii-paktum"
+      ]
+    ],
+    "faqEyebrow": "Fragen & Antworten",
+    "faqTitle": "Deine Fragen.<br/><span class=\"accent\">Klare Antworten.</span>",
+    "faqDescription": "Du möchtest wissen, wie Paktum zu deinem Team passt? Wir schauen es uns gemeinsam an.",
+    "talk": "Sprich mit uns",
+    "faq": [
+      [
+        "Für welche Organisationen ist Paktum geeignet?",
+        "Paktum wird von Sportclubs, Vermarktungsagenturen, Ligen und Verbänden genutzt – vom regionalen Club bis zur höchsten Spielklasse. In der Demo schauen wir auf eure Abläufe und Anforderungen.",
+        "references",
+        "Organisationen kennenlernen"
+      ],
+      [
+        "Können wir unsere Excel-Daten übernehmen?",
+        "Unser Team unterstützt dich bei der Übernahme aus Excel und bisherigen Tools. Das Onboarding dauert laut unserem beschriebenen Ablauf bis zu drei bis vier Wochen; den konkreten Umfang stimmen wir gemeinsam ab.",
+        "blog/sponsorenverwaltung-statt-excel-die-6-schritte-migration-fuer-clubs-agenturen",
+        "Migrationsleitfaden lesen"
+      ],
+      [
+        "Wie lässt sich Paktum mit unserer Buchhaltung verbinden?",
+        "Paktum bietet Schnittstellen zur Anbindung bestehender Systeme. Wir klären mit dir, welche Buchhaltungs- und CRM-Tools ihr verwendet und wie sich der Datenaustausch einrichten lässt.",
+        "about",
+        "Integrationen besprechen"
+      ],
+      [
+        "Wie setzt sich der Preis zusammen?",
+        "Das Lizenzmodell richtet sich nach eurem Sponsoringvolumen und dem gewählten Paket. Die aktuellen Pakete und enthaltenen Leistungen findest du auf der Preisseite.",
+        "pricing",
+        "Pakete vergleichen"
+      ],
+      [
+        "Was macht Rollo?",
+        "Rollo ist der KI-Assistent von Paktum. Er unterstützt bei der Datenqualität und beim Erkennen von Datenlücken. Wie er bei einem Kunden bereits Vertragsdaten aus PDFs erfasst, zeigen wir im Blog.",
+        "blog/ssv-jeddeloh-ii-paktum",
+        "Rollo in der Praxis kennenlernen"
+      ]
+    ],
+    "finalTitle": "Mehr Zeit für das,<br/>was <span class=\"accent\">Partnerschaft ausmacht.</span>",
+    "finalDescription": "Entdecke in einer 30-minütigen Demo, wie Paktum euren Sponsoringalltag vereinfachen kann.",
+    "sales": "Kontakt aufnehmen",
+    "footerTagline": "Das Schweizer Taschenmesser für deine Sponsoringverwaltung. Ein Produkt der KLTechnologies GmbH aus Luzern, Schweiz.",
+    "footerHeadings": [
+      "Produkt",
+      "Wissen & Kontakt",
+      "Rechtliches"
+    ],
+    "faqLabel": "Häufige Fragen",
+    "imprint": "Impressum",
+    "close": "Schließen",
+    "tourDescription": "Partner, Rechte, Verträge und Rechnungen in einem Ablauf.",
+    "tourChapters": [
+      "Home und Saisonübersicht",
+      "Rechte und Produktkatalog",
+      "Stadionplan und Werbeflächen",
+      "Partner und CRM",
+      "Verträge und Dokumente",
+      "Aufgaben und Umsetzung",
+      "LED-Planung",
+      "Rechnungen",
+      "Analytics"
+    ],
+    "heroDemo": {
+      "label": "Interaktive Paktum-Demo: Werbebanden im Positionseditor auswählen und verschieben, für einen Partner buchen und den Umsatz in Analytics sehen",
+      "analyticsWindow": "Analytics · Forecast & Buchungen",
+      "editorTitle": "Einseitige Bande",
+      "editorSub": "Stadionplatzierungen · kompletter Plan mit allen Positionen",
+      "tabs": [
+        "Übersicht",
+        "Buchungen",
+        "Stadionplatzierungen",
+        "Aktivierungen"
+      ],
+      "gameDay": "Spieltag",
+      "season": "Saison (alle)",
+      "bookingDate": "Buchungsdatum",
+      "date": "17.07.2026",
+      "status": "Buchungsstatus",
+      "legend": [
+        "Verfügbar",
+        "Reserviert",
+        "Gebucht",
+        "Ausgewählt"
+      ],
+      "availableShort": "verfügbar",
+      "selected": "{n} ausgewählt",
+      "emptySelection": "Verfügbare Banden auswählen",
+      "book": "Für Partner buchen",
+      "toast": "Für Demo-Partner gebucht",
+      "analyticsSub": "Forecast & Buchungen",
+      "seasonShort": "Saison 26/27",
+      "revenue": "Umsatz-Forecast",
+      "invoiced": "Fakturiert",
+      "forecast": "Forecast",
+      "months": [
+        "J",
+        "A",
+        "S",
+        "O",
+        "N",
+        "D",
+        "J",
+        "F",
+        "M",
+        "A",
+        "M",
+        "J"
+      ],
+      "sponsoringTotal": "Sponsoring gesamt",
+      "total": "Gesamt",
+      "contractual": "Vertragswert",
+      "pipeline": "Gewichtete Pipeline",
+      "byProduct": "Buchungen nach Produkt",
+      "products": [
+        "Statische Bande",
+        "Logoplatzierung",
+        "Tickets",
+        "Media"
+      ],
+      "newBooking": "Neue Buchung",
+      "contract": "Vertrag erstellt",
+      "utilisation": "Auslastung"
+    }
+  },
+  "en": {
+    "title": "Paktum: Sponsorship Management Software for Sports Clubs & Agencies",
+    "description": "The Swiss Knife for your sponsorship management. Partners, rights, contracts and invoices on one platform. Built for clubs, agencies, leagues and federations.",
+    "nav": [
+      "Features",
+      "References",
+      "Pricing",
+      "Blog",
+      "About us"
+    ],
+    "demo": "Book a demo",
+    "skip": "Skip to content",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu",
+    "language": "Choose language",
+    "exploreModules": "Explore the modules",
+    "eyebrow": "Built for sport. Made in Switzerland.",
+    "hero": "The Swiss Knife for your <span class=\"accent\">sponsorship management.</span>",
+    "heroDescription": "Partners, rights, contracts and invoices. <strong>Together on one platform</strong>, so you have more time for your partnerships.",
+    "tour": "Watch the product tour",
+    "heroNote": "30 minutes. Your team, your questions, your possibilities.",
+    "productTitle": "Rights & inventory · Position Editor",
+    "trust": "Used by clubs, agencies, leagues and federations",
+    "allReferences": "Explore all references",
+    "problemEyebrow": "Your everyday workflow",
+    "problemTitle": "More partnership.<br/>Less <span class=\"accent\">spreadsheet chaos.</span>",
+    "problems": [
+      [
+        "See your inventory",
+        "Know which rights are available and what is already sold."
+      ],
+      [
+        "Cut the manual work",
+        "Enter contract data once and use it for documents and invoices."
+      ],
+      [
+        "Keep everyone in sync",
+        "Partners, agreements and tasks in one place instead of separate lists."
+      ]
+    ],
+    "overviewEyebrow": "The platform",
+    "overviewTitle": "The whole workflow.<br/><span class=\"accent\">One shared place.</span>",
+    "overviewDescription": "From the first partnership to the final invoice: discover the tools that bring your team together.",
+    "allFeatures": "Explore all features",
+    "tourLength": "72 seconds",
+    "modules": [
+      [
+        "Home",
+        "Key figures, contracts and tasks at a glance."
+      ],
+      [
+        "Product catalog",
+        "Manage rights, products and quotas in one place."
+      ],
+      [
+        "Position Editor",
+        "Allocate advertising spaces on your stadium plan."
+      ],
+      [
+        "Partner CRM",
+        "Bring contacts, pipeline and conversations together."
+      ],
+      [
+        "Contracts",
+        "Create documents from your own templates."
+      ],
+      [
+        "Activation",
+        "Keep track of agreed deliverables and deadlines."
+      ],
+      [
+        "LED planning",
+        "Turn booked sequences into ready-to-use playlists."
+      ],
+      [
+        "Invoicing",
+        "Create invoices from the data in your contracts."
+      ],
+      [
+        "Analytics",
+        "Understand revenue, cash flow and inventory utilisation."
+      ],
+      [
+        "AI & Rollo",
+        "See how Rollo helps teams work with contract data."
+      ]
+    ],
+    "voicesEyebrow": "Our customers",
+    "voicesTitle": "Different teams.<br/>Shared <span class=\"accent\">challenges.</span>",
+    "voicesLink": "More customer stories",
+    "quotes": [
+      {
+        "club": "Volleyball Bundesliga",
+        "quote": "Clear processes that adapt to our needs: with Paktum, every team member sees straight away what is relevant to them.",
+        "person": "Nicolas Nersinger",
+        "role": "Manager Sales & Partner Management",
+        "portrait": "Nicolas_Nersinger.webp",
+        "logo": "Volleyball Bundesliga.webp",
+        "source": "references#voices"
+      },
+      {
+        "club": "DEL2",
+        "quote": "The automations are highly efficient because documents and invoices are generated directly from the contract data.",
+        "person": "René Rudorisch",
+        "role": "Managing Director",
+        "portrait": "Rene_Rudorisch.webp",
+        "logo": "DEL2.svg.webp",
+        "source": "references#voices"
+      },
+      {
+        "club": "FC Zürich",
+        "quote": "With Paktum, we have all rights and deliverables in view at all times.",
+        "person": "Marc R. Aebli",
+        "role": "Managing Director",
+        "portrait": "FC_Zuerich.svg.webp",
+        "logo": "FC_Zuerich.svg.webp",
+        "source": "blog/fc-zuerich-verwaltet-seine-partnerschaften-mit-paktum"
+      }
+    ],
+    "quoteSource": "Excerpts from published customer statements. Follow the sources for the full stories and context.",
+    "resultsEyebrow": "Results in practice",
+    "resultsTitle": "Less admin.<br/>More <span class=\"accent\">clarity.</span>",
+    "resultsContext": "An anonymised case study from a 2. Bundesliga club. Season 2023/24.",
+    "resultsLink": "Read the case study",
+    "stats": [
+      [
+        "40",
+        "min",
+        "Less work per contract",
+        "Contract creation"
+      ],
+      [
+        "30",
+        "%",
+        "Shorter sales process",
+        "Sales team"
+      ],
+      [
+        "85",
+        "%",
+        "Less effort on invoicing",
+        "Accounting"
+      ]
+    ],
+    "resourcesEyebrow": "From the Paktum blog",
+    "resourcesTitle": "Good partnerships start<br/>with <span class=\"accent\">good insights.</span>",
+    "allArticles": "Explore the blog",
+    "readArticle": "Read the article",
+    "articles": [
+      [
+        "Practical guide",
+        "Move beyond Excel. Step by step.",
+        "How clubs and agencies bring their sponsorship data into one shared system.",
+        "sponsorenverwaltung-statt-excel-die-6-schritte-migration-fuer-clubs-agenturen"
+      ],
+      [
+        "Customer story",
+        "How FC Zürich works with Paktum.",
+        "Partners, rights inventory and LED planning on one platform.",
+        "fc-zuerich-verwaltet-seine-partnerschaften-mit-paktum"
+      ],
+      [
+        "AI & Rollo",
+        "Turning contracts into usable data.",
+        "Rollo at SSV Jeddeloh II: from PDF documents to structured contract data.",
+        "ssv-jeddeloh-ii-paktum"
+      ]
+    ],
+    "faqEyebrow": "Questions & answers",
+    "faqTitle": "Your questions.<br/><span class=\"accent\">Clear answers.</span>",
+    "faqDescription": "Wondering how Paktum fits your team? Let’s take a look together.",
+    "talk": "Talk to us",
+    "faq": [
+      [
+        "Who is Paktum built for?",
+        "Paktum is used by sports clubs, marketing agencies, leagues and federations, from regional clubs to the top leagues. In your demo, we’ll look at your team’s workflows and requirements.",
+        "references",
+        "Meet our customers"
+      ],
+      [
+        "Can we bring our existing Excel data?",
+        "Our team helps you migrate from Excel and the tools you use today. Our described onboarding process takes up to three to four weeks; we’ll work out the scope together.",
+        "blog/sponsorenverwaltung-statt-excel-die-6-schritte-migration-fuer-clubs-agenturen",
+        "Read the migration guide"
+      ],
+      [
+        "Can Paktum connect to our accounting software?",
+        "Paktum offers interfaces to connect existing systems. We’ll review the accounting and CRM tools you use and discuss how to set up the data exchange.",
+        "about",
+        "Discuss your integrations"
+      ],
+      [
+        "How is pricing structured?",
+        "The licensing model is based on your sponsorship volume and the package you choose. You’ll find the current packages and included features on our pricing page.",
+        "pricing",
+        "Compare packages"
+      ],
+      [
+        "What does Rollo do?",
+        "Rollo is Paktum’s AI assistant. It helps with data quality and finding gaps in your data. Our blog shows how it has also been used to extract a customer’s contract data from PDFs.",
+        "blog/ssv-jeddeloh-ii-paktum",
+        "Meet Rollo in practice"
+      ]
+    ],
+    "finalTitle": "More time for what<br/><span class=\"accent\">partnerships are about.</span>",
+    "finalDescription": "See how Paktum could simplify your team’s sponsorship workflow in a 30-minute demo.",
+    "sales": "Get in touch",
+    "footerTagline": "The Swiss Knife for your sponsorship management. A product of KLTechnologies GmbH in Luzern, Switzerland.",
+    "footerHeadings": [
+      "Product",
+      "Resources & contact",
+      "Legal"
+    ],
+    "faqLabel": "Common questions",
+    "imprint": "Imprint",
+    "close": "Close",
+    "tourDescription": "Partners, rights, contracts and invoices in one workflow.",
+    "tourChapters": [
+      "Home and season overview",
+      "Rights and product catalog",
+      "Stadium plan and advertising spaces",
+      "Partners and CRM",
+      "Contracts and documents",
+      "Tasks and activation",
+      "LED planning",
+      "Invoicing",
+      "Analytics"
+    ],
+    "heroDemo": {
+      "label": "Interactive Paktum demo: select and move advertising boards in the Position Editor, book them for a partner and see the revenue in Analytics",
+      "analyticsWindow": "Analytics · Forecast & bookings",
+      "editorTitle": "Single-sided board",
+      "editorSub": "Stadium placements · complete plan with all positions",
+      "tabs": [
+        "Overview",
+        "Bookings",
+        "Stadium placements",
+        "Activations"
+      ],
+      "gameDay": "Game day",
+      "season": "Season (all)",
+      "bookingDate": "Booking date",
+      "date": "07/17/2026",
+      "status": "Booking status",
+      "legend": [
+        "Available",
+        "Reserved",
+        "Booked",
+        "Selected"
+      ],
+      "availableShort": "available",
+      "selected": "{n} selected",
+      "emptySelection": "Select available boards",
+      "book": "Book for partner",
+      "toast": "Booked for Demo partner",
+      "analyticsSub": "Forecast & bookings",
+      "seasonShort": "Season 26/27",
+      "revenue": "Revenue forecast",
+      "invoiced": "Invoiced",
+      "forecast": "Forecast",
+      "months": [
+        "J",
+        "A",
+        "S",
+        "O",
+        "N",
+        "D",
+        "J",
+        "F",
+        "M",
+        "A",
+        "M",
+        "J"
+      ],
+      "sponsoringTotal": "Sponsoring total",
+      "total": "Total",
+      "contractual": "Contractual value",
+      "pipeline": "Weighted pipeline",
+      "byProduct": "Bookings by product",
+      "products": [
+        "Static board",
+        "Logo placement",
+        "Tickets",
+        "Media"
+      ],
+      "newBooking": "New booking",
+      "contract": "Contract created",
+      "utilisation": "Utilisation"
+    }
+  },
+  "es": {
+    "title": "Paktum: Software de gestión de patrocinios para clubes y agencias",
+    "description": "La navaja suiza para gestionar tus patrocinios. Partners, derechos, contratos y facturas en una plataforma. Para clubes, agencias, ligas y federaciones.",
+    "nav": [
+      "Funciones",
+      "Referencias",
+      "Precios",
+      "Blog",
+      "Nosotros"
+    ],
+    "demo": "Reserva una demo",
+    "skip": "Saltar al contenido",
+    "menuOpen": "Abrir menú",
+    "menuClose": "Cerrar menú",
+    "language": "Elegir idioma",
+    "exploreModules": "Explorar los módulos",
+    "eyebrow": "Creado para el deporte. Hecho en Suiza.",
+    "hero": "La navaja suiza para <span class=\"accent\">gestionar tus patrocinios.</span>",
+    "heroDescription": "Partners, derechos, contratos y facturas. <strong>Todo en una plataforma</strong>, para dedicar más tiempo a tus alianzas.",
+    "tour": "Ver el producto",
+    "heroNote": "30 minutos. Tu equipo, tus preguntas, tus posibilidades.",
+    "productTitle": "Derechos e inventario · Editor de posiciones",
+    "trust": "Utilizado por clubes, agencias, ligas y federaciones",
+    "allReferences": "Ver todas las referencias",
+    "problemEyebrow": "Tu día a día",
+    "problemTitle": "Más alianzas.<br/>Menos <span class=\"accent\">caos en Excel.</span>",
+    "problems": [
+      [
+        "Controla tu inventario",
+        "Conoce qué derechos están disponibles y cuáles ya se han vendido."
+      ],
+      [
+        "Reduce el trabajo manual",
+        "Registra los datos del contrato una vez y úsalos en documentos y facturas."
+      ],
+      [
+        "Trabaja en equipo",
+        "Partners, acuerdos y tareas en un lugar, en vez de listas separadas."
+      ]
+    ],
+    "overviewEyebrow": "La plataforma",
+    "overviewTitle": "Todo el proceso.<br/><span class=\"accent\">Un mismo lugar.</span>",
+    "overviewDescription": "De la primera alianza a la última factura: descubre las herramientas que conectan a tu equipo.",
+    "allFeatures": "Ver todas las funciones",
+    "tourLength": "72 segundos",
+    "modules": [
+      [
+        "Inicio",
+        "Indicadores, contratos y tareas de un vistazo."
+      ],
+      [
+        "Catálogo",
+        "Gestiona derechos, productos y cupos en un lugar."
+      ],
+      [
+        "Editor de posiciones",
+        "Asigna espacios publicitarios en el plano del estadio."
+      ],
+      [
+        "CRM de partners",
+        "Conecta contactos, oportunidades y conversaciones."
+      ],
+      [
+        "Contratos",
+        "Crea documentos con tus propias plantillas."
+      ],
+      [
+        "Activación",
+        "Controla los compromisos adquiridos y sus plazos."
+      ],
+      [
+        "Planificación LED",
+        "Convierte las secuencias contratadas en listas de reproducción."
+      ],
+      [
+        "Facturación",
+        "Genera facturas con los datos de tus contratos."
+      ],
+      [
+        "Analítica",
+        "Comprende los ingresos, la tesorería y la ocupación."
+      ],
+      [
+        "IA y Rollo",
+        "Descubre cómo ayuda Rollo a trabajar con datos de contratos."
+      ]
+    ],
+    "voicesEyebrow": "Nuestros clientes",
+    "voicesTitle": "Distintos equipos.<br/>Los mismos <span class=\"accent\">retos.</span>",
+    "voicesLink": "Más historias de clientes",
+    "quotes": [
+      {
+        "club": "Volleyball Bundesliga",
+        "quote": "Procesos claros que se adaptan a nuestras necesidades: con Paktum, cada miembro del equipo ve al instante lo que le interesa.",
+        "person": "Nicolas Nersinger",
+        "role": "Responsable de ventas y gestión de partners",
+        "portrait": "Nicolas_Nersinger.webp",
+        "logo": "Volleyball Bundesliga.webp",
+        "source": "references#voices"
+      },
+      {
+        "club": "DEL2",
+        "quote": "Las automatizaciones son muy eficientes porque los documentos y las facturas se generan directamente a partir de los datos del contrato.",
+        "person": "René Rudorisch",
+        "role": "Director general",
+        "portrait": "Rene_Rudorisch.webp",
+        "logo": "DEL2.svg.webp",
+        "source": "references#voices"
+      },
+      {
+        "club": "FC Zürich",
+        "quote": "Con Paktum tenemos a la vista en todo momento todos los derechos y prestaciones.",
+        "person": "Marc R. Aebli",
+        "role": "Director general",
+        "portrait": "FC_Zuerich.svg.webp",
+        "logo": "FC_Zuerich.svg.webp",
+        "source": "blog/fc-zuerich-verwaltet-seine-partnerschaften-mit-paktum"
+      }
+    ],
+    "quoteSource": "Extractos de testimonios publicados. Consulta las fuentes para leer las historias completas y su contexto.",
+    "resultsEyebrow": "Resultados en la práctica",
+    "resultsTitle": "Menos gestión.<br/>Más <span class=\"accent\">claridad.</span>",
+    "resultsContext": "Caso anonimizado de un club de la 2. Bundesliga. Temporada 2023/24.",
+    "resultsLink": "Leer el caso completo",
+    "stats": [
+      [
+        "40",
+        "min",
+        "Menos trabajo por contrato",
+        "Creación de contratos"
+      ],
+      [
+        "30",
+        "%",
+        "Proceso comercial más corto",
+        "Equipo comercial"
+      ],
+      [
+        "85",
+        "%",
+        "Menos trabajo en facturación",
+        "Contabilidad"
+      ]
+    ],
+    "resourcesEyebrow": "Del blog de Paktum",
+    "resourcesTitle": "Las buenas alianzas empiezan<br/>con <span class=\"accent\">buenas ideas.</span>",
+    "allArticles": "Explorar el blog",
+    "readArticle": "Leer el artículo",
+    "articles": [
+      [
+        "Guía práctica",
+        "Deja atrás Excel. Paso a paso.",
+        "Cómo unificar los datos de patrocinio de clubes y agencias en un mismo sistema.",
+        "sponsorenverwaltung-statt-excel-die-6-schritte-migration-fuer-clubs-agenturen"
+      ],
+      [
+        "Historia de cliente",
+        "Así trabaja el FC Zürich con Paktum.",
+        "Partners, inventario de derechos y planificación LED en una plataforma.",
+        "fc-zuerich-verwaltet-seine-partnerschaften-mit-paktum"
+      ],
+      [
+        "IA y Rollo",
+        "De contratos a datos útiles.",
+        "Rollo en el SSV Jeddeloh II: de documentos PDF a datos de contratos estructurados.",
+        "ssv-jeddeloh-ii-paktum"
+      ]
+    ],
+    "faqEyebrow": "Preguntas y respuestas",
+    "faqTitle": "Tus preguntas.<br/><span class=\"accent\">Respuestas claras.</span>",
+    "faqDescription": "¿Quieres saber cómo encaja Paktum en tu equipo? Lo vemos juntos.",
+    "talk": "Hablemos",
+    "faq": [
+      [
+        "¿Para qué organizaciones está pensado Paktum?",
+        "Paktum lo utilizan clubes deportivos, agencias de marketing, ligas y federaciones, desde clubes regionales hasta equipos de primera división. En la demo revisamos los procesos y las necesidades de tu equipo.",
+        "references",
+        "Conoce a nuestros clientes"
+      ],
+      [
+        "¿Podemos importar nuestros datos de Excel?",
+        "Nuestro equipo te ayuda a migrar desde Excel y las herramientas que utilizas actualmente. El proceso de incorporación descrito dura hasta tres o cuatro semanas; acordamos contigo el alcance concreto.",
+        "blog/sponsorenverwaltung-statt-excel-die-6-schritte-migration-fuer-clubs-agenturen",
+        "Leer la guía de migración"
+      ],
+      [
+        "¿Se conecta con nuestro programa de contabilidad?",
+        "Paktum dispone de interfaces para conectar sistemas existentes. Revisamos las herramientas de contabilidad y CRM que utilizáis y cómo configurar el intercambio de datos.",
+        "about",
+        "Consultar las integraciones"
+      ],
+      [
+        "¿Cómo se calcula el precio?",
+        "El modelo de licencia depende de vuestro volumen de patrocinio y del paquete elegido. En la página de precios encontrarás los planes actuales y las funciones incluidas.",
+        "pricing",
+        "Comparar planes"
+      ],
+      [
+        "¿Qué hace Rollo?",
+        "Rollo es el asistente de IA de Paktum. Ayuda con la calidad de los datos y la detección de información que falta. En el blog mostramos cómo se ha utilizado también para extraer datos de los contratos PDF de un cliente.",
+        "blog/ssv-jeddeloh-ii-paktum",
+        "Conocer a Rollo en acción"
+      ]
+    ],
+    "finalTitle": "Más tiempo para lo que<br/><span class=\"accent\">hace crecer tus alianzas.</span>",
+    "finalDescription": "Descubre en una demo de 30 minutos cómo Paktum puede simplificar la gestión de patrocinios de tu equipo.",
+    "sales": "Contacta con nosotros",
+    "footerTagline": "La navaja suiza para gestionar tus patrocinios. Un producto de KLTechnologies GmbH, en Lucerna, Suiza.",
+    "footerHeadings": [
+      "Producto",
+      "Recursos y contacto",
+      "Legal"
+    ],
+    "faqLabel": "Preguntas frecuentes",
+    "imprint": "Aviso legal",
+    "close": "Cerrar",
+    "tourDescription": "Partners, derechos, contratos y facturas en un mismo proceso.",
+    "tourChapters": [
+      "Inicio y resumen de temporada",
+      "Derechos y catálogo",
+      "Plano del estadio y espacios publicitarios",
+      "Partners y CRM",
+      "Contratos y documentos",
+      "Tareas y activación",
+      "Planificación LED",
+      "Facturación",
+      "Analítica"
+    ],
+    "heroDemo": {
+      "label": "Demo interactiva de Paktum: selecciona y mueve vallas publicitarias en el editor de posiciones, resérvalas para un partner y mira los ingresos en Analytics",
+      "analyticsWindow": "Analytics · Previsión y reservas",
+      "editorTitle": "Valla de una cara",
+      "editorSub": "Ubicaciones en estadio · plano completo con todas las posiciones",
+      "tabs": [
+        "Resumen",
+        "Reservas",
+        "Ubicaciones en estadio",
+        "Activaciones"
+      ],
+      "gameDay": "Partido",
+      "season": "Temporada (todos)",
+      "bookingDate": "Fecha de reserva",
+      "date": "17.07.2026",
+      "status": "Estado de reserva",
+      "legend": [
+        "Disponible",
+        "Bloqueado",
+        "Reservado",
+        "Seleccionado"
+      ],
+      "availableShort": "disponible",
+      "selected": "{n} seleccionadas",
+      "emptySelection": "Selecciona vallas disponibles",
+      "book": "Reservar para partner",
+      "toast": "Reservado para partner demo",
+      "analyticsSub": "Previsión y reservas",
+      "seasonShort": "Temporada 26/27",
+      "revenue": "Previsión de ingresos",
+      "invoiced": "Facturado",
+      "forecast": "Previsión",
+      "months": [
+        "J",
+        "A",
+        "S",
+        "O",
+        "N",
+        "D",
+        "E",
+        "F",
+        "M",
+        "A",
+        "M",
+        "J"
+      ],
+      "sponsoringTotal": "Patrocinio total",
+      "total": "Total",
+      "contractual": "Valor contractual",
+      "pipeline": "Pipeline ponderado",
+      "byProduct": "Reservas por producto",
+      "products": [
+        "Valla estática",
+        "Colocación de logo",
+        "Entradas",
+        "Medios"
+      ],
+      "newBooking": "Nueva reserva",
+      "contract": "Contrato creado",
+      "utilisation": "Ocupación"
+    }
+  }
+}

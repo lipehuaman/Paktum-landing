@@ -1,0 +1,461 @@
+{
+  "de": {
+    "sectionTag": "Die Module im Detail",
+    "sectionTitle": "Neun Module. <span class=\"accent\">Eine Plattform.</span>",
+    "progressLabel": "Module",
+    "voiceLabel": "Kundenstimme",
+    "modules": [
+      {
+        "slug": "home",
+        "name": "Home",
+        "eyebrow": "Modul 01",
+        "heading": "Alles Wichtige.<br/>Auf einen <span class=\"accent\">Blick</span>.",
+        "subtitle": "Home &amp; KI-Assistent Rollo",
+        "intro": "Die Homeview zeigt dir sofort, wo euer Sponsoring steht: Gesamtsponsoring, Deal-Forecast, Partner und ausgebuchtes Inventar. Neue Verträge erscheinen direkt darunter – mit Preis, Rechnungsfortschritt und Laufzeit. Und Rollo, dein KI-Assistent, prüft im Hintergrund die Datenqualität und zeigt dir genau, was fehlt.",
+        "bullets": [
+          "Saison-KPIs zu Sponsoring, Forecast und Inventar",
+          "Neue Verträge mit Rechnungsfortschritt und Laufzeit",
+          "Rollo erkennt Datenlücken und schlägt die Lösung vor"
+        ],
+        "video": "/videos/features/01-home-de.mp4",
+        "videoLabel": "Produktvideo: Home"
+      },
+      {
+        "slug": "product-catalog",
+        "name": "Produktkatalog",
+        "eyebrow": "Modul 02",
+        "heading": "Jede Fläche<br/>ein <span class=\"accent\">Produkt</span>.",
+        "subtitle": "Rechte- &amp; Inventarmanagement",
+        "intro": "Jedes vermarktbare Recht lebt in einem zentralen Produktkatalog – von der einseitigen Bande bis zur Naming-Right-Fläche. Statt Excel-Tabellen und verstreuten Plänen siehst du auf einen Blick, was frei, reserviert oder verkauft ist. Produktgruppen bündeln ähnliche Rechte, Spieltagskontingente hängen direkt am Spielplan.",
+        "bullets": [
+          "Saison- und Abrufkontingente mit Menge, Einheit und Preis",
+          "Produktgruppen mit Auslastung pro Saison und Spieltag",
+          "Spieltagskontingente direkt am Spielplan"
+        ],
+        "video": "/videos/features/02-catalog-de.mp4",
+        "videoLabel": "Produktvideo: Produktkatalog"
+      },
+      {
+        "slug": "position-editor",
+        "name": "Position Editor",
+        "eyebrow": "Modul 03",
+        "heading": "Jede Position.<br/>Direkt im <span class=\"accent\">Stadionplan</span>.",
+        "subtitle": "Position Editor",
+        "intro": "Der Stadionplan zeigt jede Werbeposition – nach Produkt oder nach Buchungsstatus, für jedes Buchungsdatum und jeden Spieltag. Neue Flächen entstehen direkt im Editor: Stadionplan, Trikot oder Hospitality-Bereich – gezeichnet, einem Produkt zugewiesen und sofort verkaufsbereit.",
+        "bullets": [
+          "Stadionplan nach Produkt oder Buchungsstatus",
+          "Visuelle Editoren für Stadion, Trikot und Hospitality",
+          "Neue Positionen zeichnen und direkt einem Produkt zuweisen"
+        ],
+        "video": "/videos/features/03-editor-de.mp4",
+        "videoLabel": "Produktvideo: Position Editor"
+      },
+      {
+        "slug": "partner-crm",
+        "name": "Partner-CRM",
+        "eyebrow": "Modul 04",
+        "heading": "Alle Partner.<br/>Ein <span class=\"accent\">Verlauf</span>.",
+        "subtitle": "Partner-CRM",
+        "intro": "Partner leben im integrierten CRM – oder werden per Schnittstelle aus eurem bestehenden System übernommen. Kontaktpersonen, Kommunikation und Dokumente sind direkt mit dem Partnerkonto verknüpft. So sieht jeder im Team sofort den vollständigen Verlauf, ganz ohne Rückfragen im Postfach eines Kollegen.",
+        "bullets": [
+          "Natives CRM oder Anbindung an euer bestehendes System",
+          "Kontaktpersonen mit verknüpftem Mailkonto",
+          "Dokumentenarchiv pro Partner"
+        ],
+        "video": "/videos/features/04-partners-de.mp4",
+        "videoLabel": "Produktvideo: Partner-CRM"
+      },
+      {
+        "slug": "contracts",
+        "name": "Verträge",
+        "eyebrow": "Modul 05",
+        "heading": "Verträge und Dokumente<br/>in <span class=\"accent\">Sekunden</span>.",
+        "subtitle": "Vertrags- &amp; Dokumentenmanagement",
+        "intro": "Ein Vertrag bündelt Ligakonditionen, Umsetzungsaufgaben und die gebuchten Rechte samt Stadionpositionen. Auf Basis eurer eigenen Vorlagen generiert Paktum das fertige Vertragsdokument automatisch – inklusive Barter-Deals und Sachleistungen, die sonst leicht untergehen.",
+        "bullets": [
+          "Automatische Dokumentengenerierung aus euren Templates",
+          "Ligakonditionen und Forecasts pro Vertrag",
+          "Direkte Verknüpfung zu Umsetzungsaufgaben"
+        ],
+        "video": "/videos/features/05-contracts-de.mp4",
+        "videoLabel": "Produktvideo: Verträge"
+      },
+      {
+        "slug": "activation",
+        "name": "Umsetzung",
+        "eyebrow": "Modul 06",
+        "heading": "Jede Aufgabe.<br/>Ein <span class=\"accent\">Termin</span>.",
+        "subtitle": "Umsetzung &amp; Kalender",
+        "intro": "Jede Umsetzungsaufgabe hat ein Fälligkeitsdatum, eine verantwortliche Person und einen klaren Bezug – zum Vertrag, Partner oder Spieltag. Nichts geht mehr in einer Tabelle unter, und niemand muss zweimal nachfragen, wer wofür zuständig ist.",
+        "bullets": [
+          "Aufgaben mit Frist, Owner und Bezug",
+          "Listen- und Kalenderansicht parallel",
+          "Kalender-Abo für Outlook, Google und Apple"
+        ],
+        "video": "/videos/features/06-activation-de.mp4",
+        "videoLabel": "Produktvideo: Umsetzung"
+      },
+      {
+        "slug": "led-planner",
+        "name": "LED-Planung",
+        "eyebrow": "Modul 07",
+        "heading": "Jede LED-Fläche<br/>perfekt <span class=\"accent\">getaktet</span>.",
+        "subtitle": "LED-Planung · Venue Setup",
+        "intro": "Konfiguriere LED-Flächen, Abschnitte und Spielphasen einmalig – Paktum stellt daraus für jeden Spieltag präzise, konfliktfreie Playlists zusammen. Ob Vollrotation oder Einzelsequenz: doppelte Buchungen sind ausgeschlossen.",
+        "bullets": [
+          "Individuelle LED-Flächen und Layouts je Venue",
+          "Sekundengenaue Playlists für jede Spielphase",
+          "Gebuchte Sponsoringpartner direkt zuweisen"
+        ],
+        "video": "/videos/features/07-led-de.mp4",
+        "videoLabel": "Produktvideo: LED-Planung"
+      },
+      {
+        "slug": "invoicing",
+        "name": "Rechnungen",
+        "eyebrow": "Modul 08",
+        "heading": "Rechnungsstellung<br/>von ganz <span class=\"accent\">allein</span>.",
+        "subtitle": "Rechnungs- &amp; Controlling-Modul",
+        "intro": "Rechnungen entstehen automatisch zur Fälligkeit – direkt aus Paktum oder über eine Schnittstelle zu eurer Buchhaltungssoftware. Controlling und Forecasts laufen in Echtzeit mit, ohne dass jemand manuell nachrechnen muss.",
+        "bullets": [
+          "Automatische Rechnungsstellung zur Fälligkeit",
+          "Schnittstelle zu gängiger Buchhaltungssoftware",
+          "Echtzeit-Controlling und Forecasts"
+        ],
+        "video": "/videos/features/08-invoices-de.mp4",
+        "videoLabel": "Produktvideo: Rechnungen"
+      },
+      {
+        "slug": "analytics",
+        "name": "Analytics",
+        "eyebrow": "Modul 09",
+        "heading": "Zahlen, die<br/>für sich <span class=\"accent\">sprechen</span>.",
+        "subtitle": "Analytics &amp; Reporting",
+        "intro": "Ein Überblick über Finanzen, Cash-Flow und Produktauslastung – für den Vorstand genauso wie für die Spieltagsorganisation. Jede Rolle sieht genau die Daten, die für sie zählen, statt eines Exports, den am Ende doch niemand liest.",
+        "bullets": [
+          "Umsatzprognosen und Cash-Flow-Übersicht",
+          "Auslastung pro Produkt und Saison",
+          "Rollenbasierte Zugriffsrechte auf Kennzahlen"
+        ],
+        "video": "/videos/features/09-analytics-de.mp4",
+        "videoLabel": "Produktvideo: Analytics"
+      }
+    ],
+    "voice": {
+      "quote": "Mit Paktum schaffen wir eine zentrale, transparente Grundlage für die Steuerung unserer Vermarktungsaktivitäten und Partnerschaften. Wir reduzieren manuelle Prozesse, vermeiden Doppelarbeiten und entlasten unsere Verwaltung durch die automatisierte Rechnungserstellung mit direkter Schnittstelle zur Buchhaltung. Gleichzeitig verbessern wir die Abstimmung mit unserer externen Vermarktungsagentur, schaffen klare Verantwortlichkeiten und gewinnen <em>mehr Effizienz, Transparenz und Kontrolle</em> über unsere Vermarktungserlöse.",
+      "person": "Thomas Rohmer",
+      "role": "Leiter Geschäftsstelle",
+      "club": "SSV Ulm 1846",
+      "sport": "Fussball",
+      "logo": "SSV_Ulm_1846_Fussball.svg.webp",
+      "photo": "Thomas_Rohmer.webp",
+      "link": "Mehr Kundenstimmen"
+    }
+  },
+  "en": {
+    "sectionTag": "The Modules in Detail",
+    "sectionTitle": "Nine Modules. <span class=\"accent\">One Platform.</span>",
+    "progressLabel": "Modules",
+    "voiceLabel": "Customer voice",
+    "modules": [
+      {
+        "slug": "home",
+        "name": "Home",
+        "eyebrow": "Module 01",
+        "heading": "Everything that matters.<br/>At a <span class=\"accent\">glance</span>.",
+        "subtitle": "Home &amp; AI Assistant Rollo",
+        "intro": "The home view shows you right away where your sponsoring stands: total sponsoring, deal forecast, partners and booked-out inventory. New contracts appear right below – with price, invoice progress and end date. And Rollo, your AI assistant, checks data quality in the background and shows you exactly what's missing.",
+        "bullets": [
+          "Season KPIs for sponsoring, forecast and inventory",
+          "New contracts with invoice progress and end date",
+          "Rollo spots data gaps and suggests the fix"
+        ],
+        "video": "/videos/features/01-home-en.mp4",
+        "videoLabel": "Product video: Home"
+      },
+      {
+        "slug": "product-catalog",
+        "name": "Product Catalog",
+        "eyebrow": "Module 02",
+        "heading": "Every space,<br/>one <span class=\"accent\">product</span>.",
+        "subtitle": "Rights &amp; Inventory Management",
+        "intro": "Every marketable right lives in one central product catalog – from the single-sided board to the naming-rights space. Instead of spreadsheets and scattered plans, you see at a glance what's free, reserved or sold. Product groups bundle similar rights, and game day quotas are tied straight to the fixture list.",
+        "bullets": [
+          "Season and call-off quotas with quantity, unit and price",
+          "Product groups with utilization per season and game day",
+          "Game day quotas tied to the fixture list"
+        ],
+        "video": "/videos/features/02-catalog-en.mp4",
+        "videoLabel": "Product video: Product Catalog"
+      },
+      {
+        "slug": "position-editor",
+        "name": "Position Editor",
+        "eyebrow": "Module 03",
+        "heading": "Every position.<br/>Right on the <span class=\"accent\">stadium plan</span>.",
+        "subtitle": "Position Editor",
+        "intro": "The stadium plan shows every advertising position – by product or by booking status, for any booking date and game day. New spaces are created right in the editor: stadium plan, jersey or hospitality area – drawn, assigned to a product and ready to sell instantly.",
+        "bullets": [
+          "Stadium plan by product or booking status",
+          "Visual editors for stadium, jersey and hospitality",
+          "Draw new positions and assign them to a product"
+        ],
+        "video": "/videos/features/03-editor-en.mp4",
+        "videoLabel": "Product video: Position Editor"
+      },
+      {
+        "slug": "partner-crm",
+        "name": "Partner CRM",
+        "eyebrow": "Module 04",
+        "heading": "Every partner.<br/>One <span class=\"accent\">history</span>.",
+        "subtitle": "Partner CRM",
+        "intro": "Partners live in the built-in CRM – or are pulled in via an interface from your existing system. Contact persons, communication and documents are linked directly to the partner account. So everyone on the team sees the full history instantly, with no need to dig through a colleague's inbox.",
+        "bullets": [
+          "Native CRM or a connection to your existing system",
+          "Contact persons with a linked mail account",
+          "Document archive per partner"
+        ],
+        "video": "/videos/features/04-partners-en.mp4",
+        "videoLabel": "Product video: Partner CRM"
+      },
+      {
+        "slug": "contracts",
+        "name": "Contracts",
+        "eyebrow": "Module 05",
+        "heading": "Contracts and documents<br/>in <span class=\"accent\">seconds</span>.",
+        "subtitle": "Contract &amp; Document Management",
+        "intro": "A contract bundles league conditions, activation tasks and the booked rights, including stadium positions. Based on your own templates, Paktum generates the finished contract document automatically – barter deals and in-kind benefits included, the things that usually slip through the cracks.",
+        "bullets": [
+          "Automatic document generation from your templates",
+          "League conditions and forecasts per contract",
+          "Direct link to activation tasks"
+        ],
+        "video": "/videos/features/05-contracts-en.mp4",
+        "videoLabel": "Product video: Contracts"
+      },
+      {
+        "slug": "activation",
+        "name": "Activation",
+        "eyebrow": "Module 06",
+        "heading": "Every task.<br/>One <span class=\"accent\">deadline</span>.",
+        "subtitle": "Activation &amp; Calendar",
+        "intro": "Every activation task has a due date, an owner and a clear reference – to a contract, a partner or a matchday. Nothing gets lost in a spreadsheet anymore, and nobody has to ask twice who's responsible for what.",
+        "bullets": [
+          "Tasks with deadline, owner and reference",
+          "List and calendar view side by side",
+          "Calendar subscription for Outlook, Google and Apple"
+        ],
+        "video": "/videos/features/06-activation-en.mp4",
+        "videoLabel": "Product video: Activation"
+      },
+      {
+        "slug": "led-planner",
+        "name": "LED Planning",
+        "eyebrow": "Module 07",
+        "heading": "Every LED surface,<br/>perfectly <span class=\"accent\">timed</span>.",
+        "subtitle": "LED Planning · Venue Setup",
+        "intro": "Configure LED surfaces, sections and game phases once – Paktum assembles precise, conflict-free playlists for every matchday from that. Full rotation or single sequences, double bookings simply can't happen.",
+        "bullets": [
+          "Custom LED surfaces and layouts per venue",
+          "Second-accurate playlists for every game phase",
+          "Assign booked sponsoring partners directly"
+        ],
+        "video": "/videos/features/07-led-en.mp4",
+        "videoLabel": "Product video: LED Planning"
+      },
+      {
+        "slug": "invoicing",
+        "name": "Invoicing",
+        "eyebrow": "Module 08",
+        "heading": "Invoicing,<br/>all by <span class=\"accent\">itself</span>.",
+        "subtitle": "Invoicing &amp; Controlling Module",
+        "intro": "Invoices are generated automatically on their due date – directly from Paktum or via an interface to your accounting software. Controlling and forecasts run in real time alongside, with nobody doing the math by hand.",
+        "bullets": [
+          "Automatic invoicing on the due date",
+          "Interface to common accounting software",
+          "Real-time controlling and forecasts"
+        ],
+        "video": "/videos/features/08-invoices-en.mp4",
+        "videoLabel": "Product video: Invoicing"
+      },
+      {
+        "slug": "analytics",
+        "name": "Analytics",
+        "eyebrow": "Module 09",
+        "heading": "Numbers that<br/>speak for <span class=\"accent\">themselves</span>.",
+        "subtitle": "Analytics &amp; Reporting",
+        "intro": "An overview of finances, cash flow and product utilization – for the board just as much as for matchday operations. Every role sees exactly the data that matters to them, instead of an export nobody actually reads.",
+        "bullets": [
+          "Revenue forecasts and cash-flow overview",
+          "Utilization per product and season",
+          "Role-based access to key figures"
+        ],
+        "video": "/videos/features/09-analytics-en.mp4",
+        "videoLabel": "Product video: Analytics"
+      }
+    ],
+    "voice": {
+      "quote": "With Paktum, we have a central, transparent foundation for managing our marketing activities and partnerships. We reduce manual processes, avoid duplicate work and take the load off our administration through automated invoicing with a direct interface to our accounting. At the same time, we improve coordination with our external marketing agency, create clear responsibilities and gain <em>more efficiency, transparency and control</em> over our marketing revenue.",
+      "person": "Thomas Rohmer",
+      "role": "Head of Club Administration",
+      "club": "SSV Ulm 1846",
+      "sport": "Football",
+      "logo": "SSV_Ulm_1846_Fussball.svg.webp",
+      "photo": "Thomas_Rohmer.webp",
+      "link": "More customer stories"
+    }
+  },
+  "es": {
+    "sectionTag": "Los módulos en detalle",
+    "sectionTitle": "Nueve módulos. <span class=\"accent\">Una plataforma.</span>",
+    "progressLabel": "Módulos",
+    "voiceLabel": "Voz de cliente",
+    "modules": [
+      {
+        "slug": "home",
+        "name": "Home",
+        "eyebrow": "Módulo 01",
+        "heading": "Todo lo importante.<br/>De un <span class=\"accent\">vistazo</span>.",
+        "subtitle": "Home y asistente de IA Rollo",
+        "intro": "La vista Home te muestra al instante dónde está vuestro patrocinio: patrocinio total, previsión de deals, partners e inventario agotado. Justo debajo aparecen los contratos nuevos, con precio, progreso de facturación y fecha de fin. Y Rollo, tu asistente de IA, revisa la calidad de los datos en segundo plano y te muestra exactamente qué falta.",
+        "bullets": [
+          "KPIs de temporada: patrocinio, previsión e inventario",
+          "Contratos nuevos con progreso de facturación y fecha de fin",
+          "Rollo detecta datos incompletos y sugiere la solución"
+        ],
+        "video": "/videos/features/01-home-es.mp4",
+        "videoLabel": "Vídeo del producto: Home"
+      },
+      {
+        "slug": "product-catalog",
+        "name": "Catálogo",
+        "eyebrow": "Módulo 02",
+        "heading": "Cada espacio,<br/>un <span class=\"accent\">producto</span>.",
+        "subtitle": "Gestión de derechos e inventario",
+        "intro": "Cada derecho comercializable vive en un catálogo de productos centralizado, desde la valla publicitaria de una cara hasta el espacio de naming rights. En lugar de hojas de cálculo y planos dispersos, ves de un vistazo qué está libre, reservado o vendido. Los grupos de productos reúnen derechos similares y los cupos por partido van ligados al calendario.",
+        "bullets": [
+          "Cupos por temporada o bajo demanda, con cantidad, unidad y precio",
+          "Grupos de productos con ocupación por temporada y partido",
+          "Cupos por partido ligados al calendario de partidos"
+        ],
+        "video": "/videos/features/02-catalog-es.mp4",
+        "videoLabel": "Vídeo del producto: Catálogo"
+      },
+      {
+        "slug": "position-editor",
+        "name": "Position Editor",
+        "eyebrow": "Módulo 03",
+        "heading": "Cada posición,<br/>sobre el <span class=\"accent\">plano</span>.",
+        "subtitle": "Position Editor",
+        "intro": "El plano del estadio muestra cada posición publicitaria, por producto o por estado de reserva, para cualquier fecha y partido. Los nuevos espacios se crean directamente en el editor: plano del estadio, camiseta o zona de hospitality, dibujados, asignados a un producto y listos para vender al instante.",
+        "bullets": [
+          "Plano del estadio por producto o estado de reserva",
+          "Editores visuales para estadio, camiseta y hospitality",
+          "Dibuja nuevas posiciones y asígnalas a un producto"
+        ],
+        "video": "/videos/features/03-editor-es.mp4",
+        "videoLabel": "Vídeo del producto: Position Editor"
+      },
+      {
+        "slug": "partner-crm",
+        "name": "CRM de partners",
+        "eyebrow": "Módulo 04",
+        "heading": "Todos los partners.<br/>Un solo <span class=\"accent\">historial</span>.",
+        "subtitle": "CRM de partners",
+        "intro": "Los partners viven en el CRM integrado, o se sincronizan mediante una interfaz con vuestro sistema actual. Personas de contacto, comunicación y documentos quedan vinculados directamente a la cuenta del partner. Así todo el equipo ve al instante el historial completo, sin tener que rebuscar en el correo de un compañero.",
+        "bullets": [
+          "CRM nativo o conexión con vuestro sistema actual",
+          "Personas de contacto con cuenta de correo vinculada",
+          "Archivo de documentos por partner"
+        ],
+        "video": "/videos/features/04-partners-es.mp4",
+        "videoLabel": "Vídeo del producto: CRM de partners"
+      },
+      {
+        "slug": "contracts",
+        "name": "Contratos",
+        "eyebrow": "Módulo 05",
+        "heading": "Contratos y documentos<br/>en <span class=\"accent\">segundos</span>.",
+        "subtitle": "Gestión de contratos y documentos",
+        "intro": "Un contrato agrupa las condiciones de la liga, las tareas de ejecución y los derechos contratados, incluidas las posiciones del estadio. A partir de vuestras propias plantillas, Paktum genera el documento contractual de forma automática, incluidos los barter deals y las contraprestaciones en especie que normalmente se escapan.",
+        "bullets": [
+          "Generación automática de documentos a partir de vuestras plantillas",
+          "Condiciones de liga y forecasts por contrato",
+          "Vínculo directo con las tareas de ejecución"
+        ],
+        "video": "/videos/features/05-contracts-es.mp4",
+        "videoLabel": "Vídeo del producto: Contratos"
+      },
+      {
+        "slug": "activation",
+        "name": "Ejecución",
+        "eyebrow": "Módulo 06",
+        "heading": "Cada tarea.<br/>Una <span class=\"accent\">fecha límite</span>.",
+        "subtitle": "Ejecución y calendario",
+        "intro": "Cada tarea de ejecución tiene una fecha límite, una persona responsable y una referencia clara: a un contrato, un partner o un día de partido. Nada se pierde ya en una hoja de cálculo, y nadie tiene que preguntar dos veces quién es responsable de qué.",
+        "bullets": [
+          "Tareas con plazo, responsable y referencia",
+          "Vista de lista y de calendario en paralelo",
+          "Suscripción de calendario para Outlook, Google y Apple"
+        ],
+        "video": "/videos/features/06-activation-es.mp4",
+        "videoLabel": "Vídeo del producto: Ejecución"
+      },
+      {
+        "slug": "led-planner",
+        "name": "Planificación LED",
+        "eyebrow": "Módulo 07",
+        "heading": "Cada superficie LED,<br/>perfectamente <span class=\"accent\">sincronizada</span>.",
+        "subtitle": "Planificación LED · Configuración del recinto",
+        "intro": "Configura superficies LED, secciones y fases del partido una sola vez – Paktum monta playlists precisas y sin conflictos para cada jornada a partir de eso. Rotación completa o secuencias individuales: las dobles reservas simplemente no pueden ocurrir.",
+        "bullets": [
+          "Superficies y disposiciones LED propias por recinto",
+          "Playlists al segundo para cada fase del partido",
+          "Asigna directamente los partners patrocinadores contratados"
+        ],
+        "video": "/videos/features/07-led-es.mp4",
+        "videoLabel": "Vídeo del producto: Planificación LED"
+      },
+      {
+        "slug": "invoicing",
+        "name": "Facturación",
+        "eyebrow": "Módulo 08",
+        "heading": "Facturación,<br/>completamente <span class=\"accent\">automática</span>.",
+        "subtitle": "Módulo de facturación y controlling",
+        "intro": "Las facturas se generan automáticamente al vencimiento, directamente desde Paktum o mediante una interfaz con vuestro software de contabilidad. El controlling y los forecasts corren en tiempo real en paralelo, sin que nadie tenga que calcular nada a mano.",
+        "bullets": [
+          "Facturación automática al vencimiento",
+          "Interfaz con el software de contabilidad habitual",
+          "Controlling y forecasts en tiempo real"
+        ],
+        "video": "/videos/features/08-invoices-es.mp4",
+        "videoLabel": "Vídeo del producto: Facturación"
+      },
+      {
+        "slug": "analytics",
+        "name": "Analítica",
+        "eyebrow": "Módulo 09",
+        "heading": "Cifras que<br/>hablan por <span class=\"accent\">sí solas</span>.",
+        "subtitle": "Analítica e informes",
+        "intro": "Una visión general de las finanzas, el flujo de caja y la ocupación de producto, tanto para la dirección como para la organización del día de partido. Cada rol ve exactamente los datos que le importan, en lugar de un export que al final nadie lee.",
+        "bullets": [
+          "Forecasts de ingresos y visión del flujo de caja",
+          "Ocupación por producto y temporada",
+          "Acceso a los indicadores según el rol de cada usuario"
+        ],
+        "video": "/videos/features/09-analytics-es.mp4",
+        "videoLabel": "Vídeo del producto: Analítica"
+      }
+    ],
+    "voice": {
+      "quote": "Con Paktum creamos una base central y transparente para gestionar nuestras actividades de comercialización y nuestras alianzas. Reducimos procesos manuales, evitamos duplicar trabajo y descargamos a nuestra administración gracias a la facturación automatizada con conexión directa a la contabilidad. Al mismo tiempo, mejoramos la coordinación con nuestra agencia de comercialización externa, definimos responsabilidades claras y ganamos <em>más eficiencia, transparencia y control</em> sobre nuestros ingresos de comercialización.",
+      "person": "Thomas Rohmer",
+      "role": "Jefe de la oficina administrativa",
+      "club": "SSV Ulm 1846",
+      "sport": "Fútbol",
+      "logo": "SSV_Ulm_1846_Fussball.svg.webp",
+      "photo": "Thomas_Rohmer.webp",
+      "link": "Más historias de clientes"
+    }
+  }
+}

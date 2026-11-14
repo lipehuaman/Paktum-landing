@@ -1,0 +1,4 @@
+# Internal working files: keep them in the repo, out of the public site.
+/docs
+/social
+/MEMORY.md

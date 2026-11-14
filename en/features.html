@@ -48,7 +48,7 @@
   --color-border-dark: rgba(244, 242, 238, 0.12);
   --gradient-dark: linear-gradient(180deg, #1F0F3D 0%, #0A0612 100%);
   --gradient-glow: radial-gradient(ellipse at top, rgba(151, 14, 251, 0.25) 0%, transparent 55%);
-  --font-display: 'forma-djr-display', 'forma-djr-text', 'Inter', 'Helvetica Neue', 'Arial', system-ui, sans-serif;
+  --font-display: 'forma-djr-text', 'Inter', 'Helvetica Neue', 'Arial', system-ui, sans-serif;
   --font-mono: 'forma-djr-text', 'Inter', 'Helvetica Neue', 'Arial', system-ui, sans-serif;
   --container: 1320px;
 }
@@ -2483,226 +2483,10 @@ body.menu-open .lang-floating { display: none; }
 .module-story .section-tag { color: var(--color-text-inverse-muted); }
 .module-story .section-title-xl { color: white; }
 
-/* ---- Product tour stage: one pinned "screen" that advances from
-   function to function as the section scrolls past. The track gives
-   the page scroll distance to move through; the stage pins inside it
-   for that whole distance (native CSS sticky, no scroll-jacking). ---- */
-.story-track {
-  position: relative;
-  margin-top: 64px;
-  height: calc(9 * 100vh);
-}
-
-.story-stage {
-  position: sticky;
-  top: 110px;
-  height: calc(100vh - 150px);
-  display: flex;
-  flex-direction: column;
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-.story-stage.is-visible { opacity: 1; transform: none; }
-@media (prefers-reduced-motion: reduce) {
-  .story-stage { opacity: 1; transform: none; transition: none; }
-}
-
-/* Top menu: every function, always visible above the screen */
-.story-menu {
-  flex: 0 0 auto;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  margin-bottom: 28px;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-.story-menu::-webkit-scrollbar { display: none; }
-.story-menu a {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 14px;
-  border-radius: 100px;
-  color: var(--color-text-inverse-muted);
-  text-decoration: none;
-  white-space: nowrap;
-  font-family: var(--font-mono);
-  font-size: 13px;
-  font-weight: 500;
-  transition: color 0.2s ease, background 0.2s ease;
-}
-.story-menu a .num { opacity: 0.55; }
-.story-menu a:hover { color: white; background: rgba(255, 255, 255, 0.06); }
-.story-menu a.active { color: white; background: rgba(151, 14, 251, 0.2); }
-.story-menu a.active .num { color: var(--color-primary); opacity: 1; }
-
-/* Screen + caption row: fills the rest of the pinned stage. All 9
-   captions share the "cap" grid area and all 9 screens share "frame" —
-   CSS Grid lets same-area siblings overlap natively, so switching the
-   active module is just an opacity/transform toggle, no absolute
-   positioning to keep in sync. */
-.story-stage-row {
-  flex: 1 1 auto;
-  min-height: 0;
-  display: grid;
-  grid-template-columns: 340px 1fr;
-  grid-template-areas: "cap frame";
-  gap: 48px;
-  align-items: center;
-}
-@media (max-width: 1300px) {
-  .story-stage-row { grid-template-columns: 280px 1fr; gap: 32px; }
-}
-
-.story-caption-panel {
-  grid-area: cap;
-  max-height: 100%;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  /* "safe": when a caption is taller than the stage, start at the top
-     instead of clipping the eyebrow above the fold */
-  justify-content: safe center;
-  opacity: 0;
-  transform: translateY(12px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-  pointer-events: none;
-}
-.story-caption-panel.is-active { opacity: 1; transform: none; pointer-events: auto; }
-
-.story-frame-panel {
-  grid-area: frame;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transform: scale(0.98);
-  transition: opacity 0.45s ease, transform 0.45s ease;
-  pointer-events: none;
-}
-.story-frame-panel.is-active { opacity: 1; transform: none; pointer-events: auto; }
-
-@media (prefers-reduced-motion: reduce) {
-  .story-caption-panel, .story-frame-panel { transition: none; }
-}
-
-.story-eyebrow {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-primary);
-  margin-bottom: 16px;
-}
-.story-caption-panel h3 {
-  font-family: var(--font-display);
-  font-size: clamp(24px, 2.2vw, 32px);
-  font-weight: 700;
-  line-height: 1.12;
-  margin-bottom: 14px;
-}
-.story-caption-panel h3 .accent { color: var(--color-primary); font-style: italic; }
-.story-subtitle {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-text-inverse-muted);
-  margin-bottom: 20px;
-}
-.story-intro {
-  font-size: 15px;
-  line-height: 1.6;
-  color: var(--color-text-inverse-muted);
-  margin-bottom: 4px;
-}
-
-.story-summary { margin-top: 4px; }
-
-/* ---- The screen itself: one product video per module ---- */
-.story-frame-panel .feature-visual {
-  width: 100%;
-  /* Never taller than the pinned stage leaves room for (menu + paddings) */
-  max-width: min(880px, calc((100vh - 300px) * 16 / 9));
-  margin: 0 auto;
-  position: relative;
-  background: linear-gradient(135deg, rgba(151, 14, 251, 0.14) 0%, rgba(31, 15, 61, 0.35) 100%);
-  border: 1px solid var(--color-border-dark);
-  border-radius: 24px;
-  padding: 10px;
-  aspect-ratio: auto;
-  display: block;
-}
-.feature-video video {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 9;
-  border-radius: 16px;
-  background: #120a1e;
-  object-fit: cover;
-}
-
-/* ---- Short laptop screens (e.g. 1280x720, 1366x768): tighten the caption
-   so it fits the pinned stage instead of scrolling inside its own box ---- */
-@media (min-width: 1101px) and (max-height: 860px) {
-  .story-menu { margin-bottom: 16px; }
-  .story-menu a { padding: 8px 12px; }
-  .story-eyebrow { margin-bottom: 10px; font-size: 12px; }
-  .story-caption-panel h3 { font-size: 24px; margin-bottom: 10px; }
-  .story-subtitle { margin-bottom: 12px; font-size: 12px; }
-  .story-intro { font-size: 13.5px; line-height: 1.5; margin-bottom: 12px; }
-  .story-caption-panel .feature-list li { font-size: 14px; padding: 9px 0; }
-}
-@media (min-width: 1101px) and (max-height: 740px) {
-  .story-stage { top: 96px; height: calc(100vh - 116px); }
-  .story-intro { font-size: 13px; line-height: 1.45; }
-  .story-caption-panel .feature-list li { font-size: 13px; padding: 7px 0; }
-}
-
 /* ---- Mobile: collapse scrollytelling to a simple stacked read ---- */
 @media (max-width: 640px) {
   .features-hero { padding: 140px 16px 56px; }
   .module-story { margin: 0 12px; border-radius: 32px; padding: 80px 0 100px; }
-}
-
-/* ---- Mobile / short viewports: collapse the pinned scrub-stage into a
-   simple stacked read — the same 14 panels, just laid out in source
-   order instead of pinned + cross-faded. Each panel's mockup still
-   autoplays (triggered on scroll-into-view instead of by the master
-   controller) — see the product-tour script. Placed at the end of the
-   stylesheet so it wins over the base rules above despite matching
-   specificity. ---- */
-@media (max-width: 1100px), (max-height: 640px) {
-  .story-track { height: auto; margin-top: 40px; }
-  .story-stage {
-    position: static;
-    height: auto;
-    display: block;
-    opacity: 1;
-    transform: none;
-  }
-  .story-menu { overflow-x: auto; margin-bottom: 32px; }
-  .story-menu a { padding: 8px 14px; font-size: 12.5px; }
-  .story-stage-row { display: block; }
-  .story-caption-panel,
-  .story-frame-panel {
-    opacity: 1;
-    transform: none;
-    pointer-events: auto;
-    max-height: none;
-    overflow: visible;
-  }
-  .story-caption-panel { margin-bottom: 20px; scroll-margin-top: 110px; }
-  .story-frame-panel { margin-bottom: 72px; }
-  .story-frame-panel:last-of-type { margin-bottom: 0; }
-  .story-frame-panel .feature-visual { max-width: 880px; padding: 6px; border-radius: 16px; }
-  .feature-video video { border-radius: 11px; }
 }
 </style>
 <link rel="alternate" hreflang="de" href="https://www.paktum.ch/features">
@@ -2753,92 +2537,28 @@ body.menu-open .lang-floating { display: none; }
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Paktum", "item": "https://www.paktum.ch"}, {"@type": "ListItem", "position": 2, "name": "Features", "item": "https://www.paktum.ch/en/features"}]}
 </script>
+<link rel="stylesheet" href="/site-nav.css">
+<link rel="stylesheet" href="/features-story.css">
 </head>
 <body>
 <!-- ============ NAVBAR ============ -->
-<nav class="navbar">
-<a class="nav-logo" href="/en">
-<img alt="Paktum" src="/SVG%20Logos/Recurso%206.svg"/>
-</a>
-<ul class="nav-links">
-<li><a data-i18n="nav.product" href="/en#product">Product</a></li>
-<li class="nav-dropdown">
-<a class="active" data-i18n="nav.features" href="/en/features" aria-haspopup="true">Features<svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a>
-<div class="nav-dropdown-menu">
-<div class="nav-dropdown-panel">
-<a class="nav-dropdown-item" href="/en/features#home"><span class="num">01</span><span><b>Home</b><small>Everything that matters at a glance</small></span></a>
-<a class="nav-dropdown-item" href="/en/features#product-catalog"><span class="num">02</span><span><b>Product Catalog</b><small>Rights, inventory and quotas</small></span></a>
-<a class="nav-dropdown-item" href="/en/features#position-editor"><span class="num">03</span><span><b>Position Editor</b><small>Stadium plan and advertising positions</small></span></a>
-<a class="nav-dropdown-item" href="/en/features#partner-crm"><span class="num">04</span><span><b>Partner CRM</b><small>Pipeline, partner records and communication</small></span></a>
-<a class="nav-dropdown-item" href="/en/features#contracts"><span class="num">05</span><span><b>Contracts</b><small>Conditions, documents and in-kind benefits</small></span></a>
-<a class="nav-dropdown-item" href="/en/features#activation"><span class="num">06</span><span><b>Activation</b><small>Implementation tasks and calendar</small></span></a>
-<a class="nav-dropdown-item" href="/en/features#led-planner"><span class="num">07</span><span><b>LED Planning</b><small>Playlists from booked sequences</small></span></a>
-<a class="nav-dropdown-item" href="/en/features#invoicing"><span class="num">08</span><span><b>Invoicing</b><small>Automatic invoicing and controlling</small></span></a>
-<a class="nav-dropdown-item" href="/en/features#analytics"><span class="num">09</span><span><b>Analytics</b><small>Finances, cash flow and utilization</small></span></a>
-<a class="nav-dropdown-all" href="/en/features">See all features<span aria-hidden="true">→</span></a>
-</div>
-</div>
-</li>
-<li><a data-i18n="nav.value" href="/en#stats">Value</a></li>
-<li><a data-i18n="nav.references" href="/en/references">References</a></li>
-<li><a data-i18n="nav.pricing" href="/en/pricing">Pricing</a></li>
-<li><a data-i18n="nav.about" href="/en/about">About Us</a></li>
-<li><a data-i18n="nav.blog" href="/blog/en">Blog</a></li>
-</ul>
-<div class="nav-actions">
-<div class="nav-lang">
-<button aria-expanded="false" aria-haspopup="true" aria-label="Sprache wählen" class="lang-trigger" type="button"><svg class="lang-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 16 0 18M12 3c-2.5 2.5-2.5 16 0 18"/></svg><span class="lang-current">EN</span><svg class="lang-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
-<div class="lang-menu">
-<a class="lang-btn" data-lang="de" href="/features"><span>Deutsch</span><svg class="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg></a>
-<a class="lang-btn active" data-lang="en" href="/en/features"><span>English</span><svg class="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg></a>
-<a class="lang-btn" data-lang="es" href="/es/features"><span>Español</span><svg class="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg></a>
-</div>
-</div>
-<a class="nav-social" href="https://www.linkedin.com/company/paktum-software/" target="_blank" rel="noopener" aria-label="Paktum on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
-<a class="btn btn-primary" data-i18n="nav.cta" href="/en/book-a-demo">Book a demo</a>
-<button aria-expanded="false" aria-label="Toggle menu" class="hamburger-btn">
-<span></span>
-<span></span>
-<span></span>
-</button>
+<!-- site-nav:start -->
+<nav class="site-nav" aria-label="Main navigation">
+<a class="sn-logo" href="/en/" aria-label="Paktum"><img src="/SVG%20Logos/Recurso%206.svg" width="139" height="30" alt="Paktum"></a>
+<ul class="sn-links"><li class="sn-dropdown"><a href="/en/features" aria-current="page">Features<svg class="sn-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg></a><div class="sn-panel"><div class="sn-panel-grid"><a class="sn-item" href="/en/features#home"><span class="sn-num">01</span><span><b>Home</b><small>Key figures, contracts and tasks at a glance.</small></span></a><a class="sn-item" href="/en/features#product-catalog"><span class="sn-num">02</span><span><b>Product catalog</b><small>Manage rights, products and quotas in one place.</small></span></a><a class="sn-item" href="/en/features#position-editor"><span class="sn-num">03</span><span><b>Position Editor</b><small>Allocate advertising spaces on your stadium plan.</small></span></a><a class="sn-item" href="/en/features#partner-crm"><span class="sn-num">04</span><span><b>Partner CRM</b><small>Bring contacts, pipeline and conversations together.</small></span></a><a class="sn-item" href="/en/features#contracts"><span class="sn-num">05</span><span><b>Contracts</b><small>Create documents from your own templates.</small></span></a><a class="sn-item" href="/en/features#activation"><span class="sn-num">06</span><span><b>Activation</b><small>Keep track of agreed deliverables and deadlines.</small></span></a><a class="sn-item" href="/en/features#led-planner"><span class="sn-num">07</span><span><b>LED planning</b><small>Turn booked sequences into ready-to-use playlists.</small></span></a><a class="sn-item" href="/en/features#invoicing"><span class="sn-num">08</span><span><b>Invoicing</b><small>Create invoices from the data in your contracts.</small></span></a><a class="sn-item" href="/en/features#analytics"><span class="sn-num">09</span><span><b>Analytics</b><small>Understand revenue, cash flow and inventory utilisation.</small></span></a></div><a class="sn-all" href="/en/features">Explore all features<span class="sn-arrow" aria-hidden="true">↗</span></a></div></li><li><a href="/en/references">References</a></li><li><a href="/en/pricing">Pricing</a></li><li><a href="https://www.paktum.ch/blog/en">Blog</a></li><li><a href="/en/about">About us</a></li></ul>
+<div class="sn-actions">
+<details class="sn-lang"><summary aria-label="Choose language"><svg class="sn-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c5 5 5 13 0 18-5-5-5-13 0-18Z"/></svg><span>EN</span><svg class="sn-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg></summary><div class="sn-lang-list"><a href="/features" class="lang-btn" data-lang="de" hreflang="de" lang="de"><span>Deutsch</span></a><a href="/en/features" class="lang-btn" data-lang="en" aria-current=true hreflang="en" lang="en"><span>English</span>✓</a><a href="/es/features" class="lang-btn" data-lang="es" hreflang="es" lang="es"><span>Español</span></a></div></details>
+<a class="sn-social" href="https://www.linkedin.com/company/paktum-software/" target="_blank" rel="noopener noreferrer" aria-label="Paktum · LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04s-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13Zm1.78 13.02H3.56V9h3.56ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg></a>
+<a class="sn-cta" href="/en/book-a-demo">Book a demo</a>
+<button class="sn-menu-btn" type="button" data-open-label="Open menu" data-close-label="Close menu" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav-menu"><svg class="sn-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg><svg class="sn-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 5 14 14M5 19 19 5"/></svg></button>
 </div>
 </nav>
-<!-- Mobile menu overlay -->
-<div class="mobile-menu">
-<ul>
-<li><a data-i18n="nav.product" href="/en">Product</a></li>
-<li><a class="active" data-i18n="nav.features" href="/en/features">Features</a>
-<ul class="mobile-submenu">
-<li><a href="/en/features#home"><span class="num">01</span>Home</a></li>
-<li><a href="/en/features#product-catalog"><span class="num">02</span>Product Catalog</a></li>
-<li><a href="/en/features#position-editor"><span class="num">03</span>Position Editor</a></li>
-<li><a href="/en/features#partner-crm"><span class="num">04</span>Partner CRM</a></li>
-<li><a href="/en/features#contracts"><span class="num">05</span>Contracts</a></li>
-<li><a href="/en/features#activation"><span class="num">06</span>Activation</a></li>
-<li><a href="/en/features#led-planner"><span class="num">07</span>LED Planning</a></li>
-<li><a href="/en/features#invoicing"><span class="num">08</span>Invoicing</a></li>
-<li><a href="/en/features#analytics"><span class="num">09</span>Analytics</a></li>
-</ul>
-</li>
-<li><a data-i18n="nav.value" href="/en#stats">Value</a></li>
-<li><a data-i18n="nav.references" href="/en/references">References</a></li>
-<li><a data-i18n="nav.pricing" href="/en/pricing">Pricing</a></li>
-<li><a data-i18n="nav.about" href="/en/about">About Us</a></li>
-<li><a data-i18n="nav.blog" href="/blog/en">Blog</a></li>
-</ul>
-<div class="mobile-menu-cta">
-<a class="btn btn-primary" data-i18n="nav.cta" href="/en/book-a-demo">Book a demo</a>
+<div class="sn-mobile" id="site-nav-menu" hidden>
+<a class="sn-cta" href="/en/book-a-demo">Book a demo<span class="sn-arrow" aria-hidden="true">↗</span></a>
+<ul class="sn-mobile-links"><li><a href="/en/features" aria-current=page>Features</a></li><li><a href="/en/references">References</a></li><li><a href="/en/pricing">Pricing</a></li><li><a href="https://www.paktum.ch/blog/en">Blog</a></li><li><a href="/en/about">About us</a></li></ul>
+<details class="sn-mobile-modules"><summary>Explore the modules</summary><ul><li><a href="/en/features#home"><span>01</span>Home</a></li><li><a href="/en/features#product-catalog"><span>02</span>Product catalog</a></li><li><a href="/en/features#position-editor"><span>03</span>Position Editor</a></li><li><a href="/en/features#partner-crm"><span>04</span>Partner CRM</a></li><li><a href="/en/features#contracts"><span>05</span>Contracts</a></li><li><a href="/en/features#activation"><span>06</span>Activation</a></li><li><a href="/en/features#led-planner"><span>07</span>LED planning</a></li><li><a href="/en/features#invoicing"><span>08</span>Invoicing</a></li><li><a href="/en/features#analytics"><span>09</span>Analytics</a></li></ul></details>
 </div>
-</div>
-<!-- Floating lang toggle (mobile only) -->
-<div class="lang-floating">
-<button aria-expanded="false" aria-haspopup="true" aria-label="Sprache wählen" class="lang-trigger" type="button"><svg class="lang-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 16 0 18M12 3c-2.5 2.5-2.5 16 0 18"/></svg><span class="lang-current">EN</span><svg class="lang-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
-<div class="lang-menu">
-<a class="lang-btn" data-lang="de" href="/features"><span>Deutsch</span><svg class="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg></a>
-<a class="lang-btn active" data-lang="en" href="/en/features"><span>English</span><svg class="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg></a>
-<a class="lang-btn" data-lang="es" href="/es/features"><span>Español</span><svg class="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg></a>
-</div>
-</div>
+<!-- site-nav:end -->
 <!-- ============ FEATURES HERO ============ -->
 <section class="features-hero">
 <div class="features-hero-inner">
@@ -2847,202 +2567,118 @@ body.menu-open .lang-floating { display: none; }
 <p>From the first product in the catalog to the paid invoice: nine modules that cover every part of your sponsoring management – for every role on the team.</p>
 </div>
 </section>
-<section class="module-story" id="module-tour">
+<!-- features-story:start -->
+<section class="module-story fx" id="module-tour" aria-labelledby="fx-title">
 <div class="container">
 <div class="section-header">
 <div class="section-tag">The Modules in Detail</div>
-<h2 class="section-title-xl">Nine Modules. <span class="accent">One Platform.</span></h2>
+<h2 class="section-title-xl" id="fx-title">Nine Modules. <span class="accent">One Platform.</span></h2>
 </div>
-<div class="story-track">
-<div class="story-stage">
-<nav class="story-menu" aria-label="Modules">
-<a data-jump="home" href="#home"><span class="num">01</span> Home</a>
-<a data-jump="product-catalog" href="#product-catalog"><span class="num">02</span> Product Catalog</a>
-<a data-jump="position-editor" href="#position-editor"><span class="num">03</span> Position Editor</a>
-<a data-jump="partner-crm" href="#partner-crm"><span class="num">04</span> Partner CRM</a>
-<a data-jump="contracts" href="#contracts"><span class="num">05</span> Contracts</a>
-<a data-jump="activation" href="#activation"><span class="num">06</span> Activation</a>
-<a data-jump="led-planner" href="#led-planner"><span class="num">07</span> LED Planning</a>
-<a data-jump="invoicing" href="#invoicing"><span class="num">08</span> Invoicing</a>
-<a data-jump="analytics" href="#analytics"><span class="num">09</span> Analytics</a>
-</nav>
-<div class="story-stage-row">
-
-<!-- Module 01: Home -->
-<div class="story-caption-panel is-active" id="home" data-module-index="1">
-<div class="story-eyebrow">Module 01</div>
-<h3>Everything that matters.<br/>At a <span class="accent">glance</span>.</h3>
-<div class="story-subtitle">Home &amp; AI Assistant Rollo</div>
-<p class="story-intro">The home view shows you right away where your sponsoring stands: total sponsoring, deal forecast, partners and booked-out inventory. New contracts appear right below – with price, invoice progress and end date. And Rollo, your AI assistant, checks data quality in the background and shows you exactly what's missing.</p>
-<ul class="feature-list story-summary">
-<li>Season KPIs for sponsoring, forecast and inventory</li>
-<li>New contracts with invoice progress and end date</li>
-<li>Rollo spots data gaps and suggests the fix</li>
-</ul>
+<div class="fx-layout" data-fx>
+<nav class="fx-progress" aria-label="Modules" data-fx-progress><ol><li><a href="#home" data-fx-jump="0" aria-label="01 Home"><span class="fx-pnum">01</span><span class="fx-pname">Home</span></a></li><li><a href="#product-catalog" data-fx-jump="1" aria-label="02 Product Catalog"><span class="fx-pnum">02</span><span class="fx-pname">Product Catalog</span></a></li><li><a href="#position-editor" data-fx-jump="2" aria-label="03 Position Editor"><span class="fx-pnum">03</span><span class="fx-pname">Position Editor</span></a></li><li><a href="#partner-crm" data-fx-jump="3" aria-label="04 Partner CRM"><span class="fx-pnum">04</span><span class="fx-pname">Partner CRM</span></a></li><li><a href="#contracts" data-fx-jump="4" aria-label="05 Contracts"><span class="fx-pnum">05</span><span class="fx-pname">Contracts</span></a></li><li><a href="#activation" data-fx-jump="5" aria-label="06 Activation"><span class="fx-pnum">06</span><span class="fx-pname">Activation</span></a></li><li><a href="#led-planner" data-fx-jump="6" aria-label="07 LED Planning"><span class="fx-pnum">07</span><span class="fx-pname">LED Planning</span></a></li><li><a href="#invoicing" data-fx-jump="7" aria-label="08 Invoicing"><span class="fx-pnum">08</span><span class="fx-pname">Invoicing</span></a></li><li><a href="#analytics" data-fx-jump="8" aria-label="09 Analytics"><span class="fx-pnum">09</span><span class="fx-pname">Analytics</span></a></li></ol><span class="fx-track" aria-hidden="true"><i data-fx-fill></i></span></nav>
+<div class="fx-copy">
+<article class="fx-block is-active" id="home" data-fx-block aria-labelledby="fx-h-home">
+<div class="fx-text">
+<p class="fx-eyebrow"><span class="fx-num">01</span>Home &amp; AI Assistant Rollo</p>
+<h3 id="fx-h-home">Everything that matters.<br/>At a <span class="accent">glance</span>.</h3>
+<p class="fx-intro">The home view shows you right away where your sponsoring stands: total sponsoring, deal forecast, partners and booked-out inventory. New contracts appear right below – with price, invoice progress and end date. And Rollo, your AI assistant, checks data quality in the background and shows you exactly what's missing.</p>
+<ul class="feature-list fx-list"><li>Season KPIs for sponsoring, forecast and inventory</li><li>New contracts with invoice progress and end date</li><li>Rollo spots data gaps and suggests the fix</li></ul>
 </div>
-<div class="story-frame-panel is-active" data-module-index="1">
-<div class="feature-visual feature-video">
-<video data-feature-video muted loop playsinline preload="none" poster="/videos/features/01-home-en.jpg" aria-label="Product video: Home"><source src="/videos/features/01-home-en.mp4" type="video/mp4"/></video>
+<div class="fx-media"><video data-fx-video data-title="Home" muted playsinline preload="none" poster="/videos/features/01-home-en-ui.jpg" aria-label="Product video: Home"><source src="/videos/features/01-home-en.mp4#t=2.8" type="video/mp4"></video></div>
+</article>
+<article class="fx-block" id="product-catalog" data-fx-block aria-labelledby="fx-h-product-catalog">
+<div class="fx-text">
+<p class="fx-eyebrow"><span class="fx-num">02</span>Rights &amp; Inventory Management</p>
+<h3 id="fx-h-product-catalog">Every space,<br/>one <span class="accent">product</span>.</h3>
+<p class="fx-intro">Every marketable right lives in one central product catalog – from the single-sided board to the naming-rights space. Instead of spreadsheets and scattered plans, you see at a glance what's free, reserved or sold. Product groups bundle similar rights, and game day quotas are tied straight to the fixture list.</p>
+<ul class="feature-list fx-list"><li>Season and call-off quotas with quantity, unit and price</li><li>Product groups with utilization per season and game day</li><li>Game day quotas tied to the fixture list</li></ul>
 </div>
+<div class="fx-media"><video data-fx-video data-title="Product Catalog" muted playsinline preload="none" poster="/videos/features/02-catalog-en-ui.jpg" aria-label="Product video: Product Catalog"><source src="/videos/features/02-catalog-en.mp4#t=2.8" type="video/mp4"></video></div>
+</article>
+<article class="fx-block" id="position-editor" data-fx-block aria-labelledby="fx-h-position-editor">
+<div class="fx-text">
+<p class="fx-eyebrow"><span class="fx-num">03</span>Position Editor</p>
+<h3 id="fx-h-position-editor">Every position.<br/>Right on the <span class="accent">stadium plan</span>.</h3>
+<p class="fx-intro">The stadium plan shows every advertising position – by product or by booking status, for any booking date and game day. New spaces are created right in the editor: stadium plan, jersey or hospitality area – drawn, assigned to a product and ready to sell instantly.</p>
+<ul class="feature-list fx-list"><li>Stadium plan by product or booking status</li><li>Visual editors for stadium, jersey and hospitality</li><li>Draw new positions and assign them to a product</li></ul>
 </div>
-
-<!-- Module 02: Product Catalog -->
-<div class="story-caption-panel" id="product-catalog" data-module-index="2">
-<div class="story-eyebrow">Module 02</div>
-<h3>Every space,<br/>one <span class="accent">product</span>.</h3>
-<div class="story-subtitle">Rights &amp; Inventory Management</div>
-<p class="story-intro">Every marketable right lives in one central product catalog – from the single-sided board to the naming-rights space. Instead of spreadsheets and scattered plans, you see at a glance what's free, reserved or sold. Product groups bundle similar rights, and game day quotas are tied straight to the fixture list.</p>
-<ul class="feature-list story-summary">
-<li>Season and call-off quotas with quantity, unit and price</li>
-<li>Product groups with utilization per season and game day</li>
-<li>Game day quotas tied to the fixture list</li>
-</ul>
+<div class="fx-media"><video data-fx-video data-title="Position Editor" muted playsinline preload="none" poster="/videos/features/03-editor-en-ui.jpg" aria-label="Product video: Position Editor"><source src="/videos/features/03-editor-en.mp4#t=2.8" type="video/mp4"></video></div>
+</article>
+<article class="fx-block" id="partner-crm" data-fx-block aria-labelledby="fx-h-partner-crm">
+<div class="fx-text">
+<p class="fx-eyebrow"><span class="fx-num">04</span>Partner CRM</p>
+<h3 id="fx-h-partner-crm">Every partner.<br/>One <span class="accent">history</span>.</h3>
+<p class="fx-intro">Partners live in the built-in CRM – or are pulled in via an interface from your existing system. Contact persons, communication and documents are linked directly to the partner account. So everyone on the team sees the full history instantly, with no need to dig through a colleague's inbox.</p>
+<ul class="feature-list fx-list"><li>Native CRM or a connection to your existing system</li><li>Contact persons with a linked mail account</li><li>Document archive per partner</li></ul>
 </div>
-<div class="story-frame-panel" data-module-index="2">
-<div class="feature-visual feature-video">
-<video data-feature-video muted loop playsinline preload="none" poster="/videos/features/02-catalog-en.jpg" aria-label="Product video: Product Catalog"><source src="/videos/features/02-catalog-en.mp4" type="video/mp4"/></video>
+<div class="fx-media"><video data-fx-video data-title="Partner CRM" muted playsinline preload="none" poster="/videos/features/04-partners-en-ui.jpg" aria-label="Product video: Partner CRM"><source src="/videos/features/04-partners-en.mp4#t=2.8" type="video/mp4"></video></div>
+</article>
+<article class="fx-block" id="contracts" data-fx-block aria-labelledby="fx-h-contracts">
+<div class="fx-text">
+<p class="fx-eyebrow"><span class="fx-num">05</span>Contract &amp; Document Management</p>
+<h3 id="fx-h-contracts">Contracts and documents<br/>in <span class="accent">seconds</span>.</h3>
+<p class="fx-intro">A contract bundles league conditions, activation tasks and the booked rights, including stadium positions. Based on your own templates, Paktum generates the finished contract document automatically – barter deals and in-kind benefits included, the things that usually slip through the cracks.</p>
+<ul class="feature-list fx-list"><li>Automatic document generation from your templates</li><li>League conditions and forecasts per contract</li><li>Direct link to activation tasks</li></ul>
 </div>
+<div class="fx-media"><video data-fx-video data-title="Contracts" muted playsinline preload="none" poster="/videos/features/05-contracts-en-ui.jpg" aria-label="Product video: Contracts"><source src="/videos/features/05-contracts-en.mp4#t=2.8" type="video/mp4"></video></div>
+</article>
+<article class="fx-block" id="activation" data-fx-block aria-labelledby="fx-h-activation">
+<div class="fx-text">
+<p class="fx-eyebrow"><span class="fx-num">06</span>Activation &amp; Calendar</p>
+<h3 id="fx-h-activation">Every task.<br/>One <span class="accent">deadline</span>.</h3>
+<p class="fx-intro">Every activation task has a due date, an owner and a clear reference – to a contract, a partner or a matchday. Nothing gets lost in a spreadsheet anymore, and nobody has to ask twice who's responsible for what.</p>
+<ul class="feature-list fx-list"><li>Tasks with deadline, owner and reference</li><li>List and calendar view side by side</li><li>Calendar subscription for Outlook, Google and Apple</li></ul>
 </div>
-
-<!-- Module 03: Position Editor -->
-<div class="story-caption-panel" id="position-editor" data-module-index="3">
-<div class="story-eyebrow">Module 03</div>
-<h3>Every position.<br/>Right on the <span class="accent">stadium plan</span>.</h3>
-<div class="story-subtitle">Position Editor</div>
-<p class="story-intro">The stadium plan shows every advertising position – by product or by booking status, for any booking date and game day. New spaces are created right in the editor: stadium plan, jersey or hospitality area – drawn, assigned to a product and ready to sell instantly.</p>
-<ul class="feature-list story-summary">
-<li>Stadium plan by product or booking status</li>
-<li>Visual editors for stadium, jersey and hospitality</li>
-<li>Draw new positions and assign them to a product</li>
-</ul>
+<div class="fx-media"><video data-fx-video data-title="Activation" muted playsinline preload="none" poster="/videos/features/06-activation-en-ui.jpg" aria-label="Product video: Activation"><source src="/videos/features/06-activation-en.mp4#t=2.8" type="video/mp4"></video></div>
+</article>
+<article class="fx-block" id="led-planner" data-fx-block aria-labelledby="fx-h-led-planner">
+<div class="fx-text">
+<p class="fx-eyebrow"><span class="fx-num">07</span>LED Planning · Venue Setup</p>
+<h3 id="fx-h-led-planner">Every LED surface,<br/>perfectly <span class="accent">timed</span>.</h3>
+<p class="fx-intro">Configure LED surfaces, sections and game phases once – Paktum assembles precise, conflict-free playlists for every matchday from that. Full rotation or single sequences, double bookings simply can't happen.</p>
+<ul class="feature-list fx-list"><li>Custom LED surfaces and layouts per venue</li><li>Second-accurate playlists for every game phase</li><li>Assign booked sponsoring partners directly</li></ul>
 </div>
-<div class="story-frame-panel" data-module-index="3">
-<div class="feature-visual feature-video">
-<video data-feature-video muted loop playsinline preload="none" poster="/videos/features/03-editor-en.jpg" aria-label="Product video: Position Editor"><source src="/videos/features/03-editor-en.mp4" type="video/mp4"/></video>
+<div class="fx-media"><video data-fx-video data-title="LED Planning" muted playsinline preload="none" poster="/videos/features/07-led-en-ui.jpg" aria-label="Product video: LED Planning"><source src="/videos/features/07-led-en.mp4#t=2.8" type="video/mp4"></video></div>
+</article>
+<article class="fx-block" id="invoicing" data-fx-block aria-labelledby="fx-h-invoicing">
+<div class="fx-text">
+<p class="fx-eyebrow"><span class="fx-num">08</span>Invoicing &amp; Controlling Module</p>
+<h3 id="fx-h-invoicing">Invoicing,<br/>all by <span class="accent">itself</span>.</h3>
+<p class="fx-intro">Invoices are generated automatically on their due date – directly from Paktum or via an interface to your accounting software. Controlling and forecasts run in real time alongside, with nobody doing the math by hand.</p>
+<ul class="feature-list fx-list"><li>Automatic invoicing on the due date</li><li>Interface to common accounting software</li><li>Real-time controlling and forecasts</li></ul>
 </div>
+<div class="fx-media"><video data-fx-video data-title="Invoicing" muted playsinline preload="none" poster="/videos/features/08-invoices-en-ui.jpg" aria-label="Product video: Invoicing"><source src="/videos/features/08-invoices-en.mp4#t=2.8" type="video/mp4"></video></div>
+</article>
+<article class="fx-block" id="analytics" data-fx-block aria-labelledby="fx-h-analytics">
+<div class="fx-text">
+<p class="fx-eyebrow"><span class="fx-num">09</span>Analytics &amp; Reporting</p>
+<h3 id="fx-h-analytics">Numbers that<br/>speak for <span class="accent">themselves</span>.</h3>
+<p class="fx-intro">An overview of finances, cash flow and product utilization – for the board just as much as for matchday operations. Every role sees exactly the data that matters to them, instead of an export nobody actually reads.</p>
+<ul class="feature-list fx-list"><li>Revenue forecasts and cash-flow overview</li><li>Utilization per product and season</li><li>Role-based access to key figures</li></ul>
 </div>
-
-<!-- Module 04: Partner CRM -->
-<div class="story-caption-panel" id="partner-crm" data-module-index="4">
-<div class="story-eyebrow">Module 04</div>
-<h3>Every partner.<br/>One <span class="accent">history</span>.</h3>
-<div class="story-subtitle">Partner CRM</div>
-<p class="story-intro">Partners live in the built-in CRM – or are pulled in via an interface from your existing system. Contact persons, communication and documents are linked directly to the partner account. So everyone on the team sees the full history instantly, with no need to dig through a colleague's inbox.</p>
-<ul class="feature-list story-summary">
-<li>Native CRM or a connection to your existing system</li>
-<li>Contact persons with a linked mail account</li>
-<li>Document archive per partner</li>
-</ul>
+<div class="fx-media"><video data-fx-video data-title="Analytics" muted playsinline preload="none" poster="/videos/features/09-analytics-en-ui.jpg" aria-label="Product video: Analytics"><source src="/videos/features/09-analytics-en.mp4#t=2.8" type="video/mp4"></video></div>
+</article>
 </div>
-<div class="story-frame-panel" data-module-index="4">
-<div class="feature-visual feature-video">
-<video data-feature-video muted loop playsinline preload="none" poster="/videos/features/04-partners-en.jpg" aria-label="Product video: Partner CRM"><source src="/videos/features/04-partners-en.mp4" type="video/mp4"/></video>
-</div>
-</div>
-
-<!-- Module 05: Contracts -->
-<div class="story-caption-panel" id="contracts" data-module-index="5">
-<div class="story-eyebrow">Module 05</div>
-<h3>Contracts and documents<br/>in <span class="accent">seconds</span>.</h3>
-<div class="story-subtitle">Contract &amp; Document Management</div>
-<p class="story-intro">A contract bundles league conditions, activation tasks and the booked rights, including stadium positions. Based on your own templates, Paktum generates the finished contract document automatically – barter deals and in-kind benefits included, the things that usually slip through the cracks.</p>
-<ul class="feature-list story-summary">
-<li>Automatic document generation from your templates</li>
-<li>League conditions and forecasts per contract</li>
-<li>Direct link to activation tasks</li>
-</ul>
-</div>
-<div class="story-frame-panel" data-module-index="5">
-<div class="feature-visual feature-video">
-<video data-feature-video muted loop playsinline preload="none" poster="/videos/features/05-contracts-en.jpg" aria-label="Product video: Contracts"><source src="/videos/features/05-contracts-en.mp4" type="video/mp4"/></video>
-</div>
-</div>
-
-<!-- Module 06: Activation -->
-<div class="story-caption-panel" id="activation" data-module-index="6">
-<div class="story-eyebrow">Module 06</div>
-<h3>Every task.<br/>One <span class="accent">deadline</span>.</h3>
-<div class="story-subtitle">Activation &amp; Calendar</div>
-<p class="story-intro">Every activation task has a due date, an owner and a clear reference – to a contract, a partner or a matchday. Nothing gets lost in a spreadsheet anymore, and nobody has to ask twice who's responsible for what.</p>
-<ul class="feature-list story-summary">
-<li>Tasks with deadline, owner and reference</li>
-<li>List and calendar view side by side</li>
-<li>Calendar subscription for Outlook, Google and Apple</li>
-</ul>
-</div>
-<div class="story-frame-panel" data-module-index="6">
-<div class="feature-visual feature-video">
-<video data-feature-video muted loop playsinline preload="none" poster="/videos/features/06-activation-en.jpg" aria-label="Product video: Activation"><source src="/videos/features/06-activation-en.mp4" type="video/mp4"/></video>
-</div>
-</div>
-
-<!-- Module 07: LED Planning -->
-<div class="story-caption-panel" id="led-planner" data-module-index="7">
-<div class="story-eyebrow">Module 07</div>
-<h3>Every LED surface,<br/>perfectly <span class="accent">timed</span>.</h3>
-<div class="story-subtitle">LED Planning · Venue Setup</div>
-<p class="story-intro">Configure LED surfaces, sections and game phases once – Paktum assembles precise, conflict-free playlists for every matchday from that. Full rotation or single sequences, double bookings simply can't happen.</p>
-<ul class="feature-list story-summary">
-<li>Custom LED surfaces and layouts per venue</li>
-<li>Second-accurate playlists for every game phase</li>
-<li>Assign booked sponsoring partners directly</li>
-</ul>
-</div>
-<div class="story-frame-panel" data-module-index="7">
-<div class="feature-visual feature-video">
-<video data-feature-video muted loop playsinline preload="none" poster="/videos/features/07-led-en.jpg" aria-label="Product video: LED Planning"><source src="/videos/features/07-led-en.mp4" type="video/mp4"/></video>
-</div>
-</div>
-
-<!-- Module 08: Invoicing -->
-<div class="story-caption-panel" id="invoicing" data-module-index="8">
-<div class="story-eyebrow">Module 08</div>
-<h3>Invoicing,<br/>all by <span class="accent">itself</span>.</h3>
-<div class="story-subtitle">Invoicing &amp; Controlling Module</div>
-<p class="story-intro">Invoices are generated automatically on their due date – directly from Paktum or via an interface to your accounting software. Controlling and forecasts run in real time alongside, with nobody doing the math by hand.</p>
-<ul class="feature-list story-summary">
-<li>Automatic invoicing on the due date</li>
-<li>Interface to common accounting software</li>
-<li>Real-time controlling and forecasts</li>
-</ul>
-</div>
-<div class="story-frame-panel" data-module-index="8">
-<div class="feature-visual feature-video">
-<video data-feature-video muted loop playsinline preload="none" poster="/videos/features/08-invoices-en.jpg" aria-label="Product video: Invoicing"><source src="/videos/features/08-invoices-en.mp4" type="video/mp4"/></video>
-</div>
-</div>
-
-<!-- Module 09: Analytics -->
-<div class="story-caption-panel" id="analytics" data-module-index="9">
-<div class="story-eyebrow">Module 09</div>
-<h3>Numbers that<br/>speak for <span class="accent">themselves</span>.</h3>
-<div class="story-subtitle">Analytics &amp; Reporting</div>
-<p class="story-intro">An overview of finances, cash flow and product utilization – for the board just as much as for matchday operations. Every role sees exactly the data that matters to them, instead of an export nobody actually reads.</p>
-<ul class="feature-list story-summary">
-<li>Revenue forecasts and cash-flow overview</li>
-<li>Utilization per product and season</li>
-<li>Role-based access to key figures</li>
-</ul>
-</div>
-<div class="story-frame-panel" data-module-index="9">
-<div class="feature-visual feature-video">
-<video data-feature-video muted loop playsinline preload="none" poster="/videos/features/09-analytics-en.jpg" aria-label="Product video: Analytics"><source src="/videos/features/09-analytics-en.mp4" type="video/mp4"/></video>
-</div>
-</div>
-
-</div>
-</div>
+<div class="fx-stage-col"><div class="fx-stage" data-fx-stage><div class="fx-window"><div class="fx-bar" aria-hidden="true"><span class="fx-dots"><i></i><i></i><i></i></span><span class="fx-title" data-fx-title>Home</span><span class="fx-count" data-fx-count>01 / 09</span></div><div class="fx-screen" data-fx-screen></div></div></div></div>
 </div>
 </div>
 </section>
+<section class="fx-voice" aria-label="Customer voice">
+<figure class="fx-voice-card">
+<div class="fx-voice-club"><img src="/SVG%20Logos/SSV_Ulm_1846_Fussball.svg.webp" width="44" height="44" alt="" loading="lazy"><span><b>SSV Ulm 1846</b><small>Football</small></span></div>
+<blockquote><p>“With Paktum, we have a central, transparent foundation for managing our marketing activities and partnerships. We reduce manual processes, avoid duplicate work and take the load off our administration through automated invoicing with a direct interface to our accounting. At the same time, we improve coordination with our external marketing agency, create clear responsibilities and gain <em>more efficiency, transparency and control</em> over our marketing revenue.”</p></blockquote>
+<figcaption><img src="/SVG%20Logos/Thomas_Rohmer.webp" width="52" height="52" alt="" loading="lazy"><span><b>Thomas Rohmer</b><small>Head of Club Administration</small></span><a class="fx-voice-link" href="/en/references#voices">More customer stories<span aria-hidden="true">↗</span></a></figcaption>
+</figure>
+</section>
+<!-- features-story:end -->
 <!-- ============ FINAL CTA ============ -->
 <section class="final-cta" id="demo">
 <div class="final-cta-grid">
 <h2>Ready to see <span class="accent">everything</span>?</h2>
 <div class="ctas">
 <p>Book a 30-minute demo and we'll walk you through every module live on your own data.</p>
-<a class="btn btn-primary btn-lg btn-arrow" href="/book-a-demo">Book a demo</a>
-<a class="btn btn-ghost-dark btn-lg" href="/pricing">See pricing</a>
+<a class="btn btn-primary btn-lg btn-arrow" href="/en/book-a-demo">Book a demo</a>
+<a class="btn btn-ghost-dark btn-lg" href="/en/pricing">See pricing</a>
 </div>
 </div>
 </section>
@@ -3122,201 +2758,9 @@ document.addEventListener('click', function(){
 })();
 
 
-// ============ FEATURES PAGE: product tour stage ============
-// One pinned "screen" that advances from function to function as the
-// section scrolls past. Desktop: a scroll-fraction controller picks the
-// active module and plays that module's product video. Mobile / short
-// viewports: no pin, panels stack normally and each video plays on
-// scroll-into-view instead (see the CSS fallback for max-width:1100px,
-// max-height:640px). prefers-reduced-motion: no autoplay, native controls.
-(function () {
-  var track = document.querySelector('.story-track');
-  var stage = document.querySelector('.story-stage');
-  var captionPanels = Array.from(document.querySelectorAll('.story-caption-panel'));
-  var framePanels = Array.from(document.querySelectorAll('.story-frame-panel'));
-  var menu = document.querySelector('.story-menu');
-  var menuLinks = Array.from(document.querySelectorAll('.story-menu a'));
-  var COUNT = framePanels.length;
-  if (!track || !stage || !COUNT) return;
-
-  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  // ---- Per-module video: plays from the start while its module is
-  // active, pauses otherwise. Videos ship preload="none" (only a poster),
-  // so the page only downloads the ones a visitor actually reaches; the
-  // next module's video starts buffering as soon as this one plays. ----
-  function createVideoPlayer(framePanel, nextPanel) {
-    var video = framePanel.querySelector('[data-feature-video]');
-    var nextVideo = nextPanel ? nextPanel.querySelector('[data-feature-video]') : null;
-    if (!video) return { activate: function () {}, deactivate: function () {} };
-
-    if (reduceMotion) {
-      video.removeAttribute('loop');
-      video.setAttribute('controls', '');
-      return { activate: function () {}, deactivate: function () { video.pause(); } };
-    }
-
-    return {
-      activate: function () {
-        video.preload = 'auto';
-        try { video.currentTime = 0; } catch (e) { /* metadata not loaded yet */ }
-        var playing = video.play();
-        if (playing && playing.catch) playing.catch(function () {});
-        if (nextVideo && nextVideo.preload === 'none') nextVideo.preload = 'metadata';
-      },
-      deactivate: function () { video.pause(); }
-    };
-  }
-
-  var autoplays = framePanels.map(function (panel, i) {
-    return createVideoPlayer(panel, framePanels[i + 1]);
-  });
-
-  var activeIndex = -1;
-  function setActive(idx) {
-    if (idx === activeIndex) return;
-    if (activeIndex >= 0 && autoplays[activeIndex]) autoplays[activeIndex].deactivate();
-    activeIndex = idx;
-    framePanels.forEach(function (p, i) {
-      var on = i === idx;
-      p.classList.toggle('is-active', on);
-      p.toggleAttribute('inert', !on);
-      p.setAttribute('aria-hidden', on ? 'false' : 'true');
-    });
-    captionPanels.forEach(function (p, i) {
-      var on = i === idx;
-      p.classList.toggle('is-active', on);
-      p.toggleAttribute('inert', !on);
-      p.setAttribute('aria-hidden', on ? 'false' : 'true');
-    });
-    menuLinks.forEach(function (l, i) {
-      var on = i === idx;
-      l.classList.toggle('active', on);
-      l.setAttribute('aria-current', on ? 'true' : 'false');
-      if (on && menu) menu.scrollTo({ left: l.offsetLeft - (menu.clientWidth - l.offsetWidth) / 2, behavior: 'smooth' });
-    });
-    if (idx >= 0 && autoplays[idx]) autoplays[idx].activate();
-  }
-
-  // ---- Desktop: the stage is pinned by native CSS sticky; a scroll
-  // fraction across .story-track picks which module is active. Gated by
-  // an IntersectionObserver on the track so nothing runs while it's
-  // off-screen (and so this stays "mostly IntersectionObserver", with
-  // the scroll listener only for the genuinely continuous part). ----
-  var trackTop = 0, scrollRange = 0, armed = false, rafId = null, pinnedMode = true;
-
-  function measure() {
-    var rect = track.getBoundingClientRect();
-    trackTop = rect.top + window.scrollY;
-    scrollRange = track.offsetHeight - stage.offsetHeight;
-  }
-
-  function onScroll() {
-    if (!pinnedMode || !armed || rafId) return;
-    rafId = requestAnimationFrame(function () {
-      rafId = null;
-      if (scrollRange <= 0) { setActive(0); return; }
-      var progress = Math.min(1, Math.max(0, (window.scrollY - trackTop) / scrollRange));
-      var idx = Math.min(COUNT - 1, Math.floor(progress * COUNT));
-      setActive(idx);
-    });
-  }
-
-  var armObserver = new IntersectionObserver(function (entries) {
-    armed = entries[0].isIntersecting;
-    if (armed) {
-      stage.classList.add('is-visible');
-      measure();
-      onScroll();
-    } else if (pinnedMode) {
-      setActive(-1);
-    }
-  }, { threshold: 0 });
-  armObserver.observe(track);
-
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('load', measure);
-
-  var resizeTimer = null;
-  window.addEventListener('resize', function () {
-    window.clearTimeout(resizeTimer);
-    resizeTimer = window.setTimeout(function () { measure(); onScroll(); }, 150);
-  }, { passive: true });
-
-  // Scroll the pinned track to module i (the panels themselves are
-  // stacked inside the sticky stage, so a native anchor jump can't
-  // reach them). Shared by the in-page menu and #slug deep links from
-  // the navbar's features dropdown.
-  function jumpTo(i, behavior) {
-    measure();
-    // A quarter into the module's slice, so a late layout shift (font
-    // swap, etc.) can't tip the landing spot into the previous module.
-    var target = trackTop + (scrollRange > 0 ? ((i + 0.25) / COUNT) * scrollRange : 0);
-    window.scrollTo({ top: target, behavior: behavior || 'smooth' });
-  }
-
-  // In-page menu and navbar dropdown links both point at #slug anchors
-  // on this page; in pinned mode route them through jumpTo instead of
-  // the native jump (fallback mode keeps the native anchor jump).
-  document.addEventListener('click', function (e) {
-    var link = e.target.closest && e.target.closest('a[href*="#"]');
-    if (!pinnedMode || !link || link.pathname !== location.pathname) return;
-    var i = captionPanels.indexOf(document.getElementById(decodeURIComponent(link.hash.slice(1))));
-    if (i === -1) return;
-    e.preventDefault();
-    history.replaceState(null, '', link.hash);
-    jumpTo(i);
-  });
-
-  function jumpToHash(behavior) {
-    if (!location.hash) return;
-    var target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
-    var i = captionPanels.indexOf(target);
-    if (i === -1) return;
-    if (pinnedMode) jumpTo(i, behavior);
-    // Fallback mode uses the native anchor jump, but that happens before the
-    // web fonts swap in and reflow the modules above — redo it once on load.
-    else if (behavior === 'auto') target.scrollIntoView({ block: 'start' });
-  }
-  window.addEventListener('hashchange', function () { jumpToHash('smooth'); });
-  window.addEventListener('load', function () {
-    (document.fonts ? document.fonts.ready : Promise.resolve()).then(function () { jumpToHash('auto'); });
-  });
-
-  // ---- Mobile / short-viewport fallback: no pin, each panel's autoplay
-  // triggers on its own scroll-into-view instead of the master index. ----
-  var mobileObserver = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      var idx = framePanels.indexOf(entry.target);
-      if (idx === -1) return;
-      var api = autoplays[idx];
-      if (!api) return;
-      if (entry.isIntersecting) api.activate(); else api.deactivate();
-    });
-  }, { threshold: 0.3 });
-
-  var fallbackQuery = window.matchMedia('(max-width: 1100px), (max-height: 640px)');
-  function applyMode(isFallback) {
-    pinnedMode = !isFallback;
-    if (isFallback) {
-      setActive(-1);
-      captionPanels.forEach(function (p) { p.removeAttribute('inert'); p.setAttribute('aria-hidden', 'false'); });
-      framePanels.forEach(function (p) {
-        p.removeAttribute('inert');
-        p.setAttribute('aria-hidden', 'false');
-        mobileObserver.observe(p);
-      });
-      menuLinks.forEach(function (l) { l.classList.remove('active'); l.removeAttribute('aria-current'); });
-    } else {
-      framePanels.forEach(function (p) { mobileObserver.unobserve(p); });
-      measure();
-      onScroll();
-    }
-  }
-  applyMode(fallbackQuery.matches);
-  fallbackQuery.addEventListener('change', function (e) { applyMode(e.matches); });
-})();
 </script>
 <script src="/lang-preference.js" defer></script>
+<script src="/site-nav.js" defer></script>
+<script src="/features-story.js" defer></script>
 </body>
 </html>

@@ -51,7 +51,7 @@
   --color-border: rgba(10, 6, 18, 0.1);
   --color-border-purple: rgba(151, 14, 251, 0.2);
   --color-border-dark: rgba(244, 242, 238, 0.12);
-  --font-display: 'forma-djr-display', 'forma-djr-text', 'Inter', 'Helvetica Neue', 'Arial', system-ui, sans-serif;
+  --font-display: 'forma-djr-text', 'Inter', 'Helvetica Neue', 'Arial', system-ui, sans-serif;
   --font-mono: 'forma-djr-text', 'Inter', 'Helvetica Neue', 'Arial', system-ui, sans-serif;
   --container: 1320px;
 }
@@ -1059,92 +1059,27 @@ body.menu-open .lang-floating { display: none; }
   }
 }
 </script>
+<link rel="stylesheet" href="/site-nav.css">
 </head>
 <body>
 <!-- ============ NAVBAR ============ -->
-<nav class="navbar">
-<a class="nav-logo" href="/en">
-<img alt="Paktum" src="/SVG%20Logos/Recurso%206.svg"/>
-</a>
-<ul class="nav-links">
-<li><a data-i18n="nav.product" href="/en#product">Product</a></li>
-<li class="nav-dropdown">
-<a data-i18n="nav.features" href="/en#features" aria-haspopup="true">Features<svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a>
-<div class="nav-dropdown-menu">
-<div class="nav-dropdown-panel">
-<a class="nav-dropdown-item" href="/en/features#home"><span class="num">01</span><span><b>Home</b><small>Everything that matters at a glance</small></span></a>
-<a class="nav-dropdown-item" href="/en/features#product-catalog"><span class="num">02</span><span><b>Product Catalog</b><small>Rights, inventory and quotas</small></span></a>
-<a class="nav-dropdown-item" href="/en/features#position-editor"><span class="num">03</span><span><b>Position Editor</b><small>Stadium plan and advertising positions</small></span></a>
-<a class="nav-dropdown-item" href="/en/features#partner-crm"><span class="num">04</span><span><b>Partner CRM</b><small>Pipeline, partner records and communication</small></span></a>
-<a class="nav-dropdown-item" href="/en/features#contracts"><span class="num">05</span><span><b>Contracts</b><small>Conditions, documents and in-kind benefits</small></span></a>
-<a class="nav-dropdown-item" href="/en/features#activation"><span class="num">06</span><span><b>Activation</b><small>Implementation tasks and calendar</small></span></a>
-<a class="nav-dropdown-item" href="/en/features#led-planner"><span class="num">07</span><span><b>LED Planning</b><small>Playlists from booked sequences</small></span></a>
-<a class="nav-dropdown-item" href="/en/features#invoicing"><span class="num">08</span><span><b>Invoicing</b><small>Automatic invoicing and controlling</small></span></a>
-<a class="nav-dropdown-item" href="/en/features#analytics"><span class="num">09</span><span><b>Analytics</b><small>Finances, cash flow and utilization</small></span></a>
-<a class="nav-dropdown-all" href="/en/features">See all features<span aria-hidden="true">→</span></a>
-</div>
-</div>
-</li>
-<li><a data-i18n="nav.value" href="/en#stats">Value</a></li>
-<li><a data-i18n="nav.references" href="/en/references">References</a></li>
-<li><a class="active" data-i18n="nav.pricing" href="/en/pricing">Pricing</a></li>
-<li><a data-i18n="nav.about" href="/en/about">About Us</a></li>
-<li><a data-i18n="nav.blog" href="/blog/en">Blog</a></li>
-</ul>
-<div class="nav-actions">
-<div class="nav-lang">
-<button aria-expanded="false" aria-haspopup="true" aria-label="Sprache wählen" class="lang-trigger" type="button"><svg class="lang-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 16 0 18M12 3c-2.5 2.5-2.5 16 0 18"/></svg><span class="lang-current">EN</span><svg class="lang-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
-<div class="lang-menu">
-<a class="lang-btn" data-lang="de" href="/pricing"><span>Deutsch</span><svg class="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg></a>
-<a class="lang-btn active" data-lang="en" href="/en/pricing"><span>English</span><svg class="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg></a>
-<a class="lang-btn" data-lang="es" href="/es/pricing"><span>Español</span><svg class="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg></a>
-</div>
-</div>
-<a class="nav-social" href="https://www.linkedin.com/company/paktum-software/" target="_blank" rel="noopener" aria-label="Paktum on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
-<a class="btn btn-primary" data-i18n="nav.cta" href="/en/book-a-demo">Book a demo</a>
-<button aria-expanded="false" aria-label="Toggle menu" class="hamburger-btn">
-<span></span>
-<span></span>
-<span></span>
-</button>
+<!-- site-nav:start -->
+<nav class="site-nav" aria-label="Main navigation">
+<a class="sn-logo" href="/en/" aria-label="Paktum"><img src="/SVG%20Logos/Recurso%206.svg" width="139" height="30" alt="Paktum"></a>
+<ul class="sn-links"><li class="sn-dropdown"><a href="/en/features">Features<svg class="sn-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg></a><div class="sn-panel"><div class="sn-panel-grid"><a class="sn-item" href="/en/features#home"><span class="sn-num">01</span><span><b>Home</b><small>Key figures, contracts and tasks at a glance.</small></span></a><a class="sn-item" href="/en/features#product-catalog"><span class="sn-num">02</span><span><b>Product catalog</b><small>Manage rights, products and quotas in one place.</small></span></a><a class="sn-item" href="/en/features#position-editor"><span class="sn-num">03</span><span><b>Position Editor</b><small>Allocate advertising spaces on your stadium plan.</small></span></a><a class="sn-item" href="/en/features#partner-crm"><span class="sn-num">04</span><span><b>Partner CRM</b><small>Bring contacts, pipeline and conversations together.</small></span></a><a class="sn-item" href="/en/features#contracts"><span class="sn-num">05</span><span><b>Contracts</b><small>Create documents from your own templates.</small></span></a><a class="sn-item" href="/en/features#activation"><span class="sn-num">06</span><span><b>Activation</b><small>Keep track of agreed deliverables and deadlines.</small></span></a><a class="sn-item" href="/en/features#led-planner"><span class="sn-num">07</span><span><b>LED planning</b><small>Turn booked sequences into ready-to-use playlists.</small></span></a><a class="sn-item" href="/en/features#invoicing"><span class="sn-num">08</span><span><b>Invoicing</b><small>Create invoices from the data in your contracts.</small></span></a><a class="sn-item" href="/en/features#analytics"><span class="sn-num">09</span><span><b>Analytics</b><small>Understand revenue, cash flow and inventory utilisation.</small></span></a></div><a class="sn-all" href="/en/features">Explore all features<span class="sn-arrow" aria-hidden="true">↗</span></a></div></li><li><a href="/en/references">References</a></li><li><a href="/en/pricing" aria-current="page">Pricing</a></li><li><a href="https://www.paktum.ch/blog/en">Blog</a></li><li><a href="/en/about">About us</a></li></ul>
+<div class="sn-actions">
+<details class="sn-lang"><summary aria-label="Choose language"><svg class="sn-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c5 5 5 13 0 18-5-5-5-13 0-18Z"/></svg><span>EN</span><svg class="sn-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg></summary><div class="sn-lang-list"><a href="/pricing" class="lang-btn" data-lang="de" hreflang="de" lang="de"><span>Deutsch</span></a><a href="/en/pricing" class="lang-btn" data-lang="en" aria-current=true hreflang="en" lang="en"><span>English</span>✓</a><a href="/es/pricing" class="lang-btn" data-lang="es" hreflang="es" lang="es"><span>Español</span></a></div></details>
+<a class="sn-social" href="https://www.linkedin.com/company/paktum-software/" target="_blank" rel="noopener noreferrer" aria-label="Paktum · LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04s-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13Zm1.78 13.02H3.56V9h3.56ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg></a>
+<a class="sn-cta" href="/en/book-a-demo">Book a demo</a>
+<button class="sn-menu-btn" type="button" data-open-label="Open menu" data-close-label="Close menu" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav-menu"><svg class="sn-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg><svg class="sn-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 5 14 14M5 19 19 5"/></svg></button>
 </div>
 </nav>
-<!-- Mobile menu overlay -->
-<div class="mobile-menu">
-<ul>
-<li><a data-i18n="nav.product" href="/en">Product</a></li>
-<li><a data-i18n="nav.features" href="/en#features">Features</a>
-<ul class="mobile-submenu">
-<li><a href="/en/features#home"><span class="num">01</span>Home</a></li>
-<li><a href="/en/features#product-catalog"><span class="num">02</span>Product Catalog</a></li>
-<li><a href="/en/features#position-editor"><span class="num">03</span>Position Editor</a></li>
-<li><a href="/en/features#partner-crm"><span class="num">04</span>Partner CRM</a></li>
-<li><a href="/en/features#contracts"><span class="num">05</span>Contracts</a></li>
-<li><a href="/en/features#activation"><span class="num">06</span>Activation</a></li>
-<li><a href="/en/features#led-planner"><span class="num">07</span>LED Planning</a></li>
-<li><a href="/en/features#invoicing"><span class="num">08</span>Invoicing</a></li>
-<li><a href="/en/features#analytics"><span class="num">09</span>Analytics</a></li>
-</ul>
-</li>
-<li><a data-i18n="nav.value" href="/en#stats">Value</a></li>
-<li><a data-i18n="nav.references" href="/en/references">References</a></li>
-<li><a class="active" data-i18n="nav.pricing" href="/en/pricing">Pricing</a></li>
-<li><a data-i18n="nav.about" href="/en/about">About Us</a></li>
-<li><a data-i18n="nav.blog" href="/blog/en">Blog</a></li>
-</ul>
-<div class="mobile-menu-cta">
-<a class="btn btn-primary" data-i18n="nav.cta" href="/en/book-a-demo">Book a demo</a>
+<div class="sn-mobile" id="site-nav-menu" hidden>
+<a class="sn-cta" href="/en/book-a-demo">Book a demo<span class="sn-arrow" aria-hidden="true">↗</span></a>
+<ul class="sn-mobile-links"><li><a href="/en/features">Features</a></li><li><a href="/en/references">References</a></li><li><a href="/en/pricing" aria-current=page>Pricing</a></li><li><a href="https://www.paktum.ch/blog/en">Blog</a></li><li><a href="/en/about">About us</a></li></ul>
+<details class="sn-mobile-modules"><summary>Explore the modules</summary><ul><li><a href="/en/features#home"><span>01</span>Home</a></li><li><a href="/en/features#product-catalog"><span>02</span>Product catalog</a></li><li><a href="/en/features#position-editor"><span>03</span>Position Editor</a></li><li><a href="/en/features#partner-crm"><span>04</span>Partner CRM</a></li><li><a href="/en/features#contracts"><span>05</span>Contracts</a></li><li><a href="/en/features#activation"><span>06</span>Activation</a></li><li><a href="/en/features#led-planner"><span>07</span>LED planning</a></li><li><a href="/en/features#invoicing"><span>08</span>Invoicing</a></li><li><a href="/en/features#analytics"><span>09</span>Analytics</a></li></ul></details>
 </div>
-</div>
-<!-- Floating lang toggle (mobile only) -->
-<div class="lang-floating">
-<button aria-expanded="false" aria-haspopup="true" aria-label="Sprache wählen" class="lang-trigger" type="button"><svg class="lang-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 16 0 18M12 3c-2.5 2.5-2.5 16 0 18"/></svg><span class="lang-current">EN</span><svg class="lang-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
-<div class="lang-menu">
-<a class="lang-btn" data-lang="de" href="/pricing"><span>Deutsch</span><svg class="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg></a>
-<a class="lang-btn active" data-lang="en" href="/en/pricing"><span>English</span><svg class="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg></a>
-<a class="lang-btn" data-lang="es" href="/es/pricing"><span>Español</span><svg class="lang-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L19 7"/></svg></a>
-</div>
-</div>
+<!-- site-nav:end -->
 <!-- ============ PRICING HERO ============ -->
 <section class="pricing-hero">
 <div class="pricing-hero-inner">
@@ -1270,7 +1205,7 @@ body.menu-open .lang-floating { display: none; }
 <div class="footer-col">
 <h5 data-i18n="footer.col1.title">Product</h5>
 <ul>
-<li><a data-i18n="footer.col1.l1" href="/en#features">Features</a></li>
+<li><a data-i18n="footer.col1.l1" href="/en/features">Features</a></li>
 <li><a data-i18n="footer.col1.l2" href="/en/pricing">Pricing</a></li>
 <li><a data-i18n="footer.col1.l3" href="/blog/en">Blog</a></li>
 </ul>
@@ -1385,5 +1320,6 @@ document.addEventListener('click', function(){
 
 </script>
 <script src="/lang-preference.js" defer></script>
+<script src="/site-nav.js" defer></script>
 </body>
 </html>
