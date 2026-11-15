@@ -215,11 +215,15 @@
 
   /* The screen rises in from below the hero, then the script starts. It only runs while on screen. */
   let visible = false;
+  /* If the CSS fallback already showed the screen (slow load), skip the entrance instead of replaying it. */
+  let waiting = getComputedStyle(visual).opacity === '0';
+  if (waiting) visual.classList.add('is-waiting');
   new IntersectionObserver(([entry]) => {
     visible = entry.isIntersecting;
-    if (visible && !visual.classList.contains('screen-in')) {
-      visual.classList.add('screen-in');
-      setTimeout(() => { started = true; if (visible && !document.hidden) play(); }, 1500);
+    if (visible && !started && !visual.dataset.entered) {
+      visual.dataset.entered = '1';
+      if (waiting) { visual.classList.replace('is-waiting', 'screen-in'); waiting = false; }
+      setTimeout(() => { started = true; if (visible && !document.hidden) play(); }, visual.classList.contains('screen-in') ? 1000 : 0);
     }
     visible && !document.hidden ? play() : stop();
   }, { threshold: .2 }).observe(visual);
